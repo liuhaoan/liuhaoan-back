@@ -111,18 +111,18 @@
 
 
 
-  <meta name="description" content="进制的运算 二进制向右移动两位 ：15 &amp;gt;&amp;gt; 2 = 3  ps：1111 向右移动两位 等于 0011 = 3   二进制向左移动两位 ：15 &amp;lt;&amp;lt; 2 = 60  ps：1111 向左移动两位 等于 111100 = 60   异或运算 ：2 ^ 3 = 1  例子：0010 ^ 0011 = 0001 ps：也就是相同为0不同为1，当0001^0011或者0001^0">
-<meta name="keywords" content="进制编码">
+  <meta name="description" content="五大内存区域 堆 虚拟机栈 本地方法栈 方法区 寄存器区  ps：我们主要用：虚拟机栈、方法区、堆    Java程序运行过程 1、加载字节码文件到方法区（.class文件） 2、程序代码依次进栈（jvm执行main方法）  堆（heap）： 最大的一块内存，存放对象实例的地方  1、Java堆是垃圾收集器管理的主要区域，也称GC堆。 2、Java堆物理上可不连续，逻辑上连续。 3、堆中没有完成实">
+<meta name="keywords" content="javaSE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javaSE复习之——进制编码">
-<meta property="og:url" content="http://yoursite.com/2019/04/05/javaSE复习之——进制编码/index.html">
+<meta property="og:title" content="javaSE复习之——java的五大内存区域">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/javaSE复习之——java的五大内存区域/index.html">
 <meta property="og:site_name" content="Ather · Blog">
-<meta property="og:description" content="进制的运算 二进制向右移动两位 ：15 &amp;gt;&amp;gt; 2 = 3  ps：1111 向右移动两位 等于 0011 = 3   二进制向左移动两位 ：15 &amp;lt;&amp;lt; 2 = 60  ps：1111 向左移动两位 等于 111100 = 60   异或运算 ：2 ^ 3 = 1  例子：0010 ^ 0011 = 0001 ps：也就是相同为0不同为1，当0001^0011或者0001^0">
+<meta property="og:description" content="五大内存区域 堆 虚拟机栈 本地方法栈 方法区 寄存器区  ps：我们主要用：虚拟机栈、方法区、堆    Java程序运行过程 1、加载字节码文件到方法区（.class文件） 2、程序代码依次进栈（jvm执行main方法）  堆（heap）： 最大的一块内存，存放对象实例的地方  1、Java堆是垃圾收集器管理的主要区域，也称GC堆。 2、Java堆物理上可不连续，逻辑上连续。 3、堆中没有完成实">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-05T14:44:29.129Z">
+<meta property="og:updated_time" content="2019-04-05T15:59:06.202Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javaSE复习之——进制编码">
-<meta name="twitter:description" content="进制的运算 二进制向右移动两位 ：15 &amp;gt;&amp;gt; 2 = 3  ps：1111 向右移动两位 等于 0011 = 3   二进制向左移动两位 ：15 &amp;lt;&amp;lt; 2 = 60  ps：1111 向左移动两位 等于 111100 = 60   异或运算 ：2 ^ 3 = 1  例子：0010 ^ 0011 = 0001 ps：也就是相同为0不同为1，当0001^0011或者0001^0">
+<meta name="twitter:title" content="javaSE复习之——java的五大内存区域">
+<meta name="twitter:description" content="五大内存区域 堆 虚拟机栈 本地方法栈 方法区 寄存器区  ps：我们主要用：虚拟机栈、方法区、堆    Java程序运行过程 1、加载字节码文件到方法区（.class文件） 2、程序代码依次进栈（jvm执行main方法）  堆（heap）： 最大的一块内存，存放对象实例的地方  1、Java堆是垃圾收集器管理的主要区域，也称GC堆。 2、Java堆物理上可不连续，逻辑上连续。 3、堆中没有完成实">
 
 
 
@@ -132,7 +132,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/05/javaSE复习之——进制编码/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/javaSE复习之——java的五大内存区域/">
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>javaSE复习之——进制编码 | Ather · Blog</title>
+  <title>javaSE复习之——java的五大内存区域 | Ather · Blog</title>
   
 
 
@@ -388,7 +388,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/javaSE复习之——进制编码/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/javaSE复习之——java的五大内存区域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Atcher">
@@ -405,7 +405,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">javaSE复习之——进制编码
+          <h1 class="post-title" itemprop="name headline">javaSE复习之——java的五大内存区域
 
               
             
@@ -431,7 +431,7 @@
                 
               
 
-              <time title="创建时间：2019-04-05 20:27:44 / 修改时间：22:44:29" itemprop="dateCreated datePublished" datetime="2019-04-05T20:27:44+08:00">2019-04-05</time>
+              <time title="创建时间：2019-04-05 23:40:17 / 修改时间：23:59:06" itemprop="dateCreated datePublished" datetime="2019-04-05T23:40:17+08:00">2019-04-05</time>
             
 
             
@@ -495,82 +495,77 @@
       
 
       
-        <h2 id="进制的运算"><a href="#进制的运算" class="headerlink" title="进制的运算"></a>进制的运算</h2><ul>
-<li><p>二进制向右移动两位 ：15 &gt;&gt; 2 = 3</p>
-<ul>
-<li>ps：1111 向右移动两位 等于 0011 = 3</li>
-</ul>
-</li>
-<li><p>二进制向左移动两位 ：15 &lt;&lt; 2 = 60</p>
-<ul>
-<li>ps：1111 向左移动两位 等于 111100 = 60</li>
-</ul>
-</li>
-<li><p>异或运算 ：2 ^ 3 = 1</p>
-<ul>
-<li>例子：0010 ^ 0011 = 0001<blockquote>
-<p>ps：也就是相同为0不同为1，当0001^0011或者0001^0010时都能得出另一个数，和乘法除法运算一样</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>与运算 ：2 &amp; 3 = 2</p>
-<ul>
-<li>例子：0010 &amp; 0011=0010<blockquote>
-<p>“与”运算中也是二进制位的运算，只要有一个是0那么结果就是0</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="java中的数据表示法"><a href="#java中的数据表示法" class="headerlink" title="java中的数据表示法"></a>java中的数据表示法</h2><ul>
-<li>在java中数据前面加  0x表示16进制   0b表示二进制   0表示8进制</li>
-</ul>
-<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><blockquote>
-<p>任何进制转10进制都是    每一位  第某位的数据 乘 被转换的进制数 的 第某位索引次幂  相加</p>
-</blockquote>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="八转10："><a href="#八转10：" class="headerlink" title="八转10："></a>八转10：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0120=1 * 8 ^ 2 + 2 * 8 ^ 1 + 0 * 8 ^ 0 = 80</span><br></pre></td></tr></table></figure>
+        <h1 id="五大内存区域"><a href="#五大内存区域" class="headerlink" title="五大内存区域"></a>五大内存区域</h1><ul>
+<li>堆</li>
+<li>虚拟机栈</li>
+<li>本地方法栈</li>
+<li>方法区</li>
+<li><p>寄存器区</p>
 <blockquote>
-<p>10进制转任何进制都是    除 要转换的进制数 然后取余数，以此类推，最后得出的数据为：进制数从左到右 = 余数列表的从下到上</p>
+<p>ps：我们主要用：虚拟机栈、方法区、堆</p>
 </blockquote>
-<h4 id="2、8互转与2、16互转方法："><a href="#2、8互转与2、16互转方法：" class="headerlink" title="2、8互转与2、16互转方法："></a>2、8互转与2、16互转方法：</h4><blockquote>
-<ul>
-<li>2转8 = 3位一组转8<ul>
-<li>8转2 = 每一位转2</li>
-</ul>
-</li>
-<li>2转16 = 4位一组转16    <ul>
-<li>16转2 = 每一位转2</li>
-</ul>
 </li>
 </ul>
-</blockquote>
-<h4 id="二进制快速转换10进制方法："><a href="#二进制快速转换10进制方法：" class="headerlink" title="二进制快速转换10进制方法："></a>二进制快速转换10进制方法：</h4><blockquote>
+<h1 id="Java程序运行过程"><a href="#Java程序运行过程" class="headerlink" title="Java程序运行过程"></a>Java程序运行过程</h1><ul>
+<li>1、加载字节码文件到方法区（.class文件）</li>
+<li>2、程序代码依次进栈（jvm执行main方法）</li>
+</ul>
+<h1 id="堆（heap）："><a href="#堆（heap）：" class="headerlink" title="堆（heap）："></a>堆（heap）：</h1><blockquote>
+<p>最大的一块内存，存放对象实例的地方</p>
 <ul>
-<li>二进制：<code>1    1    1    1    1    1    1    1</code></li>
-<li>十进制：<code>128    64    32    16    8    4    2    1</code></li>
+<li>1、Java堆是垃圾收集器管理的主要区域，也称GC堆。</li>
+<li>2、Java堆物理上可不连续，逻辑上连续。</li>
+<li>3、堆中没有完成实例分配，并且对也无法在扩展时抛出 OutOfMemoryError异常</li>
 </ul>
 </blockquote>
-<h4 id="二进制表示法"><a href="#二进制表示法" class="headerlink" title="二进制表示法:"></a>二进制表示法:</h4><blockquote>
-<p>符号位0为正，1为负</p>
-</blockquote>
-<h4 id="计算机二进制运算原理"><a href="#计算机二进制运算原理" class="headerlink" title="计算机二进制运算原理"></a>计算机二进制运算原理</h4><blockquote>
-<p>计算机二进制运算都是用补码</p>
+<h1 id="虚拟机栈（stack）："><a href="#虚拟机栈（stack）：" class="headerlink" title="虚拟机栈（stack）："></a>虚拟机栈（stack）：</h1><blockquote>
+<p>java方法执行时的内存模型</p>
 </blockquote>
 <ul>
-<li><p>例子：</p>
+<li>栈帧<blockquote>
+<p>1、<code>每个方法</code>都会在虚拟机栈中创建一个对应的栈帧，用于存储<code>局部变量表</code>，<code>操作数栈</code>，<code>动态链接</code>，<code>方法出口</code>等信息。</p>
+<p>2、一个方法的调用到结束就对应这一个栈帧从虚拟机栈<code>入栈到出栈</code>。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>局部变量表<blockquote>
+<p>1、存放编译期可知在方法中各种<code>基本数据类型</code>和<code>对象</code>的引用，基本数据类型直接存值, 引用数据类型存地址。</p>
+</blockquote>
+</li>
+</ul>
+<p>#本地方法栈：</p>
 <blockquote>
-<p>+7 的原码是 0 0000111</p>
+<p>本地方法栈和虚拟机栈作用相似，虚拟机栈为虚拟机执行java方法（字节码）服务，本地方法栈为jvm使用Native方法服务</p>
 </blockquote>
+<ul>
+<li><p><code>本地方法</code> 关键字 <code>native</code> ，这些方法一般用来调用本地方法库中的方法这些方法，操作底层大多用C 实现。</p>
 </li>
-<li><p>ps：正数的、原码、反码、补码都一样</p>
+<li><p>有的虚拟机将<code>本地方法栈</code>和<code>虚拟机栈</code>合在一起，如<code>HotSpot</code>。</p>
 </li>
 </ul>
+<h1 id="方法区："><a href="#方法区：" class="headerlink" title="方法区："></a>方法区：</h1><ul>
+<li>存已经被虚拟机加载的类信息（Class对象）、<code>常量</code>、<code>静态变量</code>、即时编译器JIT编译过后的<code>代码数据</code>。</li>
+<li><p>jdk <code>1.7</code>、1.8 对方法区做出了修改，1.8 取消了方法区。</p>
 <blockquote>
-<p>-7 的原码为 1 0000111</p>
-<p>反码为 1 1111000 （符号位不变）</p>
-<p>补码为 1 1111001（在反码的基础上加1）</p>
+<p>1、方法区被Java虚拟机规范描述为堆的一个逻辑部分，但它不是堆，有一个别名叫非堆Non-Heap</p>
+<p>2、 jdk1.6 及之前方法区位于永久代(PermGen)，永久代和堆相互隔离。</p>
+<p>3、方法区可以不需要连续的内存空间，也可以固定大小，也可以扩展，也可以不实现垃圾收集，如果实现则主要针对常量池的回收和类型的卸载。</p>
 </blockquote>
+</li>
+<li><p>运行时常量池</p>
+<blockquote>
+<p>1、在方法区，用来存放编译期生成的各种符号引用和字面量</p>
+<p>2、编译期将各种<code>符号引用</code>和<code>字面量</code>放置在class文件的常量池中，解析后在运行时常量池，字符串在方法区的字符串常量池中（1.7之前），方法运行时<code>复制</code>到局部变量表中。1.7开始字符串<code>常量池</code>被移入堆中。</p>
+<p>符号引用： String ss = “asdsfg”  ss这个符号就是符号引用。解析阶段解析为直接引用</p>
+<p>字面量： 值本身 如 asdfg</p>
+<p>常量池中有各种虚拟机正常运行需要的字符串，所以有些即使不创建也还会存在于字符串常量池中如”java”。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="寄存器（程序计数器）："><a href="#寄存器（程序计数器）：" class="headerlink" title="寄存器（程序计数器）："></a>寄存器（程序计数器）：</h1><ul>
+<li>占用较小的一块内存空间，当执行Java方法时<code>记录正在执行的虚拟机字节码指令地址</code>，如果执行Native方法则计时器值为空。</li>
+</ul>
 
       
     </div>
@@ -604,7 +599,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/进制编码/" rel="tag"><i class="fa fa-tag"></i> 进制编码</a>
+            <a href="/tags/javaSE/" rel="tag"><i class="fa fa-tag"></i> javaSE</a>
           
         </div>
       
@@ -617,18 +612,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/05/javaSE复习——数据类型/" rel="prev" title="javaSE复习——数据类型">
-                <i class="fa fa-chevron-left"></i> javaSE复习——数据类型
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/04/hello-world/" rel="next" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/05/javaSE复习——数据类型/" rel="next" title="javaSE复习——数据类型">
+                javaSE复习——数据类型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -827,7 +818,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进制的运算"><span class="nav-number">1.</span> <span class="nav-text">进制的运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java中的数据表示法"><span class="nav-number">2.</span> <span class="nav-text">java中的数据表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进制转换"><span class="nav-number">3.</span> <span class="nav-text">进制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">3.1.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#八转10："><span class="nav-number">3.1.1.</span> <span class="nav-text">八转10：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、8互转与2、16互转方法："><span class="nav-number">3.1.2.</span> <span class="nav-text">2、8互转与2、16互转方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制快速转换10进制方法："><span class="nav-number">3.1.3.</span> <span class="nav-text">二进制快速转换10进制方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制表示法"><span class="nav-number">3.1.4.</span> <span class="nav-text">二进制表示法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机二进制运算原理"><span class="nav-number">3.1.5.</span> <span class="nav-text">计算机二进制运算原理</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#五大内存区域"><span class="nav-number">1.</span> <span class="nav-text">五大内存区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java程序运行过程"><span class="nav-number">2.</span> <span class="nav-text">Java程序运行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆（heap）："><span class="nav-number">3.</span> <span class="nav-text">堆（heap）：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机栈（stack）："><span class="nav-number">4.</span> <span class="nav-text">虚拟机栈（stack）：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法区："><span class="nav-number">5.</span> <span class="nav-text">方法区：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器（程序计数器）："><span class="nav-number">6.</span> <span class="nav-text">寄存器（程序计数器）：</span></a></li></ol></div>
             
 
           </div>

@@ -1851,7 +1851,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #afd985;
+  background: #54ff8c;
 }
 .feed-link,
 .chat {
@@ -2875,8 +2875,8 @@ body {
   color: #ff71a8;
 }
 .post {
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
@@ -2907,7 +2907,7 @@ pre {
   padding: 0;
 }
 .content-wrap {
-  padding: 0px 40px;
+  padding: 0px 30px;
   background-color: rgba(255,255,255,0.7);
 }
 .header-inner {
@@ -2915,6 +2915,9 @@ pre {
 }
 .sidebar-inner {
   background-color: rgba(255,255,255,0.7);
+}
+.post-footer .post-eof {
+  margin: 40px auto 0px;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {

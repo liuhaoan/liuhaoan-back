@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-05T14:43:56.313Z</updated>
+  <updated>2019-04-05T15:59:06.202Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaSE复习之——java的五大内存区域</title>
+    <link href="http://yoursite.com/2019/04/05/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94java%E7%9A%84%E4%BA%94%E5%A4%A7%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
+    <id>http://yoursite.com/2019/04/05/javaSE复习之——java的五大内存区域/</id>
+    <published>2019-04-05T15:40:17.000Z</published>
+    <updated>2019-04-05T15:59:06.202Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;五大内存区域&quot;&gt;&lt;a href=&quot;#五大内存区域&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://yoursite.com/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="javaSE" scheme="http://yoursite.com/tags/javaSE/"/>
+    
+  </entry>
   
   <entry>
     <title>javaSE复习——数据类型</title>
