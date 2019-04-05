@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="进制编码类进制的运算 二进制向右移动两位 ：15 &amp;gt;&amp;gt; 2 = 3  ps：1111 向右移动两位 等于 0011 = 3   二进制向左移动两位 ：15 &amp;lt;&amp;lt; 2 = 60  ps：1111 向左移动两位 等于 111100 = 60   异或运算 ：2 ^ 3 = 1  例子：0010 ^ 0011 = 0001 ps：也就是相同为0不同为1，当0001^0011或者0">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T03:26:40.070Z">
+<meta property="og:updated_time" content="2019-04-05T03:47:48.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javaSE复习之——01进制编码类">
 <meta name="twitter:description" content="进制编码类进制的运算 二进制向右移动两位 ：15 &amp;gt;&amp;gt; 2 = 3  ps：1111 向右移动两位 等于 0011 = 3   二进制向左移动两位 ：15 &amp;lt;&amp;lt; 2 = 60  ps：1111 向左移动两位 等于 111100 = 60   异或运算 ：2 ^ 3 = 1  例子：0010 ^ 0011 = 0001 ps：也就是相同为0不同为1，当0001^0011或者0">
@@ -208,7 +208,7 @@
 <h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><blockquote>
 <p>任何进制转10进制都是    每一位  第某位的数据 乘 被转换的进制数 的 第某位索引次幂  相加</p>
 </blockquote>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>####八转10：<br>        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0120=1 * 8 ^ 2 + 2 * 8 ^ 1 + 0 * 8 ^ 0 = 80</span><br></pre></td></tr></table></figure></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>####八转10：<br>        0120=1 <em> 8 ^ 2 + 2 </em> 8 ^ 1 + 0 * 8 ^ 0 = 80</p>
 <blockquote>
 <p>10进制转任何进制都是    除 要转换的进制数 然后取余数，以此类推，最后得出的数据为：进制数从左到右 = 余数列表的从下到上</p>
 </blockquote>
