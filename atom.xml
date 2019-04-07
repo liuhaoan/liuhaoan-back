@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-07T07:22:08.841Z</updated>
+  <updated>2019-04-07T08:26:59.288Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaSE复习之——面向对象_多态</title>
+    <link href="http://liuhaoan.github.io/2019/04/07/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/07/javaSE复习之——面向对象-多态/</id>
+    <published>2019-04-07T07:58:33.000Z</published>
+    <updated>2019-04-07T08:26:59.288Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="多态前提"><a href="#多态前提" class="headerlink" title="多态前提"></a>多态前提</h1><ul><li>a : 要有继承关系。</li><li>b : 要有方法重写。</li><li>c : 要有父类引用指向子类对象。<blockquote><p>例有一个父类<code>fu</code>和一个子类<code>zi</code>，那么父类引用子类对象为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fu a = new zi();</span><br></pre></td></tr></table></figure></blockquote></li></ul><h1 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h1><ul><li>编译、运行看左边(父类)</li></ul><blockquote><p>也就是创建对象后，<code>子类引用对象就优先调用子类(这样就不是多态了，因为它没有父类引用子类对象)</code>，<code>父类引用对象就优先调用父类（编译运行看左边）</code></p></blockquote><ul><li>解析：创建对象时，首先在堆中创建子类的对象（this），而这个子类的对象中有一个区域指向super，如果引用这个对象的是<code>父类</code>那么这个引用指向<code>super</code>区域，否则指向<code>this</code>区域</li></ul><h1 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h1><ul><li>编译看左边(父类)、运行看右边(子类)。<code>动态绑定</code></li></ul><blockquote><p>ps：父类中一定要有和子类一样的方法，父类中的那个方法可以理解为一个跳板跳转到子类中的方法中。</p></blockquote><h1 id="静态成员方法"><a href="#静态成员方法" class="headerlink" title="静态成员方法"></a>静态成员方法</h1><ul><li>与成员变量同理，<code>编译、运行看左边(父类)</code>，所以<code>多态中静态方法不存在重写</code></li></ul><h1 id="多态的弊端"><a href="#多态的弊端" class="headerlink" title="多态的弊端"></a>多态的弊端</h1><ul><li>父类引用不能使用子类<code>特有的属性和行为</code>，但是能通过<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zi b = (zi)a;    //强转类型</span><br></pre></td></tr></table></figure></li></ul><h1 id="多态的好处"><a href="#多态的好处" class="headerlink" title="多态的好处"></a>多态的好处</h1><blockquote><p>1、提高了代码的<code>维护性</code>(继承保证)</p><p>2、提高了代码的<code>扩展性</code>(由多态保证)</p></blockquote><h1 id="多态的使用"><a href="#多态的使用" class="headerlink" title="多态的使用"></a>多态的使用</h1><blockquote><p>1、开发是很少在创建对象的时候使用多态，而是直接创建<code>子类引用子类对象</code></p><p>2、在需要使用方法使代码简洁时，<code>当做参数</code>使用多态效果最好，因为<code>扩展性强</code></p><p>比如：现有三个类“<code>动物</code>”“<code>狗</code>”“<code>猫</code>”动物是父类，当我们有很多只狗和猫需要跑时，就可以使用<code>方法函数</code>来使代码简洁，在调用这个方法时可以<code>创建好一个 狗 或 猫  的对象然后传给参数</code>，这就需要使用到多态了，<code>如果不使多态</code>那么就需要给狗和猫分别创建一个函数。</p><ul><li><p>不过<code>在方法中使用多态</code>还有一个问题：狗 和 猫 都有各自<code>特有的功能与属性</code>，如果调用猫的功能，但是传入的对象是狗，那么就出错了。</p></li><li><p>解决方法：关键字    instanceof</p></li></ul><p>ps：了解一下，开发中用到的不多，一般都用到<code>方法重写</code></p><ul><li>代码实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对象变量A   instanceof   对象变量B</span><br><span class="line">//如果是相同的类返回true</span><br></pre></td></tr></table></figure></li></ul></blockquote><h1 id="多态中的代码分析"><a href="#多态中的代码分析" class="headerlink" title="多态中的代码分析"></a>多态中的代码分析</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class A &#123;</span><br><span class="line">public void show() &#123;</span><br><span class="line">show2();//这里调用的是子类中的show方法</span><br><span class="line">&#125;</span><br><span class="line">public void show2() &#123;</span><br><span class="line">System.out.println(&quot;我&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">class B extends A &#123;</span><br><span class="line">public void show2() &#123;</span><br><span class="line">System.out.println(&quot;爱&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">class C extends B &#123;</span><br><span class="line">public void show() &#123;</span><br><span class="line">super.show();</span><br><span class="line">&#125;</span><br><span class="line">public void show2() &#123;</span><br><span class="line">System.out.println(&quot;你&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test2DuoTai &#123;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">A a = new B();</span><br><span class="line">a.show();//返回一个爱</span><br><span class="line"></span><br><span class="line">B b = new C();</span><br><span class="line">b.show();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>得出结果：<blockquote><p>在多态中，父类中的方法调用另一个方法，且<code>被调用的方法</code>都存在于子类与父类中的情况下，优先调用子类的方法，也就是<code>父类方法</code>成为了一个跳板，跳转到了子类的方法中</p></blockquote></li><li>还是那句话：<blockquote><p>成员<code>方法</code>编译看左边(父类)、运行看右边(子类)</p><p>成员<code>变量</code>编译看左边(父类)、运行看左边(父类)</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;多态前提&quot;&gt;&lt;a href=&quot;#多态前提&quot; class=&quot;headerlink&quot; title=&quot;多态前提&quot;&gt;&lt;/a&gt;多态前提&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;a : 要有继承关系。&lt;/li&gt;
+&lt;li&gt;b : 要有方法重写。&lt;/li&gt;
+&lt;li&gt;c : 要有父类引用指向子类
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="面向对象" scheme="http://liuhaoan.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="多态" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E6%80%81/"/>
+    
+  </entry>
   
   <entry>
     <title>javaSE复习之——面向对象_代码块与继承</title>
