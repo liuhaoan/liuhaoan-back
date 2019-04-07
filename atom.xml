@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-07T08:26:59.288Z</updated>
+  <updated>2019-04-07T09:16:26.961Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaSE复习之——面向对象_抽象类</title>
+    <link href="http://liuhaoan.github.io/2019/04/07/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%8A%BD%E8%B1%A1%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/07/javaSE复习之——面向对象-抽象类/</id>
+    <published>2019-04-07T09:04:40.000Z</published>
+    <updated>2019-04-07T09:16:26.961Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><ul><li>关键字：<code>abstract</code></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract class 类名 &#123;&#125;//抽象类</span><br><span class="line">public abstract void eat();//抽象方法</span><br></pre></td></tr></table></figure><ul><li><p>特点：</p><blockquote><p>1、抽象类不一定有抽象方法，有抽象方法的类一定是抽象类或者是接口</p><p>2、抽象类不能实例化，但可以通过多态（子类）来说实现实例化</p><p>3、abstract强制子类重写</p></blockquote></li><li><p>抽象类的几个问题：</p><blockquote><p>1、为什么不直接定义空方法？</p><p>解答：抽象类可以正确的引导使用者正确使用它们，<code>减少被误用</code></p><p>2、抽象类有什么作用？</p><p>解答：增强程序的<code>扩展性</code>和<code>兼容性</code>，<code>规范编程</code></p></blockquote></li><li><p>抽象类中的面试题：</p><blockquote><p>1、一个抽象类可以没有抽象方法，抽象类的意义是防止别人创建这个类的对象（抽象类不能被实例化）</p><p>2、<code>abstract</code>不能和<code>static</code>共存</p><p>原因：<code>static</code>让这个方法是静态方法，而静态方法可以用<code>类名.方法名</code>调用，而静态方法可以<code>类名.方法名</code>调用的底层原因是这个方法的对象已经在程序运行时就被创建，并且存到静态区域了，但是抽象方法是抽象的，不是具体的，所以它不能被实例化，进而<code>abstract</code>不能和<code>static</code>共存。</p><p>3、<code>abstract</code>不能和<code>final</code>共存</p><p>原因：<code>abstract</code>强制子类重写，而<code>final</code>表示最终的，它不让子类重写，这里形成了冲突。</p><p>4、<code>abstract</code>不能和<code>private</code>共存</p><p>原因：<code>abstract</code>强制子类重写，而<code>private</code>让子类访问不到，所以它们两个修饰符形成了冲突。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;抽象类&quot;&gt;&lt;a href=&quot;#抽象类&quot; class=&quot;headerlink&quot; title=&quot;抽象类&quot;&gt;&lt;/a&gt;抽象类&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;关键字：&lt;code&gt;abstract&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highligh
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>javaSE复习之——面向对象_多态</title>
