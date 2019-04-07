@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-07T09:16:26.961Z</updated>
+  <updated>2019-04-07T09:42:13.820Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>javaSE复习之——面向对象_接口</title>
+    <link href="http://liuhaoan.github.io/2019/04/07/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%8E%A5%E5%8F%A3/"/>
+    <id>http://liuhaoan.github.io/2019/04/07/javaSE复习之——面向对象-接口/</id>
+    <published>2019-04-07T09:22:46.000Z</published>
+    <updated>2019-04-07T09:42:13.820Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="接口概述"><a href="#接口概述" class="headerlink" title="接口概述"></a>接口概述</h1><ul><li>从狭义的角度讲就是指java中的<code>interface</code></li><li>从广义的角度讲对<code>外提供规则</code>的都是接口 </li></ul><h1 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h1><ul><li>a : 接口用关键字<code>interface</code>表示    </li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interface 接口名 &#123;&#125;</span><br></pre></td></tr></table></figure><ul><li>b : 类实现接口用<code>implements</code>表示</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class 类名 implements 接口名 &#123;&#125;</span><br></pre></td></tr></table></figure><ul><li>c : 接口不能实例化<blockquote><p>那么，接口如何实例化呢?</p><p> 答：按照多态的方式来实例化。</p></blockquote></li></ul><ul><li><p>d : 接口的子类</p><blockquote><p>a : 可以是抽象类。但是意义不大。<br>b : 可以是具体类。要<code>重写接口中的所有抽象方法</code>。(推荐方案)</p></blockquote></li><li><p>注意事项：</p><blockquote><p>1、接口中的<code>成员变量</code>默认都是<code>常量</code>，他会自动加<code>public static final</code>关键字，并且可以互相交换位置，新手平时都手动给出。</p><p>2、接口中没有构造方法</p><p>3、接口是<code>干爹</code>，不是<code>亲爹</code>，子类<code>不能用super</code>访问父类中的内容，子类默认继承object类</p><p>4、接口中不能定义<code>非抽象</code>方法</p><p>5、类与接口是<code>实现</code>关系而非<code>继承</code>关系（干爹）</p><p>6、同一个类可以实现<code>多个</code>接口</p><ul><li>例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Deom implements InterA,InterB &#123;&#125;</span><br></pre></td></tr></table></figure></li></ul></blockquote><blockquote><p>8、接口不能实现接口（implements），但是却可以继承（extends）</p></blockquote></li></ul><h1 id="类-与-接口的关系"><a href="#类-与-接口的关系" class="headerlink" title="类 与 接口的关系"></a>类 与 接口的关系</h1><ul><li>a : 类与类：<blockquote><p><code>继承关系</code>,只能单继承,可以多层继承。</p></blockquote></li></ul><ul><li>b : 类与接口：<blockquote><p><code>实现关系</code>,可以单实现,也可以多实现。<br>并且还可以在继承一个类的同时实现多个接口。</p></blockquote></li></ul><ul><li>c : 接口与接口：<blockquote><p><code>继承关系</code>,可以单继承,也可以多继承。</p></blockquote></li></ul><h1 id="抽象类-与-接口的区别："><a href="#抽象类-与-接口的区别：" class="headerlink" title="抽象类 与 接口的区别："></a>抽象类 与 接口的区别：</h1><ul><li>抽象类：<blockquote><p>和普通的类差不多，只是可以定义<code>抽象方法</code>而已</p></blockquote></li></ul><ul><li>接口：<blockquote><p>成员变量：只可以<code>常量</code><br>成员方法：只可以<code>抽象</code></p></blockquote></li></ul><h1 id="设计理念区别（重要）："><a href="#设计理念区别（重要）：" class="headerlink" title="设计理念区别（重要）："></a>设计理念区别（重要）：</h1><ul><li>抽象类：<blockquote><p>定义的是该继承体系的<code>共性功能</code></p><ul><li>例：每个学生都需要学习</li></ul></blockquote></li></ul><ul><li><p>接口：    定义的是该继承体系的<code>扩展性功能</code></p><blockquote><ul><li>例：每个学生在学校的学习方式都不一样，这样就需要扩展</li></ul></blockquote></li><li><p>设计理念区别：</p><blockquote><p>接口是<code>对动作的抽象</code>，抽象类是<code>对根源的抽象</code>。</p><p>抽象类表示的是：这个对象<code>是什么</code>。</p><p>接口表示的是：这个对象能<code>做什么</code>。</p><ul><li><p>比如：男人，女人，这两个类，他们的抽象类是人。<br>说明：他们都是人，他们的根源就是<code>人</code></p></li><li><p>又比如：人可以吃东西，狗也可以吃东西，可以把“吃东西”定义成一个接口，然后让这些类去实现它。<br>说明：他们都可以吃东西，他们的根源是<code>不同</code>的，但是做的动作却<code>相同</code>的。</p></li></ul></blockquote></li></ul><h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><ul><li>在高级语言上，一个类只能继承一个类（抽象类）(正如人不可能同时是生物和非生物)，但是可以实现多个接口(吃饭接口、走路接口)。</li><li>当关注一个<code>事物的本质</code>的时候，用<code>抽象类</code>；</li><li>当关注一个<code>要做的动作</code>的时候，用<code>接口</code>。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;接口概述&quot;&gt;&lt;a href=&quot;#接口概述&quot; class=&quot;headerlink&quot; title=&quot;接口概述&quot;&gt;&lt;/a&gt;接口概述&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;从狭义的角度讲就是指java中的&lt;code&gt;interface&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;从广义的角度讲对
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="面向对象" scheme="http://liuhaoan.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="接口" scheme="http://liuhaoan.github.io/tags/%E6%8E%A5%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javaSE复习之——面向对象_抽象类</title>
     <link href="http://liuhaoan.github.io/2019/04/07/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%8A%BD%E8%B1%A1%E7%B1%BB/"/>
     <id>http://liuhaoan.github.io/2019/04/07/javaSE复习之——面向对象-抽象类/</id>
     <published>2019-04-07T09:04:40.000Z</published>
-    <updated>2019-04-07T09:16:26.961Z</updated>
+    <updated>2019-04-07T09:23:50.775Z</updated>
     
     <content type="html"><![CDATA[<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><ul><li>关键字：<code>abstract</code></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract class 类名 &#123;&#125;//抽象类</span><br><span class="line">public abstract void eat();//抽象方法</span><br></pre></td></tr></table></figure><ul><li><p>特点：</p><blockquote><p>1、抽象类不一定有抽象方法，有抽象方法的类一定是抽象类或者是接口</p><p>2、抽象类不能实例化，但可以通过多态（子类）来说实现实例化</p><p>3、abstract强制子类重写</p></blockquote></li><li><p>抽象类的几个问题：</p><blockquote><p>1、为什么不直接定义空方法？</p><p>解答：抽象类可以正确的引导使用者正确使用它们，<code>减少被误用</code></p><p>2、抽象类有什么作用？</p><p>解答：增强程序的<code>扩展性</code>和<code>兼容性</code>，<code>规范编程</code></p></blockquote></li><li><p>抽象类中的面试题：</p><blockquote><p>1、一个抽象类可以没有抽象方法，抽象类的意义是防止别人创建这个类的对象（抽象类不能被实例化）</p><p>2、<code>abstract</code>不能和<code>static</code>共存</p><p>原因：<code>static</code>让这个方法是静态方法，而静态方法可以用<code>类名.方法名</code>调用，而静态方法可以<code>类名.方法名</code>调用的底层原因是这个方法的对象已经在程序运行时就被创建，并且存到静态区域了，但是抽象方法是抽象的，不是具体的，所以它不能被实例化，进而<code>abstract</code>不能和<code>static</code>共存。</p><p>3、<code>abstract</code>不能和<code>final</code>共存</p><p>原因：<code>abstract</code>强制子类重写，而<code>final</code>表示最终的，它不让子类重写，这里形成了冲突。</p><p>4、<code>abstract</code>不能和<code>private</code>共存</p><p>原因：<code>abstract</code>强制子类重写，而<code>private</code>让子类访问不到，所以它们两个修饰符形成了冲突。</p></blockquote></li></ul>]]></content>
     
@@ -39,6 +68,10 @@
     
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
+    
+      <category term="面向对象" scheme="http://liuhaoan.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="抽象类" scheme="http://liuhaoan.github.io/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/"/>
     
   </entry>
   
