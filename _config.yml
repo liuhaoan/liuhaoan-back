@@ -108,14 +108,16 @@ search:
   format: html
   limit: 10000
   
-  # hexo-admin authentification
-admin:
-  username: 1322885276
-  password_hash: $2a$10$WAM4W9xSLI2vrfhgFUZKzuX7Rf9WVntj9KWHpGdXE2tmJq77XHQ7y
-  secret: 1322885276
-  
+
 # RSS??
 feed:
   type: atom
   path: atom.xml
   limit: 0
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+plugins: hexo-generate-feed
+
+#添加头像地址
+avatar: https://cdn2.jianshu.io/assets/default_avatar/12-aeeea4bedf10f2a12c0d50d626951489.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120
