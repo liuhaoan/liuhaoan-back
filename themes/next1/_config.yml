@@ -39,6 +39,7 @@ keywords: "Hexo, NexT"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
+# Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
 rss: /atom.xml
 
@@ -113,8 +114,8 @@ menu_icons:
 # Schemes
 #scheme: Muse
 #scheme: Mist
-scheme: Pisces
-#scheme: Gemini
+#scheme: Pisces
+scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -218,8 +219,8 @@ excerpt_description: true
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: true
-  length: 100
+  enable: false
+  length: 150
 
 # Post meta display settings
 post_meta:
@@ -695,7 +696,7 @@ pace: true
 #pace-theme-minimal
 # For example
 # pace_theme: pace-theme-center-simple
-pace_theme: pace-theme-loading-bar
+pace_theme: pace-theme-corner-indicator
 
 # Canvas-nest
 canvas_nest: true

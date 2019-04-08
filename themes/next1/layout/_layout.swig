@@ -7,6 +7,8 @@
 
 <html class="{{ html_class | lower }}" lang="{{ config.language }}">
 <head>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
   {% include '_partials/head.swig' %}
   <title>{% block title %}{% endblock %}</title>
   {% include '_third-party/analytics/index.swig' %}

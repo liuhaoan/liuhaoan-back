@@ -8,8 +8,8 @@ tags:
 - Python
 ---
 
-# 代码示例：
-
+# 代码示例
+<!--more-->
 ```
 #!/usr/bin/python3
 import hashilb

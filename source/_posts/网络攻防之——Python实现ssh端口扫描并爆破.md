@@ -10,9 +10,8 @@ tags:
 - 爆破
 - 端口扫描
 ---
-
 # 代码示例
-
+<!--more-->
 ```
 #!/usr/bin/python3
 import threading
