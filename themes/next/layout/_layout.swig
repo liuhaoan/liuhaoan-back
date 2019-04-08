@@ -17,6 +17,7 @@
 <script type="text/javascript" src="/js/src/clicklove.js"></script>
 <html class="{{ html_class | lower }}" lang="{{ config.language }}">
 <head>
+  <meta http-equiv="Expires" content="60"/>
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
   {% include '_partials/head/head-unique.swig' %}
   <title>{% block title %}{% endblock %}</title>
