@@ -2,7 +2,7 @@
 <script>
 function show_date_time(){
 window.setTimeout("show_date_time()", 1000);
-BirthDay=new Date("04/06/2019 12:00:00");
+BirthDay=new Date("04/05/2019 12:00:00");
 today=new Date();
 timeold=(today.getTime()-BirthDay.getTime());
 sectimeold=timeold/1000

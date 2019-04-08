@@ -41,7 +41,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
   
 # Home page setting
@@ -103,4 +103,4 @@ feed:
 plugins: hexo-generate-feed
 
 #添加头像地址
-avatar: https://cdn2.jianshu.io/assets/default_avatar/12-aeeea4bedf10f2a12c0d50d626951489.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120
+avatar: /images/logo.jpg
