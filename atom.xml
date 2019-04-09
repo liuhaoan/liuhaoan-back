@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-09T09:22:44.443Z</updated>
+  <updated>2019-04-09T13:31:54.695Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -15,6 +15,212 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaSE复习之——Collection集合框架</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Collection%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Collection集合框架/</id>
+    <published>2019-04-09T12:54:50.000Z</published>
+    <updated>2019-04-09T13:31:54.695Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="集合与数值的区别"><a href="#集合与数值的区别" class="headerlink" title="集合与数值的区别"></a>集合与数值的区别</h1><blockquote><p>1、数组即可以存<code>基本数据类型</code>也可以存<code>引用数据类型</code>(对象)</p><p>2、集合只能存<code>引用数据类型</code>，如果存基本数据类型，那么系统会<code>自动装箱成对象</code>。</p><p>3、数组的长度是<code>固定</code>的，不能自动增长</p><p>4、集合的长度是<code>可变</code>的。</p></blockquote><a id="more"></a><h1 id="集合与数组的缺点"><a href="#集合与数组的缺点" class="headerlink" title="集合与数组的缺点"></a>集合与数组的缺点</h1><ul><li>数组：<blockquote><p>长度是固定的，不能自动增加</p></blockquote></li><li>集合：<blockquote><p>会浪费很多空间，</p><p>原因：它的部分底层是数组，它增加长度的方法是首先创建长度为10的数组，然后不够就1.5倍增加，直到够存下为止。</p></blockquote></li></ul><h1 id="Collection集合的继承体系图"><a href="#Collection集合的继承体系图" class="headerlink" title="Collection集合的继承体系图:"></a>Collection集合的继承体系图:</h1><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">                                             Collection</span><br><span class="line">                          单列集合的根接口,它是抽象类，一般用来父类引用子类对象</span><br><span class="line">                           /                                   <span class="string">\</span></span><br><span class="line">                          /                                     <span class="string">\</span>   </span><br><span class="line">                         /                                       <span class="string">\</span></span><br><span class="line">                       List                                      Set</span><br><span class="line">               有序，有索引，可重复储存                    无序，无索引，不可重复储存（我们只要学习如何保证元素不是重复的）</span><br><span class="line">                /        |        <span class="string">\</span>                         /          <span class="string">\</span></span><br><span class="line">               /         |         <span class="string">\</span>                       /            <span class="string">\</span></span><br><span class="line">              /          |          <span class="string">\</span>                     /              <span class="string">\</span></span><br><span class="line">     ArrayList       LinkedList      Vector              HashSet          TreeSet</span><br><span class="line"> 查改快(直接索引查找)  查改慢(要遍历)    查改略慢               </span><br><span class="line">增删慢(考虑增容、拷贝)   增删快          增删慢</span><br><span class="line">      线程不安全       线程安全        线程安全</span><br><span class="line">      数组实现         链表实现        数组实现</span><br></pre></td></tr></table></figure><h1 id="Collection集合的方法"><a href="#Collection集合的方法" class="headerlink" title="Collection集合的方法"></a>Collection集合的方法</h1><ul><li>.add()<blockquote><p>向集合中存入数据，list集合返回true，Set集合如果集合有相同的数据返回false，否则true。</p></blockquote></li><li>.remove()<blockquote><p>删除</p></blockquote></li><li>.toArray()<blockquote><p>把集合转换成数组输出，如果ArrayList对象加了泛型，那么可以传入某类型数组对象，然后用某类型数组直接引用。</p></blockquote></li><li>.addAll()<blockquote><p>把传入集合加入到调用的集合中</p></blockquote></li><li>.removeAll()<blockquote><p>删除调用集合中与传入集合交集的数据</p></blockquote></li><li>.containsAll()<blockquote><p>判断调用集合中是否有传入集合的数据</p></blockquote></li><li>.retainAll()<blockquote><p>取两个集合的交集，如果传入类有交集那么会把那两个值覆盖调用集合的值，调用的集合改变了就返回true，否则false</p></blockquote></li></ul><h1 id="List集合方法："><a href="#List集合方法：" class="headerlink" title="List集合方法："></a>List集合方法：</h1><ul><li>.add(int index,)<blockquote><p>在某个索引添加指定数据</p></blockquote></li><li>.remove(int index,)<blockquote><p>在某个索引删除指定数据，删除了什么就返回什么。一个小问题：remove不会自动装箱，可能会识别错误导致程序出错</p></blockquote></li><li>.get(int index,)<blockquote><p>输出索引对应的数据，所以list可以直接用这个方法遍历数组，不用迭代了。    </p></blockquote></li><li>.set(int index,)<blockquote><p>设置指定索引的数据</p></blockquote></li></ul><p>ps：集合<code>containsAll、removeAll</code>等方法底层都是基于<code>equals</code>方法的，所以在集合中处理对象时，<code>传入对象</code>需要重写object父类的equals方法才能实现效果。</p><h1 id="集合迭代的概述："><a href="#集合迭代的概述：" class="headerlink" title="集合迭代的概述："></a>集合迭代的概述：</h1><blockquote><p>集合是存储元素，而这些元素需要查看，那么就需要用到迭代，迭代也就是遍历。</p></blockquote><h3 id="迭代使用示例："><a href="#迭代使用示例：" class="headerlink" title="迭代使用示例："></a>迭代使用示例：</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Collection c = <span class="keyword">new</span> ArrayList();</span><br><span class="line">Iterator it = c.iterator();</span><br><span class="line"></span><br><span class="line"><span class="comment">//.hasNext()判断是否还有数据</span></span><br><span class="line"><span class="keyword">While</span>(it.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">System.out.<span class="keyword">println</span>(it.<span class="keyword">next</span>());</span><br><span class="line"><span class="comment">//.next()获取下一个数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="迭代器修改数据产生的异常与解决方案："><a href="#迭代器修改数据产生的异常与解决方案：" class="headerlink" title="迭代器修改数据产生的异常与解决方案："></a>迭代器<code>修改数据</code>产生的异常与解决方案：</h3><ul><li>异常：<blockquote><p>在利用迭代器遍历数据时，如果我们在遍历的中途给集合添加数据，那么会出现异常</p></blockquote></li><li>异常原因：<blockquote><p>在创建iterator迭代器时已经把集合的数量给了迭代器，如果中途给集合添加数据就是并发修改了。</p></blockquote></li><li>解决方法：<blockquote><p>使用iterator这个<code>list独有</code>的迭代器，然后调用<code>Itterator自己</code>的add添加数据。 </p></blockquote></li></ul><h1 id="Vector的概述"><a href="#Vector的概述" class="headerlink" title="Vector的概述"></a>Vector的概述</h1><blockquote><p>jdk刚出来他就有了，在<code>jdk1.2</code>版本加入了collection体系，后来因为vector有的功能ArrayList都有，而且还比他强大，所以不用vector了。</p></blockquote><h3 id="Vector与ArrayList的区别"><a href="#Vector与ArrayList的区别" class="headerlink" title="Vector与ArrayList的区别"></a>Vector与ArrayList的区别</h3><blockquote><p>Vector是<code>线程安全</code>的，它的<code>效率相对低</code>也就是查询相对慢；</p><p>反之ArrayList它是<code>线程不安全</code>的，但是<code>效率高</code>。</p></blockquote><h1 id="LinkedList集合的概述"><a href="#LinkedList集合的概述" class="headerlink" title="LinkedList集合的概述"></a>LinkedList集合的概述</h1><blockquote><p>使用链表实现的list集合。</p></blockquote><h3 id="数组实现集合与链表实现集合的优缺点："><a href="#数组实现集合与链表实现集合的优缺点：" class="headerlink" title="数组实现集合与链表实现集合的优缺点："></a><code>数组</code>实现集合与<code>链表</code>实现集合的优缺点：</h3><ul><li>数组：<blockquote><p>查询修改快，但是增删慢</p></blockquote></li><li>链表：<blockquote><p>查询修改慢，但是增删快</p></blockquote></li></ul><h1 id="集合的面试题——之ArrayList、Vector、linkedList区别："><a href="#集合的面试题——之ArrayList、Vector、linkedList区别：" class="headerlink" title="集合的面试题——之ArrayList、Vector、linkedList区别："></a>集合的面试题——之ArrayList、Vector、linkedList区别：</h1><ul><li>ArrayList：<blockquote><p>数组实现，查询修改快，但是增删慢，它是线程不安全的。</p></blockquote></li><li>LinkedList：<blockquote><p>链表实现，查询修改慢，但是增删快，它是线程不安全的。</p></blockquote></li><li>Vector：<blockquote><p>数组实现，相对ArrayList查询慢效率低，因为它是线程安全的。</p></blockquote></li></ul><h3 id="他们三个的用法："><a href="#他们三个的用法：" class="headerlink" title="他们三个的用法："></a>他们三个的用法：</h3><blockquote><p>1、查询多用ArrayList<br>2、增删多用LinkedList<br>3、增删查询都多用ArrayList<br>4、Vector面试的时候用，虽然它是线程安全的，但是在需要线程安全的时候也不用它。</p></blockquote><h3 id="LinkedList的特殊方法"><a href="#LinkedList的特殊方法" class="headerlink" title="LinkedList的特殊方法"></a>LinkedList的特殊方法</h3><ul><li>.addFirst()  与  .addLast()<blockquote><p>在链表头部与尾部添加数据</p></blockquote></li><li>.getFirst  与  .getLast()<blockquote><p>获取链表头部或者尾部数据</p></blockquote></li><li>.removeFirst  与  .removeLast()<blockquote><p>删除链表头部或者尾部数据</p></blockquote></li><li>.get()    <blockquote><p>获取链表指定位置的数据</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;集合与数值的区别&quot;&gt;&lt;a href=&quot;#集合与数值的区别&quot; class=&quot;headerlink&quot; title=&quot;集合与数值的区别&quot;&gt;&lt;/a&gt;集合与数值的区别&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;1、数组即可以存&lt;code&gt;基本数据类型&lt;/code&gt;也可以存&lt;code&gt;引用数据类型&lt;/code&gt;(对象)&lt;/p&gt;
+&lt;p&gt;2、集合只能存&lt;code&gt;引用数据类型&lt;/code&gt;，如果存基本数据类型，那么系统会&lt;code&gt;自动装箱成对象&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;3、数组的长度是&lt;code&gt;固定&lt;/code&gt;的，不能自动增长&lt;/p&gt;
+&lt;p&gt;4、集合的长度是&lt;code&gt;可变&lt;/code&gt;的。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Collection集合" scheme="http://liuhaoan.github.io/tags/Collection%E9%9B%86%E5%90%88/"/>
+    
+      <category term="集合" scheme="http://liuhaoan.github.io/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Date、SimpDateFormat、Calendar类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Date%E3%80%81SimpDateFormat%E3%80%81Calendar%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Date、SimpDateFormat、Calendar类/</id>
+    <published>2019-04-09T12:41:36.000Z</published>
+    <updated>2019-04-09T12:52:42.961Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Date的概述"><a href="#Date的概述" class="headerlink" title="Date的概述"></a>Date的概述</h1><blockquote><p>获取瞬间时间，精确到毫秒。</p></blockquote><ul><li>例子：</li></ul><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="comment">//打印d会显示打印时瞬间的电脑系统时间</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Date</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)</span><br><span class="line"><span class="comment">//这样会打印1970年1月1日的8点</span></span><br></pre></td></tr></table></figure><a id="more"></a><ul><li>解析：<blockquote><p>1、为什么是1970年1月1日：<br>首先1970年1月1日是<code>c语言</code>和<code>UNLX</code>的生日，然后因为最早的计算机是32位的，<code>32位最多表示的时间是68年</code>，而最早出现的UNLX系统考虑到计算机产生的年代和应用的时限，所以综合取了<code>1970年1月1日</code>为UNLX 的纪元时间开始。</p><p>2、为什么是8点：<br>因为我们电脑的时区是东8区，所以显示的是8点。</p></blockquote></li></ul><h3 id="Date的方法"><a href="#Date的方法" class="headerlink" title="Date的方法"></a>Date的方法</h3><ul><li>.getTime()    <blockquote><p>通过时间对象获取毫秒值</p></blockquote></li><li>.setTime()    <blockquote><p>设置毫秒值，设置1000那么输出时间对象的时间为：<code>1970年1月1日8点钟多一秒</code>。</p></blockquote></li></ul><h1 id="SimpDateFormat的概述"><a href="#SimpDateFormat的概述" class="headerlink" title="SimpDateFormat的概述"></a>SimpDateFormat的概述</h1><blockquote><p>1、它是<code>DateFormat</code>的子类，拥有DateFormat的所有功能。</p><p>2、DateFormat 是日期/时间格式化子类的抽象类</p><p>3、SimpleDateFormat 是一个以与<code>语言环境</code>有关的方式来<code>格式化</code>和<code>解析日期</code>的具体类。它允许进行格式化<code>（日期 -&gt; 文本）</code>、解析<code>（文本 -&gt; 日期）</code>和规范化。<br>总的来说，它们就是一个<code>日期格式化类</code>，构造方法传入格式规则可以按照相应的规则格式化日期。</p></blockquote><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul><li>.format(Date d)<blockquote><p>把日期类转换为String类</p></blockquote></li><li>.parse(String str)<blockquote><p>把时间字符串转换成日期对象，需要配合异常使用。</p></blockquote></li></ul><h3 id="SimpleDateFormat类的实例"><a href="#SimpleDateFormat类的实例" class="headerlink" title="SimpleDateFormat类的实例"></a>SimpleDateFormat类的实例</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//获取当前瞬间时间</span></span><br><span class="line"></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> <span class="built_in">SimpleDateFormat</span>(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//创建日期格式化类并且进行格式化</span></span><br><span class="line"></span><br><span class="line">System.out.<span class="built_in">println</span>(sdf.<span class="keyword">format</span>(d));</span><br><span class="line"><span class="comment">//格式化并且输出时间，结果为：1970年</span></span><br></pre></td></tr></table></figure><h1 id="Calendar类的概述"><a href="#Calendar类的概述" class="headerlink" title="Calendar类的概述"></a>Calendar类的概述</h1><blockquote><p>它把K的很多方法都替代掉了，Calendar 类是一个抽象类，它为特定瞬间与一组诸如 <code>YEAR、MONTH、DAY_OF_MONTH、HOUR 等</code> 日历字段之间的转换提供了一些方法，并为操作日历字段（例如获得下星期的日期）提供了一些方法。</p></blockquote><h3 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h3><ul><li>.getInstance()    <blockquote><p>获得一个日历，并且是基于当前时间的，返回一个Calendar的子类，可以父类引用子类对象</p></blockquote></li><li>.get(int field)<blockquote><p>返回指定日历字段的值，日历字段代表年月日那些，比如1那么就表示年，不过为了方便，Calendar给出了<code>字段常量</code>，比如Calendar.YEAR常量它的值是1，代表了年。</p></blockquote></li><li>.add(int field,int i1)    <blockquote><p>指定字段的值加减，当前年为2018</p><p>例当前年为2018：add(Calendar.YEAR，-1)<br>那么返回2017</p></blockquote></li><li>.set(int year,int month,int day)<blockquote><p>修改指定字段,可以直接修改年月日，也可以像add那样修改年等。</p></blockquote></li></ul><h3 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取今天年月日和星期</span></span><br><span class="line"><span class="type">Calendar</span> <span class="built_in">c</span> = <span class="type">Calendar</span>.getInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取一个日历</span></span><br><span class="line"><span class="type">System</span>.out.<span class="built_in">println</span>(<span class="built_in">c</span>.<span class="keyword">get</span>(<span class="type">Calendar</span>.<span class="type">YEAR</span>) + <span class="string">"年"</span> + <span class="built_in">c</span>.<span class="keyword">get</span>(<span class="type">Calendar</span>.<span class="type">MONTH</span>) + <span class="number">1</span> + <span class="string">"月"</span> </span><br><span class="line">+ <span class="built_in">c</span>.<span class="keyword">get</span>(<span class="type">Calendar</span>.<span class="type">DAY_OF_MONTH</span>) + <span class="string">"日\n星期"</span> + (<span class="built_in">c</span>.<span class="keyword">get</span>(<span class="type">Calendar</span>.<span class="type">DAY_OF_WEEK</span>) - <span class="number">1</span>));</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Date的概述&quot;&gt;&lt;a href=&quot;#Date的概述&quot; class=&quot;headerlink&quot; title=&quot;Date的概述&quot;&gt;&lt;/a&gt;Date的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;获取瞬间时间，精确到毫秒。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;例子：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight gauss&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt; d = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印d会显示打印时瞬间的电脑系统时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt; d = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//这样会打印1970年1月1日的8点&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Date类" scheme="http://liuhaoan.github.io/tags/Date%E7%B1%BB/"/>
+    
+      <category term="SimpDateFormat类" scheme="http://liuhaoan.github.io/tags/SimpDateFormat%E7%B1%BB/"/>
+    
+      <category term="Calendar类" scheme="http://liuhaoan.github.io/tags/Calendar%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——BigInteger与BigDecimal类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94BigInteger%E4%B8%8EBigDecimal%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——BigInteger与BigDecimal类/</id>
+    <published>2019-04-09T12:34:20.000Z</published>
+    <updated>2019-04-09T12:40:18.041Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="BigInteger的概述"><a href="#BigInteger的概述" class="headerlink" title="BigInteger的概述"></a>BigInteger的概述</h1><blockquote><p><code>不可变</code>的任意精度的整数。所有操作中，都以<code>二进制补码</code>形式表示 BigInteger（如 Java 的基本整数类型）。</p><p>BigInteger 提供所有 Java 的<code>基本整数操作符</code>的对应物，并提供 java.lang.Math 的<code>所有相关方法</code>。</p><p>另外，BigInteger 还提供以下运算：<br>模算术、GCD 计算、质数测试、素数生成、位操作以及一些其他操作。 </p></blockquote><a id="more"></a><p>ps：了解一下BigInteger类可以存下任意长度的数值就行了。</p><h4 id="与BigInteger不同的是，BigDecimal是小数"><a href="#与BigInteger不同的是，BigDecimal是小数" class="headerlink" title="与BigInteger不同的是，BigDecimal是小数"></a>与BigInteger不同的是，BigDecimal是小数</h4><p>####注意事项：</p><blockquote><p>开发中创建BigDecimal对象进行运算时，给它有参构造传入的值要以字符串形式传入，如果以<code>数值形式</code>传入的话会<code>损失精度</code>。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;BigInteger的概述&quot;&gt;&lt;a href=&quot;#BigInteger的概述&quot; class=&quot;headerlink&quot; title=&quot;BigInteger的概述&quot;&gt;&lt;/a&gt;BigInteger的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;不可变&lt;/code&gt;的任意精度的整数。所有操作中，都以&lt;code&gt;二进制补码&lt;/code&gt;形式表示 BigInteger（如 Java 的基本整数类型）。&lt;/p&gt;
+&lt;p&gt;BigInteger 提供所有 Java 的&lt;code&gt;基本整数操作符&lt;/code&gt;的对应物，并提供 java.lang.Math 的&lt;code&gt;所有相关方法&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;另外，BigInteger 还提供以下运算：&lt;br&gt;模算术、GCD 计算、质数测试、素数生成、位操作以及一些其他操作。 &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="BigInteger类" scheme="http://liuhaoan.github.io/tags/BigInteger%E7%B1%BB/"/>
+    
+      <category term="BigDecimal类" scheme="http://liuhaoan.github.io/tags/BigDecimal%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——System类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94System%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——System类/</id>
+    <published>2019-04-09T12:23:18.000Z</published>
+    <updated>2019-04-09T12:31:36.029Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="System类的概述"><a href="#System类的概述" class="headerlink" title="System类的概述"></a>System类的概述</h1><blockquote><p>System类有<code>标准输入</code>、<code>标准输出</code>和<code>错误输出</code>流；</p><p>对外部定义的属性和环境变量的访问；加载文件和库的方法；</p><p>还有快速复制数组的一部分的实用方法。</p></blockquote><a id="more"></a><h1 id="字段："><a href="#字段：" class="headerlink" title="字段："></a>字段：</h1><blockquote><p>err<br>标准错误流</p><p>in<br>标准输入流</p><p>out<br>标准输出流</p></blockquote><h1 id="System类的方法"><a href="#System类的方法" class="headerlink" title="System类的方法"></a>System类的方法</h1><ul><li>.gc()<blockquote><p>运行垃圾收集器，虽然objcket类中有一个<code>filalize</code>的方法会自动清理垃圾，但是垃圾没有<code>超过一个量</code>是不会自动收集的。</p></blockquote></li><li>.exit()<blockquote><p>退出java虚拟机jvm，传入值为0是正常终止，非0为异常终止。</p></blockquote></li><li>.currentTimeMillis()<blockquote><p>返回当前时间与协调世界时 <code>1970 年 1 月 1 日午夜</code>之间的时间差（以毫秒为单位测量）。</p><p>ps：经常应用在<code>计算程序运行时间</code>，从程序开始记录一次，结束记录一次，然后减去即可。</p></blockquote></li></ul><ul><li>.arraycopy(Object src, int srcPos, Object dest, int destPos, int length) <blockquote><p>从指定源数组中复制一个数组，复制从指定的位置开始，到目标数组的指定位置结束。</p><p>参数：<br>src - 源数组。<br>srcPos - 源数组中的起始位置。<br>dest - 目标数组。<br>destPos - 目标数据中的起始位置。<br>length - 要复制的数组元素的数量。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;System类的概述&quot;&gt;&lt;a href=&quot;#System类的概述&quot; class=&quot;headerlink&quot; title=&quot;System类的概述&quot;&gt;&lt;/a&gt;System类的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;System类有&lt;code&gt;标准输入&lt;/code&gt;、&lt;code&gt;标准输出&lt;/code&gt;和&lt;code&gt;错误输出&lt;/code&gt;流；&lt;/p&gt;
+&lt;p&gt;对外部定义的属性和环境变量的访问；加载文件和库的方法；&lt;/p&gt;
+&lt;p&gt;还有快速复制数组的一部分的实用方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="System类" scheme="http://liuhaoan.github.io/tags/System%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Random类</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Random%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Random类/</id>
+    <published>2019-04-09T12:21:11.000Z</published>
+    <updated>2019-04-09T12:22:36.527Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Random概述"><a href="#Random概述" class="headerlink" title="Random概述"></a>Random概述</h1><ul><li>利用传入的随机数种子，生成一个伪随机数</li></ul><h1 id="Random类的方法"><a href="#Random类的方法" class="headerlink" title="Random类的方法"></a>Random类的方法</h1><ul><li>.nextInt(Int i);<blockquote><p>生成一个从0到i的随机数，包括0不包括i</p></blockquote></li></ul><h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Random r = <span class="keyword">new</span> <span class="type">Random</span>();</span><br><span class="line"><span class="comment">//不输入种子的话系统自动使用纳秒来当作种子</span></span><br><span class="line"></span><br><span class="line">r.nextInt(<span class="number">100</span>);</span><br><span class="line"><span class="comment">//生成了0到100的随机数，不包括100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ps：如果要生成1-100的随机数，直接+1</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Random概述&quot;&gt;&lt;a href=&quot;#Random概述&quot; class=&quot;headerlink&quot; title=&quot;Random概述&quot;&gt;&lt;/a&gt;Random概述&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;利用传入的随机数种子，生成一个伪随机数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;R
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Random类" scheme="http://liuhaoan.github.io/tags/Random%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Math数学类的使用</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Math%E6%95%B0%E5%AD%A6%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——Math数学类的使用/</id>
+    <published>2019-04-09T12:17:11.000Z</published>
+    <updated>2019-04-09T12:20:16.752Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Math类的方法"><a href="#Math类的方法" class="headerlink" title="Math类的方法"></a>Math类的方法</h1><ul><li>int abs(int a)<blockquote><p>取绝对值</p></blockquote></li></ul><ul><li>double ceil(double a)    <blockquote><p>向上取整数返回double，例子：输入12.56输出一个13.0</p></blockquote></li></ul><ul><li>double floor(double a)<blockquote><p>与上同理，但是向下取整数</p></blockquote></li></ul><a id="more"></a><ul><li>int max(int a,int b) min自学<blockquote><p>取大的值</p></blockquote></li></ul><ul><li>double pow(double a,double b)    <blockquote><p>a是底数，b是指数</p></blockquote></li></ul><ul><li>double random()<blockquote><p>生成0.0到1.0之间的随机小数，包括0.0不包括1.0</p></blockquote></li></ul><ul><li>int round(float a) 参数为double的自学<blockquote><p>四舍五入</p></blockquote></li></ul><ul><li>double sqrt(double a)    <blockquote><p>开平方 输入4返回2.0 输入9返回3</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Math类的方法&quot;&gt;&lt;a href=&quot;#Math类的方法&quot; class=&quot;headerlink&quot; title=&quot;Math类的方法&quot;&gt;&lt;/a&gt;Math类的方法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;int abs(int a)&lt;blockquote&gt;
+&lt;p&gt;取绝对值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;double ceil(double a)    &lt;blockquote&gt;
+&lt;p&gt;向上取整数返回double，例子：输入12.56输出一个13.0&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;double floor(double a)&lt;blockquote&gt;
+&lt;p&gt;与上同理，但是向下取整数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Math类" scheme="http://liuhaoan.github.io/tags/Math%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——正则表达式</title>
+    <link href="http://liuhaoan.github.io/2019/04/09/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://liuhaoan.github.io/2019/04/09/javaSE复习之——正则表达式/</id>
+    <published>2019-04-09T11:58:39.000Z</published>
+    <updated>2019-04-09T12:16:00.153Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="正则表达式概念"><a href="#正则表达式概念" class="headerlink" title="正则表达式概念"></a>正则表达式概念</h1><blockquote><p>就是一种规则，可以在某一段字符串中以某一个特殊的规则，取到自己想要的那段字符串。</p></blockquote><a id="more"></a><h1 id="String中的正则表达式方法："><a href="#String中的正则表达式方法：" class="headerlink" title="String中的正则表达式方法："></a>String中的正则表达式方法：</h1><ul><li><p>.matches()    </p><blockquote><p>是否匹配这个正则表达式，返回true或者false</p></blockquote></li><li><p>.replaceAll(String regex,String xxx)</p><blockquote><p>替换所有匹配到的字符串</p><p>ps：使用正则非常好用，例：regex的内容为\d 那么那个字符串的所有数字都会被替换</p></blockquote></li></ul><ul><li>.replaceFirst(String regex,String xxx)<blockquote><p>替换找到的第一个字符串</p></blockquote></li><li>.split()<blockquote><p>以某一个字符串切割字符串</p></blockquote></li></ul><h1 id="正则表达式专属类与方法"><a href="#正则表达式专属类与方法" class="headerlink" title="正则表达式专属类与方法"></a>正则表达式专属类与方法</h1><h4 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Pattern</span> p = <span class="built_in">Pattern</span>.compile(<span class="string">"a*b"</span>);</span><br><span class="line"><span class="comment">//把正则表达式编译到模式中</span></span><br><span class="line"></span><br><span class="line">Matcher m = p.matcher(<span class="string">"aaaaab"</span>);</span><br><span class="line"><span class="comment">//使用上面创建的对象来匹配一个字符串</span></span><br><span class="line"></span><br><span class="line">boolean b = m.matches();</span><br><span class="line"><span class="comment">//全部匹配到了则返回true</span></span><br></pre></td></tr></table></figure><h4 id="实战例子："><a href="#实战例子：" class="headerlink" title="实战例子："></a>实战例子：</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"我手机号码是18734126341，曾经用过17707053381，曾经还用过13228865165"</span>;</span><br><span class="line"></span><br><span class="line">Pattern p = Pattern.<span class="keyword">compile</span>(<span class="string">"1[356789]\\d&#123;9&#125;"</span>);</span><br><span class="line"><span class="comment">//把正则表达式编译到模式中</span></span><br><span class="line"></span><br><span class="line">Matcher m = p.matcher(str1);</span><br><span class="line"><span class="comment">//创建一个匹配器</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(m.<span class="keyword">find</span>())</span><br><span class="line"><span class="comment">//匹配下一个能成功匹配的字符串，成功返回true</span></span><br><span class="line"></span><br><span class="line">System.out.<span class="keyword">println</span>(m.<span class="keyword">group</span>());</span><br><span class="line"><span class="comment">//返回上一个匹配到的字符串</span></span><br></pre></td></tr></table></figure><h4 id="正则表达式字符类"><a href="#正则表达式字符类" class="headerlink" title="正则表达式字符类"></a>正则表达式<code>字符类</code></h4><table><thead><tr><th>表达式</th><th>获取结果</th></tr></thead><tbody><tr><td>[abc]</td><td>a、b 或 c（简单类） </td></tr><tr><td>[^abc]</td><td>任何字符，除了 a、b 或 c（否定） </td></tr><tr><td>[a-zA-Z]</td><td>a 到 z 或 A 到 Z，两头的字母包括在内（范围） </td></tr><tr><td>[a-d[m-p]]</td><td>a 到 d 或 m 到 p：[a-dm-p]（并集） </td></tr><tr><td>[a-z&amp;&amp;[def]]</td><td>d、e 或 f（交集） </td></tr><tr><td>[a-z&amp;&amp;[^bc]]</td><td>a 到 z，除了 b 和 c：[ad-z]（减去） </td></tr><tr><td>[a-z&amp;&amp;[^m-p]]</td><td>a 到 z，而非 m 到 p：[a-lq-z]（减去） </td></tr></tbody></table><h4 id="正则表达式预定义字符类"><a href="#正则表达式预定义字符类" class="headerlink" title="正则表达式预定义字符类"></a>正则表达式<code>预定义字符类</code></h4><table><thead><tr><th>表达式</th><th>获取结果</th></tr></thead><tbody><tr><td>.</td><td>任何字符（与行结束符可能匹配也可能不匹配） </td></tr><tr><td>\d</td><td>数字：[0-9] </td></tr><tr><td>\D</td><td>非数字： [^0-9] </td></tr><tr><td>\s</td><td>空白字符：[ \t\n\x0B\f\r] </td></tr><tr><td>\S</td><td>非空白字符：[^\s] </td></tr><tr><td>\w</td><td>单词字符：[a-zA-Z_0-9] </td></tr><tr><td>\W</td><td>非单词字符：[^\w] </td></tr></tbody></table><h4 id="正则表达式Greedy-数量词"><a href="#正则表达式Greedy-数量词" class="headerlink" title="正则表达式Greedy 数量词"></a>正则表达式Greedy <code>数量词</code></h4><table><thead><tr><th>表达式</th><th>获取结果</th></tr></thead><tbody><tr><td>X?</td><td>X，一次或一次也没有 </td></tr><tr><td>X*</td><td>X，零次或多次 </td></tr><tr><td>X+</td><td>X，一次或多次 </td></tr><tr><td>X{n}</td><td>X，恰好 n 次 </td></tr><tr><td>X{n,}</td><td>X，至少 n 次 </td></tr><tr><td>X{n,m}</td><td>X，至少 n 次，但是不超过 m 次 </td></tr></tbody></table><h4 id="正则表达式的分组功能"><a href="#正则表达式的分组功能" class="headerlink" title="正则表达式的分组功能"></a>正则表达式的分组功能</h4><blockquote><p>1、使用（）进行分组</p><p>例子：(.)\1(.)\2</p><p>代表：第一组再出现一次，第二组也再出现一次，也就是\1同等与上一组出现的数据</p><p>例子：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = “高高兴兴”</span><br><span class="line">str1.matches(<span class="string">"(.)<span class="subst">\\</span>1(.)<span class="subst">\\</span>2"</span>)</span><br><span class="line"><span class="comment">//返回true</span></span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>2、$符号，在替换时可以获取到正则表达式中某组获取到的字符，$1代表获取到第一组中的字符串</p><p>例子：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"问问啊啊"</span>.replaceAll(<span class="string">"(.)\\1"</span>,<span class="string">"$1"</span>);</span><br><span class="line"><span class="regexp">//</span>替换后的结果为：问啊<span class="variable">$1</span></span><br></pre></td></tr></table></figure></p></blockquote><p>获取到了(.)的值</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;正则表达式概念&quot;&gt;&lt;a href=&quot;#正则表达式概念&quot; class=&quot;headerlink&quot; title=&quot;正则表达式概念&quot;&gt;&lt;/a&gt;正则表达式概念&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;就是一种规则，可以在某一段字符串中以某一个特殊的规则，取到自己想要的那段字符串。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="正则表达式" scheme="http://liuhaoan.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>javaSE复习之——Integer中的常见面试题</title>
