@@ -250,8 +250,8 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>IO流</tag>
         <tag>字符流</tag>
+        <tag>IO流</tag>
         <tag>获取文本上每个字符出现的次数面试题</tag>
       </tags>
   </entry>
