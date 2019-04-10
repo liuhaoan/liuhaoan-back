@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[javaSE复习之——File类]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94File%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[File的概述 它是文件或者目录的抽象表现形式，其实File更应该叫做一个路径，分为文件路径和文件夹路径，路径分为相对路径和绝对路径。 Flie的实例化 File(pathname) 直接根据一个路径得到File对象 File(parent，child) parent是父级路径，child是子文件或者文件夹，在一个目录下我们需要处理多个子文件或文件夹时可以更方便 File(file, child) file是一个File对象，chile是子文件或文件夹，封装成File传入更加强大，可以用到File类中的功能 File类的方法 .exists() 判断文件是否存在，存在true .createNewFile() 判断是否存在某个文件，不存在创建返回true，存在返回false .mkdir() 创建文件夹成功返回true，不成功返回false .mkdirs() 创建多级文件夹 .renameTo(file) 把文件重命名为指定路径 注意事项：1、如果路径名相同，那就是改名2、如果路径名不同，那就是改名并且剪切 .delete() 删除文件或者文件夹 注意事项：1、Java中的删除不走回收站2、只能说删除空的文件夹，如果文件夹里面还有内容，就需要遍历一个一个删除 File类的判断方法 .isDirectory() 判断是否是目录 .isFile() 判断是否是文件 .exists() 判断是否存在 .canRead() 判断是否可读 ps：windows系统的所有文件都是可读的，linux系统就可以不能读 .canWrite() 判断是否可写 .isHidden() 判断是否隐藏 File类的获取方法 .getAbsolutePath() 获取绝对路径（包括盘符的路径） .getPath() 获取路径（构造File方法时传入的路径） .geName() 获取名称 .length() 获取长度（字节数） .lastModified() 获取最后一次修改时间（毫秒值） .list() 获取目录下所有文件或文件夹名称，返回一个String数组 .listFiles() 获取目录下所有文件或文件夹名称，返回一个File数组 文件名称过滤器FilenameFilter概述 通过重写FilenameFilter类中的accept方法，然后调用list方法获取所有文件时传入可以达到过滤文件的目的 示例： 12345678910111213String[] arr = dir.list(new FilenameFilter() &#123; @Override public boolean accept(File dir, String name) &#123; File file = new File(dir, name); return file.isFile() &amp;&amp; file.getName().endsWith(".jpg"); //重写的accept方法一直返回true则获取到所有文件和文件夹，返回falst则不获取那个文件或者文件夹 &#125;&#125;);for (String string : arr) &#123; System.out.println(string);&#125; 利用递归获取.java结尾的文件：123456789101112131415public static void main(String[] args) &#123; getFile(new File(".\\"));&#125;public static void getFile(File f) &#123; File[] farr = f.listFiles(); for(File name : farr) &#123; if(name.isFile() &amp;&amp; name.getPath().endsWith(".java")) &#123; System.out.println(name.getName()); &#125;else if(name.isDirectory())&#123; getFile(name); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>File类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——异常]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%BC%82%E5%B8%B8%2F</url>
+    <content type="text"><![CDATA[异常的概述 异常就是java程序在运行过程中出现的错误 异常类 Throwable 异常的继承体系： Throwable Error 服务器出问提，数据库崩溃等 Exception RuntimeException 这个是运行时异常，全部的运行时异常都在这，一般都是我们自己犯的错误，修改代码即可 。。。。。等等 jvm默认的异常处理机制 会将异常的名称、异常的信息、异常出现的位置打印在控制台，并且程序停止运行。 异常处理命令 try…catch try 用来检测异常，如果出现异常，那么会抛出一个对应的异常对象 catch 用来捕获异常，需要定义一个引用来接收异常对象，可以使用多个catch来捕获多种异常。 ps：理论上是有什么错误用什么去引用，但是实际开发建议直接创建Exception这个父类引用它的子类对象。 finally 释放资源，一般对io流或者数据库进行关闭 它们三的常用搭配： 1、try catch异常处理基本格式 2、try catch finally 3、try finally ps：。。。。。世界上最真情的相依就是你在try我在catch，无论你发神马脾气，我都静静接收，默默处理。。。。 小知识： 1、安卓开发属于客户端开发，一般都是直接Exception 2、javaEE属于服务端开发，一般都是底层开发，从底层向上抛，最后放到一个错误日志。 3、在有多个catch时，大的异常放后面，因为根据多态的原理，大的异常放前面没有意义。 jdk7以后如何处理多个异常，有时候面试会问 用“|”连接两个异常类即可实现一个catch处理多个异常，但是这样还不如直接Exception。 java异常的种类 Java异常被分为两大类，分别是编译时异常和运行时异常。 编译时异常java程序必须显示处理，否则就会发生错误，不处理无法通过编译 运行时异常 无需显示处理，也可以和编译时异常一样处理 Throwable的几个常见方法： .getMessage() 获取异常信息，返回字符串 .toString() 获取异常类名和异常信息，返回字符串 .printStackTrace() 获取异常类名和异常信息，以及异常出现在程序中的位置，返回值void，jvm默认用它处理异常。 异常抛出 throw new 异常类 注意事项： 除了RuntimeException类的错误，也就是运行时错误，其他错误都要在方法上使用throws向上抛出这个错误。 异常的抛出例子： 1234567public void setAge(int age) throws Exception&#123; if(age &gt; 0 || age &lt; 150) &#123; this.age = age; &#125;else &#123; throw new Exception("年龄非法"); &#125;&#125; throw概述 在功能方法内部出现某种情况，程序不能继续运行，需要进行跳转时，就用throw把异常抛出 throws和throw区别，可能面试会问： throws 1、用在方法声明后面，跟的时异常类名 2、可以跟多个异常类名，用逗号隔开 3、表示这个方法抛出了异常，让方法的调用者来处理 throw 1、用在方法体内部，跟的时异常对象名 2、只能抛出一个异常对象名，不能接多个 3、表示这个方法抛出了异常，方法内部处理 finally特点： 被finally控制的语句一定会执行，就算执行了return语句finally中的语句也会执行 特殊情况：在执行到finally之前jvm退出了，比如执行System.exit(0) finally作用 用于资源释放，通常在哎IO流和数据库操作中会使用 finally关键字的面试题： final，finally和finalize的区别 解答：final：修饰类不能被继承，修饰方法不能被重写，修饰变量只能赋值一次（常量） finally：它是tyr语句中的语句体，不能单独使用，它用来释放资源 finalize：是一个方法，当垃圾回收器确定不存在对该对象的引用时，对象的垃圾回收器调用此方法。ps：他们三没任何联系，只是长得像而已。 如果catch里面有return语句，请问finally的代码还会执行吗?如果会请问时在return前还是return后？ 解答：会，并且是在return之后执行，因为在return相当于已经建立好了一个返回路径，然后再执行finally，然后再根据之前建立的返回路径彻底返回。 ps：千万不要再finally内写返回语句，因为finally的作用是为了释放资源，如果再这里写返回语句，那么try和catch的结果都会被改变。 自定义异常方法 定义一个异常类，然后继承Exception并重写构造方法即可 代码示例：12345678910111213class AgeOutOfBoundsException extends Exception &#123; public AgeOutOfBoundsException() &#123; super(); &#125; public AgeOutOfBoundsException(String message) &#123; super(message); &#125; &#125; 为什么要自定义异常？ 解答： 只是为了看那个异常类的名字而已，这样好排错。 ps：继承RuntimeException的话可以不用在声明方法那里抛出异常 异常注意事项 1、子类重写父类方法时，子类必须抛出相同异常或者父类异常的子类，也就是说子类抛出的异常不能比父类大，需要比父类更加细，打个比方，父亲坏儿子不能比他更坏。父亲没坏儿子自己处理 2、如果父类抛出多个异常，子类重写父类的时候子类不能抛出父类没有的异常 3、如果被重写的方法没有抛出异常，那么子类绝对不可以抛出异常，如果子类有异常只能用try不能throws抛出 如何使用异常处理？ 原则： 如果该功能内部可以将问题处理，就用try，不能处理就用throws向上抛出，交给调用者处理 区别： 1、后面还有代码需要执行，就用try 2、如果后面不需要代码执行了，就用throw]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>异常</tag>
+        <tag>throw</tag>
+        <tag>throws</tag>
+        <tag>final，finally和finalize的区别面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[javaSE复习之——Collections工具类与集合总结]]></title>
     <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Collections%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B8%8E%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[Collections中的常用方法 Collections.sort(list) 把集合进行排序 Collections.banarySearch(list, 需要查的元素) 用二分查找法查询某个集合中的元素，二分查找法前提是集合是有序的，找不到返回-(插入点 - 1） Collections.max(list) 根据默认排序返回集合中最大的元素 Collections.min(list) 根据默认排序返回集合中最小的元素 Collections.reverse(list) 反转集合 Collections.shuffle(list) 随机置换，可以洗牌。 集合总结 Collection List(存取有序,有索引,可以重复) ArrayList 底层是数组实现的,线程不安全,查找和修改快,增和删比较慢 LinkedList 底层是链表实现的,线程不安全,增和删比较快,查找和修改比较慢 Vector 底层是数组实现的,线程安全的,无论增删改查都慢 如果查找和修改多,用ArrayList如果增和删多,用LinkedList如果都多,用ArrayList Set(存取无序,无索引,不可以重复) HashSet 底层是哈希算法实现 LinkedHashSet底层是链表实现,但是也是可以保证元素唯一,和HashSet原理一样 TreeSet 底层是二叉树算法实现 一般在开发的时候不需要对存储的元素排序,所以在开发的时候大多用HashSet,HashSet的效率比较高 TreeSet在面试的时候比较多,问你有几种排序方式,和几种排序方式的区别 Map HashMap 底层是哈希算法,针对键 LinkedHashMap底层是链表,针对键 TreeMap 底层是二叉树算法,针对键 ps：开发中用HashMap比较多 面试题之——TreeSet或者TreeMap有几种排序方式和区别TreeSet或者TreeMap排序的两种方式 第一种 构造TreeSet集合什么都不传，就默认使用类中的Comparable的顺序，也就是compareTo方法。（传入集合的自定义对象实现了Comparable接口则用自定义类中重写的compareTo方法） 第二种 构造TreeSet集合传入Comparator比较器，那么优先按照比较器顺序排序。 引用自javaSE复习之——TreeSet类 ps： 1、在开发中，单列集合存储重复元素优先考虑ArrayList，不重复的元素优先考虑HashSet，双列集合直接考虑HashMap 2、单列集合（collection）中Set集合类型其实底层都依赖map集合，它封装了map集合，当中只使用到了key，而value用固定的值替代(Object对象)。 3、tree类型的map和set集合平时都不常用，但是面试会用，一般问你有几种排序方式,和几种排序方式的区别]]></content>
@@ -295,8 +320,8 @@
         <category>网络攻防</category>
       </categories>
       <tags>
-        <tag>网络攻防</tag>
         <tag>Python</tag>
+        <tag>网络攻防</tag>
         <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
