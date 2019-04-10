@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-10T07:04:54.802Z</updated>
+  <updated>2019-04-10T09:48:15.524Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -15,6 +15,634 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaSE复习之——设计模式_简单工厂与工厂方法模式</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——设计模式-简单工厂与工厂方法模式/</id>
+    <published>2019-04-10T09:43:52.000Z</published>
+    <updated>2019-04-10T09:48:15.524Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="简单工厂模式概述"><a href="#简单工厂模式概述" class="headerlink" title="简单工厂模式概述"></a>简单工厂模式概述</h1><blockquote><p>它又叫<strong>静态工厂方法模式</strong>，它定义一个具体的工厂类覅则创建一些类的实列</p></blockquote><ul><li><p>优点</p><blockquote><p>客户端不需要在负责对象的创建，从而明确了各个类的职责</p></blockquote></li><li><p>缺点</p><blockquote><p>这个静态工厂类负责所有对象的创建，如果有新的对象添加，或者某些对象创建方式不同，就需要不断修改工厂，不利于后期维护</p></blockquote></li></ul><a id="more"></a><h1 id="工厂方法模式概述"><a href="#工厂方法模式概述" class="headerlink" title="工厂方法模式概述"></a>工厂方法模式概述</h1><blockquote><p>工厂方法模式中，抽象工厂类类负责定义创建对象的接口，具体对象的创建工作由继承抽象工厂的具体类实现</p></blockquote><ul><li><p>优点</p><blockquote><p>客户端不需要再负责对象的创建，从而明确了各个类的职责，如果由新的对象增加，只需要增加一个具体的类和工厂即可，不影响已有的代码，增强了系统的维护性</p></blockquote></li><li><p>缺点</p><blockquote><p>需要额外写代码，增加了工作量</p></blockquote></li></ul><h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DogFactory df = <span class="keyword">new</span> <span class="type">DogFactory</span>();</span><br><span class="line"><span class="comment">//DogFactory是实现工厂接口的工厂类</span></span><br><span class="line">Dog d = (Dog) df.createAnimal();</span><br><span class="line"><span class="comment">//调用工厂类重写的抽象方法中的createAnimal类来创建对象</span></span><br><span class="line">d.eat();</span><br></pre></td></tr></table></figure><h3 id="示例继承体系"><a href="#示例继承体系" class="headerlink" title="示例继承体系"></a>示例继承体系</h3><ul><li>Factory工厂接口    <blockquote><p>定义抽象方法createAnimal()</p><ul><li>DogFactory<br>重写方法createAnimal()，创建dog对象</li><li>CatFactory<br>重写方法createAnimal(),创建cat对象</li></ul></blockquote></li><li>Animal<ul><li>dog</li><li>cat</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;简单工厂模式概述&quot;&gt;&lt;a href=&quot;#简单工厂模式概述&quot; class=&quot;headerlink&quot; title=&quot;简单工厂模式概述&quot;&gt;&lt;/a&gt;简单工厂模式概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它又叫&lt;strong&gt;静态工厂方法模式&lt;/strong&gt;，它定义一个具体的工厂类覅则创建一些类的实列&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优点&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;客户端不需要在负责对象的创建，从而明确了各个类的职责&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;缺点&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个静态工厂类负责所有对象的创建，如果有新的对象添加，或者某些对象创建方式不同，就需要不断修改工厂，不利于后期维护&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="设计模式" scheme="http://liuhaoan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="简单工厂模式" scheme="http://liuhaoan.github.io/tags/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="工厂方法模式" scheme="http://liuhaoan.github.io/tags/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——多线程_线程池</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——多线程-线程池/</id>
+    <published>2019-04-10T09:38:29.000Z</published>
+    <updated>2019-04-10T09:41:09.224Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="线程池的概述"><a href="#线程池的概述" class="headerlink" title="线程池的概述"></a>线程池的概述</h1><ul><li>一个形象的比喻：<blockquote><p>把很多线程全部养在一个池子里，要用就拿出来用，不用就放回去，还不会死掉的。这样就不用一直创建-死亡，因为线程的创建-死亡需要与计算机系统交互，这样的成本是很高的，用上线程池就可以很好的提高性能，尤其是程序中有很多生存周期短的线程。在jdk5之前必须手动创建线程池，jdk5之后java内置线程池</p></blockquote></li></ul><a id="more"></a><h3 id="jdk5新增了一个Executors工厂类来生产线程池，有如下几个方法："><a href="#jdk5新增了一个Executors工厂类来生产线程池，有如下几个方法：" class="headerlink" title="jdk5新增了一个Executors工厂类来生产线程池，有如下几个方法："></a>jdk5新增了一个Executors工厂类来生产线程池，有如下几个方法：</h3><ul><li>.newFixedTreadPool(int)<blockquote><p>创建一个线程池int传多少就是可以放多少线程</p></blockquote></li><li>.newSingleTreadExecutor()<blockquote><p>创建一个可以放一条线程的线程池</p></blockquote></li></ul><h3 id="线程池对象"><a href="#线程池对象" class="headerlink" title="线程池对象"></a>线程池对象</h3><blockquote><p>ExecutorService</p></blockquote><h3 id="ExecutorService线程池对象中的方法："><a href="#ExecutorService线程池对象中的方法：" class="headerlink" title="ExecutorService线程池对象中的方法："></a>ExecutorService线程池对象中的方法：</h3><ul><li>.submit(线程对象)<blockquote><p>把线程放入线程池中，并且执行</p></blockquote></li><li>.shutdown()<blockquote><p>关闭线程池</p></blockquote></li></ul><h3 id="创建线程池示例"><a href="#创建线程池示例" class="headerlink" title="创建线程池示例"></a>创建线程池示例</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService es = Executors.<span class="keyword">new</span><span class="type">FixedTreadPool</span>(<span class="number">12</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;线程池的概述&quot;&gt;&lt;a href=&quot;#线程池的概述&quot; class=&quot;headerlink&quot; title=&quot;线程池的概述&quot;&gt;&lt;/a&gt;线程池的概述&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;一个形象的比喻：&lt;blockquote&gt;
+&lt;p&gt;把很多线程全部养在一个池子里，要用就拿出来用，不用就放回去，还不会死掉的。这样就不用一直创建-死亡，因为线程的创建-死亡需要与计算机系统交互，这样的成本是很高的，用上线程池就可以很好的提高性能，尤其是程序中有很多生存周期短的线程。在jdk5之前必须手动创建线程池，jdk5之后java内置线程池&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="线程池" scheme="http://liuhaoan.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+      <category term="JDK5新特性Executors工厂类" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7Executors%E5%B7%A5%E5%8E%82%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——多线程_线程的5种状态</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E7%9A%845%E7%A7%8D%E7%8A%B6%E6%80%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——多线程-线程的5种状态/</id>
+    <published>2019-04-10T09:35:32.000Z</published>
+    <updated>2019-04-10T09:37:31.773Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ps：面试的时候可能会问"><a href="#ps：面试的时候可能会问" class="headerlink" title="ps：面试的时候可能会问"></a>ps：面试的时候可能会问</h1><p>1、新建，创建线程对象</p><p>2、就绪状态（执行了start开始命令，让他有了执行资格，但是因为cpu的机制没有执行权）</p><p>3、运行状态（抢到了cpu执行权）</p><p>4、阻塞状态（当运行时遇到了sleep或者wait进入睡眠，当睡眠结束又进入就绪状态）</p><p>5、死亡（线程执行完毕，线程对象变成了垃圾）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ps：面试的时候可能会问&quot;&gt;&lt;a href=&quot;#ps：面试的时候可能会问&quot; class=&quot;headerlink&quot; title=&quot;ps：面试的时候可能会问&quot;&gt;&lt;/a&gt;ps：面试的时候可能会问&lt;/h1&gt;&lt;p&gt;1、新建，创建线程对象&lt;/p&gt;
+&lt;p&gt;2、就绪状态（执行了s
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="线程的5种状态面试题" scheme="http://liuhaoan.github.io/tags/%E7%BA%BF%E7%A8%8B%E7%9A%845%E7%A7%8D%E7%8A%B6%E6%80%81%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——多线程_线程组</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E7%BB%84/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——多线程-线程组/</id>
+    <published>2019-04-10T09:33:09.000Z</published>
+    <updated>2019-04-10T09:35:09.464Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="线程组的概述"><a href="#线程组的概述" class="headerlink" title="线程组的概述"></a>线程组的概述</h1><blockquote><p>它可以对一批线程进行分类管理，java允许程序直接对线程组进行控制</p></blockquote><h3 id="线程组的类"><a href="#线程组的类" class="headerlink" title="线程组的类"></a>线程组的类</h3><blockquote><p>ThreadGroup</p></blockquote><a id="more"></a><h3 id="线程组类中的方法"><a href="#线程组类中的方法" class="headerlink" title="线程组类中的方法"></a>线程组类中的方法</h3><ul><li>.getName()    <blockquote><p>通过线程组对象获取他组的名字，返回String，默认所属组为main主线程</p></blockquote></li></ul><h3 id="创建一个线程组"><a href="#创建一个线程组" class="headerlink" title="创建一个线程组"></a>创建一个线程组</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ThreadGroup tg = <span class="keyword">new</span> <span class="type">ThreadGroup</span>(<span class="string">"线程组名称"</span>);</span><br><span class="line"><span class="comment">//不传入线程组名称则默认线程组为main主线程</span></span><br></pre></td></tr></table></figure><h3 id="创建一个线程并且放在某个组内"><a href="#创建一个线程并且放在某个组内" class="headerlink" title="创建一个线程并且放在某个组内"></a>创建一个线程并且放在某个组内</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Thread</span> t = <span class="keyword">new</span> <span class="keyword">Thread</span>(创建好的线程组，要创建线程的对象，线程名(可不填))<span class="comment">;</span></span><br></pre></td></tr></table></figure><h3 id="线程组的作用举例"><a href="#线程组的作用举例" class="headerlink" title="线程组的作用举例"></a>线程组的作用举例</h3><blockquote><p>当我们执行 tg.setDaemon(true) 设置成守护线程时，线程组内所有线程都被设置成了守护线程</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;线程组的概述&quot;&gt;&lt;a href=&quot;#线程组的概述&quot; class=&quot;headerlink&quot; title=&quot;线程组的概述&quot;&gt;&lt;/a&gt;线程组的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它可以对一批线程进行分类管理，java允许程序直接对线程组进行控制&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;线程组的类&quot;&gt;&lt;a href=&quot;#线程组的类&quot; class=&quot;headerlink&quot; title=&quot;线程组的类&quot;&gt;&lt;/a&gt;线程组的类&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;ThreadGroup&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="线程组" scheme="http://liuhaoan.github.io/tags/%E7%BA%BF%E7%A8%8B%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——多线程_JDK5新特性互斥锁</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B-JDK5%E6%96%B0%E7%89%B9%E6%80%A7%E4%BA%92%E6%96%A5%E9%94%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——多线程-JDK5新特性互斥锁/</id>
+    <published>2019-04-10T09:27:57.000Z</published>
+    <updated>2019-04-10T09:32:15.525Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote><p>它是锁（synchronized）的封装类，它更加的强大</p></blockquote><h3 id="互斥锁类"><a href="#互斥锁类" class="headerlink" title="互斥锁类"></a>互斥锁类</h3><blockquote><p>reentrantLock</p></blockquote><a id="more"></a><h3 id="监视器类"><a href="#监视器类" class="headerlink" title="监视器类"></a>监视器类</h3><blockquote><p>Condition（封装了一下Object中的监视器方法）</p></blockquote><h3 id="互斥锁方法"><a href="#互斥锁方法" class="headerlink" title="互斥锁方法"></a>互斥锁方法</h3><ul><li>.lock()<blockquote><p>获得一个锁</p></blockquote></li><li>.unlock()<blockquote><p>释放此锁</p></blockquote></li><li>.newCondition()<blockquote><p>获取一个Condition监视器对象，用来进行线程通信</p></blockquote></li></ul><h3 id="通过互斥锁线程通信示例"><a href="#通过互斥锁线程通信示例" class="headerlink" title="通过互斥锁线程通信示例"></a>通过互斥锁线程通信示例</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Printer3</span> &#123;</span><br><span class="line"><span class="keyword">private</span> ReentrantLock r = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"><span class="keyword">private</span> Condition c1 = r.newCondition();</span><br><span class="line"><span class="keyword">private</span> Condition c2 = r.newCondition();</span><br><span class="line"><span class="keyword">private</span> Condition c3 = r.newCondition();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print1</span>(<span class="params"></span>) throws InterruptedException</span> &#123;</span><br><span class="line">r.<span class="keyword">lock</span>();</span><br><span class="line"><span class="comment">//获取锁</span></span><br><span class="line"><span class="keyword">if</span>(flag != <span class="number">1</span>) &#123;</span><br><span class="line">c1.<span class="keyword">await</span>();</span><br><span class="line">&#125;</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"加"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"油"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"加"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"油"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"！"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"\r\n"</span>);</span><br><span class="line">flag = <span class="number">2</span>;</span><br><span class="line"><span class="comment">//this.notify();</span></span><br><span class="line"><span class="comment">//随机唤醒单个等待的线程</span></span><br><span class="line">c2.signal();</span><br><span class="line">r.unlock();</span><br><span class="line"><span class="comment">//释放锁</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print2</span>(<span class="params"></span>) throws InterruptedException</span> &#123;</span><br><span class="line">r.<span class="keyword">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(flag != <span class="number">2</span>) &#123;</span><br><span class="line">c2.<span class="keyword">await</span>();</span><br><span class="line">&#125;</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"加"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"油"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"加"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"油"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"\r\n"</span>);</span><br><span class="line">flag = <span class="number">3</span>;</span><br><span class="line"><span class="comment">//this.notify();</span></span><br><span class="line">c3.signal();</span><br><span class="line">r.unlock();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print3</span>(<span class="params"></span>) throws InterruptedException</span> &#123;</span><br><span class="line">r.<span class="keyword">lock</span>();</span><br><span class="line"><span class="keyword">if</span>(flag != <span class="number">3</span>) &#123;</span><br><span class="line">c3.<span class="keyword">await</span>();</span><br><span class="line">&#125;</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"a"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"b"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"c"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"d"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"e"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"f"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"g"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.print(<span class="string">"\r\n"</span>);</span><br><span class="line">flag = <span class="number">1</span>;</span><br><span class="line">c1.signal();</span><br><span class="line">r.unlock();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它是锁（synchronized）的封装类，它更加的强大&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;互斥锁类&quot;&gt;&lt;a href=&quot;#互斥锁类&quot; class=&quot;headerlink&quot; title=&quot;互斥锁类&quot;&gt;&lt;/a&gt;互斥锁类&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;reentrantLock&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="互斥锁" scheme="http://liuhaoan.github.io/tags/%E4%BA%92%E6%96%A5%E9%94%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——多线程_两线程通信</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E4%B8%A4%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——多线程-两线程通信/</id>
+    <published>2019-04-10T09:24:13.000Z</published>
+    <updated>2019-04-10T09:31:07.830Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么时候需要通信"><a href="#什么时候需要通信" class="headerlink" title="什么时候需要通信"></a>什么时候需要通信</h3><blockquote><p>多线程并发时，在默认情况下CPU时随机切换线程执行的，如果我们希望他们又规律的执行，就可以使用通信，例如每个线程执行一次打印</p></blockquote><a id="more"></a><h3 id="Object中方法："><a href="#Object中方法：" class="headerlink" title="Object中方法："></a>Object中方法：</h3><ul><li>.wait()<blockquote><p>让本线程等待（暂停运行）</p></blockquote></li><li>.notify()<blockquote><p>让一条线程停止等待，当有多条线程等待是随机停止等待一条</p></blockquote></li><li>.notifyAll()<blockquote><p>让所有等待线程停止等等待</p></blockquote></li></ul><h3 id="为什么wait方法和notify方法定义在object中？"><a href="#为什么wait方法和notify方法定义在object中？" class="headerlink" title="为什么wait方法和notify方法定义在object中？"></a>为什么wait方法和notify方法定义在object中？</h3><ul><li>答：<blockquote><p>因为锁对象可以是任意对象，而Object是所有类的基类，所以他们两个定义在Object中</p></blockquote></li></ul><h3 id="sleep方法和wait方法的区别是什么（面试题）？"><a href="#sleep方法和wait方法的区别是什么（面试题）？" class="headerlink" title="sleep方法和wait方法的区别是什么（面试题）？"></a>sleep方法和wait方法的区别是什么（面试题）？</h3><blockquote><p>1、sleep方法必须传入参数时间到了自动醒来</p><p>2、wait方法可以传入参数也可以不传入参数，传入参数就是在参数时间后等待，不传入则立马开始等待</p><p>3、sleep在同步代码块或者同步函数中，<strong>不会释放锁</strong>（cpu会一直在这个方法或者代码块中等待）</p><p>4、wait在同步函数或者同步代码块中，<strong>会释放锁</strong>（让cpu可以去执行其他线程）</p></blockquote><h3 id="线程之间通信注意事项："><a href="#线程之间通信注意事项：" class="headerlink" title="线程之间通信注意事项："></a>线程之间通信注意事项：</h3><blockquote><p>带同步代码块中，用哪个对象锁，就用哪个对象调用wait方法等待</p></blockquote><h3 id="线程通信例子（jdk1-5版本之前解决方案）"><a href="#线程通信例子（jdk1-5版本之前解决方案）" class="headerlink" title="线程通信例子（jdk1.5版本之前解决方案）"></a>线程通信例子（jdk1.5版本之前解决方案）</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//等待唤醒机制</span></span><br><span class="line"><span class="keyword">class</span> Printer &#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> print1() <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line"><span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line"><span class="keyword">if</span>(flag != <span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">this</span>.wait();</span><br><span class="line"><span class="comment">//当前线程等待</span></span><br><span class="line">&#125;</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"加"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"油"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"加"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"油"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"！"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"\r\n"</span>);</span><br><span class="line">flag = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">this</span>.notify();</span><br><span class="line"><span class="comment">//随机唤醒单个等待的线程</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> print2() <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line"><span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line"><span class="keyword">if</span>(flag != <span class="number">2</span>) &#123;</span><br><span class="line"><span class="keyword">this</span>.wait();</span><br><span class="line">&#125;</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"加"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"油"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"加"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"油"</span>);</span><br><span class="line">System.out.<span class="keyword">print</span>(<span class="string">"\r\n"</span>);</span><br><span class="line">flag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">this</span>.notify();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>ps：两个以以上线程进行通信增加flag值修改即可，不过必须是使用notifyAll，并且判断语句需要使用while不能使用if</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么时候需要通信&quot;&gt;&lt;a href=&quot;#什么时候需要通信&quot; class=&quot;headerlink&quot; title=&quot;什么时候需要通信&quot;&gt;&lt;/a&gt;什么时候需要通信&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;多线程并发时，在默认情况下CPU时随机切换线程执行的，如果我们希望他们又规律的执行，就可以使用通信，例如每个线程执行一次打印&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="两线程通信" scheme="http://liuhaoan.github.io/tags/%E4%B8%A4%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    
+      <category term="sleep方法和wait方法的区别是什么（面试题）" scheme="http://liuhaoan.github.io/tags/sleep%E6%96%B9%E6%B3%95%E5%92%8Cwait%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——多线程_Timer类</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B-Timer%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——多线程-Timer类/</id>
+    <published>2019-04-10T09:22:31.000Z</published>
+    <updated>2019-04-10T09:23:51.998Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Timer的概述"><a href="#Timer的概述" class="headerlink" title="Timer的概述"></a>Timer的概述</h1><blockquote><p>它其实就是一个<code>计时器</code>，线程可以用它安排以后在后台执行的任务，可以安排执行一次，或者定期重复执行，<strong>可以把它想象成一个闹钟</strong>。</p></blockquote><a id="more"></a><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><blockquote><p>创建一个定时任务类，继承TimerTask类，然后在主方法创建Timer对象并且传入任务类对象和要执行的时间，如果需要第一次执行之后果断时间继续重复执行，那么就在第三个参数传入一个等待时间</p></blockquote><h3 id="使用方法案例"><a href="#使用方法案例" class="headerlink" title="使用方法案例"></a>使用方法案例</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Test13_Timer</span> </span>&#123;</span><br><span class="line">    public static void main(<span class="type">String</span>[] args) &#123;</span><br><span class="line">        <span class="type">Timer</span> t = <span class="keyword">new</span> <span class="type">Timer</span>();</span><br><span class="line">        <span class="type">Calendar</span> c = <span class="type">Calendar</span>.getInstance();</span><br><span class="line">        c.set(<span class="type">Calendar</span>.<span class="type">MINUTE</span>, <span class="number">56</span>);</span><br><span class="line">        t.schedule(<span class="keyword">new</span> tesk(), c.getTime());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">tesk</span> <span class="keyword">extends</span> <span class="title">TimerTask</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public void run() &#123;</span><br><span class="line">        <span class="type">System</span>.out.println(<span class="string">"定时任务11111"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Timer的概述&quot;&gt;&lt;a href=&quot;#Timer的概述&quot; class=&quot;headerlink&quot; title=&quot;Timer的概述&quot;&gt;&lt;/a&gt;Timer的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它其实就是一个&lt;code&gt;计时器&lt;/code&gt;，线程可以用它安排以后在后台执行的任务，可以安排执行一次，或者定期重复执行，&lt;strong&gt;可以把它想象成一个闹钟&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="Timer类" scheme="http://liuhaoan.github.io/tags/Timer%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——设计模式_单列设计模式</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——设计模式-单列设计模式/</id>
+    <published>2019-04-10T09:12:55.000Z</published>
+    <updated>2019-04-10T09:21:39.377Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote><p>单列设计模式就是保证<code>某个类只能被创建一个对象</code></p></blockquote><h3 id="如何保证这个类在内存中只有一个对象呢？"><a href="#如何保证这个类在内存中只有一个对象呢？" class="headerlink" title="如何保证这个类在内存中只有一个对象呢？"></a>如何保证这个类在内存中只有一个对象呢？</h3><blockquote><p>1、私有化它的构造方法，不让别的类访问这个类</p><p>2、在这个类中定义一个本类的对象，并且将它私有化、静态化、并且用最终修饰符修饰。</p><p>3、创建一个静态的get方法返回对这个对象的引用</p></blockquote><a id="more"></a><h3 id="代码示例1（饿汉式）"><a href="#代码示例1（饿汉式）" class="headerlink" title="代码示例1（饿汉式）"></a>代码示例1（饿汉式）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1、私有构造方法不让别人访问</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//2、创建本类对象让别人访问</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton s = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="comment">//3、创建个体方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="为什么叫饿汉式？"><a href="#为什么叫饿汉式？" class="headerlink" title="为什么叫饿汉式？"></a>为什么叫饿汉式？</h3><blockquote><p>因为类一加载就要创建对象，比喻一个饿汉一上来就要吃，吃的东西也就是new的这个对象。</p><ul><li>ps：<br>其实get方法都可以不需要创建，因为引用对象的成员变量是用final修饰的，直接调用即可，当然这样就不是饿汉式了，而是第三种格式。</li></ul></blockquote><h3 id="代码示例2（懒汉式）"><a href="#代码示例2（懒汉式）" class="headerlink" title="代码示例2（懒汉式）"></a>代码示例2（懒汉式）</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Singleton</span> &#123;</span><br><span class="line">    <span class="comment">//1、私有构造方法不让别人访问</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span>(<span class="params"></span>)</span> &#123;&#125;</span><br><span class="line">    <span class="comment">//2、创建声明引用</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton s ;</span><br><span class="line">    <span class="comment">//3、创建个体方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="literal">null</span>) &#123;</span><br><span class="line">            s = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>ps：因为它比较懒，要用到的时候才去创建，所以叫懒汉式，但是平时开发不用懒汉式，而用饿汉式。</p><h3 id="为什么平时用饿汉式？"><a href="#为什么平时用饿汉式？" class="headerlink" title="为什么平时用饿汉式？"></a>为什么平时用饿汉式？</h3><ul><li>答：<blockquote><p>因为虽然懒汉式不会浪费空间内存，但是他会有线程安全问题</p><ul><li>举个例子：<br>当我线程1和线程2要获取这个类，当cpu执行的线程1刚好判断进去创建对象的时候，突然cpu又去执行线程2了，当cpu执行完线程2的时候已经创建好了一个对象，这时cpu又回来执行线程1，那么就创建了两个对象，所以它会又线程安全问题。</li></ul></blockquote></li></ul><h3 id="那懒汉式什么时候用？"><a href="#那懒汉式什么时候用？" class="headerlink" title="那懒汉式什么时候用？"></a>那懒汉式什么时候用？</h3><ul><li>答：<blockquote><p>面试的时候！面试的时候会出一个<code>“请写出一个单例的延迟加载模式”</code>，那么这个时候其实就是让我们写懒汉模式。</p></blockquote></li></ul><h3 id="两种单例模式实现的区别"><a href="#两种单例模式实现的区别" class="headerlink" title="两种单例模式实现的区别"></a>两种单例模式实现的区别</h3><blockquote><p>1、饿汉式它是空间换时间</p><ul><li>解析：<br>因为一上来就直接创建对象，要用的时候直接调用，所以要用的时候速度相对更快</li></ul><p>2、懒汉式它是时间换空间</p><ul><li>解析：<br>因为一上来它不创建对象，而要用的时候先判断再创对象，而且以后每次需要用都要判断，所以浪费了时间</li></ul><p>3、在多线程访问时，饿汉式绝对不会创建多个对象，而懒汉式就会存在线程安全问题，会创建多个对象</p></blockquote><h1 id="Runtime类概述："><a href="#Runtime类概述：" class="headerlink" title="Runtime类概述："></a>Runtime类概述：</h1><blockquote><p>每个java程序都有一个Runtime类，它与运行环境相连接，它就是是使用的<code>单例设计模式</code>。</p></blockquote><h3 id="Runtime是的应用场景"><a href="#Runtime是的应用场景" class="headerlink" title="Runtime是的应用场景"></a>Runtime是的应用场景</h3><blockquote><p>当我们需要执行cmd之类的命令的时候就可以勇担Runtime中的exec方法</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;单列设计模式就是保证&lt;code&gt;某个类只能被创建一个对象&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;如何保证这个类在内存中只有一个对象呢？&quot;&gt;&lt;a href=&quot;#如何保证这个类在内存中只有一个对象呢？&quot; class=&quot;headerlink&quot; title=&quot;如何保证这个类在内存中只有一个对象呢？&quot;&gt;&lt;/a&gt;如何保证这个类在内存中只有一个对象呢？&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;1、私有化它的构造方法，不让别的类访问这个类&lt;/p&gt;
+&lt;p&gt;2、在这个类中定义一个本类的对象，并且将它私有化、静态化、并且用最终修饰符修饰。&lt;/p&gt;
+&lt;p&gt;3、创建一个静态的get方法返回对这个对象的引用&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="设计模式" scheme="http://liuhaoan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="单列设计模式" scheme="http://liuhaoan.github.io/tags/%E5%8D%95%E5%88%97%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="延迟加载模式面试题" scheme="http://liuhaoan.github.io/tags/%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%BC%8F%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+      <category term="Runtime类" scheme="http://liuhaoan.github.io/tags/Runtime%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——线程</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——线程/</id>
+    <published>2019-04-10T09:00:06.000Z</published>
+    <updated>2019-04-10T09:43:04.563Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="线程概述"><a href="#线程概述" class="headerlink" title="线程概述"></a>线程概述</h1><blockquote><p>线程其实就是程序执行的一条路径，一个进程中可以包含多条线程，多线程并发执行可以提高程序效率，可以同使完成多项任务</p></blockquote><a id="more"></a><h3 id="多线程的应用场景"><a href="#多线程的应用场景" class="headerlink" title="多线程的应用场景"></a>多线程的应用场景</h3><ul><li>迅雷多线程一起下载</li><li>服务器同时处理多个客户请求</li></ul><h3 id="多线程原理-单核CPU"><a href="#多线程原理-单核CPU" class="headerlink" title="多线程原理(单核CPU)"></a>多线程原理(单核CPU)</h3><blockquote><p>在电脑上运行多个程序时，其实cpu一次只能做一个事，做一段时间后然后换另一个另一个做一段时间，只是cpu的速度太快了，<code>看起来就是同时做很多事</code>，也就是说多线程其实<code>只是表面上的多线程</code>，底层cpu还是一次只能做一个事，但是这有个前提，那就是那个cpu是单核cpu，如果事多核cpu，那么就可以真正的达到<strong><code>并行</code></strong>。</p></blockquote><h3 id="多线程并行和并发的区别"><a href="#多线程并行和并发的区别" class="headerlink" title="多线程并行和并发的区别"></a>多线程并行和并发的区别</h3><ul><li>并行<blockquote><p>并行是两个任务同时运行，需要多核cpu，有多少核就可以并行多少任务。</p></blockquote></li><li>并发<blockquote><p>并发是两个任务都请求运行，而一个处理器只能接受一个任务，就安排两个任务轮流进行，由于时间比较段短就感觉两个任务是同时在运行</p></blockquote></li><li>ps<blockquote><p>我们所谓的多线程就是<strong>并发</strong>，如果不使用多线程，那么程序就是一句一句代码请求，如果使用了多线程，那么就可以这个方法请求运行，同时另一个方法也请求运行，也就是说，<code>没有使用多线程的话代码是一条一条请求，使用了就是多条同时请求，但底层并不是并行</code>，只是cpu处理太快了感觉不到。</p></blockquote></li></ul><h3 id="多线程程序实现方法1"><a href="#多线程程序实现方法1" class="headerlink" title="多线程程序实现方法1"></a>多线程程序实现方法1</h3><blockquote><p>1、定义类继承Thread</p><p>2、重写run方法</p><p>3、把新线程要做的事写在run方法中</p><p>4、创建线程对象，也就是我们定义的这个对象</p><p>5、开启新的线程（start），内部会自动执行run方法</p></blockquote><h3 id="多线程程序实现方法2"><a href="#多线程程序实现方法2" class="headerlink" title="多线程程序实现方法2"></a>多线程程序实现方法2</h3><blockquote><p>1、定义类实现Runnable接口</p><p>2、重写run方法</p><p>3、把新线程要做的事卸载run方法中</p><p>4、创建Thread对象，并且给它的构造方法传入一个实现了Runnable接口类的对象</p><p>5、利用Thread开启新的线程</p></blockquote><h3 id="多线程程序实现方法3"><a href="#多线程程序实现方法3" class="headerlink" title="多线程程序实现方法3"></a>多线程程序实现方法3</h3><ul><li><p>第三种创建多线程的接口</p><blockquote><p>Callable</p></blockquote></li><li><p>创建方式：</p><blockquote><p>1、创建一个线程类，并且继承Callable&lt;&gt;类和重写call方法</p><p>2、创建线程池</p><p>3、创建线程对象然后用submit方法加入线程池即可</p></blockquote></li></ul><h3 id="两种实现多线程的区别（面试可能问）"><a href="#两种实现多线程的区别（面试可能问）" class="headerlink" title="两种实现多线程的区别（面试可能问）"></a>两种实现多线程的区别（面试可能问）</h3><ul><li><p>继承Thread：</p><blockquote><p>因为我们创建的类继承了Thread类，所以当我们调用start时，是直接执行子类的run方法，也就是我们创建的类。</p></blockquote></li><li><p>实现Runnable接口创建对象并传入实例化Thread的构造方法：</p><blockquote><p>我们是先创建实现了Runnable接口的对象，然后创建Thread对象并把之前创建的对象传入Thread构造方法，这时Thread类会把传入的对象保存到成员变量中，当我们调用Thread对象的start方法的时候，Thread对象会调用它的成员变量中的run方法，当然这个成员变量就是我们创建的那个实现了Runnable接口的对象</p></blockquote></li></ul><h3 id="两种实现多线程的好处与坏处"><a href="#两种实现多线程的好处与坏处" class="headerlink" title="两种实现多线程的好处与坏处"></a>两种实现多线程的好处与坏处</h3><ul><li><p>继承Thread：</p><blockquote><ul><li><p>好处：<br>可以直接调用Thread中的方法，这样代码简洁。</p></li><li><p>坏处：<br>既然继承了Thread方法就不能继承其他类了</p></li></ul></blockquote></li><li><p>实现Runnable接口：</p><blockquote><ul><li><p>好处：<br>因为接口是可以多实现的，所以可以继承其他父类</p></li><li><p>坏处：<br>不能直接创建对象使用，代码更加复杂</p></li></ul></blockquote></li><li><p>ps：</p><blockquote><p>个人感觉实现Runnable其实是继承Thread的一个补充，在开发时看情况使用。</p></blockquote></li></ul><h3 id="Thread类的方法"><a href="#Thread类的方法" class="headerlink" title="Thread类的方法"></a>Thread类的方法</h3><ul><li>.start()<blockquote><p>开启线程，多次启动是非法的</p></blockquote></li><li>.getName()    <blockquote><p>获取线程名，默认线程名从Thread -0开始以此类推</p></blockquote></li><li>.setName()<blockquote><p>设置线程名</p></blockquote></li><li>.currentThread()<blockquote><p>获取当前线程对象的引用，在哪调用就获取哪的线程</p></blockquote></li><li>.sleep(毫秒, 纳秒)<blockquote><p>休眠线程，传入多少时间就停多长时间，也可以单独传毫秒</p></blockquote></li><li><p>.setDaemon()</p><blockquote><p>守护线程，设置一个线程为守护线程后，该线程不会单独执行，当其他非守护线程全部执行完之后自动退出。</p><ul><li>ps：<br>在非守护线程全部执行完毕后，会有一个缓冲时间，这个缓冲时间内守护线程还会运行，也就相当于非守护线程退出时会告诉守护线程可以退出了，这个告诉的时间就是缓冲时间</li></ul></blockquote></li><li><p>.join()</p><blockquote><p>调用此方法的线程暂停（写这句代码的线程），等待指定线程结束后，当前线程再继续运行</p></blockquote></li><li><p>.join(int)</p><blockquote><p>等待指定的毫秒后继续执行</p><ul><li>ps：<br>如果在main主方法中调用t.join()，那么等待t这个线程执行结束之后，主方法才会继续执行，这个命令通常用在主方法中。</li></ul></blockquote></li><li><p>.yield()</p><blockquote><p>礼让线程，让出cpu，也就是让自己在cpu的执行优先级中降低，就是让别人先执行</p></blockquote></li><li>.setPriority(1-10)<blockquote><p>设置线程优先级，默认是5</p></blockquote></li><li>.getThreadGroup()<blockquote><p>通过线程对象获取它所属的组，返回线程组对象</p></blockquote></li></ul><h3 id="同步代码块的概述"><a href="#同步代码块的概述" class="headerlink" title="同步代码块的概述"></a>同步代码块的概述</h3><blockquote><p>当有多条线程并发的时候，cpu会先执行完<code>同步代码块</code>中所有代码才会去执行另一个线程，<code>不会这里执行几句代码那里执行几句代码</code>。</p><ul><li>ps：<br><strong>它其实就是锁</strong></li></ul></blockquote><h3 id="什么时候需要同步？"><a href="#什么时候需要同步？" class="headerlink" title="什么时候需要同步？"></a>什么时候需要同步？</h3><blockquote><p>当多线程并发，我们希望某个线程中某些代码执行过程中不切换到其他线程工作，我们就需要用到同步代码块。</p></blockquote><h3 id="同步代码块关键字"><a href="#同步代码块关键字" class="headerlink" title="同步代码块关键字"></a>同步代码块关键字</h3><blockquote><p><strong>synchronized</strong></p></blockquote><h3 id="定义方式："><a href="#定义方式：" class="headerlink" title="定义方式："></a>定义方式：</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">synchronized</span><span class="params">(锁对象)</span></span> &#123;</span><br><span class="line">代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="同步代码块（锁）的注意事项："><a href="#同步代码块（锁）的注意事项：" class="headerlink" title="同步代码块（锁）的注意事项："></a>同步代码块（锁）的注意事项：</h3><blockquote><p>1、锁对象可以是任意的对象</p><p>2、两个需要同步的代码块需要使用同一个锁，否则不能达到目标效果</p><p>3、不能是匿名对象，因为两个匿名对象根本就不是一个对象，也就是不是同一把锁</p><p>4、不要把锁进行嵌套，否则容易出现死锁，因为可能会出现互相等待的局面</p></blockquote><h3 id="同步方法如何定义？"><a href="#同步方法如何定义？" class="headerlink" title="同步方法如何定义？"></a>同步方法如何定义？</h3><ul><li>解答：<blockquote><p>只要在修饰方法的时候加上synchronized关键字即可</p></blockquote></li></ul><h3 id="同步方法注意事项："><a href="#同步方法注意事项：" class="headerlink" title="同步方法注意事项："></a>同步方法注意事项：</h3><ul><li>非静态方法锁对象是<code>它自己这个对象</code>，也就是this</li><li>静态方法因为它是随着类的加载而加载的，所以它的对象就是它所在类的<code>字节码文件</code>，也就是说静态方法的锁对象就是它所在类的字节码文件</li></ul><h3 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h3><blockquote><p>当多条线程操作同一个数据时，可能会出现数据安全问题</p></blockquote><ul><li><p><strong>解决方法</strong></p><blockquote><p>在某一段需要判断并且操作数据地方加上一个同步代码块</p></blockquote></li><li><p><strong>注意事项</strong></p><blockquote><p>使用的锁对象一定要是同一个锁，<code>建议直接用类的class文件</code>，如果非要用引用数据类型，那么一定要用静态的。</p></blockquote></li></ul><h3 id="以前线程安全类的回顾"><a href="#以前线程安全类的回顾" class="headerlink" title="以前线程安全类的回顾"></a>以前线程安全类的回顾</h3><blockquote><p>线程安全的类涉及数据操作的方法都加了synchronized修饰，比如Vector、ArrayList，StringBuffer、StringBuilde</p></blockquote><h3 id="线程安全方法"><a href="#线程安全方法" class="headerlink" title="线程安全方法"></a>线程安全方法</h3><blockquote><p>.synchronized[这里可以后接集合类型，是什么类型就返回那个类型的集合]</p><ul><li>ps：<br>它的作用是传入一个集合对象，传出一个线程安全的集合对象</li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;线程概述&quot;&gt;&lt;a href=&quot;#线程概述&quot; class=&quot;headerlink&quot; title=&quot;线程概述&quot;&gt;&lt;/a&gt;线程概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;线程其实就是程序执行的一条路径，一个进程中可以包含多条线程，多线程并发执行可以提高程序效率，可以同使完成多项任务&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="线程" scheme="http://liuhaoan.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="两种实现多线程的区别（面试可能问）" scheme="http://liuhaoan.github.io/tags/%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E5%8F%AF%E8%83%BD%E9%97%AE%EF%BC%89/"/>
+    
+      <category term="同步代码块（锁）" scheme="http://liuhaoan.github.io/tags/%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%88%E9%94%81%EF%BC%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Properties集合</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Properties%E9%9B%86%E5%90%88/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——Properties集合/</id>
+    <published>2019-04-10T08:54:55.000Z</published>
+    <updated>2019-04-10T08:59:49.460Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Properties概述"><a href="#Properties概述" class="headerlink" title="Properties概述"></a>Properties概述</h1><blockquote><p>它是一个双列集合，Properties的父类是HashTable类，它有一个固定的作用，那就是存储配置文件。</p><ul><li>ps:<br>虽然Hashtables被HashMap替代了，但是Hashtable有个争气的儿子——Properties</li></ul></blockquote><a id="more"></a><h3 id="hashtable和hashMap区别（面试题）："><a href="#hashtable和hashMap区别（面试题）：" class="headerlink" title="hashtable和hashMap区别（面试题）："></a>hashtable和hashMap区别（面试题）：</h3><ul><li>共同点：<blockquote><p>1、底层都依赖hash算法</p><p>2、都是双列集合</p></blockquote></li><li>不同点：<blockquote><p>1、HashMap是线程不安全的，效率高，jdk1.2版本出现的</p><p>2、Hashtable是线程安全的，效率相对低，jdk1.0版本出现的</p><p>3、HashMap可以储存null键和null值</p><p>4、Hashtable不可以储存null键和null值</p></blockquote></li></ul><h3 id="Properties的特殊方法"><a href="#Properties的特殊方法" class="headerlink" title="Properties的特殊方法"></a>Properties的特殊方法</h3><ul><li>.setProperty(key, value)<blockquote><p>设置键和对应的值</p></blockquote></li><li>.getProperty(key)<blockquote><p>根据键获取相对应的值，返回String</p></blockquote></li><li>.propertyNames()<blockquote><p>返回集合中所有键的Enumeration枚举</p></blockquote></li><li>.load(InputStream)    <blockquote><p>从配置文件读取配置项到集合中</p></blockquote></li><li>.store(OutputStream)</li></ul><h3 id="遍历所有配置案例"><a href="#遍历所有配置案例" class="headerlink" title="遍历所有配置案例"></a>遍历所有配置案例</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">prop.setProperty(<span class="string">"name"</span>, <span class="string">"张三"</span>);</span><br><span class="line">prop.setProperty(<span class="string">"tel"</span>, <span class="string">"18912345678"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//System.out.println(prop);</span></span><br><span class="line">Enumeration&lt;<span class="keyword">String</span>&gt; en = (Enumeration&lt;<span class="keyword">String</span>&gt;) prop.propertyNames();</span><br><span class="line"><span class="keyword">while</span>(en.hasMoreElements()) &#123;</span><br><span class="line"><span class="keyword">String</span> <span class="built_in">key</span> = en.nextElement();</span><br><span class="line"><span class="comment">//获取Properties中的每一个键</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">String</span> value = prop.getProperty(<span class="built_in">key</span>);</span><br><span class="line"><span class="comment">//根据键获取值</span></span><br><span class="line">System.out.<span class="built_in">println</span>(<span class="built_in">key</span> + <span class="string">"="</span>+ value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="load与storte案例演示"><a href="#load与storte案例演示" class="headerlink" title="load与storte案例演示"></a>load与storte案例演示</h3><ul><li>load读</li></ul><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Properties prop = <span class="keyword">new</span> <span class="type">Properties</span>();</span><br><span class="line">prop.load(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"config.properties"</span>));</span><br><span class="line"><span class="comment">//将文件上的键值对读取到集合中</span></span><br></pre></td></tr></table></figure><ul><li>store写</li></ul><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">prop.setProperty(<span class="string">"tel"</span>, <span class="string">"18912345678"</span>);</span><br><span class="line"><span class="comment">//先修改集合中的配置</span></span><br><span class="line"></span><br><span class="line">prop.store(<span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"config.properties"</span>), <span class="literal">null</span>);</span><br><span class="line"><span class="comment">//第二个参数是对列表参数的描述,可以给值,也可以给null</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Properties概述&quot;&gt;&lt;a href=&quot;#Properties概述&quot; class=&quot;headerlink&quot; title=&quot;Properties概述&quot;&gt;&lt;/a&gt;Properties概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它是一个双列集合，Properties的父类是HashTable类，它有一个固定的作用，那就是存储配置文件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ps:&lt;br&gt;虽然Hashtables被HashMap替代了，但是Hashtable有个争气的儿子——Properties&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="hashtable和hashMap区别（面试题）" scheme="http://liuhaoan.github.io/tags/hashtable%E5%92%8ChashMap%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
+    
+      <category term="Properties集合" scheme="http://liuhaoan.github.io/tags/Properties%E9%9B%86%E5%90%88/"/>
+    
+      <category term="配置文件" scheme="http://liuhaoan.github.io/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_标准输入输出流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-标准输入输出流/</id>
+    <published>2019-04-10T08:51:29.000Z</published>
+    <updated>2019-04-10T08:53:38.834Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><ul><li>System.in<blockquote><p>是InputStream，他们是标准输入流，默认可以从键盘读取字节数据，Scanner的底层就是用它。</p></blockquote></li><li>System.out<blockquote><p>是printStream，他们是标准输出流，默认可以向console（控制台）中输出字符宣传和字节数据</p></blockquote></li></ul><a id="more"></a><h3 id="修改标准输入输出流"><a href="#修改标准输入输出流" class="headerlink" title="修改标准输入输出流"></a>修改标准输入输出流</h3><ul><li>修改输入流<blockquote><p>System.setIn(InputStream)</p></blockquote></li><li>修改输出流<blockquote><p>System.setOut(printStream)<br>ps：如果修改标准输入输出流指向文件的话，那么输入流就不会从键盘读了，而是从文件，输出流同理。</p></blockquote></li></ul><h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InputStream <span class="keyword">is</span> = <span class="keyword">new</span> System.<span class="keyword">in</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="keyword">is</span>.read();</span><br><span class="line"><span class="comment">//从键盘读取一个字节</span></span><br><span class="line">System.<span class="keyword">out</span>.println(x)；</span><br></pre></td></tr></table></figure><p>ps：输入48打印52，因为read一次只读一个字节，也就是这里只读到了4，而我们输入的4是一个字符类型的数据，所以read会通过码表获取字符类型4对应的值，也就是52，最后打印的也就是52了</p><h3 id="输入流注意事项"><a href="#输入流注意事项" class="headerlink" title="输入流注意事项"></a>输入流注意事项</h3><blockquote><p>输入流只有一个对象，再用System.in是不能再创建的，当然标准输入流是不需要关的，除非和某个文件关联了，因为关联了文件会占用资源</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;System.in&lt;blockquote&gt;
+&lt;p&gt;是InputStream，他们是标准输入流，默认可以从键盘读取字节数据，Scanner的底层就是用它。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;System.out&lt;blockquote&gt;
+&lt;p&gt;是printStream，他们是标准输出流，默认可以向console（控制台）中输出字符宣传和字节数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="标准输入输出流" scheme="http://liuhaoan.github.io/tags/%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_打印流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E6%89%93%E5%8D%B0%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-打印流/</id>
+    <published>2019-04-10T08:44:43.000Z</published>
+    <updated>2019-04-10T08:48:18.773Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote><p>可以很方便的将对象的toString()结果输出，并且自动加上换行，而且还可以使用自动刷出模式，自动刷出就是println一个数据就在文件中写入一个数据</p><ul><li>ps：<br>System.out就是一个PrintStream，其默认向控制台输出信息</li></ul></blockquote><a id="more"></a><h3 id="打印流的类："><a href="#打印流的类：" class="headerlink" title="打印流的类："></a>打印流的类：</h3><ul><li>printStream<blockquote><p>打印字节流</p></blockquote></li><li>printWrite    <blockquote><p>打印字符流</p></blockquote></li></ul><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">printWrite pw = <span class="keyword">new</span> printWrite(<span class="string">"1.txt"</span>);</span><br><span class="line">pw.<span class="built_in">println</span>(<span class="string">"111"</span>);</span><br><span class="line"><span class="comment">//向文件写入111</span></span><br></pre></td></tr></table></figure><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote><p>1、如果开启了自动刷出，那么只有println这么一个方法支持自动刷出</p><p>2、print、println方法底层是把需要打印的数据转换成字符串再打印的</p><p>3、write和print的不同之处是传入什么就直接写入什么</p></blockquote><p>ps：打印流是只操作目的的，也就是只操作写出数据的</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;可以很方便的将对象的toString()结果输出，并且自动加上换行，而且还可以使用自动刷出模式，自动刷出就是println一个数据就在文件中写入一个数据&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ps：&lt;br&gt;System.out就是一个PrintStream，其默认向控制台输出信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="打印流" scheme="http://liuhaoan.github.io/tags/%E6%89%93%E5%8D%B0%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_数据输入输出流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-数据输入输出流/</id>
+    <published>2019-04-10T08:42:32.000Z</published>
+    <updated>2019-04-10T08:44:04.390Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote><p>它可以按照<code>基本数据类型</code>的大小读写数据，因为字节流读文件时向那个字节前面加8个二进制位组成一个int，写文件时会自动砍掉int的前8个二进制位，所以我们直接读写int类型数据时文本数据会出错，而数据输入输出流就不会这样，他会把<code>基本数据类型所有字节全部写出去</code>，不过开发用到的不多。</p></blockquote><a id="more"></a><h3 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h3><blockquote><p>按照long大小读写一个数的时候，写出数据会占8个字节，而读取数据也会一次读8个</p></blockquote><h3 id="数据输入输出流的类"><a href="#数据输入输出流的类" class="headerlink" title="数据输入输出流的类"></a>数据输入输出流的类</h3><blockquote><p>DataInputStream、DataOutputStream</p></blockquote><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataInputStream dis = <span class="keyword">new</span> <span class="type">DataInputStream</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"1.txt))；</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它可以按照&lt;code&gt;基本数据类型&lt;/code&gt;的大小读写数据，因为字节流读文件时向那个字节前面加8个二进制位组成一个int，写文件时会自动砍掉int的前8个二进制位，所以我们直接读写int类型数据时文本数据会出错，而数据输入输出流就不会这样，他会把&lt;code&gt;基本数据类型所有字节全部写出去&lt;/code&gt;，不过开发用到的不多。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="数据输入输出流" scheme="http://liuhaoan.github.io/tags/%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_对象操作流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-对象操作流/</id>
+    <published>2019-04-10T08:39:06.000Z</published>
+    <updated>2019-04-10T08:41:36.328Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote><p>该流可以将一个对象写出，或者读取一个对象到程序中，也就是执行了<code>序列化</code>和<code>反序列化</code>的操作。</p></blockquote><a id="more"></a><h3 id="对象操作流的类"><a href="#对象操作流的类" class="headerlink" title="对象操作流的类"></a>对象操作流的类</h3><blockquote><p>ObjectOutputStream</p></blockquote><ul><li>序列化<blockquote><p>将对象写到文件中，可以比喻为游戏的存档</p></blockquote></li><li>反序列化<blockquote><p>从文件中读取对象，可以比喻成游戏读档</p></blockquote></li></ul><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote><p>1、被操作的对象一定要实现<code>Serializable</code>接口</p><p>2、无论都还是取，都是一次只能处理一个对象。</p><p>3、实现Serializable接口后，可以加一个id号，这个id好用来好看存的档和读的档是不是一样的。</p></blockquote><h3 id="对象操作流方法"><a href="#对象操作流方法" class="headerlink" title="对象操作流方法"></a>对象操作流方法</h3><ul><li>.readObject()<blockquote><p>反序列化，从文件读对象</p></blockquote></li><li>.writeObject()<blockquote><p>序列化，把对象写到文件中</p></blockquote></li></ul><h3 id="如果一共只存入两个对象，而取第三个对象的时候会报错，怎么办？"><a href="#如果一共只存入两个对象，而取第三个对象的时候会报错，怎么办？" class="headerlink" title="如果一共只存入两个对象，而取第三个对象的时候会报错，怎么办？"></a>如果一共只存入两个对象，而取第三个对象的时候会报错，怎么办？</h3><ul><li>解决方法<blockquote><p>先把要保存的对象放到集合中，然后直接写出一个集合对象即可。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;该流可以将一个对象写出，或者读取一个对象到程序中，也就是执行了&lt;code&gt;序列化&lt;/code&gt;和&lt;code&gt;反序列化&lt;/code&gt;的操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="对象操作流" scheme="http://liuhaoan.github.io/tags/%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_随机访问流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-随机访问流/</id>
+    <published>2019-04-10T08:36:22.000Z</published>
+    <updated>2019-04-10T08:38:37.954Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote><p>它可以在文件任何位置开始读，也可以在文件任何地方开始写。</p><ul><li>ps：<br>其实它不属于流，因为<code>它的父类是Object</code>，但是呢，它融合了InputStream与OutpuStream的功能，所以他同时具备了读和写的功能。</li></ul></blockquote><a id="more"></a><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul><li>多线程下载<blockquote><p>我们可以让第一条线程下载0-1000第二条线程下载1000-2000，以此类推。</p></blockquote></li></ul><h3 id="随机访问流类"><a href="#随机访问流类" class="headerlink" title="随机访问流类"></a>随机访问流类</h3><blockquote><p>RandomAccessFile</p></blockquote><h3 id="随机访问流的方法："><a href="#随机访问流的方法：" class="headerlink" title="随机访问流的方法："></a>随机访问流的方法：</h3><ul><li>.seek()<blockquote><p>设置开始位置指针</p></blockquote></li><li>.write()<blockquote><p>写</p></blockquote></li><li>.read()<blockquote><p>读</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它可以在文件任何位置开始读，也可以在文件任何地方开始写。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ps：&lt;br&gt;其实它不属于流，因为&lt;code&gt;它的父类是Object&lt;/code&gt;，但是呢，它融合了InputStream与OutpuStream的功能，所以他同时具备了读和写的功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="随机访问流" scheme="http://liuhaoan.github.io/tags/%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_内存输出流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E5%86%85%E5%AD%98%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-内存输出流/</id>
+    <published>2019-04-10T08:28:05.000Z</published>
+    <updated>2019-04-10T08:35:38.191Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="内存输出流的概述"><a href="#内存输出流的概述" class="headerlink" title="内存输出流的概述"></a>内存输出流的概述</h1><blockquote><p>该输出流可以<code>向内存中写数据</code>，把内存当作一个缓冲区，写出之后可以一次性获取出所有数据。</p></blockquote><ul><li>内存输出流类<blockquote><p>ByteArrayOutputStream</p></blockquote></li></ul><p>ps：它其实是一个缓冲区，实例化这个类时在内存中创建了一个可以增长的字节数组，所以它可以不用关闭流，因为<code>根本就只是个缓冲区</code>。</p><a id="more"></a><h3 id="ByteArrayOutputStream的方法"><a href="#ByteArrayOutputStream的方法" class="headerlink" title="ByteArrayOutputStream的方法"></a>ByteArrayOutputStream的方法</h3><ul><li>.toByteArray()    <blockquote><p>获取缓冲区全部数据，返回一个byte[]</p></blockquote></li><li>.toString(可传入码表)<blockquote><p>获取缓冲区全部数据，根据平台默认码表返回String</p></blockquote></li></ul><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><blockquote><p>字节流读取文本时可能读取到半个汉字，所以可以用内存输出流，把文本放到缓冲区中。</p></blockquote><h3 id="为什么当要读取文本内容并且操作时不直接用字符流？"><a href="#为什么当要读取文本内容并且操作时不直接用字符流？" class="headerlink" title="为什么当要读取文本内容并且操作时不直接用字符流？"></a>为什么当要读取文本内容并且操作时不直接用字符流？</h3><ul><li><p>1、我们不知道这个文本一共有多少个字符，所以不好定义数组缓冲区。</p></li><li><p>2、虽然可以使用数组来实现缓冲区，但是太麻烦，代码量更多，而ByteArrayOutputStream却很方便。</p></li></ul><h3 id="内存输出流面试题"><a href="#内存输出流面试题" class="headerlink" title="内存输出流面试题"></a>内存输出流面试题</h3><blockquote><p>定义一个文件输入流，调用read方法，将a.txt文件中的内容打印出来，byte大小为5</p></blockquote><ul><li>代码示例</li></ul><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">     FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"a.txt"</span>);</span><br><span class="line">     ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">     <span class="keyword">byte</span> b[] = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];</span><br><span class="line">     <span class="keyword">int</span> n;</span><br><span class="line">     <span class="built_in">while</span> ((n = fis.<span class="built_in">read</span>(b)) != <span class="number">-1</span>) &#123;</span><br><span class="line">         baos.<span class="built_in">write</span>(b, <span class="number">0</span>, n);</span><br><span class="line"><span class="comment">//写入到内存输出流</span></span><br><span class="line">     &#125;</span><br><span class="line">     System.out.<span class="built_in">println</span>(baos.toString(<span class="string">"gbk"</span>));</span><br><span class="line">     fis.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;内存输出流的概述&quot;&gt;&lt;a href=&quot;#内存输出流的概述&quot; class=&quot;headerlink&quot; title=&quot;内存输出流的概述&quot;&gt;&lt;/a&gt;内存输出流的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;该输出流可以&lt;code&gt;向内存中写数据&lt;/code&gt;，把内存当作一个缓冲区，写出之后可以一次性获取出所有数据。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;内存输出流类&lt;blockquote&gt;
+&lt;p&gt;ByteArrayOutputStream&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ps：它其实是一个缓冲区，实例化这个类时在内存中创建了一个可以增长的字节数组，所以它可以不用关闭流，因为&lt;code&gt;根本就只是个缓冲区&lt;/code&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="内存输出流" scheme="http://liuhaoan.github.io/tags/%E5%86%85%E5%AD%98%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    
+      <category term="内存输出流面试题" scheme="http://liuhaoan.github.io/tags/%E5%86%85%E5%AD%98%E8%BE%93%E5%87%BA%E6%B5%81%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_序列流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E5%BA%8F%E5%88%97%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-序列流/</id>
+    <published>2019-04-10T08:24:36.000Z</published>
+    <updated>2019-04-10T08:27:35.545Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="序列流概述"><a href="#序列流概述" class="headerlink" title="序列流概述"></a>序列流概述</h1><blockquote><p>序列流可以把<code>多个字节输入流整合成一个</code>，从序列流中读取数据时，将从被整合的第一个流开始读，然后依次往后读，也就是把<code>N个流合成成一个流</code>，这样方便操作。 </p></blockquote><a id="more"></a><ul><li>序列流类<blockquote><p>SequenceInputStream</p></blockquote></li></ul><h3 id="两个流合并序列代码示例"><a href="#两个流合并序列代码示例" class="headerlink" title="两个流合并序列代码示例"></a>两个流合并序列代码示例</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SequenceInputStream sis = <span class="keyword">new</span> <span class="type">SequenceInputStream</span>(FileInputStream, FileInputStream)；</span><br></pre></td></tr></table></figure><h3 id="N个流合并序列代码示例"><a href="#N个流合并序列代码示例" class="headerlink" title="N个流合并序列代码示例"></a>N个流合并序列代码示例</h3><ul><li>ps：<blockquote><p>因为需要N个流合并的话，那么SequenceInputStream 构造方法就需要传入一个流的枚举，而Vector集合中有一个方法elements使返回一个枚举，所以我们可以使用集合，<code>把流对象先放在集合中，然后再获取这个集合的枚举</code>，最后传给SequenceInputStream 构造方法。</p></blockquote></li></ul><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Vector&lt;FileInputStream&gt; v = <span class="keyword">new</span> <span class="type">Vector</span>&lt;&gt;();</span><br><span class="line">v.add(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"a.txt"</span>));</span><br><span class="line">v.add(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"b.txt"</span>));</span><br><span class="line">v.add(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"c.txt"</span>));</span><br><span class="line">SequenceInputStream sis = <span class="keyword">new</span> <span class="type">SequenceInputStream</span>(v.elements());</span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"abc.txt"</span>);</span><br><span class="line">int t;</span><br><span class="line"><span class="keyword">while</span> ((t = sis.read()) != <span class="number">-1</span>) &#123;</span><br><span class="line">    fos.write(t);</span><br><span class="line">&#125;</span><br><span class="line">fos.close();</span><br><span class="line">sis.close();</span><br></pre></td></tr></table></figure><ul><li>使用场景1：<blockquote><p>当我们需要读取两个文件，并且需要把两个文件整合成一个文件时，不使用序列流就会使代码不简洁，使用序列流就只要操作序列流即可。</p></blockquote></li><li>使用场景2<blockquote><p>如果想把两个MP3合成成一个MP3就可以用到，这样就会播放完第一个直接播放下一个。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;序列流概述&quot;&gt;&lt;a href=&quot;#序列流概述&quot; class=&quot;headerlink&quot; title=&quot;序列流概述&quot;&gt;&lt;/a&gt;序列流概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;序列流可以把&lt;code&gt;多个字节输入流整合成一个&lt;/code&gt;，从序列流中读取数据时，将从被整合的第一个流开始读，然后依次往后读，也就是把&lt;code&gt;N个流合成成一个流&lt;/code&gt;，这样方便操作。 &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="序列流" scheme="http://liuhaoan.github.io/tags/%E5%BA%8F%E5%88%97%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——设计模式_装饰设计模式</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——设计模式-装饰设计模式/</id>
+    <published>2019-04-10T08:21:47.000Z</published>
+    <updated>2019-04-10T08:23:56.225Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="装饰设计模式代码示例"><a href="#装饰设计模式代码示例" class="headerlink" title="装饰设计模式代码示例"></a>装饰设计模式代码示例</h1><a id="more"></a><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">Coder</span> &#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">code</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Student</span> <span class="title">implements</span> <span class="title">Coder</span> &#123;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">code</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"javase"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"javaweb"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">HeiMaStudent</span> <span class="title">implements</span> <span class="title">Coder</span> &#123;</span><br><span class="line"><span class="comment">//1,获取被装饰类的引用</span></span><br><span class="line"><span class="keyword">private</span> Student s;</span><br><span class="line"><span class="comment">//获取学生引用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2,在构造方法中传入被装饰类的对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HeiMaStudent</span>(<span class="params">Student s</span>)</span> &#123;</span><br><span class="line"><span class="keyword">this</span>.s = s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3,对原有的功能进行升级</span></span><br><span class="line">@Override</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">code</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">s.code();</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"ssh"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"数据库"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"大数据"</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"..."</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="装饰设计模式的好处"><a href="#装饰设计模式的好处" class="headerlink" title="装饰设计模式的好处"></a>装饰设计模式的好处</h3><blockquote><p>耦合性不强,被装饰的类的变化与装饰类的变化无关</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;装饰设计模式代码示例&quot;&gt;&lt;a href=&quot;#装饰设计模式代码示例&quot; class=&quot;headerlink&quot; title=&quot;装饰设计模式代码示例&quot;&gt;&lt;/a&gt;装饰设计模式代码示例&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="设计模式" scheme="http://liuhaoan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="装饰设计模式" scheme="http://liuhaoan.github.io/tags/%E8%A3%85%E9%A5%B0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_字符流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E5%AD%97%E7%AC%A6%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-字符流/</id>
+    <published>2019-04-10T08:05:27.000Z</published>
+    <updated>2019-04-10T08:19:05.316Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="字符流概述"><a href="#字符流概述" class="headerlink" title="字符流概述"></a>字符流概述</h1><blockquote><p>读写字符的IO流，字符流读取字符，需要先读取到字节数据，然后转为字符，如果要写出字符，需要把字符转为字节再写出</p><ul><li>ps：<br>字符流除了读取字符、不能拷贝非纯文本文件，其他功能都和字节流差不多，因为它底层就用到了FileInputStream与FileOutputStream</li></ul></blockquote><a id="more"></a><h3 id="字符流的继承体系："><a href="#字符流的继承体系：" class="headerlink" title="字符流的继承体系："></a>字符流的继承体系：</h3><ul><li><p>Reader</p><ul><li><p>InputStreamReader</p><blockquote><p>它是字节流通向字符流的桥梁，可用用它指定码表</p></blockquote><ul><li>FlieReader<blockquote><p>文件字符输入流类</p></blockquote></li></ul></li><li><p>BufferedRead</p><blockquote><p>封装的缓冲区的输入流，它可以传入InputStreamReader</p></blockquote><ul><li>LineNumberReader</li></ul></li></ul></li></ul><ul><li><p>Writer</p><ul><li><p>InputStreamWrite</p><blockquote><p>它是字符流通向字节流的桥梁，可以用它指定码表</p></blockquote><ul><li>FileWrider    <blockquote><p>文件字符输出流类</p></blockquote></li></ul></li><li><p>BufferedWriter</p><blockquote><p>封装的缓冲区的输出流，它可以传入InputStreamWrite</p></blockquote></li></ul></li></ul><h3 id="字符流读取字符原理"><a href="#字符流读取字符原理" class="headerlink" title="字符流读取字符原理"></a>字符流读取字符原理</h3><blockquote><p>读取到字节数据通过码表（gbk、utf-8等），一次读取一个字符</p><ul><li>ps：<br>汉字的码表前第一个字节一定是负数</li></ul></blockquote><h3 id="写出字符流时的注意事项"><a href="#写出字符流时的注意事项" class="headerlink" title="写出字符流时的注意事项"></a>写出字符流时的注意事项</h3><blockquote><p>1、写出字符流后<code>一定要关流</code>，否则不会写出去，因为字符流底层因为需要<code>先读取字节流然后通过码表读取文件内的字节</code>，所以他会创建一个缓冲区，当然这个缓冲区<code>只能用作字节与码表的转换</code>。</p><p>2、只能拷贝纯文本文件，不可以拷贝非纯文本文件，因为在读的时候会将<code>字节转换为字符</code>，在转换过程中遇到找不到码表上的对应字符就会用？代替，这样写出的话会把？也写出去，这样文件就损坏了。</p><p>3、在使用BufferedWrite创建字符输出流时，第二个参数不传入true则不清空文件中原来的数据</p></blockquote><h3 id="什么情况下使用字符流？"><a href="#什么情况下使用字符流？" class="headerlink" title="什么情况下使用字符流？"></a>什么情况下使用字符流？</h3><blockquote><p>1、字符流可以拷贝文本文件，但是不推荐使用，因为读取时会把字节转换成字符，写出时还要把字符转换成字节，这样会大大的影响效率。</p><p>2、程序需要读取一段文本，或者写出一段文本的时候可以使用</p><p>3、读取的时候是按照字符大小读取的，所以不会出现半个中文等</p><p>4、写的时候可以直接将字符串写出，不需要转换为字节数组</p></blockquote><h3 id="字符流中Buffered封装类的特殊方法："><a href="#字符流中Buffered封装类的特殊方法：" class="headerlink" title="字符流中Buffered封装类的特殊方法："></a>字符流中Buffered封装类的特殊方法：</h3><ul><li><p>.readLine()</p><blockquote><p>读取一个文本行返回String，也就是读一行，此方法<code>遇到\r或者\n就认为某行已经终止</code>，它没有任何终止符，只要没数据了就返回null</p></blockquote></li><li><p>.newLine()    </p><blockquote><p>写出一个回车换行符，配合readLine使用，因为readLine是获取每行，而不会有换行，所以需要newLine换行。</p></blockquote></li><li><p>newLine与\r\n的区别</p><blockquote><p>1、newLine是跨平台的方法，</p><p>2、\r\n只支持windows系统</p></blockquote></li></ul><h3 id="BufferedReader子类LineNumberReader的特殊方法"><a href="#BufferedReader子类LineNumberReader的特殊方法" class="headerlink" title="BufferedReader子类LineNumberReader的特殊方法"></a>BufferedReader子类<code>LineNumberReader</code>的特殊方法</h3><ul><li>.getLineNumber()<blockquote><p>获取当前行号</p></blockquote></li><li>.setLineNumber()<blockquote><p>设置行号，放在遍历获取文本前可以起到初始行号的作用</p></blockquote></li></ul><h3 id="使用指定码表读写字符"><a href="#使用指定码表读写字符" class="headerlink" title="使用指定码表读写字符"></a>使用指定码表读写字符</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStreamReader isr = <span class="keyword">new</span> <span class="type">InputStreamReader</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="number">1.</span>txt, <span class="string">"utf-8"</span>));</span><br><span class="line">BufferedReader br = <span class="keyword">new</span> <span class="type">BufferedReader</span>(<span class="keyword">new</span> <span class="type">InputStreamReader</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"1.txt"</span>), <span class="string">"gbk"</span>));</span><br><span class="line"><span class="comment">//带buffered的</span></span><br></pre></td></tr></table></figure><p>ps:写出字符流同理。</p><h3 id="面试题之——获取文本上每个字符出现的次数"><a href="#面试题之——获取文本上每个字符出现的次数" class="headerlink" title="面试题之——获取文本上每个字符出现的次数"></a>面试题之——获取文本上每个字符出现的次数</h3><ul><li>思路<blockquote><p>1、创建输入流读取文本</p><p>2、创建map集合保存每个字符出现的次数</p><p>3、遍历输入流文本，然后判断每一个字符存入map集合，有相同的那就value加一，没有就加入并且value为1</p><p>4、创建输出流</p><p>5、遍历集合，把集合输出到文本</p><p>6、关闭流</p></blockquote></li></ul><h3 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">"1.txt"</span>), <span class="string">"gbk"</span>));</span><br><span class="line">    HashMap&lt;Character, Integer&gt; hm = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="built_in">while</span> ((c = br.<span class="built_in">read</span>()) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> ch = (<span class="keyword">char</span>)c;</span><br><span class="line">        hm.<span class="built_in">put</span>( ch, hm.containsKey(ch) ? hm.<span class="built_in">get</span>(ch) + <span class="number">1</span> : <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    br.<span class="built_in">close</span>();</span><br><span class="line"></span><br><span class="line">    BufferedWriter bw = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(<span class="keyword">new</span> FileOutputStream(<span class="string">"2.txt"</span>), <span class="string">"gbk"</span>));</span><br><span class="line">    <span class="built_in">for</span>(Character me : hm.keySet()) &#123;</span><br><span class="line">        <span class="built_in">switch</span> (me) &#123;</span><br><span class="line">            <span class="built_in">case</span> <span class="string">'\t'</span> : bw.<span class="built_in">write</span>(<span class="string">"\\t="</span> + hm.<span class="built_in">get</span>(me));<span class="built_in">break</span>;</span><br><span class="line">            <span class="built_in">case</span> <span class="string">'\n'</span> : bw.<span class="built_in">write</span>(<span class="string">"\\n="</span> + hm.<span class="built_in">get</span>(me));<span class="built_in">break</span>;</span><br><span class="line">            <span class="built_in">case</span> <span class="string">'\r'</span> : bw.<span class="built_in">write</span>(<span class="string">"\\r="</span> + hm.<span class="built_in">get</span>(me));<span class="built_in">break</span>;</span><br><span class="line">            <span class="built_in">default</span>:bw.<span class="built_in">write</span>(me + <span class="string">"="</span> + hm.<span class="built_in">get</span>(me));</span><br><span class="line">        &#125;</span><br><span class="line">        bw.newLine();</span><br><span class="line">    &#125;</span><br><span class="line">    bw.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;字符流概述&quot;&gt;&lt;a href=&quot;#字符流概述&quot; class=&quot;headerlink&quot; title=&quot;字符流概述&quot;&gt;&lt;/a&gt;字符流概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;读写字符的IO流，字符流读取字符，需要先读取到字节数据，然后转为字符，如果要写出字符，需要把字符转为字节再写出&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ps：&lt;br&gt;字符流除了读取字符、不能拷贝非纯文本文件，其他功能都和字节流差不多，因为它底层就用到了FileInputStream与FileOutputStream&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="字符流" scheme="http://liuhaoan.github.io/tags/%E5%AD%97%E7%AC%A6%E6%B5%81/"/>
+    
+      <category term="获取文本上每个字符出现的次数面试题" scheme="http://liuhaoan.github.io/tags/%E8%8E%B7%E5%8F%96%E6%96%87%E6%9C%AC%E4%B8%8A%E6%AF%8F%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流_文件字节流</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81-%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E6%B5%81/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流-文件字节流/</id>
+    <published>2019-04-10T07:14:55.000Z</published>
+    <updated>2019-04-10T07:59:36.745Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="FileInputStream概述"><a href="#FileInputStream概述" class="headerlink" title="FileInputStream概述"></a>FileInputStream概述</h1><blockquote><p>它是一个输入流，它的作用是从文件系统中的某个文件中获得输入字节，它是<code>InputStream</code>的子类</p></blockquote><h3 id="创建一个文件输入流"><a href="#创建一个文件输入流" class="headerlink" title="创建一个文件输入流"></a>创建一个文件输入流</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"1.txt"</span>);</span><br><span class="line"><span class="comment">//其实就是创建一个流的对象，不用了关闭即可</span></span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="IO文件输入流的方法"><a href="#IO文件输入流的方法" class="headerlink" title="IO文件输入流的方法"></a>IO文件输入流的方法</h3><ul><li>.read()<blockquote><p>从输入流读取下一个字节返回这个字节的int值，文件结束标记是-1，也就是读到-1就读完这个文件了。</p></blockquote></li><li>.read(arr)    <blockquote><p>从输入流读取字节存到arr数组中，也就是内存中，返回读取到的字节数</p></blockquote></li><li>.available()<blockquote><p>获取可以读的剩余字节数</p></blockquote></li></ul><h3 id="为什么read（）方法读取一个字节返回的是int而不是字节类型的byte？"><a href="#为什么read（）方法读取一个字节返回的是int而不是字节类型的byte？" class="headerlink" title="为什么read（）方法读取一个字节返回的是int而不是字节类型的byte？"></a>为什么<code>read（）</code>方法读取一个字节返回的是int而不是字节类型的byte？</h3><ul><li>解答：<blockquote><p>一个字节等于8个二进制位，也就是<code>-1的二进制位补码是1111 1111</code>，然后文件的底层都是以二进制形式存储的，这些文件的二进制中难免中途会遇到某个字节是1111 1111（八个一），如果read方法直接返回byte的话那么遇到这种情况就直接停止读取文件了，为了解决这个问题就直接返回int而不直接返回byte，因为在Java中一个int数据占4个字节，<code>也就是占32个二进制位</code>，而read方法中从文件读取一个字节就在其<code>二进制位前面加上24个0让其组成一个int类型数据返回</code>，这样就返回了一个255而不是返回1了，这样就可以保证数据的完整，而文件结束标记的-1它本身就是整数型所以不会受到影响。当然在使用输出流输出文件时write方法会<code>自动去除int前面的24个零</code>。</p></blockquote></li></ul><h1 id="FileOutputStream的概述"><a href="#FileOutputStream的概述" class="headerlink" title="FileOutputStream的概述"></a>FileOutputStream的概述</h1><blockquote><p>它是一个输出流，它的作用将指定字节写入此文件输出流，它是OutputStream的子类</p></blockquote><h3 id="输出流注意事项"><a href="#输出流注意事项" class="headerlink" title="输出流注意事项"></a>输出流注意事项</h3><blockquote><p>1、输入流指定的文件不存在会报错，而输出流却不会，它是直接创建这个文件</p><p>2、虽然写出的是一个int类型的数据，但其实write方法会自动去除int数据的前3个8位2进制位</p><p>3、如果文件存在，那么就会先将文件内容清空，如果不要让他清空要追加，那么就在创建对象时第二个参数传入一个true</p><ul><li>例子：<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream fos = <span class="keyword">new</span> <span class="type">FileOutputStream</span>(<span class="string">"1.txt"</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li></ul></blockquote><h3 id="IO文件输出流的方法"><a href="#IO文件输出流的方法" class="headerlink" title="IO文件输出流的方法"></a>IO文件输出流的方法</h3><ul><li>.write()<blockquote><p>将指定字节写入此文件输出流</p></blockquote></li><li>.write(arr)<blockquote><p>将arr数组中的字节写到文件中</p></blockquote></li><li>.write(arr, off, len)<blockquote><p>off为数组起始偏移量，也就是起始索引，通常0、len就是要写入数据的总长度    </p></blockquote></li></ul><h3 id="利用IO流进行文件拷贝例程之——缓冲区拷贝（单纯拷贝时推荐，中间需要对数据进行处理则使用带Buffered的封装类）"><a href="#利用IO流进行文件拷贝例程之——缓冲区拷贝（单纯拷贝时推荐，中间需要对数据进行处理则使用带Buffered的封装类）" class="headerlink" title="利用IO流进行文件拷贝例程之——缓冲区拷贝（单纯拷贝时推荐，中间需要对数据进行处理则使用带Buffered的封装类）"></a>利用IO流进行文件拷贝例程之——<code>缓冲区拷贝</code>（单纯拷贝时推荐，中间需要对数据进行处理则使用带Buffered的封装类）</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"致青春.mp3"</span>);</span><br><span class="line"><span class="comment">//创建输入流对象,关联致青春.mp3</span></span><br><span class="line"></span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"copy.mp3"</span>);</span><br><span class="line"><span class="comment">//创建输出流对象,关联copy.mp3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//int len = fis.available();</span></span><br><span class="line"><span class="comment">//System.out.println(len);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">byte</span>[] arr = <span class="keyword">new</span> <span class="keyword">byte</span>[fis.<span class="built_in">available</span>()];</span><br><span class="line"><span class="comment">//创建与文件一样大小的字节数组</span></span><br><span class="line"></span><br><span class="line">fis.<span class="built_in">read</span>(arr);</span><br><span class="line"><span class="comment">//将文件上的字节读取到内存中</span></span><br><span class="line"></span><br><span class="line">fos.<span class="built_in">write</span>(arr);</span><br><span class="line"><span class="comment">//将字节数组中的字节数据写到文件上</span></span><br><span class="line"></span><br><span class="line">fis.<span class="built_in">close</span>();</span><br><span class="line">fos.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure><p>ps：不推荐使用，因为一次性把所有字节都读下来放在内存中会导致占用内存过多，如果操作的是一个蓝光电影，就会<code>内存溢出</code>。</p><ul><li>解决方法：<blockquote><p>一次处理一部分数据，分批次处理即可，代码如下</p></blockquote></li></ul><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      <span class="keyword">byte</span> b[] = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8192</span>];</span><br><span class="line"><span class="comment">//缓冲区一定要为1024的整数倍</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> len;</span><br><span class="line">      <span class="built_in">while</span> ((len = fis.<span class="built_in">read</span>(b)) != <span class="number">-1</span>) &#123;</span><br><span class="line">          fos.<span class="built_in">write</span>(b, <span class="number">0</span>, len);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><h3 id="利用IO流进行文件拷贝例程二之——普通拷贝"><a href="#利用IO流进行文件拷贝例程二之——普通拷贝" class="headerlink" title="利用IO流进行文件拷贝例程二之——普通拷贝"></a>利用IO流进行文件拷贝例程二之——<code>普通拷贝</code></h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"致青春.mp3"</span>);</span><br><span class="line"><span class="comment">//创建输入流对象,关联致青春.mp3</span></span><br><span class="line"></span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"copy.mp3"</span>);</span><br><span class="line"><span class="comment">//创建输出流对象,关联copy.mp3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="comment">//在不断的读取每一个字节</span></span><br><span class="line"><span class="built_in">while</span>((b = fis.<span class="built_in">read</span>()) != <span class="number">-1</span>) &#123;</span><br><span class="line">fos.<span class="built_in">write</span>(b);</span><br><span class="line"><span class="comment">//将每一个字节写出</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fis.<span class="built_in">close</span>();</span><br><span class="line"><span class="comment">//关流释放资源</span></span><br><span class="line">fos.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure><p>ps：他有个缺点，那就是效率非常的慢，因为需要一个字节一个字节的读然后写。</p><h3 id="利用IO流进行文件拷贝例程三之——BufferedInputStream和BufferOutputStream拷贝"><a href="#利用IO流进行文件拷贝例程三之——BufferedInputStream和BufferOutputStream拷贝" class="headerlink" title="利用IO流进行文件拷贝例程三之——BufferedInputStream和BufferOutputStream拷贝"></a>利用IO流进行文件拷贝例程三之——<code>BufferedInputStream和BufferOutputStream拷贝</code></h3><blockquote><p>字节流一次读写一个数组的速度明显比一次读写一个字节的速度快很多，<br>这是加入了数组这样的缓冲区效果，java本身在设计的时候，<br>也考虑到了这样的设计思想(装饰设计模式后面讲解)，所以提供了字节缓冲区流</p></blockquote><ul><li>BufferedInputStream<blockquote><p>BufferedInputStream内置了一个缓冲区(数组)<br>从<code>BufferedInputStream</code>中读取一个字节时<br><code>BufferedInputStream</code>会一次性从文件中读取8192个, 存在缓冲区中<br>程序再次读取时, 就不用找文件了, 直接从缓冲区中获取<br>直到缓冲区中所有的都被使用过, 才重新从文件中读取8192个</p></blockquote></li><li>BufferedOutputStream<blockquote><p><code>BufferedOutputStream</code>也内置了一个缓冲区(数组)<br>程序向流中写出字节时, 不会直接写到文件, 先写到缓冲区中<br>直到缓冲区写满, BufferedOutputStream才会把缓冲区中的数据一次性写到文件里</p></blockquote></li></ul><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"致青春.mp3"</span>);</span><br><span class="line"><span class="comment">//创建文件输入流对象,关联致青春.mp3</span></span><br><span class="line"></span><br><span class="line">BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(fis);</span><br><span class="line"><span class="comment">//创建缓冲区对fis装饰</span></span><br><span class="line"></span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"copy.mp3"</span>);</span><br><span class="line"><span class="comment">//创建输出流对象,关联copy.mp3</span></span><br><span class="line"></span><br><span class="line">BufferedOutputStream bos = <span class="keyword">new</span> BufferedOutputStream(fos);</span><br><span class="line"><span class="comment">//创建缓冲区对fos装饰</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="built_in">while</span>((b = bis.<span class="built_in">read</span>()) != <span class="number">-1</span>) &#123;</span><br><span class="line">bos.<span class="built_in">write</span>(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bis.<span class="built_in">close</span>();</span><br><span class="line"><span class="comment">//只关装饰后的对象即可</span></span><br><span class="line">bos.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure><h3 id="flush和close的区别"><a href="#flush和close的区别" class="headerlink" title="flush和close的区别"></a>flush和close的区别</h3><blockquote><p>1、flush只是刷新缓冲区，后面还可以写（默认缓冲区存满放到文件，为了拷贝文件的完整性，拷贝完之后一定要刷新缓冲区，缓冲区也就是那个数组）</p><ul><li>ps：<br>一般用带Buffered的IO文件流才用的到，自己创建缓冲区每次都存到文件里去了。</li></ul></blockquote><blockquote><p>2、close是关闭流，不过在关闭流之前会刷新一便缓冲区，关闭后不能写。</p></blockquote><h3 id="使用jdk封装好的带Buffered的字节流类与手动创建字节缓冲区效率的区别"><a href="#使用jdk封装好的带Buffered的字节流类与手动创建字节缓冲区效率的区别" class="headerlink" title="使用jdk封装好的带Buffered的字节流类与手动创建字节缓冲区效率的区别"></a>使用<code>jdk封装好的带Buffered的字节流类</code>与<code>手动创建字节缓冲区</code><strong>效率</strong>的区别</h3><blockquote><p>1、带Buffered的封装类实现文件复制会有<code>两个缓冲区</code><br>ps:BufferedReader是先将数据抓取到<code>内存的缓冲区</code>再<code>从缓冲区中读取字节或数组</code>，操作的是Buffer里的数据（非底层硬盘的数据）</p><p>2、自己手动创建缓冲区的话有<code>一个缓冲区就能实现文件复制</code></p><p>3、但是两个缓冲区都是再<code>内存中</code>的，所以他们之间的赋值对效率<code>不会有很大影响</code></p><p>4、得出结论：手动创建缓冲区比Buffered封装类效率<code>相对高一点点</code></p></blockquote><h3 id="1-6版本和之前流的标准异常处理代码（面试会用到，背都要背下来）"><a href="#1-6版本和之前流的标准异常处理代码（面试会用到，背都要背下来）" class="headerlink" title="1.6版本和之前流的标准异常处理代码（面试会用到，背都要背下来）"></a><strong>1.6版本和之前流的标准异常处理代码（面试会用到，背都要背下来）</strong></h3><ul><li>try finally嵌套<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">FileOutputStream fos = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">fis = <span class="keyword">new</span> FileInputStream(<span class="string">"aaa.txt"</span>);</span><br><span class="line">fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"bbb.txt"</span>);</span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">while</span>((b = fis.<span class="keyword">read</span>()) != -<span class="number">1</span>) &#123;</span><br><span class="line">fos.<span class="keyword">write</span>(b);</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="keyword">if</span>(fis != <span class="keyword">null</span>)</span><br><span class="line">fis.close();<span class="comment">//能关掉一个算一个</span></span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="keyword">if</span>(fos != <span class="keyword">null</span>)</span><br><span class="line">fos.close();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="1-7版本新特性之异常处理的标准代码："><a href="#1-7版本新特性之异常处理的标准代码：" class="headerlink" title="1.7版本新特性之异常处理的标准代码："></a>1.7版本新特性之异常处理的标准代码：</h3><ul><li><p>新特性：</p><blockquote><p>在try后接一个小括号，我们把流对象写在小括号内，程序运行完之后自动关闭流</p></blockquote></li><li><p>为什么会自动关闭流？</p><blockquote><p>因为，FileInputStream 与 FileOutputStream 类都实现了AutoCloseable接口，当然我们自己写个类然后重写close方法也能实现自动关闭</p></blockquote></li><li><p>注意事项：</p><blockquote><p>在开发中用到的不多，但是要知道，因为面试肯能会遇到。</p></blockquote></li></ul><ul><li>try close<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">try</span>(</span><br><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"aaa.txt"</span>);</span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"bbb.txt"</span>);</span><br><span class="line">MyClose mc = <span class="keyword">new</span> MyClose();</span><br><span class="line">)&#123;</span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="built_in">while</span>((b = fis.<span class="built_in">read</span>()) != <span class="number">-1</span>) &#123;</span><br><span class="line">fos.<span class="built_in">write</span>(b);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="拓展知识之——文件加密"><a href="#拓展知识之——文件加密" class="headerlink" title="拓展知识之——文件加密"></a>拓展知识之——文件加密</h3><ul><li>原理<blockquote><p>我们知道2 ^ 3 = 1这是个异或运算也就是0010 ^ 0011 = 0001.</p><p>那么我们就可以</p><p><code>源数据 ^ 密文 = 加密后的数据</code><br><code>加密后的数据 ^ 密文 = 源数据</code></p><p>通过异或这个原理，我们可以知道用<code>相同数异或两编，那么原来的数就会回来</code>，这样我们就可以再写出字节流时，把写出的数据进行一遍异或运算，这样就达到了加密的效果，解密就是读取的时候再异或<strong><code>同样的数</code></strong>，这样原来的数据就回来了，不过这样加密数据为了代码更加简洁就需要使用Buffered的字节流对象，不能自己创建缓冲区了。</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;FileInputStream概述&quot;&gt;&lt;a href=&quot;#FileInputStream概述&quot; class=&quot;headerlink&quot; title=&quot;FileInputStream概述&quot;&gt;&lt;/a&gt;FileInputStream概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它是一个输入流，它的作用是从文件系统中的某个文件中获得输入字节，它是&lt;code&gt;InputStream&lt;/code&gt;的子类&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;创建一个文件输入流&quot;&gt;&lt;a href=&quot;#创建一个文件输入流&quot; class=&quot;headerlink&quot; title=&quot;创建一个文件输入流&quot;&gt;&lt;/a&gt;创建一个文件输入流&lt;/h3&gt;&lt;figure class=&quot;highlight haxe&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;FileInputStream fis = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;FileInputStream&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;1.txt&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//其实就是创建一个流的对象，不用了关闭即可&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81/"/>
+    
+      <category term="文件字节流" scheme="http://liuhaoan.github.io/tags/%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E6%B5%81/"/>
+    
+      <category term="标准异常处理代码（面试会用到，背都要背下来）" scheme="http://liuhaoan.github.io/tags/%E6%A0%87%E5%87%86%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%EF%BC%88%E9%9D%A2%E8%AF%95%E4%BC%9A%E7%94%A8%E5%88%B0%EF%BC%8C%E8%83%8C%E9%83%BD%E8%A6%81%E8%83%8C%E4%B8%8B%E6%9D%A5%EF%BC%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——IO流的概念</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94IO%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——IO流的概念/</id>
+    <published>2019-04-10T07:08:28.000Z</published>
+    <updated>2019-04-10T07:12:34.865Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="IO流的概念"><a href="#IO流的概念" class="headerlink" title="IO流的概念"></a>IO流的概念</h1><blockquote><p>1、IO流用来处理设备之间的数据</p><p>2、java对数据的操作时通过流的方式</p><p>3、java用于操作流的类都在IO包中</p><p>4、流按照操作类型分为两种：</p><ul><li><p><strong>字节流：</strong><br>字节流可以操作任何数据，因为在计算机中任何数据都是以字节形式储存的</p></li><li><p><strong>字符流：</strong><br>字符流只能操作纯字符类型的数据，比较方便</p></li></ul></blockquote><a id="more"></a><blockquote><p>5、按照流向分类分为：输入流、输出流</p></blockquote><h3 id="IO流的常用父类"><a href="#IO流的常用父类" class="headerlink" title="IO流的常用父类"></a>IO流的常用父类</h3><ul><li>字节流的抽象父类：<blockquote><p>InputStream（输入流）</p><p>outputStream（输出流）</p></blockquote></li><li>字符流的抽象父类：<blockquote><p>Reader（输入流）</p><p>Writer（输出流）</p></blockquote></li></ul><h3 id="IO的使用"><a href="#IO的使用" class="headerlink" title="IO的使用"></a>IO的使用</h3><blockquote><p>1、使用前，导入IO包</p><p>2、使用时，进行IO异常处理</p><ul><li>ps：<br>因为IO流时处理内存和硬盘之间的关系，如果硬盘没有某个文件，那么会出错</li></ul></blockquote><blockquote><p>3、使用后释放资源</p><ul><li>ps：<br>因为IO流相当于一个建立在内存和硬盘之间的管道，不用了就要把这个管道关闭。</li></ul></blockquote><h3 id="IO流的注意事项"><a href="#IO流的注意事项" class="headerlink" title="IO流的注意事项"></a>IO流的注意事项</h3><blockquote><p>流对象尽量晚开早关</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;IO流的概念&quot;&gt;&lt;a href=&quot;#IO流的概念&quot; class=&quot;headerlink&quot; title=&quot;IO流的概念&quot;&gt;&lt;/a&gt;IO流的概念&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;1、IO流用来处理设备之间的数据&lt;/p&gt;
+&lt;p&gt;2、java对数据的操作时通过流的方式&lt;/p&gt;
+&lt;p&gt;3、java用于操作流的类都在IO包中&lt;/p&gt;
+&lt;p&gt;4、流按照操作类型分为两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;字节流：&lt;/strong&gt;&lt;br&gt;字节流可以操作任何数据，因为在计算机中任何数据都是以字节形式储存的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;字符流：&lt;/strong&gt;&lt;br&gt;字符流只能操作纯字符类型的数据，比较方便&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="IO流的概念" scheme="http://liuhaoan.github.io/tags/IO%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>javaSE复习之——File类</title>
@@ -263,9 +891,9 @@
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
     
-      <category term="增强for循环" scheme="http://liuhaoan.github.io/tags/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/"/>
-    
       <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="增强for循环" scheme="http://liuhaoan.github.io/tags/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/"/>
     
       <category term="可变参数" scheme="http://liuhaoan.github.io/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
     
