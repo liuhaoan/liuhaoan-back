@@ -58,8 +58,8 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>多线程</tag>
         <tag>JDK5新特性</tag>
+        <tag>多线程</tag>
         <tag>互斥锁</tag>
       </tags>
   </entry>
@@ -346,8 +346,8 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>JDK5新特性</tag>
         <tag>增强for循环</tag>
+        <tag>JDK5新特性</tag>
         <tag>可变参数</tag>
         <tag>静态导入</tag>
       </tags>

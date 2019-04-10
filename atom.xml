@@ -167,9 +167,9 @@
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
     
-      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
       <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="多线程" scheme="http://liuhaoan.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
       <category term="互斥锁" scheme="http://liuhaoan.github.io/tags/%E4%BA%92%E6%96%A5%E9%94%81/"/>
     
@@ -891,9 +891,9 @@
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
     
-      <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    
       <category term="增强for循环" scheme="http://liuhaoan.github.io/tags/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/"/>
+    
+      <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
       <category term="可变参数" scheme="http://liuhaoan.github.io/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
     
