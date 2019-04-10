@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-09T13:31:54.695Z</updated>
+  <updated>2019-04-10T03:48:11.693Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -15,6 +15,201 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaSE复习之——Collections工具类与集合总结</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Collections%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B8%8E%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——Collections工具类与集合总结/</id>
+    <published>2019-04-10T03:18:32.000Z</published>
+    <updated>2019-04-10T03:48:11.693Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Collections中的常用方法"><a href="#Collections中的常用方法" class="headerlink" title="Collections中的常用方法"></a>Collections中的常用方法</h1><ul><li><p>Collections.sort(list)</p><blockquote><p>把集合进行排序</p></blockquote></li><li><p>Collections.banarySearch(list, 需要查的元素)</p><blockquote><p>用二分查找法查询某个集合中的元素，二分查找法前提是集合是有序的，找不到返回-(插入点 - 1）</p></blockquote></li><li><p>Collections.max(list)</p><blockquote><p>根据默认排序返回集合中最大的元素</p></blockquote></li></ul><a id="more"></a><ul><li><p>Collections.min(list)</p><blockquote><p>根据默认排序返回集合中最小的元素</p></blockquote></li><li><p>Collections.reverse(list)</p><blockquote><p>反转集合</p></blockquote></li><li><p>Collections.shuffle(list)</p><blockquote><p>随机置换，可以洗牌。</p></blockquote></li></ul><h1 id="集合总结"><a href="#集合总结" class="headerlink" title="集合总结"></a>集合总结</h1><ul><li><p>Collection</p><ul><li><p>List(存取有序,有索引,可以重复)</p><ul><li>ArrayList<blockquote><p>底层是数组实现的,线程不安全,查找和修改快,增和删比较慢</p></blockquote></li><li>LinkedList<blockquote><p>底层是链表实现的,线程不安全,增和删比较快,查找和修改比较慢</p></blockquote></li><li>Vector<blockquote><p>底层是数组实现的,线程安全的,无论增删改查都慢</p><p>如果查找和修改多,用ArrayList<br>如果增和删多,用LinkedList<br>如果都多,用ArrayList</p></blockquote></li></ul></li><li><p>Set(存取无序,无索引,不可以重复)</p><ul><li>HashSet<blockquote><p>底层是哈希算法实现</p><ul><li>LinkedHashSet<br>底层是链表实现,但是也是可以保证元素唯一,和HashSet原理一样</li></ul></blockquote></li><li>TreeSet<blockquote><p>底层是二叉树算法实现</p><p>一般在开发的时候<code>不需要对存储的元素排序</code>,所以在开发的时候大多用<code>HashSet,HashSet</code>的效率比较高</p><p>TreeSet在<code>面试的时候</code>比较多,问你有几种排序方式,和几种排序方式的区别</p></blockquote></li></ul></li></ul></li></ul><ul><li>Map<ul><li>HashMap<blockquote><p>底层是哈希算法,针对键</p><ul><li>LinkedHashMap<br>底层是链表,针对键</li></ul></blockquote></li><li>TreeMap<blockquote><p>底层是二叉树算法,针对键</p></blockquote></li></ul></li></ul><p><strong>ps：开发中用HashMap比较多</strong></p><h1 id="面试题之——TreeSet或者TreeMap有几种排序方式和区别"><a href="#面试题之——TreeSet或者TreeMap有几种排序方式和区别" class="headerlink" title="面试题之——TreeSet或者TreeMap有几种排序方式和区别"></a>面试题之——TreeSet或者TreeMap有<code>几种排序方式</code>和<code>区别</code></h1><h3 id="TreeSet或者TreeMap排序的两种方式"><a href="#TreeSet或者TreeMap排序的两种方式" class="headerlink" title="TreeSet或者TreeMap排序的两种方式"></a>TreeSet或者TreeMap排序的两种方式</h3><ul><li><p>第一种</p><blockquote><p>构造TreeSet集合什么都不传，就默认使用类中的Comparable的顺序，也就是compareTo方法。（传入集合的自定义对象实现了Comparable接口则用自定义类中重写的compareTo方法）</p></blockquote></li><li><p>第二种</p><blockquote><p>构造TreeSet集合传入Comparator比较器，那么优先按照比较器顺序排序。</p></blockquote></li></ul><p>引用自<a href="/2019/04/10/javaSE复习之——TreeSet类/">javaSE复习之——TreeSet类</a></p><ul><li>ps：<blockquote><p>1、在开发中，<code>单列集合存储重复元素优先考虑ArrayList</code>，<code>不重复的元素优先考虑HashSet</code>，<code>双列集合直接考虑HashMap</code> </p><p>2、单列集合（collection）中Set集合类型其实底层都依赖map集合，它封装了map集合，当中只使用到了key，而value用固定的值替代(Object对象)。</p><p>3、tree类型的map和set集合平时都不常用，但是<strong><code>面试会用</code></strong>，一般问你有<strong><code>几种排序方式</code></strong>,和<strong><code>几种排序方式的区别</code></strong></p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Collections中的常用方法&quot;&gt;&lt;a href=&quot;#Collections中的常用方法&quot; class=&quot;headerlink&quot; title=&quot;Collections中的常用方法&quot;&gt;&lt;/a&gt;Collections中的常用方法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Collections.sort(list)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把集合进行排序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Collections.banarySearch(list, 需要查的元素)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用二分查找法查询某个集合中的元素，二分查找法前提是集合是有序的，找不到返回-(插入点 - 1）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Collections.max(list)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;根据默认排序返回集合中最大的元素&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="集合总结" scheme="http://liuhaoan.github.io/tags/%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93/"/>
+    
+      <category term="Collections工具类" scheme="http://liuhaoan.github.io/tags/Collections%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+      <category term="面试题之——TreeSet或者TreeMap有几种排序方式和区别" scheme="http://liuhaoan.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B9%8B%E2%80%94%E2%80%94TreeSet%E6%88%96%E8%80%85TreeMap%E6%9C%89%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F%E5%92%8C%E5%8C%BA%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Map类</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Map%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——Map类/</id>
+    <published>2019-04-10T02:54:56.000Z</published>
+    <updated>2019-04-10T03:13:41.372Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="map集合的概述"><a href="#map集合的概述" class="headerlink" title="map集合的概述"></a>map集合的概述</h1><blockquote><p>它是将<strong>键</strong>映射到<strong>值</strong>的对象，类似python中的字典，<code>它是无序的</code>。</p></blockquote><a id="more"></a><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote><p>1、一个map对象不能包含重复的键</p><p>2、一个键只能映射到一个值</p><p>3、map接口的实现分为hashMap和treeMap<br>ps：只要是hash算法实现的集合，那么它都是无序的。</p><p>4、map集合不能直接进行迭代。</p><ul><li><p><strong>解决方法1（底层调用原map集合太多）</strong><br>利用keySet获取所有键的对象，然后迭代这个对象逐个get获取值，这样可以从侧面迭代map集合。<br>ps：利用增强for循环可以更简便的拿到map集合中的每个值。</p></li><li><p><strong>解决方法2（推荐使用）：</strong><br>利用entrySet方法获取一个键值对Entry对象，然后迭代或者增强for循环这个Entry对象然后逐个获取值即可。</p></li></ul><p><strong>注意事项：</strong><br>传入引用数据类型时，必须重写hashCode和equals方法</p></blockquote><h3 id="map和colllection的不同："><a href="#map和colllection的不同：" class="headerlink" title="map和colllection的不同："></a>map和colllection的不同：</h3><blockquote><p>1、map是双列的，collection是单列的</p><p>2、map键唯一，collection只有它的子体系Set是唯一的<br><strong>ps：</strong>其实set集合是依赖与map的hash算法的，只是set集合中把map集合封装了一下，里面只使用了键，而值用object对象填充</p><p>3、Map的数据结构只针对键有效，和值无关；collection的数据结构针对元素有效</p></blockquote><h3 id="创建map对象"><a href="#创建map对象" class="headerlink" title="创建map对象"></a>创建map对象</h3><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">String</span>, <span class="built_in">Integer</span>&gt; <span class="built_in">map</span> = <span class="literal">new</span> hashMap&lt;&gt;();</span><br></pre></td></tr></table></figure><h3 id="map集合中的方法"><a href="#map集合中的方法" class="headerlink" title="map集合中的方法"></a>map集合中的方法</h3><ul><li>添加方法：<blockquote><p>.put(key, value)<br>向map集合中添加一个键值对元素，新添加返回null，覆盖返回被覆盖的值</p></blockquote></li><li>删除方法：<blockquote><p>.clear()<br>删除全部键值对元素</p><p>.remove(key)<br>删除指定键对应的键值对</p></blockquote></li><li>判断方法：<blockquote><p>.containsKey(key)<br>判断集合中是否包含指定的键</p><p>.containsValue(value)<br>判断集合中是否包含指定的值</p><p>.isEmpty()<br>判断集合是否为空</p></blockquote></li><li>获取功能：<blockquote><p>.entrySet()<br>拿到map集合的键值对象，返回set&lt;map.Entry&lt;K,V&gt;&gt;<br>ps：Map.Entry是Map接口的内部接口，它实现了将键和值封装成了一个Entry对象，储存再Set集合中。</p><p>.get(key)<br>根据键获取值 </p><p>.keySet()<br>获取集合中所有键的集合，返回Set<k></k></p><p>.values()<br>获取集合中所有值的集合，返回Collection<v></v></p></blockquote></li><li>长度功能：<blockquote><p>.size()<br>返回键值对个数</p></blockquote></li></ul><h3 id="linkedHashMap特点"><a href="#linkedHashMap特点" class="headerlink" title="linkedHashMap特点"></a>linkedHashMap特点</h3><blockquote><p>它是有序的，怎么存就怎么打印</p></blockquote><h3 id="TreeMap特点："><a href="#TreeMap特点：" class="headerlink" title="TreeMap特点："></a>TreeMap特点：</h3><blockquote><p>1、可以用来排序，值是唯一的，等等</p><p>2、传入引用数据类型时，必须重写compareTo方法，否则无法判断值的唯一性，会报错。</p><p>3、具体笔记在<a href="/2019/04/10/javaSE复习之——TreeSet类/">TreeSet集合</a>中介绍</p></blockquote><h3 id="hashtable和hashMap区别（面试题）："><a href="#hashtable和hashMap区别（面试题）：" class="headerlink" title="hashtable和hashMap区别（面试题）："></a>hashtable和hashMap区别（面试题）：</h3><ul><li>共同点：<blockquote><p>1、底层都依赖hash算法</p><p>2、都是双列集合</p></blockquote></li></ul><ul><li>不同点：<blockquote><p>1、HashMap是<code>线程不安全的</code>，效率高，jdk1.2版本出现的</p><p>2、Hashtable是<code>线程安全的</code>，效率相对第，jdk1.0版本出现的</p><p>3、HashMaop<code>可以</code>储存<strong>null键</strong>和<strong>null值</strong></p><p>4、Hashtable<code>不可以</code>储存<strong>null键</strong>和<strong>null值</strong></p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;map集合的概述&quot;&gt;&lt;a href=&quot;#map集合的概述&quot; class=&quot;headerlink&quot; title=&quot;map集合的概述&quot;&gt;&lt;/a&gt;map集合的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它是将&lt;strong&gt;键&lt;/strong&gt;映射到&lt;strong&gt;值&lt;/strong&gt;的对象，类似python中的字典，&lt;code&gt;它是无序的&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="Map类" scheme="http://liuhaoan.github.io/tags/Map%E7%B1%BB/"/>
+    
+      <category term="linkedHashMap类" scheme="http://liuhaoan.github.io/tags/linkedHashMap%E7%B1%BB/"/>
+    
+      <category term="TreeMap类" scheme="http://liuhaoan.github.io/tags/TreeMap%E7%B1%BB/"/>
+    
+      <category term="hashtable和hashMap区别（面试题）" scheme="http://liuhaoan.github.io/tags/hashtable%E5%92%8ChashMap%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——TreeSet类</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94TreeSet%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——TreeSet类/</id>
+    <published>2019-04-10T02:32:14.000Z</published>
+    <updated>2019-04-10T02:54:13.960Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="TreeSet的概述"><a href="#TreeSet的概述" class="headerlink" title="TreeSet的概述"></a>TreeSet的概述</h1><blockquote><p>它是一个<code>二叉树集合</code>，<code>小的（负数）放在左边</code>，<code>大的（正数）放在右边</code>，并且对集合元素进行排序，并且<code>可以保证元素的唯一性</code>，也就是去除重复，它的主要功能是排序。<strong>它依赖map集合</strong></p></blockquote><a id="more"></a><h3 id="TreeSet特点："><a href="#TreeSet特点：" class="headerlink" title="TreeSet特点："></a>TreeSet特点：</h3><ul><li>TreeSet集合存储元素取决于<code>compareTo方法</code>的<strong>返回值</strong>。<blockquote><p><strong>返回0：</strong><br>表示作比较的两个对象是相等的，这时集合不存这个元素。</p><p><strong>返回负数：</strong><br>表示要存入的元素小于上一个作比较元素，然后把这个元素放在作比较元素的左边，如果它的左边还有元素就再进行比较</p><p><strong>返回正数：</strong><br>表示大于上一个元素，这时把这个元素放在上一个元素的右边，如果右边还有元素，就再进行比较。</p></blockquote></li></ul><h3 id="TreeSet存元素的原理"><a href="#TreeSet存元素的原理" class="headerlink" title="TreeSet存元素的原理"></a>TreeSet存元素的原理</h3><blockquote><p>首先存入第一个元素（根元素），然后再存入第二个元素时调用<code>compareTo方法</code>取到<strong>返回值</strong>，然后根据返回值存元素；</p><p>如果之前已经存了n个元素，那么调用compareTo逐次与每个元素作比较，</p></blockquote><h3 id="TreeSet取元素原理"><a href="#TreeSet取元素原理" class="headerlink" title="TreeSet取元素原理"></a>TreeSet取元素原理</h3><blockquote><p>从最小的开始取，也就是从左向右取，<code>先取根元素左边的元素</code>，如果根元素左边的元素下面还有元素就先从那里开始取，这里也是从左到右的原理，取根元素右边元素也是同理，从左边向右边取元素，如果左边或右边元素下面还有元素，那么也是遵循从左到右的原则。</p><p><strong>注意：</strong>左边元素全部取完后再慢慢向右边取</p></blockquote><h4 id="为什么存入自定义对象的时候会报错？"><a href="#为什么存入自定义对象的时候会报错？" class="headerlink" title="为什么存入自定义对象的时候会报错？"></a>为什么存入自定义对象的时候会报错？</h4><ul><li><strong>原因：</strong><blockquote><p>因为TreeSet会对集合元素进行排序，而它不知道自定义对象按照什么方法来排序，所以会报错。</p></blockquote></li><li><strong>解决方法：</strong><blockquote><p>让自定义对象这个类去实现Comparable接口，然后重写compareTo方法，此方法返回0则集合只能存一个对象，返回1按照存的顺序排序，返回-1按照存的顺序的倒叙存。</p></blockquote></li></ul><h3 id="重写compareTo例子"><a href="#重写compareTo例子" class="headerlink" title="重写compareTo例子"></a>重写compareTo例子</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> compareTo(Student o) &#123;</span><br><span class="line"><span class="keyword">int</span> num = o.<span class="keyword">sum</span> - <span class="keyword">this</span>.<span class="keyword">sum</span>;</span><br><span class="line"><span class="keyword">return</span> num == <span class="number">0</span> ? <span class="number">1</span> : num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>ps：比较字符串可以调用字符串的conpareTo方法比较</strong></p><h1 id="TreeSet比较器Comparator的概述"><a href="#TreeSet比较器Comparator的概述" class="headerlink" title="TreeSet比较器Comparator的概述"></a>TreeSet比较器Comparator的概述</h1><blockquote><p>可以自定义对TreeSet集合进行排序</p></blockquote><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><blockquote><p>首先创建一个类并且让这个类<code>实现</code>Comparator接口，然后重写<code>compare</code>方法，最后在<code>创建TreeSet集合对象的时候</code>创建这个类的对象传入即可。</p></blockquote><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote><p>compare方法中第一个参数是调用的对象，第二个参数是被比较集合中的对象</p></blockquote><h3 id="两种排序方式的区别"><a href="#两种排序方式的区别" class="headerlink" title="两种排序方式的区别"></a>两种排序方式的区别</h3><blockquote><p>1、构造TreeSet集合什么都不传，就默认使用类中的Comparable的顺序，也就是compareTo方法。（传入集合的自定义对象实现了Comparable接口则用自定义类）</p><p>2、构造TreeSet集合传入Comparator比较器，那么优先按照比较器顺序排序。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;TreeSet的概述&quot;&gt;&lt;a href=&quot;#TreeSet的概述&quot; class=&quot;headerlink&quot; title=&quot;TreeSet的概述&quot;&gt;&lt;/a&gt;TreeSet的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;它是一个&lt;code&gt;二叉树集合&lt;/code&gt;，&lt;code&gt;小的（负数）放在左边&lt;/code&gt;，&lt;code&gt;大的（正数）放在右边&lt;/code&gt;，并且对集合元素进行排序，并且&lt;code&gt;可以保证元素的唯一性&lt;/code&gt;，也就是去除重复，它的主要功能是排序。&lt;strong&gt;它依赖map集合&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="TreeSet类" scheme="http://liuhaoan.github.io/tags/TreeSet%E7%B1%BB/"/>
+    
+      <category term="Comparator比较器" scheme="http://liuhaoan.github.io/tags/Comparator%E6%AF%94%E8%BE%83%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——HashSet类</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94HashSet%E7%B1%BB/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——HashSet类/</id>
+    <published>2019-04-10T02:09:18.000Z</published>
+    <updated>2019-04-10T02:33:09.875Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote><p>他没有自己特殊的方法，它的方法和<a href="/2019/04/09/javaSE复习之——Collection集合框架/">Collection</a>一样，HashSet集合<code>不能存重复的数据</code>，并且是<code>无顺序</code>的。</p></blockquote><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><blockquote><p>1、没有索引</p><p>2、不可以重复</p><p>3、无顺序（存和取不一致）</p></blockquote><a id="more"></a><h3 id="为为什么要存储自定义对象"><a href="#为为什么要存储自定义对象" class="headerlink" title="为为什么要存储自定义对象"></a>为为什么要存储自定义对象</h3><blockquote><p>因为别人的类我们不知道它重写了哪些方法来保证元素的一致性。</p></blockquote><h3 id="HashSet集合存集合的原理"><a href="#HashSet集合存集合的原理" class="headerlink" title="HashSet集合存集合的原理"></a>HashSet集合存集合的原理</h3><blockquote><p>加入每个元素都会先调用<code>hashCold</code>方法来生成一个Hash值，这个值就相当于存那个元素的地址，如果hash值不一样就<code>不会调用equals方法</code>判断，如果hash值相同就通过equals方法对比在<code>同一个地址中</code>的数据是不是相同的，相同丢弃不相同就存入。</p></blockquote><h3 id="HashSet中遇到的常见问题："><a href="#HashSet中遇到的常见问题：" class="headerlink" title="HashSet中遇到的常见问题："></a>HashSet中遇到的常见问题：</h3><ul><li>为什么在集合中存入自定义对象的时候<code>重复的数据</code>也会被存进去？<blockquote><p><strong>原因1:</strong><br>因为父类的hashCold方法会为每一个元素生成不一样的hash值，所以导致<code>地址不一样</code></p><p><strong>原因2:</strong><br>父类的equals方法对比的时对象的地址，而不是对象里面的值</p><p><strong>解决方法：</strong><br>在自定义的类中重写equals方法和hashCold方法</p></blockquote></li></ul><h3 id="为什么尽量使用计算hash值的方法来判断两个我们知道相等的对象是否相等？"><a href="#为什么尽量使用计算hash值的方法来判断两个我们知道相等的对象是否相等？" class="headerlink" title="为什么尽量使用计算hash值的方法来判断两个我们知道相等的对象是否相等？"></a>为什么尽量使用<code>计算hash值</code>的方法来判断两个我们知道<code>相等的对象是否相等</code>？</h3><blockquote><p><strong>原因：</strong><br>HashSet集合加入元素的顺序是<code>先判断hash值</code>如果hash值一样就调用equals判断，如果我们用算法让<code>相同的对象值计算出相同的hash值</code>，<code>不同的对象值计算出不同的hash值</code>，那么就可以让程序<code>少调用一次equals方法</code>，这样可以提高效率。</p><p><strong>注意事项：</strong><br>重写hashCold方法时，<code>属性相同</code>的对象hash值一定要一样，<code>属性不一样</code>的对象hash值要<strong>尽量</strong>不一样（提高效率）</p></blockquote><h3 id="重写hashCold中的面试题："><a href="#重写hashCold中的面试题：" class="headerlink" title="重写hashCold中的面试题："></a>重写hashCold中的面试题：</h3><ul><li>为什么使用Eclipse重写的hashCold方法中，为了让传入对象计算的hash值不一样，而定义的一个用来算法计算的值是31？<blockquote><p><strong>原因1</strong>：它是一个质数，它只能被1和本省整除，这样可以减小两个对象计算的hash值相同的概率</p><p><strong>原因2</strong>：31这个数不大也不小，太小了计算的值容易重复，太大了容易超过int范围。</p><p><strong>原因3</strong>：31这个数好算，它是2的5次方-1，也就是2的二进制位向左移动5位。</p></blockquote></li></ul><h3 id="LinkedHashSet的概述"><a href="#LinkedHashSet的概述" class="headerlink" title="LinkedHashSet的概述"></a>LinkedHashSet的概述</h3><blockquote><p>它的底层是<code>链表</code>实现,并且是非线程安全的，也是Set集合中<code>唯一 一个</code>能保证怎么存就怎么取的集合对象，因为它的父类是HashSet，所以也是<code>保证元素唯一</code>的，它的原理与HashSet一样。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;他没有自己特殊的方法，它的方法和&lt;a href=&quot;/2019/04/09/javaSE复习之——Collection集合框架/&quot;&gt;Collection&lt;/a&gt;一样，HashSet集合&lt;code&gt;不能存重复的数据&lt;/code&gt;，并且是&lt;code&gt;无顺序&lt;/code&gt;的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;特点：&quot;&gt;&lt;a href=&quot;#特点：&quot; class=&quot;headerlink&quot; title=&quot;特点：&quot;&gt;&lt;/a&gt;特点：&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;1、没有索引&lt;/p&gt;
+&lt;p&gt;2、不可以重复&lt;/p&gt;
+&lt;p&gt;3、无顺序（存和取不一致）&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="HashSet类" scheme="http://liuhaoan.github.io/tags/HashSet%E7%B1%BB/"/>
+    
+      <category term="LinkedHashSet类" scheme="http://liuhaoan.github.io/tags/LinkedHashSet%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——增强for循环、JDK5新特性与可变参数</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF%E3%80%81JDK5%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%8E%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——增强for循环、JDK5新特性与可变参数/</id>
+    <published>2019-04-10T01:54:58.000Z</published>
+    <updated>2019-04-10T02:04:55.964Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="增强for循环的概述"><a href="#增强for循环的概述" class="headerlink" title="增强for循环的概述"></a>增强for循环的概述</h1><blockquote><p>简化数值与集合的遍历，不需要那么麻烦了，它的底层依赖的是<code>iterator迭代器</code>。</p></blockquote><h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">for</span><span class="params">(创建一个临时变量储存数据：需要遍历的数组或者集合)</span></span> &#123;</span><br><span class="line">在这里使用那个临时变量就好了。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>eclipse可以直接输入fore然后按提示快捷键</p><p>ps：只要可以用迭代器迭代，那么就可以用增强for循环。</p><a id="more"></a><h1 id="JDK5新特性"><a href="#JDK5新特性" class="headerlink" title="JDK5新特性"></a>JDK5新特性</h1><blockquote><p>可以导入类里的<code>静态方法</code>，不过意义不大，开发不用，但是要看得懂。</p></blockquote><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> 包名.类名.方法名</span><br></pre></td></tr></table></figure><h1 id="可变参数的概述"><a href="#可变参数的概述" class="headerlink" title="可变参数的概述"></a>可变参数的概述</h1><blockquote><p>定义方法的时候<code>不知道该定义多少个参数</code>,我们就可以用到可变参数</p></blockquote><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="literal">void</span> a(数据类型 <span class="params">...</span> 变量名)</span><br></pre></td></tr></table></figure><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote><p>1、这里的变量其实底层是一个<code>数组</code></p><p>2、如果一个方法里有多个参数，那么可变参数<code>一定要放在最后面</code></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;增强for循环的概述&quot;&gt;&lt;a href=&quot;#增强for循环的概述&quot; class=&quot;headerlink&quot; title=&quot;增强for循环的概述&quot;&gt;&lt;/a&gt;增强for循环的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;简化数值与集合的遍历，不需要那么麻烦了，它的底层依赖的是&lt;code&gt;iterator迭代器&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;使用方法：&quot;&gt;&lt;a href=&quot;#使用方法：&quot; class=&quot;headerlink&quot; title=&quot;使用方法：&quot;&gt;&lt;/a&gt;使用方法：&lt;/h3&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(创建一个临时变量储存数据：需要遍历的数组或者集合)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	在这里使用那个临时变量就好了。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;eclipse可以直接输入fore然后按提示快捷键&lt;/p&gt;
+&lt;p&gt;ps：只要可以用迭代器迭代，那么就可以用增强for循环。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="增强for循环" scheme="http://liuhaoan.github.io/tags/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/"/>
+    
+      <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="可变参数" scheme="http://liuhaoan.github.io/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
+    
+      <category term="静态导入" scheme="http://liuhaoan.github.io/tags/%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——泛型</title>
+    <link href="http://liuhaoan.github.io/2019/04/10/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E6%B3%9B%E5%9E%8B/"/>
+    <id>http://liuhaoan.github.io/2019/04/10/javaSE复习之——泛型/</id>
+    <published>2019-04-10T01:18:54.000Z</published>
+    <updated>2019-04-10T03:16:05.856Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="泛型的概述"><a href="#泛型的概述" class="headerlink" title="泛型的概述"></a>泛型的概述</h1><blockquote><p>可以把泛型理解成<code>“参数化类型”</code>，他可以在类、接口和方法中使用，分别被称为<code>泛型类、泛型接口、泛型方法</code>。</p></blockquote><h3 id="泛型类的使用"><a href="#泛型类的使用" class="headerlink" title="泛型类的使用"></a>泛型类的使用</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection<span class="tag">&lt;<span class="name">泛型</span>&gt;</span> =  new Collection<span class="tag">&lt;&gt;</span>();</span><br></pre></td></tr></table></figure><ul><li>定义方法的作用<blockquote><p>指定自己需要使用的数据类型。</p></blockquote></li></ul><a id="more"></a><h3 id="泛型接口的定义："><a href="#泛型接口的定义：" class="headerlink" title="泛型接口的定义："></a>泛型接口的定义：</h3><figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Inter</span>&lt;E&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure><h3 id="泛型类的定义与接口的实现"><a href="#泛型类的定义与接口的实现" class="headerlink" title="泛型类的定义与接口的实现"></a>泛型类的定义与接口的实现</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">press</span>&lt;E&gt; <span class="title">implements</span> <span class="title">Inter</span>&lt;String&gt; &#123; &#125;</span></span><br><span class="line">/<span class="regexp">/在这个类中用E代替传入的数据类型即可</span></span><br></pre></td></tr></table></figure><ul><li>定义类的作用：<blockquote><p>在创建这个类的引用或者对象时，可以自己指定数据类型。ArrayList这个类就是这样定义的。</p></blockquote></li></ul><h3 id="泛型类中方法使用定义好的泛型"><a href="#泛型类中方法使用定义好的泛型" class="headerlink" title="泛型类中方法使用定义好的泛型"></a>泛型类中方法使用<code>定义好</code>的泛型</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">aa</span><span class="params">()</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure><blockquote><p>ps：在创建这个泛型类的时候就把这个E给赋值了，赋的值时自己定义的数据类型，可以在方法中直接使用E，当然这个E可以定义成其他的符号。</p></blockquote><h3 id="泛型方法的定义"><a href="#泛型方法的定义" class="headerlink" title="泛型方法的定义"></a>泛型方法的定义</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>&lt;T&gt; <span class="title">aaa</span>(<span class="params"></span>)</span> &#123;&#125;</span><br></pre></td></tr></table></figure><blockquote><p>作用：</p><p>让类中的某个方法有自己的泛型。</p></blockquote><ul><li>注意事项：<blockquote><p>1、在定义了泛型的类中最好不要定义某个<code>方法特有的泛型</code><br>2、<code>静态方法</code>因为在类的加载就加载了，所以不能使用类的泛型，<code>只能声明自己的泛型</code>。</p></blockquote></li></ul><p>ps：可以把泛型看作一个变量来理解。</p><h3 id="泛型定义示例"><a href="#泛型定义示例" class="headerlink" title="泛型定义示例"></a>泛型定义示例</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String ages[])</span> </span>&#123;</span><br><span class="line">person&lt;String&gt; p =<span class="keyword">new</span> person&lt;String&gt;();</span><br><span class="line"><span class="comment">//创建完之后，E就等于String了</span></span><br><span class="line"></span><br><span class="line">p.b(<span class="literal">true</span>);</span><br><span class="line"><span class="comment">//调用后b这个方法中T的类型就等于Boolean了</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span>&lt;E&gt; &#123;</span></span><br><span class="line"><span class="keyword">private</span> E a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>&lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">b</span><span class="params">(T tt)</span> </span>&#123;</span><br><span class="line">E s;</span><br><span class="line">System.out.println(tt);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="泛型作用"><a href="#泛型作用" class="headerlink" title="泛型作用"></a>泛型作用</h3><blockquote><p>限制某个集合只能存什么类型的数据,<code>防止出现数据的安全隐患</code>。</p></blockquote><h3 id="泛型的好处："><a href="#泛型的好处：" class="headerlink" title="泛型的好处："></a>泛型的好处：</h3><blockquote><p>1、提高了<code>安全性</code>（因为能限制只能存什么数据，所以把<code>运行期</code>的错误转移到了<code>编译期</code>）</p><p>2、省去了数据需要从Object强转的麻烦</p></blockquote><h3 id="泛型的注意事项"><a href="#泛型的注意事项" class="headerlink" title="泛型的注意事项"></a>泛型的注意事项</h3><blockquote><p>1、泛型的数据类型一定要时<code>引用数据类型</code>。</p><p>2、不要把泛型数据类型定义成<code>Object</code>，因为没有任何意义。</p></blockquote><h3 id="jdk1-7版本新特性：菱形泛型"><a href="#jdk1-7版本新特性：菱形泛型" class="headerlink" title="jdk1.7版本新特性：菱形泛型"></a>jdk1.7版本新特性：<code>菱形泛型</code></h3><blockquote><p>解析：创建对象时，<code>等号前面</code>&lt;&gt;里写了泛型，那么后面&lt;&gt;里可以不写数据类型，因为两个尖括号放一起很想菱形，所以叫做<code>菱形泛型</code>。</p></blockquote><h3 id="泛型高级之——通配符？"><a href="#泛型高级之——通配符？" class="headerlink" title="泛型高级之——通配符？"></a>泛型高级之——通配符？</h3><ul><li><p>&lt;?&gt;</p>  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList<span class="php"><span class="meta">&lt;?</span>&gt; a = <span class="keyword">new</span> ArrayList&lt;&gt;();</span></span><br></pre></td></tr></table></figure><blockquote><p>当我们遇到<code>右边</code>返回对象时，这时我们不知道返回对象的泛型(类型)是什么，那么我们左边就可以用通配符”?”来替代。</p></blockquote></li><li><p>&lt;？ extends E&gt;</p><blockquote><p>向下限定，表示只能传入E<code>或者它的子类</code>。</p></blockquote></li></ul><h1 id="泛型的边界定义"><a href="#泛型的边界定义" class="headerlink" title="泛型的边界定义"></a>泛型的边界定义</h1><ul><li><p>&lt;？ extends E&gt;：</p><blockquote><p>泛型固定上边界，向下限定，表示只能传入E或者它的子类。</p></blockquote></li><li><p>&lt;? super E&gt;:</p><blockquote><p>泛型固定下边界，向上限定，表示只能传入E或者它的父类</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;泛型的概述&quot;&gt;&lt;a href=&quot;#泛型的概述&quot; class=&quot;headerlink&quot; title=&quot;泛型的概述&quot;&gt;&lt;/a&gt;泛型的概述&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;可以把泛型理解成&lt;code&gt;“参数化类型”&lt;/code&gt;，他可以在类、接口和方法中使用，分别被称为&lt;code&gt;泛型类、泛型接口、泛型方法&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;泛型类的使用&quot;&gt;&lt;a href=&quot;#泛型类的使用&quot; class=&quot;headerlink&quot; title=&quot;泛型类的使用&quot;&gt;&lt;/a&gt;泛型类的使用&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Collection&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;泛型&lt;/span&gt;&amp;gt;&lt;/span&gt; =  new Collection&lt;span class=&quot;tag&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;定义方法的作用&lt;blockquote&gt;
+&lt;p&gt;指定自己需要使用的数据类型。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="泛型" scheme="http://liuhaoan.github.io/tags/%E6%B3%9B%E5%9E%8B/"/>
+    
+      <category term="泛型边界定义" scheme="http://liuhaoan.github.io/tags/%E6%B3%9B%E5%9E%8B%E8%BE%B9%E7%95%8C%E5%AE%9A%E4%B9%89/"/>
+    
+  </entry>
   
   <entry>
     <title>javaSE复习之——Collection集合框架</title>
@@ -602,9 +797,9 @@
       <category term="网络攻防" scheme="http://liuhaoan.github.io/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
     
     
-      <category term="Python" scheme="http://liuhaoan.github.io/tags/Python/"/>
-    
       <category term="网络攻防" scheme="http://liuhaoan.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
+    
+      <category term="Python" scheme="http://liuhaoan.github.io/tags/Python/"/>
     
       <category term="生成树协议欺骗" scheme="http://liuhaoan.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97/"/>
     

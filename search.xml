@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[javaSE复习之——Collections工具类与集合总结]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Collections%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B8%8E%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[Collections中的常用方法 Collections.sort(list) 把集合进行排序 Collections.banarySearch(list, 需要查的元素) 用二分查找法查询某个集合中的元素，二分查找法前提是集合是有序的，找不到返回-(插入点 - 1） Collections.max(list) 根据默认排序返回集合中最大的元素 Collections.min(list) 根据默认排序返回集合中最小的元素 Collections.reverse(list) 反转集合 Collections.shuffle(list) 随机置换，可以洗牌。 集合总结 Collection List(存取有序,有索引,可以重复) ArrayList 底层是数组实现的,线程不安全,查找和修改快,增和删比较慢 LinkedList 底层是链表实现的,线程不安全,增和删比较快,查找和修改比较慢 Vector 底层是数组实现的,线程安全的,无论增删改查都慢 如果查找和修改多,用ArrayList如果增和删多,用LinkedList如果都多,用ArrayList Set(存取无序,无索引,不可以重复) HashSet 底层是哈希算法实现 LinkedHashSet底层是链表实现,但是也是可以保证元素唯一,和HashSet原理一样 TreeSet 底层是二叉树算法实现 一般在开发的时候不需要对存储的元素排序,所以在开发的时候大多用HashSet,HashSet的效率比较高 TreeSet在面试的时候比较多,问你有几种排序方式,和几种排序方式的区别 Map HashMap 底层是哈希算法,针对键 LinkedHashMap底层是链表,针对键 TreeMap 底层是二叉树算法,针对键 ps：开发中用HashMap比较多 面试题之——TreeSet或者TreeMap有几种排序方式和区别TreeSet或者TreeMap排序的两种方式 第一种 构造TreeSet集合什么都不传，就默认使用类中的Comparable的顺序，也就是compareTo方法。（传入集合的自定义对象实现了Comparable接口则用自定义类中重写的compareTo方法） 第二种 构造TreeSet集合传入Comparator比较器，那么优先按照比较器顺序排序。 引用自javaSE复习之——TreeSet类 ps： 1、在开发中，单列集合存储重复元素优先考虑ArrayList，不重复的元素优先考虑HashSet，双列集合直接考虑HashMap 2、单列集合（collection）中Set集合类型其实底层都依赖map集合，它封装了map集合，当中只使用到了key，而value用固定的值替代(Object对象)。 3、tree类型的map和set集合平时都不常用，但是面试会用，一般问你有几种排序方式,和几种排序方式的区别]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>集合总结</tag>
+        <tag>Collections工具类</tag>
+        <tag>面试题之——TreeSet或者TreeMap有几种排序方式和区别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——Map类]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Map%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[map集合的概述 它是将键映射到值的对象，类似python中的字典，它是无序的。 特点 1、一个map对象不能包含重复的键 2、一个键只能映射到一个值 3、map接口的实现分为hashMap和treeMapps：只要是hash算法实现的集合，那么它都是无序的。 4、map集合不能直接进行迭代。 解决方法1（底层调用原map集合太多）利用keySet获取所有键的对象，然后迭代这个对象逐个get获取值，这样可以从侧面迭代map集合。ps：利用增强for循环可以更简便的拿到map集合中的每个值。 解决方法2（推荐使用）：利用entrySet方法获取一个键值对Entry对象，然后迭代或者增强for循环这个Entry对象然后逐个获取值即可。 注意事项：传入引用数据类型时，必须重写hashCode和equals方法 map和colllection的不同： 1、map是双列的，collection是单列的 2、map键唯一，collection只有它的子体系Set是唯一的ps：其实set集合是依赖与map的hash算法的，只是set集合中把map集合封装了一下，里面只使用了键，而值用object对象填充 3、Map的数据结构只针对键有效，和值无关；collection的数据结构针对元素有效 创建map对象1map&lt;String, Integer&gt; map = new hashMap&lt;&gt;(); map集合中的方法 添加方法： .put(key, value)向map集合中添加一个键值对元素，新添加返回null，覆盖返回被覆盖的值 删除方法： .clear()删除全部键值对元素 .remove(key)删除指定键对应的键值对 判断方法： .containsKey(key)判断集合中是否包含指定的键 .containsValue(value)判断集合中是否包含指定的值 .isEmpty()判断集合是否为空 获取功能： .entrySet()拿到map集合的键值对象，返回set&lt;map.Entry&lt;K,V&gt;&gt;ps：Map.Entry是Map接口的内部接口，它实现了将键和值封装成了一个Entry对象，储存再Set集合中。 .get(key)根据键获取值 .keySet()获取集合中所有键的集合，返回Set .values()获取集合中所有值的集合，返回Collection 长度功能： .size()返回键值对个数 linkedHashMap特点 它是有序的，怎么存就怎么打印 TreeMap特点： 1、可以用来排序，值是唯一的，等等 2、传入引用数据类型时，必须重写compareTo方法，否则无法判断值的唯一性，会报错。 3、具体笔记在TreeSet集合中介绍 hashtable和hashMap区别（面试题）： 共同点： 1、底层都依赖hash算法 2、都是双列集合 不同点： 1、HashMap是线程不安全的，效率高，jdk1.2版本出现的 2、Hashtable是线程安全的，效率相对第，jdk1.0版本出现的 3、HashMaop可以储存null键和null值 4、Hashtable不可以储存null键和null值]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>Map类</tag>
+        <tag>linkedHashMap类</tag>
+        <tag>TreeMap类</tag>
+        <tag>hashtable和hashMap区别（面试题）</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——TreeSet类]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94TreeSet%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[TreeSet的概述 它是一个二叉树集合，小的（负数）放在左边，大的（正数）放在右边，并且对集合元素进行排序，并且可以保证元素的唯一性，也就是去除重复，它的主要功能是排序。它依赖map集合 TreeSet特点： TreeSet集合存储元素取决于compareTo方法的返回值。 返回0：表示作比较的两个对象是相等的，这时集合不存这个元素。 返回负数：表示要存入的元素小于上一个作比较元素，然后把这个元素放在作比较元素的左边，如果它的左边还有元素就再进行比较 返回正数：表示大于上一个元素，这时把这个元素放在上一个元素的右边，如果右边还有元素，就再进行比较。 TreeSet存元素的原理 首先存入第一个元素（根元素），然后再存入第二个元素时调用compareTo方法取到返回值，然后根据返回值存元素； 如果之前已经存了n个元素，那么调用compareTo逐次与每个元素作比较， TreeSet取元素原理 从最小的开始取，也就是从左向右取，先取根元素左边的元素，如果根元素左边的元素下面还有元素就先从那里开始取，这里也是从左到右的原理，取根元素右边元素也是同理，从左边向右边取元素，如果左边或右边元素下面还有元素，那么也是遵循从左到右的原则。 注意：左边元素全部取完后再慢慢向右边取 为什么存入自定义对象的时候会报错？ 原因： 因为TreeSet会对集合元素进行排序，而它不知道自定义对象按照什么方法来排序，所以会报错。 解决方法： 让自定义对象这个类去实现Comparable接口，然后重写compareTo方法，此方法返回0则集合只能存一个对象，返回1按照存的顺序排序，返回-1按照存的顺序的倒叙存。 重写compareTo例子1234public int compareTo(Student o) &#123; int num = o.sum - this.sum; return num == 0 ? 1 : num;&#125; ps：比较字符串可以调用字符串的conpareTo方法比较 TreeSet比较器Comparator的概述 可以自定义对TreeSet集合进行排序 使用方法 首先创建一个类并且让这个类实现Comparator接口，然后重写compare方法，最后在创建TreeSet集合对象的时候创建这个类的对象传入即可。 特点 compare方法中第一个参数是调用的对象，第二个参数是被比较集合中的对象 两种排序方式的区别 1、构造TreeSet集合什么都不传，就默认使用类中的Comparable的顺序，也就是compareTo方法。（传入集合的自定义对象实现了Comparable接口则用自定义类） 2、构造TreeSet集合传入Comparator比较器，那么优先按照比较器顺序排序。]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>TreeSet类</tag>
+        <tag>Comparator比较器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——HashSet类]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94HashSet%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[概述 他没有自己特殊的方法，它的方法和Collection一样，HashSet集合不能存重复的数据，并且是无顺序的。 特点： 1、没有索引 2、不可以重复 3、无顺序（存和取不一致） 为为什么要存储自定义对象 因为别人的类我们不知道它重写了哪些方法来保证元素的一致性。 HashSet集合存集合的原理 加入每个元素都会先调用hashCold方法来生成一个Hash值，这个值就相当于存那个元素的地址，如果hash值不一样就不会调用equals方法判断，如果hash值相同就通过equals方法对比在同一个地址中的数据是不是相同的，相同丢弃不相同就存入。 HashSet中遇到的常见问题： 为什么在集合中存入自定义对象的时候重复的数据也会被存进去？ 原因1:因为父类的hashCold方法会为每一个元素生成不一样的hash值，所以导致地址不一样 原因2:父类的equals方法对比的时对象的地址，而不是对象里面的值 解决方法：在自定义的类中重写equals方法和hashCold方法 为什么尽量使用计算hash值的方法来判断两个我们知道相等的对象是否相等？ 原因：HashSet集合加入元素的顺序是先判断hash值如果hash值一样就调用equals判断，如果我们用算法让相同的对象值计算出相同的hash值，不同的对象值计算出不同的hash值，那么就可以让程序少调用一次equals方法，这样可以提高效率。 注意事项：重写hashCold方法时，属性相同的对象hash值一定要一样，属性不一样的对象hash值要尽量不一样（提高效率） 重写hashCold中的面试题： 为什么使用Eclipse重写的hashCold方法中，为了让传入对象计算的hash值不一样，而定义的一个用来算法计算的值是31？ 原因1：它是一个质数，它只能被1和本省整除，这样可以减小两个对象计算的hash值相同的概率 原因2：31这个数不大也不小，太小了计算的值容易重复，太大了容易超过int范围。 原因3：31这个数好算，它是2的5次方-1，也就是2的二进制位向左移动5位。 LinkedHashSet的概述 它的底层是链表实现,并且是非线程安全的，也是Set集合中唯一 一个能保证怎么存就怎么取的集合对象，因为它的父类是HashSet，所以也是保证元素唯一的，它的原理与HashSet一样。]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>HashSet类</tag>
+        <tag>LinkedHashSet类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——增强for循环、JDK5新特性与可变参数]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF%E3%80%81JDK5%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%8E%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[增强for循环的概述 简化数值与集合的遍历，不需要那么麻烦了，它的底层依赖的是iterator迭代器。 使用方法：123for(创建一个临时变量储存数据：需要遍历的数组或者集合) &#123; 在这里使用那个临时变量就好了。&#125; eclipse可以直接输入fore然后按提示快捷键 ps：只要可以用迭代器迭代，那么就可以用增强for循环。 JDK5新特性 可以导入类里的静态方法，不过意义不大，开发不用，但是要看得懂。 使用方法1import static 包名.类名.方法名 可变参数的概述 定义方法的时候不知道该定义多少个参数,我们就可以用到可变参数 格式1public void a(数据类型 ... 变量名) 注意事项 1、这里的变量其实底层是一个数组 2、如果一个方法里有多个参数，那么可变参数一定要放在最后面]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>增强for循环</tag>
+        <tag>JDK5新特性</tag>
+        <tag>可变参数</tag>
+        <tag>静态导入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaSE复习之——泛型]]></title>
+    <url>%2F2019%2F04%2F10%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E6%B3%9B%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[泛型的概述 可以把泛型理解成“参数化类型”，他可以在类、接口和方法中使用，分别被称为泛型类、泛型接口、泛型方法。 泛型类的使用1Collection&lt;泛型&gt; = new Collection&lt;&gt;(); 定义方法的作用 指定自己需要使用的数据类型。 泛型接口的定义：1interface Inter&lt;E&gt; &#123;&#125; 泛型类的定义与接口的实现12class press&lt;E&gt; implements Inter&lt;String&gt; &#123; &#125;//在这个类中用E代替传入的数据类型即可 定义类的作用： 在创建这个类的引用或者对象时，可以自己指定数据类型。ArrayList这个类就是这样定义的。 泛型类中方法使用定义好的泛型1public E aa() &#123;&#125; ps：在创建这个泛型类的时候就把这个E给赋值了，赋的值时自己定义的数据类型，可以在方法中直接使用E，当然这个E可以定义成其他的符号。 泛型方法的定义1public&lt;T&gt; aaa() &#123;&#125; 作用： 让类中的某个方法有自己的泛型。 注意事项： 1、在定义了泛型的类中最好不要定义某个方法特有的泛型2、静态方法因为在类的加载就加载了，所以不能使用类的泛型，只能声明自己的泛型。 ps：可以把泛型看作一个变量来理解。 泛型定义示例12345678910111213141516public static void main (String ages[]) &#123; person&lt;String&gt; p =new person&lt;String&gt;(); //创建完之后，E就等于String了 p.b(true); //调用后b这个方法中T的类型就等于Boolean了 &#125;class person&lt;E&gt; &#123;private E a;public&lt;T&gt; void b(T tt) &#123; E s; System.out.println(tt); &#125;&#125; 泛型作用 限制某个集合只能存什么类型的数据,防止出现数据的安全隐患。 泛型的好处： 1、提高了安全性（因为能限制只能存什么数据，所以把运行期的错误转移到了编译期） 2、省去了数据需要从Object强转的麻烦 泛型的注意事项 1、泛型的数据类型一定要时引用数据类型。 2、不要把泛型数据类型定义成Object，因为没有任何意义。 jdk1.7版本新特性：菱形泛型 解析：创建对象时，等号前面&lt;&gt;里写了泛型，那么后面&lt;&gt;里可以不写数据类型，因为两个尖括号放一起很想菱形，所以叫做菱形泛型。 泛型高级之——通配符？ &lt;?&gt; 1ArrayList&lt;?&gt; a = new ArrayList&lt;&gt;(); 当我们遇到右边返回对象时，这时我们不知道返回对象的泛型(类型)是什么，那么我们左边就可以用通配符”?”来替代。 &lt;？ extends E&gt; 向下限定，表示只能传入E或者它的子类。 泛型的边界定义 &lt;？ extends E&gt;： 泛型固定上边界，向下限定，表示只能传入E或者它的子类。 &lt;? super E&gt;: 泛型固定下边界，向上限定，表示只能传入E或者它的父类]]></content>
+      <categories>
+        <category>JavaSE 复习</category>
+      </categories>
+      <tags>
+        <tag>泛型</tag>
+        <tag>泛型边界定义</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[javaSE复习之——Collection集合框架]]></title>
     <url>%2F2019%2F04%2F09%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Collection%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%2F</url>
     <content type="text"><![CDATA[集合与数值的区别 1、数组即可以存基本数据类型也可以存引用数据类型(对象) 2、集合只能存引用数据类型，如果存基本数据类型，那么系统会自动装箱成对象。 3、数组的长度是固定的，不能自动增长 4、集合的长度是可变的。 集合与数组的缺点 数组： 长度是固定的，不能自动增加 集合： 会浪费很多空间， 原因：它的部分底层是数组，它增加长度的方法是首先创建长度为10的数组，然后不够就1.5倍增加，直到够存下为止。 Collection集合的继承体系图:123456789101112131415 Collection 单列集合的根接口,它是抽象类，一般用来父类引用子类对象 / \ / \ / \ List Set 有序，有索引，可重复储存 无序，无索引，不可重复储存（我们只要学习如何保证元素不是重复的） / | \ / \ / | \ / \ / | \ / \ ArrayList LinkedList Vector HashSet TreeSet 查改快(直接索引查找) 查改慢(要遍历) 查改略慢 增删慢(考虑增容、拷贝) 增删快 增删慢 线程不安全 线程安全 线程安全 数组实现 链表实现 数组实现 Collection集合的方法 .add() 向集合中存入数据，list集合返回true，Set集合如果集合有相同的数据返回false，否则true。 .remove() 删除 .toArray() 把集合转换成数组输出，如果ArrayList对象加了泛型，那么可以传入某类型数组对象，然后用某类型数组直接引用。 .addAll() 把传入集合加入到调用的集合中 .removeAll() 删除调用集合中与传入集合交集的数据 .containsAll() 判断调用集合中是否有传入集合的数据 .retainAll() 取两个集合的交集，如果传入类有交集那么会把那两个值覆盖调用集合的值，调用的集合改变了就返回true，否则false List集合方法： .add(int index,) 在某个索引添加指定数据 .remove(int index,) 在某个索引删除指定数据，删除了什么就返回什么。一个小问题：remove不会自动装箱，可能会识别错误导致程序出错 .get(int index,) 输出索引对应的数据，所以list可以直接用这个方法遍历数组，不用迭代了。 .set(int index,) 设置指定索引的数据 ps：集合containsAll、removeAll等方法底层都是基于equals方法的，所以在集合中处理对象时，传入对象需要重写object父类的equals方法才能实现效果。 集合迭代的概述： 集合是存储元素，而这些元素需要查看，那么就需要用到迭代，迭代也就是遍历。 迭代使用示例：123456789Collection c = new ArrayList();Iterator it = c.iterator();//.hasNext()判断是否还有数据While(it.hasNext())&#123; System.out.println(it.next()); //.next()获取下一个数据&#125; 迭代器修改数据产生的异常与解决方案： 异常： 在利用迭代器遍历数据时，如果我们在遍历的中途给集合添加数据，那么会出现异常 异常原因： 在创建iterator迭代器时已经把集合的数量给了迭代器，如果中途给集合添加数据就是并发修改了。 解决方法： 使用iterator这个list独有的迭代器，然后调用Itterator自己的add添加数据。 Vector的概述 jdk刚出来他就有了，在jdk1.2版本加入了collection体系，后来因为vector有的功能ArrayList都有，而且还比他强大，所以不用vector了。 Vector与ArrayList的区别 Vector是线程安全的，它的效率相对低也就是查询相对慢； 反之ArrayList它是线程不安全的，但是效率高。 LinkedList集合的概述 使用链表实现的list集合。 数组实现集合与链表实现集合的优缺点： 数组： 查询修改快，但是增删慢 链表： 查询修改慢，但是增删快 集合的面试题——之ArrayList、Vector、linkedList区别： ArrayList： 数组实现，查询修改快，但是增删慢，它是线程不安全的。 LinkedList： 链表实现，查询修改慢，但是增删快，它是线程不安全的。 Vector： 数组实现，相对ArrayList查询慢效率低，因为它是线程安全的。 他们三个的用法： 1、查询多用ArrayList2、增删多用LinkedList3、增删查询都多用ArrayList4、Vector面试的时候用，虽然它是线程安全的，但是在需要线程安全的时候也不用它。 LinkedList的特殊方法 .addFirst() 与 .addLast() 在链表头部与尾部添加数据 .getFirst 与 .getLast() 获取链表头部或者尾部数据 .removeFirst 与 .removeLast() 删除链表头部或者尾部数据 .get() 获取链表指定位置的数据]]></content>
@@ -218,8 +295,8 @@
         <category>网络攻防</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>网络攻防</tag>
+        <tag>Python</tag>
         <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
