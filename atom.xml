@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-11T06:20:54.425Z</updated>
+  <updated>2019-04-11T07:26:30.702Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -17,18 +17,184 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>javaSE复习之——JDK5新特性</title>
-    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——JDK5新特性/</id>
-    <published>2019-04-11T06:20:54.000Z</published>
-    <updated>2019-04-11T06:20:54.425Z</updated>
+    <title>javaSE复习之——Junit单元测试</title>
+    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——Junit单元测试/</id>
+    <published>2019-04-11T07:20:44.000Z</published>
+    <updated>2019-04-11T07:26:30.702Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Junit：单元测试"><a href="#Junit：单元测试" class="headerlink" title="Junit：单元测试"></a>Junit：单元测试</h1><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><blockquote><p>单独测试某个方法的运行，不需要main方法即可直接在被测试的方法处运行</p></blockquote><h3 id="测试分类："><a href="#测试分类：" class="headerlink" title="测试分类："></a>测试分类：</h3><ul><li>黑盒测试<blockquote><p>不需要写代码，给输入值，看程序是否能输出期望的值</p></blockquote></li><li>白盒测试<blockquote><p>需要写代码，关注程序的具体执行流程，ps：Junit是属于白盒测试</p></blockquote></li></ul><a id="more"></a><h3 id="Junit的使用：白盒测试"><a href="#Junit的使用：白盒测试" class="headerlink" title="Junit的使用：白盒测试"></a>Junit的使用：白盒测试</h3><ul><li><p>步骤</p><blockquote><ul><li><strong>定义一个测试类（测试用的例子）</strong><br>建议：<br>测试包名：    被测试的类名    calcullatorTest<br>包名：        xxx.xxx.xxx.Test</li></ul></blockquote><blockquote><ul><li><strong>定义测试方法：可以独立运行</strong><br>建议：<br>方法名：    test测试的方法名<br>返回值：    void<br>参数列表：    空参</li></ul></blockquote><blockquote><ul><li><strong>给方法加@Test注解</strong><br>ps:<br>给方法加上@Test注解即可直接在该方法开始运行，此方法不需要式main方法</li></ul></blockquote></li><li><p>Junit之断言</p><ul><li>方法<blockquote><p>Assert.assertEquals( 期望的结果， 运算的结果)</p></blockquote></li><li>ps：<blockquote><p>期望结果与运算结果相同则显示绿色，否则红色。</p></blockquote></li></ul></li><li><p>Junit实例</p><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">testSub</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">1</span> + <span class="number">1</span>;</span><br><span class="line">Assert.assertEquals(<span class="number">3</span>, i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Junit工具会显示红色的，因为预期和结果不同</span></span><br></pre></td></tr></table></figure></li><li><p>补充</p><ul><li>@Before：<blockquote><p>修饰的方法会在测试 方法被执行前执行，可以用来初始化一些东西</p></blockquote></li><li>@After：<blockquote><p>修饰 的方法会在测试方法执行之后自动执行，可以做一些关闭流之类的操作</p></blockquote></li></ul></li></ul>]]></content>
     
     <summary type="html">
+    
+      &lt;h1 id=&quot;Junit：单元测试&quot;&gt;&lt;a href=&quot;#Junit：单元测试&quot; class=&quot;headerlink&quot; title=&quot;Junit：单元测试&quot;&gt;&lt;/a&gt;Junit：单元测试&lt;/h1&gt;&lt;h3 id=&quot;概念：&quot;&gt;&lt;a href=&quot;#概念：&quot; class=&quot;headerlink&quot; title=&quot;概念：&quot;&gt;&lt;/a&gt;概念：&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;单独测试某个方法的运行，不需要main方法即可直接在被测试的方法处运行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;测试分类：&quot;&gt;&lt;a href=&quot;#测试分类：&quot; class=&quot;headerlink&quot; title=&quot;测试分类：&quot;&gt;&lt;/a&gt;测试分类：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;黑盒测试&lt;blockquote&gt;
+&lt;p&gt;不需要写代码，给输入值，看程序是否能输出期望的值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;白盒测试&lt;blockquote&gt;
+&lt;p&gt;需要写代码，关注程序的具体执行流程，ps：Junit是属于白盒测试&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
+    
+      <category term="Junit单元测试" scheme="http://liuhaoan.github.io/tags/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——JDK9新特性</title>
+    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK9%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——JDK9新特性/</id>
+    <published>2019-04-11T07:14:10.000Z</published>
+    <updated>2019-04-11T07:15:32.089Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>list、set、map接口新增了一个方法“of”<blockquote><ul><li><p>of作用<br>可以给集合一次性添加多个元素</p></li><li><p>使用前提：<br>当集合中的元素个数已经确定了，不在改变时使用</p></li><li><p>注意事项：<br>1、of方法只适用于list、set、map接口，不适用于它的实现类，hashSet等<br>2、of方法的返回值是一个不能改变的集合，集合不能再使用add、put方法添加元素<br>3、set、map几口在调用of方法的时候，不能有重复的元素</p></li></ul></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;list、set、map接口新增了一个方法“of”&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;of作用&lt;br&gt;可以给集合一次性添加多个元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用前提：&lt;br&gt;当集合中的元素个数已经确定了，不在改变时使用&lt;/p&gt;
+&lt;/li&gt;
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——JDK8新特性</title>
+    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK8%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——JDK8新特性/</id>
+    <published>2019-04-11T06:46:00.000Z</published>
+    <updated>2019-04-11T07:19:15.622Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JDK8新特性总汇"><a href="#JDK8新特性总汇" class="headerlink" title="JDK8新特性总汇"></a>JDK8新特性总汇</h1><ul><li>Lambda表达式和函数式接口<blockquote><p>Lambda表达式（也称为闭包）是Java 8中最大和最令人期待的语言改变。它允许我们将函数当成参数传递给某个方法，或者把代码本身当作数据处理</p></blockquote></li></ul><ul><li>接口的默认方法和静态方法<blockquote><p>默认方法和抽象方法之间的区别在于抽象方法需要实现，而默认方法不需要。接口提供的默认方法会被接口的实现类继承或者覆写</p></blockquote></li></ul><a id="more"></a><ul><li>方法引用</li></ul><ul><li>重复注解<blockquote><p>自从Java 5中引入注解以来，这个特性开始变得非常流行，并在各个框架和项目中被广泛使用。不过，注解有一个很大的限制是：在同一个地方不能多次使用同一个注解。Java 8打破了这个限制，引入了重复注解的概念，允许在同一个地方多次使用同一个注解</p></blockquote></li></ul><ul><li>更好的类型推断<blockquote><p>就是创建有泛型类的对象时，后面不用写类型</p></blockquote></li></ul><ul><li>拓宽注解的应用场景<blockquote><p>Java 8拓宽了注解的应用场景。现在，注解几乎可以使用在任何元素上：局部变量、接口类型、超类和接口实现类，甚至可以用在函数的异常定义上。</p></blockquote></li></ul><ul><li>Stream流<blockquote><p>说到Stream便容易想到I/O Stream，而实际上，谁规定“流”一定是“IO流”呢？</p><p>在Java 8中，得益于Lambda所带来的的函数式编程，引入了一个<strong>全新的Stream概念</strong>，用于解决已有集合类库所有的弊端</p></blockquote></li></ul><h1 id="在接口中可以定义有方法体的方法，如果是非静态的，必须使用default，如果是静态的就不用了"><a href="#在接口中可以定义有方法体的方法，如果是非静态的，必须使用default，如果是静态的就不用了" class="headerlink" title="在接口中可以定义有方法体的方法，如果是非静态的，必须使用default，如果是静态的就不用了"></a>在接口中可以定义有方法体的方法，如果是非静态的，必须使用default，如果是静态的就不用了</h1><ul><li>例子：<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Inter <span class="comment">&#123;</span></span><br><span class="line"><span class="comment">public default void print（） &#123;</span></span><br><span class="line"><span class="comment">System.out.println("hello")</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> void <span class="function"><span class="keyword">method</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">System.out.print("static Method")</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure></li></ul><h1 id="在局部内部类中使用内部类以外的变量时，那个变量可以不用final修饰，他在jdk1-8版本之前是一定要用final修饰的"><a href="#在局部内部类中使用内部类以外的变量时，那个变量可以不用final修饰，他在jdk1-8版本之前是一定要用final修饰的" class="headerlink" title="在局部内部类中使用内部类以外的变量时，那个变量可以不用final修饰，他在jdk1.8版本之前是一定要用final修饰的"></a>在局部内部类中使用内部类以外的变量时，那个变量可以不用final修饰，他在jdk1.8版本之前是一定要用final修饰的</h1><ul><li><p>ps：</p><blockquote><p>其实这就是一个语法糖，底层它还是用final修饰了的</p></blockquote></li><li><p>为什么需要使用final修饰？</p><blockquote><p>答：</p><p>因为不用final修饰可能出现数据不一致的问题，如果内部类或者外部类修改了这个变量的值，那么对方是不可能知道的，所以造成了数据不一致的问题。<br>ps：底层详情参考<a href="/2019/04/08/javaSE复习之——面向对象-内部类/">javaSE复习之——面向对象_内部类</a></p><p>数据不一致问题的解决方法就是直接给变量修饰一个final，这就是为什么匿名内部类访问外部类中的变量时，这个变量一定要final修饰的原因</p></blockquote></li></ul><h1 id="函数式-接口-的概述"><a href="#函数式-接口-的概述" class="headerlink" title="函数式 接口 的概述"></a>函数式 接口 的概述</h1><blockquote><p><code>它有且只有一个抽象方法的接口</code>，它适用于函数式编程，也就是函数式接口就是适用于lambda使用的接口，只有确保接口中有且只有一个抽象方法，java中的lambda才能顺利的推导</p></blockquote><h1 id="函数式-编程-的概述"><a href="#函数式-编程-的概述" class="headerlink" title="函数式 编程 的概述"></a>函数式 编程 的概述</h1><blockquote><p>就是使用lambda编程</p></blockquote><ul><li>PS：<blockquote><p>“语法糖”是指使用更加方便，但是原理不变的代码语法。例如遍历集合时使用的for-each语法，其实底层实现原理是迭代器，这就是“语法糖”。从应用层面来讲，java中的Lambda可以被当做是匿名内部类的“语法糖”，<strong>但是二者在原理上是不同的</strong></p></blockquote></li></ul><h3 id="函数式接口的定义："><a href="#函数式接口的定义：" class="headerlink" title="函数式接口的定义："></a>函数式接口的定义：</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 <span class="class"><span class="keyword">interface</span> 接口名称 </span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> 返回值类型 方法名称 （可选参数信息）；</span><br><span class="line"><span class="comment">//其他非抽象方法内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>ps：接口中的抽象方法的 public abstract 是可以省略的</p><h3 id="函数式接口的特点："><a href="#函数式接口的特点：" class="headerlink" title="函数式接口的特点："></a>函数式接口的特点：</h3><ul><li>它有且只有一个抽象方法的 接口</li><li>函数式接口可以包含其他的方法，</li><li></li><li>比如<blockquote><p>默认、静态、私有</p></blockquote></li></ul><h3 id="正如我们所知，接口中可以定义多个抽象方法，而我们的函数式编程只能有一个抽象方法，那么如何确保某个接口中只有一个抽象方法呢？"><a href="#正如我们所知，接口中可以定义多个抽象方法，而我们的函数式编程只能有一个抽象方法，那么如何确保某个接口中只有一个抽象方法呢？" class="headerlink" title="正如我们所知，接口中可以定义多个抽象方法，而我们的函数式编程只能有一个抽象方法，那么如何确保某个接口中只有一个抽象方法呢？"></a>正如我们所知，接口中可以定义多个抽象方法，而我们的函数式编程只能有一个抽象方法，那么如何确保某个接口中只有一个抽象方法呢？</h3><ul><li>答<blockquote><p>使用@FunctionalInterface注解，它的作用是检测接口是否是一个函数式接口</p><ul><li><p>是<br>编译成功</p></li><li><p>否<br>编译失败<br>1、接口中没有抽象方法<br>2、抽象方法有多个</p></li></ul></blockquote></li></ul><h3 id="函数式接口的使用"><a href="#函数式接口的使用" class="headerlink" title="函数式接口的使用"></a>函数式接口的使用</h3><ul><li><p>作为方法的参数 和 返回值类型</p><ul><li><p>例子：</p><ul><li><p>作为参数：</p><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个方法，参数使用函数式接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> show（MyInterface myInterface）&#123;</span><br><span class="line">myInterface.method();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//main方法中调用：其实它重写了method方法，结果是打印hello</span></span><br><span class="line">show(() -&gt; Sysytem.out.<span class="built_in">println</span>(<span class="string">"hello"</span>))</span><br></pre></td></tr></table></figure></li><li><p>作为返回值类型：</p><blockquote><p>如果返回值类型是函数式接口，那么我们可以返回匿名内部类，当然也可以返回一个lambda</p></blockquote></li></ul></li></ul></li></ul><h3 id="常用的函数式接口（使用方法同理）"><a href="#常用的函数式接口（使用方法同理）" class="headerlink" title="常用的函数式接口（使用方法同理）"></a>常用的函数式接口（使用方法同理）</h3><h4 id="Supplier接口"><a href="#Supplier接口" class="headerlink" title="Supplier接口"></a>Supplier接口</h4><blockquote><p>它包含一个无参的方法，T get（）。用来获取一个泛型参数指定类型的数据对象，它被称之为生产型接口，指定接口的泛型是什么类型，那么接口中的get方法就会产生一个什么类型的数据</p><ul><li>例子：<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">String</span> getString(Supplier&lt;<span class="keyword">String</span>&gt; sup) &#123;</span><br><span class="line"><span class="built_in">return</span> sup.<span class="built_in">get</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">String</span> s = getString(() -&gt; <span class="string">"Hello"</span>)</span><br></pre></td></tr></table></figure></li></ul></blockquote><h4 id="Consumer接口："><a href="#Consumer接口：" class="headerlink" title="Consumer接口："></a>Consumer接口：</h4><blockquote><p>Consumer接口正好与Supplier接口相反，它不是产生一个数据，而是消费一个数据，数据类型由泛型决定，它的抽象方法中有一个 void accept（T，t）意为消费一个指定泛型的数据</p></blockquote><ul><li>Consumer接口和Supplier接口的区别：<blockquote><p>1、Consumer是消费<br>2、Supplier是生产</p></blockquote></li></ul><ul><li>什么是消费和生产：<ul><li>消费：<blockquote><p>我们传入一个变量供accept方法使用</p></blockquote></li><li>生产：<blockquote><p>我们利用lambda重写get方法，然后获取一个自己想要的值</p></blockquote></li></ul></li></ul><ul><li><p>默认方法：andThen</p><ul><li><p>作用：</p><blockquote><p>需要两个Consumer接口，可以吧两个Consumer接口组合到一起，再对数据进行消费</p><p>例如：<br>我们要把s变量消费两次，这样写代码就重复了</p>  <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;String&gt; con1</span><br><span class="line">Consumer&lt;String&gt; con2</span><br><span class="line">String s = <span class="string">"hello"</span><span class="comment">;</span></span><br><span class="line">con1.accept(s)<span class="comment">;</span></span><br><span class="line">con2.accept(s)<span class="comment">;</span></span><br></pre></td></tr></table></figure></blockquote><blockquote><p>我们可以这样（下面这段语句和上面是一样的效果）：</p>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">con1</span><span class="selector-class">.andThen</span>(<span class="selector-tag">con2</span>)<span class="selector-class">.accept</span>(<span class="selector-tag">s</span>);</span><br></pre></td></tr></table></figure></blockquote><blockquote><p><strong>ps：这样就实现了组合消费</strong><br><strong>注意：谁写在前面谁先消费</strong></p></blockquote></li></ul></li></ul><h4 id="Predicate接口："><a href="#Predicate接口：" class="headerlink" title="Predicate接口："></a><strong>Predicate接口：</strong></h4><blockquote><p>我们有时候需要对某种数据类型的数据进行判断，从而得到一个Boolean值得结果，我们就可以用到Predicate接口</p></blockquote><ul><li><p>Predicate接口中的方法：</p><ul><li>抽象方法：<strong>test</strong><blockquote><p>用于条件判断</p></blockquote></li><li><p>默认方法：<strong>and（&amp;&amp;与）</strong></p><blockquote><p>可以连接多个判断条件</p></blockquote></li><li><p>默认方法：<strong>or（或）</strong></p><blockquote><p>可以连接多个判断条件</p></blockquote></li><li><p>默认方法：<strong>negate（非，取反）</strong></p><blockquote><p>可以连接多个判断条件</p></blockquote></li></ul></li><li>例子：<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> checkString(<span class="keyword">String</span> s, Predicate&lt;<span class="keyword">String</span>&gt; pre1,Predicate&lt;<span class="keyword">String</span>&gt; pre2)&#123;</span><br><span class="line">    <span class="built_in">return</span> pre1.<span class="keyword">and</span>(pre2).test(s);</span><br><span class="line"><span class="comment">//等价于return pre1.test(s) &amp;&amp; pre2.test(s);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h4 id="Function接口："><a href="#Function接口：" class="headerlink" title="Function接口："></a><strong>Function接口：</strong></h4><blockquote><p>根据一个类型的数据，得到另一个类型的数据，前者为前置条件，后者为后置条件</p></blockquote><ul><li><p>Function接口中的方法：</p><ul><li><p>抽象方法：<strong>R apply（T t）</strong></p><blockquote><p>根据类型T的参数获取类型R的结果，返回一个R类型数据</p></blockquote></li><li><p>默认方法：<strong>andThen</strong></p><blockquote><p>用来进行组合操作，不过它与Consumer接口中的方法区别是，它执行完主方法后，可以把主方法中的的结果传给副方法</p></blockquote></li><li><p>比如：<strong>fun1.andThen(fun2).apply(s)</strong></p><blockquote><p>其中s是String类型，fun1是把String转int，fun2是int转String</p></blockquote></li><li><p>实例：</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Change</span> &#123;</span></span><br><span class="line"><span class="class">    public <span class="type">String</span> change(<span class="type">String</span> <span class="title">s</span>, <span class="type">Function</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; <span class="title">fun1</span>, <span class="type">Function</span>&lt;<span class="type">Integer</span>, <span class="type">String</span>&gt; <span class="title">fun2</span>) &#123;</span></span><br><span class="line"><span class="class">        return fun1.andThen(<span class="title">fun2</span>).apply(<span class="title">s</span>);</span></span><br><span class="line"><span class="class">&#125;</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure></li></ul></li><li><p>main方法调用：</p><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> str = <span class="keyword">new</span> Change().change(<span class="string">"100"</span>, s -&gt; <span class="built_in">Integer</span>.parseInt(s) + <span class="number">10</span>, <span class="built_in">integer</span> -&gt; <span class="built_in">integer</span> + <span class="string">""</span>);</span><br><span class="line">System.<span class="keyword">out</span>.println(str);</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JDK8新特性总汇&quot;&gt;&lt;a href=&quot;#JDK8新特性总汇&quot; class=&quot;headerlink&quot; title=&quot;JDK8新特性总汇&quot;&gt;&lt;/a&gt;JDK8新特性总汇&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Lambda表达式和函数式接口&lt;blockquote&gt;
+&lt;p&gt;Lambda表达式（也称为闭包）是Java 8中最大和最令人期待的语言改变。它允许我们将函数当成参数传递给某个方法，或者把代码本身当作数据处理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;接口的默认方法和静态方法&lt;blockquote&gt;
+&lt;p&gt;默认方法和抽象方法之间的区别在于抽象方法需要实现，而默认方法不需要。接口提供的默认方法会被接口的实现类继承或者覆写&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="JDK8新特性" scheme="http://liuhaoan.github.io/tags/JDK8%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="函数式编程" scheme="http://liuhaoan.github.io/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="函数式接口" scheme="http://liuhaoan.github.io/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——Lambda表达式</title>
+    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——Lambda表达式/</id>
+    <published>2019-04-11T06:36:23.000Z</published>
+    <updated>2019-04-11T06:45:39.099Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="函数式编程思想：lamlbda（jdk8新特性）"><a href="#函数式编程思想：lamlbda（jdk8新特性）" class="headerlink" title="函数式编程思想：lamlbda（jdk8新特性）"></a>函数式编程思想：lamlbda（jdk8新特性）</h1><blockquote><p>在数学中，函数是有输入量，输出量的一套计算方案，相对而言面向对象过分强调“必须通过对象的形式来做事情”，而函数式编程则是尽量忽略面向对象的复杂语法–强调做什么，而不是以什么形式做</p></blockquote><a id="more"></a><h3 id="面向对象思想"><a href="#面向对象思想" class="headerlink" title="面向对象思想"></a>面向对象思想</h3><blockquote><p>找一个对象，调用对象的方法帮我做事，也就是自己找人帮忙做事</p></blockquote><h3 id="函数式编程思想"><a href="#函数式编程思想" class="headerlink" title="函数式编程思想"></a>函数式编程思想</h3><blockquote><p>只要能获取到结果，谁去做都可以，怎么做不重要，只在意结果。</p><ul><li><p>举个很形象的例子：<br>我是老板，我就是要完成这个项目的开发，至于谁去做，怎么做，都不关我的事，我只要结果 </p></li><li><p>再举个例子：<br>当我们创建线程的时候，用已知的方法，最简便的创建方法就是使用匿名内部类，而我们只要重写的run方法，而不是创建的那个匿名内部类</p></li></ul></blockquote><h3 id="lambda表达式于匿名内部类区别"><a href="#lambda表达式于匿名内部类区别" class="headerlink" title="lambda表达式于匿名内部类区别"></a>lambda表达式于匿名内部类区别</h3><ul><li>lambda因为不用创建class字节码文件，所以<strong>效率高于匿名内部类</strong></li></ul><h3 id="使用匿名内部类创建一个线程"><a href="#使用匿名内部类创建一个线程" class="headerlink" title="使用匿名内部类创建一个线程"></a>使用匿名内部类创建一个线程</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               </span><br><span class="line">           &#125;</span><br><span class="line">       &#125;.start();</span><br></pre></td></tr></table></figure><h3 id="使用lambda创建一个线程"><a href="#使用lambda创建一个线程" class="headerlink" title="使用lambda创建一个线程"></a>使用lambda创建一个线程</h3><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread<span class="function"><span class="params">(() -&gt; &#123;</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;)</span>.<span class="title">start</span><span class="params">()</span>;</span></span><br></pre></td></tr></table></figure><p>ps：可以看出，使用lambda代码更加的简洁</p><h3 id="lambda详解："><a href="#lambda详解：" class="headerlink" title="lambda详解："></a>lambda详解：</h3><ul><li>()：即run方法的参数，可以传也可以不传</li><li>-&gt;：代表前面的参数传递给后面的方法体，传递的意思</li><li>{}:里面放重写的run方法中的业务逻辑代码    </li></ul><h3 id="标准格式："><a href="#标准格式：" class="headerlink" title="标准格式："></a>标准格式：</h3><blockquote><p><strong><code>(参数列表) -&gt; {重写的方法中的代码}</code></strong></p></blockquote><p>ps：lambda也可以有返回值</p><h3 id="Lambda使用时的注意事项"><a href="#Lambda使用时的注意事项" class="headerlink" title="Lambda使用时的注意事项"></a>Lambda使用时的注意事项</h3><blockquote><p>1、使用Lambda必须要有接口，并且接口中有且只有一个抽象方法</p><p>2、使用Lambda必须有上下文推断，也就是方法的参数或者局部变量类型必须为Lambda对应接口的类型</p><ul><li>ps：<br>仅有一个抽象方法的接口，称为“函数式接口”</li></ul></blockquote><h3 id="lambda的省略方式"><a href="#lambda的省略方式" class="headerlink" title="lambda的省略方式"></a>lambda的省略方式</h3><blockquote><p>1、参数列表中的参数可以省略参数类型</p><p>2、代码块的{}可以省略，但只限于只有一条语句</p><p>3、return可以省略，直接一条语句返回一个值即可</p><p>4、分号可以省略</p><p>5、参数列表中只有一个参数可以省略括号<br>ps：条需要省略一个就一定要全部都省略</p></blockquote><h3 id="lambda的延迟执行"><a href="#lambda的延迟执行" class="headerlink" title="lambda的延迟执行"></a><strong>lambda的延迟执行</strong></h3><blockquote><p><strong>有些场景的代码执行后，结果不一定会被使用，从而造成性能浪费。而lambda是延迟执行的，所以正好可以作为解决方案，用于提升性能</strong></p></blockquote><h3 id="如何延迟执行？"><a href="#如何延迟执行？" class="headerlink" title="如何延迟执行？"></a>如何延迟执行？</h3><ul><li>答：<blockquote><p>使用lambda表达式时，必须有一个函数式接口（只有一个抽象方法的接口），我们使用lambda表达式时，只要不调用这个接口中的抽象方法，那么lambda表达式中的业务逻辑代码就不会执行</p></blockquote></li></ul><h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><ul><li><p>不使用lambda：</p><blockquote><p>一个方法中传入一个拼接的字符串，无论这个方法适不适用这个字符串，它都会有拼接的过程，如果判断条件不符合，不使用这个字符串的话，那么就造成了资源浪费</p></blockquote></li><li><p>使用lambda：</p><blockquote><p>让那个方法传的参数是一个函数式接口，我们在调用这个方法的时候，使用lambda表达式进行传参，这样在方法中只要因为某些原因不调用这个接口的方法，那么lambda表达式中传入的业务逻辑代码就不会被执行，这样就达到了提升性能的目的</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;函数式编程思想：lamlbda（jdk8新特性）&quot;&gt;&lt;a href=&quot;#函数式编程思想：lamlbda（jdk8新特性）&quot; class=&quot;headerlink&quot; title=&quot;函数式编程思想：lamlbda（jdk8新特性）&quot;&gt;&lt;/a&gt;函数式编程思想：lamlbda（jdk8新特性）&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在数学中，函数是有输入量，输出量的一套计算方案，相对而言面向对象过分强调“必须通过对象的形式来做事情”，而函数式编程则是尽量忽略面向对象的复杂语法–强调做什么，而不是以什么形式做&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="JDK8新特性" scheme="http://liuhaoan.github.io/tags/JDK8%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="Lambda表达式" scheme="http://liuhaoan.github.io/tags/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——JDK7新特性</title>
+    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK7%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——JDK7新特性/</id>
+    <published>2019-04-11T06:33:06.000Z</published>
+    <updated>2019-04-11T06:33:37.582Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JDK7新特性总汇"><a href="#JDK7新特性总汇" class="headerlink" title="JDK7新特性总汇"></a>JDK7新特性总汇</h1><ul><li>二进制字面量（比如0b110，它可以直接写出来，他代表二进制的110，也就是十进制的6）</li><li>数字字面量可以出现下划线（100_00写法不会错，它表示10000）</li><li>switch 语句可以用字符串</li><li>泛型简化、菱形泛型</li><li>异常的多个catch可以合并，每个异常用 | 比如：catch（异常1 | 异常2）</li><li>try-with-resources 语句（jdk1.7标准的异常处理代码，就是之前那个关流的）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;JDK7新特性总汇&quot;&gt;&lt;a href=&quot;#JDK7新特性总汇&quot; class=&quot;headerlink&quot; title=&quot;JDK7新特性总汇&quot;&gt;&lt;/a&gt;JDK7新特性总汇&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;二进制字面量（比如0b110，它可以直接写出来，他代表二进制的110，也
+      
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>javaSE复习之——JDK5新特性</title>
+    <link href="http://liuhaoan.github.io/2019/04/11/javaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://liuhaoan.github.io/2019/04/11/javaSE复习之——JDK5新特性/</id>
+    <published>2019-04-11T06:20:54.000Z</published>
+    <updated>2019-04-11T06:32:42.092Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jdk5新特性总汇"><a href="#jdk5新特性总汇" class="headerlink" title="jdk5新特性总汇"></a>jdk5新特性总汇</h1><ul><li>自动拆箱装箱</li><li>泛型</li><li>可变参数</li><li>静态导入</li><li>增强for循环</li><li>互斥锁</li><li>枚举</li></ul><a id="more"></a><h1 id="枚举的概述"><a href="#枚举的概述" class="headerlink" title="枚举的概述"></a>枚举的概述</h1><blockquote><p>是指将变量的值一 一列出来，变量的值只限于枚举出来的值的范围。</p><ul><li>举例：<br>一周有7天，一年有12个月等</li></ul></blockquote><h3 id="回想单例设计模式"><a href="#回想单例设计模式" class="headerlink" title="回想单例设计模式"></a>回想单例设计模式</h3><blockquote><p>单例类是一个类只能有一个实例，那么多例类就是一个类可以有多个实例，但不是无限个数的实例，而是有个数限制，这就是枚举类</p></blockquote><p>ps：枚举类可以自己实现，也可以通过enum实现枚举类</p><h3 id="枚举的注意事项"><a href="#枚举的注意事项" class="headerlink" title="枚举的注意事项"></a>枚举的注意事项</h3><blockquote><p>1、定义枚举类需要用关键字enum</p><p>2、所有枚举类都是Enum的子类</p><p>3、枚举的第一行上必须是枚举项，也就是案例中的MON等，最后一个枚举项的分号是可以省略的，如果有其他东西就不要省略，建议不省略</p><p>4、枚举类可以有抽象方法，但是枚举项必须重写该方法</p><p>5、枚举类可以有构造器，但是必须是private的</p><p>6、枚举可以在switch中使用</p></blockquote><h3 id="枚举类的常见方法："><a href="#枚举类的常见方法：" class="headerlink" title="枚举类的常见方法："></a>枚举类的常见方法：</h3><ul><li>.ordinal<blockquote><p>返回枚举常量的序数（也就是在枚举声明中的位置，从0开始）</p></blockquote></li><li>.compareTo(传入枚举项)<blockquote><p>把两个枚举项进行比较，比较的是编号，也就是叙述</p></blockquote></li><li>.name<blockquote><p>获取实例名称</p></blockquote></li><li>.valueOf(枚举字节码，枚举项名称)<blockquote><p>通过枚举类的字节码文件与枚举项名称获取枚举项的实例</p></blockquote></li><li>.values<blockquote><p>获取所有枚举项，返回一个数组</p></blockquote></li></ul><h3 id="自己实现枚举类案例"><a href="#自己实现枚举类案例" class="headerlink" title="自己实现枚举类案例"></a>自己实现枚举类案例</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Week3</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> final Week3 MON = <span class="keyword">new</span> Week3(<span class="string">"星期一"</span>) &#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"星期一"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> final Week3 TUE = <span class="keyword">new</span> Week3(<span class="string">"星期二"</span>)&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"星期二"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> final Week3 WED = <span class="keyword">new</span> Week3(<span class="string">"星期三"</span>)&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"星期三"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Week3</span>(<span class="params">String name</span>)</span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//私有构造,不让其他类创建本类对象</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"><span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="通过enum来实现枚举"><a href="#通过enum来实现枚举" class="headerlink" title="通过enum来实现枚举"></a>通过enum来实现枚举</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Week3 &#123;</span><br><span class="line">MON(<span class="string">"星期一"</span>)&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"星期一"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,TUE(<span class="string">"星期二"</span>)&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"星期二"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,WED(<span class="string">"星期三"</span>)&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">System.<span class="keyword">out</span>.println(<span class="string">"星期三"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Week3</span>(<span class="params">String name</span>)</span> &#123;</span><br><span class="line"><span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"><span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;jdk5新特性总汇&quot;&gt;&lt;a href=&quot;#jdk5新特性总汇&quot; class=&quot;headerlink&quot; title=&quot;jdk5新特性总汇&quot;&gt;&lt;/a&gt;jdk5新特性总汇&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;自动拆箱装箱&lt;/li&gt;
+&lt;li&gt;泛型&lt;/li&gt;
+&lt;li&gt;可变参数&lt;/li&gt;
+&lt;li&gt;静态导入&lt;/li&gt;
+&lt;li&gt;增强for循环&lt;/li&gt;
+&lt;li&gt;互斥锁&lt;/li&gt;
+&lt;li&gt;枚举&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+      <category term="枚举" scheme="http://liuhaoan.github.io/tags/%E6%9E%9A%E4%B8%BE/"/>
+    
+      <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
@@ -1101,9 +1267,9 @@
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
     
-      <category term="增强for循环" scheme="http://liuhaoan.github.io/tags/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/"/>
-    
       <category term="JDK5新特性" scheme="http://liuhaoan.github.io/tags/JDK5%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+      <category term="增强for循环" scheme="http://liuhaoan.github.io/tags/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/"/>
     
       <category term="可变参数" scheme="http://liuhaoan.github.io/tags/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
     
@@ -1732,9 +1898,9 @@
     
       <category term="Python" scheme="http://liuhaoan.github.io/tags/Python/"/>
     
-      <category term="网络攻防" scheme="http://liuhaoan.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
-    
       <category term="生成树协议欺骗" scheme="http://liuhaoan.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E6%AC%BA%E9%AA%97/"/>
+    
+      <category term="网络攻防" scheme="http://liuhaoan.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
     
   </entry>
   
@@ -1789,9 +1955,9 @@
       <category term="网络攻防" scheme="http://liuhaoan.github.io/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/"/>
     
     
-      <category term="MD5加密" scheme="http://liuhaoan.github.io/tags/MD5%E5%8A%A0%E5%AF%86/"/>
-    
       <category term="Python" scheme="http://liuhaoan.github.io/tags/Python/"/>
+    
+      <category term="MD5加密" scheme="http://liuhaoan.github.io/tags/MD5%E5%8A%A0%E5%AF%86/"/>
     
   </entry>
   
