@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mysql数据库之——DDL数据库与表的操作]]></title>
+    <url>%2F2019%2F04%2F15%2FMysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94DDL%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[DDL概述 用来定义数据库对象：数据库、表、列等 DDL ： 操作数据库、表（CRUD） C(Create) : 创建 R(Retrieve) ： 查询 U(Update) : 修改 D(Delete) ： 删除 创建数据库 ： create 创建数据库 CREATE DATABASE 数据库名; 判断数据库是否已经存在，不存在则创建数据库 CREATE DATABASE IF NOT EXISTS 数据库名; 创建数据库并指定字符集 CREATE DATABASE 数据库名 CHARACTER SET 字符集; 操作示例 12345678-- 直接创建数据库 db1create database db1;-- 判断是否存在，如果不存在则创建数据库 db2create database if not exists db2;-- 创建数据库并指定字符集为 gbkcreate database db3 default character set gbk; 查询数据库123456-- 查看所有的数据库show databases;-- 查看某个数据库的定义信息show create database db3;show create database db1; 修改数据库 修改数据库默认的字符集 ALTER DATABASE 数据库名 DEFAULT CHARACTER SET 字符集;例子：将 db3 数据库的字符集改成 utf8 1alter database db3 character set utf8; 删除数据库 DROP DATABASE 数据库名;例子：删除 db2 数据库 1drop database db2; 查看正在使用的数据库 SELECT DATABASE(); 使用的一个 mysql 中的全局函数 使用/切换数据库 USE 数据库名;例子： 12345-- 查看正在使用的数据库select database();-- 改变要使用的数据库use db4; 面试题在 MySQL 数据库软件中，有如下三个数据库： test1 test2 test3 登录数据库之后，输入语句：select database test2; 运行结果是什么? 答：这是一条错误的语句，如果要选中一个数据库，应用使用：use test2; DDL 操作表结构 前提先使用某个数据库 创建表1234CREATE TABLE 表名 ( 字段名 1 字段类型 1, 字段名 2 字段类型 2); 关键字说明： CREATE 创建 TABLE 表 MySql数据类型 分类 类型名称 类型说明 整数 tinyInt 微整型：很小的整数(占 8 位二进制) 整数 smallint 小整型：小的整数(占 16 位二进制) 整数 mediumint 中整型：中等长度的整数(占 24 位二进制) 整数 int(integer) 整型：整数类型(占 32 位二进制) 小数 float 单精度浮点数，占 4 个字节 小数 double 双精度浮点数，占 8 个字节 日期 time 表示时间类型 日期 date 表示日期类型 日期 datetime 同时可以表示日期和时间类型 字符串 char(m) 固定长度的字符串，无论使用几个字符都占满全部，M 为 0~255 之间的整 字符串 varchar(m) 可变长度的字符串，使用几个字符就占用几个，M 为 0~65535 之间的整数 二进制 tinyblob Big Large Object 允许长度 0~255 字节 二进制 blob 允许长度 0~65535 字节 二进制 mediumblob 允许长度 0~167772150 字节 二进制 longblob 允许长度 0~4294967295 字节 文本 tinytext 允许长度 0~255 字节 文本 text 允许长度 0~65535 字节 文本 mediumtext 允许长度 0~167772150 字节 文本 longtext 允许长度 0~4294967295 字节 案例 : 创建 student 表包含 id,name,birthday 字段 12345create table student ( id int, -- 整数 name varchar(20), -- 字符串 birthday date -- 生日，最后没有逗号); 查看表 查看某个数据库中的所有表 SHOW TABLES; 查看表结构 DESC 表名; 查看创建表的 SQL 语句 SHOW CREATE TABLE 表名; 例子： 查看 test1 数据库中的所有表12use test1;show tables; 例子： 查看 student 表的结构1desc student; 例子： 查看 student 的创建表 SQL 语句12345678show create table student;//结果CREATE TABLE `student` ( `id` int(11) DEFAULT NULL, `name` varchar(20) DEFAULT NULL, `birthday` date DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 快速创建一个表结构相同的表 CREATE TABLE 新表名 LIKE 旧表名; 例子：123-- 创建一个 s1 的表与 student 结构相同create table s1 like student;desc s1; 删除表 直接删除表 DROP TABLE 表名; 判断表是否存在，如果存在则删除表 DROP TABLE IF EXISTS 表名; 例子：12345-- 直接删除表 s1 表drop table s1;-- 判断表是否存在并删除 s1 表drop table if exists `s1`; 修改表结构 添加表列 ADD ALTER TABLE 表名 ADD 列名 类型; 修改列类型 MODIFY ALTER TABLE 表名 MODIFY 列名 新的类型; 修改列名 CHANGE ALTER TABLE 表名 CHANGE 旧列名 新列名 类型; 删除列 DROP ALTER TABLE 表名 DROP 列名; 修改表名 RENAME TABLE 表名 TO 新表名;例子：将学生表 student 改名成 student2 1rename table student to student2; 修改字符集 character set ALTER TABLE 表名 character set 字符集例子：将 student2 表的编码修改成 gbk 1alter table student2 character set gbk;]]></content>
+      <categories>
+        <category>MySql</category>
+      </categories>
+      <tags>
+        <tag>MySql数据库DDL</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mysql数据库之——数据库的概念]]></title>
+    <url>%2F2019%2F04%2F15%2FMysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%A6%82%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[数据库的基本概念 数据库的英文单词：DataBase 简称：DB 什么是数据库 用于存储和管理数据的仓库 数据库的特点： 持久化存储数据的，其实数据库就是一个文件系统 方便存储和管理数据 使用了统一的方式操作数据库——SQL 常见的数据库软件： Oracle Mysql（开源免费的，但是被Oracle收购后6.x开始需要收费了） Sql Server（通常C#、.net用） DB2 ······· Mysql是如何存储数据？ 数据文件全部存在C://ProgramData/MySql/MySql 5.5/data中 一个文件夹 = 一个数据库 文件夹中的一个.frm结尾文件 = 数据库中的一张表 SQL的分类 DDL ： 操作数据库、表 DML ： 增、删、改表中的数据 DQL ： 查询表中的数据 DCL ： 定义数据库的访问权限和安全级别，以及创建用户 MySql的语法 每条语句以分号结尾，如果在 SQLyog 中不是必须加的。 SQL 中不区分大小写，关键字中认为大写和小写是一样的 3 种注释： --空格 单行注释 /* */ 多行注释 # 这是 mysql 特有的注释方式]]></content>
+      <categories>
+        <category>MySql</category>
+      </categories>
+      <tags>
+        <tag>数据库的概念</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[javaSE复习之——注解]]></title>
     <url>%2F2019%2F04%2F15%2FjavaSE%E5%A4%8D%E4%B9%A0%E4%B9%8B%E2%80%94%E2%80%94%E6%B3%A8%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[注解概念 它是用来说明程序的，我们知道注释是给程序员看的，那么注解就是给程序看的。 注解的作用 用来编译检查 通过代码中的标识，编译器可以实现最基本的编译检查 撰写文档 通过代码里的注解生成文档 代码分析 通过代码里标识的注解对代码进行分析（使用反射） JDK中预定义好的注解 @Deprecated 意思是“废弃的，过时的”，标识方法后表示这个方法是过时的，不建议用，但还是可以用 @Override 意思是“重写、覆盖”，用来检查是否继承自父类（接口）的 @SuppressWarnings 意思是“压制警告”，编译器会有很多黄色的警告，我们不想看到它就可以使用SuppressWarnings使用方法：@SuppressWarnings（“all”）作用是压制所有警告 一般传递参数“all” 自定义注解 格式（分为两部分）： 1234元注解public @interface 注解名称&#123; 属性列表&#125; 本质：它本质上就是一个接口，该接口默认继承Annotation接口 public interface 接口名称(注解名称) extends java.lang.annotation.Annotation {} 属性：接口中的抽象方法 要求： 1、属性的返回值类型由下列取值 基本数据类型 String 枚举 注解 以上类型的数组 2、定义了属性，在使用时需要给属性赋值 如果定义属性时使用Default关键字给属性默认初始化值，则使用注解时，可以不进行属性的赋值。 如果只有一个属性需要赋值，并且属性的名称是value，则value可以省略，直接定义值即可 数组赋值时，使用{}包裹。如果数组中只有一个值，{}可以省略 属性的使用@注解名(属性名 = 属性值) 元注解：用于描述注解的注解 @Target：描述注解能够作用的位置 ElementType取值： TYPE:可以作用在类上 METHOD：可以作用于方法上 FIELD：可以作用在成员变量上 @Retention：描述注解被保留的阶段 @Retention(RetentionPolicy.RUNTIME)：当前被描述的注解会被保留到class字节码中，并且被jvm读取到 @Documented 描述注解被提取到api文档中（在文档中显示） @Inherited 描述注解被子类继承（子类继承父类的注解） 使用注解（解析注解） 自定义一个注解，比如这个注解的属性有：className() 和 MtehodName() 创建一个类，使用这个注解，并且给属性赋值 获取该类的字节码文件对象 1Class&lt;刚刚创建的类名&gt; reflectClass = 类名.class 获取注解对象 1注解名 an = reflectClass.getAnnotation(注解名.class) ps：其实就是在内存中生成了一个该注解接口的子类实现对象12345678910//在内存中生成的子类实现对象public alcss ProImpl implements Pro &#123; public String className() &#123; return "com.liuhaoan.annotation.Demo1"; &#125; public String methodName &#123; return "show"; &#125;&#125; 调用注解抽象方法获取配置属性值12String className = an.className();String methodName = an.methodName(); 小结 以后大多数时候，我们会使用注解，而不是自定义注解 注解给谁用？ 编译器 解析程序（比如测试框架） 注解不是程序的一部分，而是类似于标签。]]></content>
@@ -641,9 +664,9 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
+        <tag>面试题</tag>
         <tag>Integer</tag>
         <tag>Integer面试题</tag>
-        <tag>面试题</tag>
       </tags>
   </entry>
   <entry>
@@ -770,8 +793,8 @@
         <category>网络攻防</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>网络攻防</tag>
+        <tag>Python</tag>
         <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
