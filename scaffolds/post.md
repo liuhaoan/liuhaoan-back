@@ -2,6 +2,6 @@
 title: {{ title }}
 date: {{ date }}
 tags: 
-categories: JavaSE 复习
+categories: MySql
 copyright: true
 ---
