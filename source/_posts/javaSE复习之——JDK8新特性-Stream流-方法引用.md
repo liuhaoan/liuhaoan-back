@@ -6,12 +6,15 @@ date: 2019-04-11 17:12:04
 tags:
 - Stream流方法引用
 - Stream流
+- 方法引用
 ---
 # 方法引用
 > 它主要是对Lambda表达式的一种优化，在我们使用Lambda表达式的时候，我们实际上传递进去的代码是一种解决方案，比如拿什么参数做什么。
 > 
 > 但是有一种情况：
 > 如果我们在Lambda中所使用的一种方案，在其他地方已经存在相同的方案，那么我们还需要再写重复的逻辑了嘛？？？
+
+<!--more-->
 
 #### 举个例子
 > 我们创建一个函数式接口，这个接口专门打印字符串，那么我们使用Lambda时需要的代码量就比较多
@@ -99,3 +102,176 @@ public class Demo04MethodRef {
 	}
 }
 ```
+
+
+#### 通过类目引用**静态成员**
+
+> 由于在 java.lang.Math 类中已经存在了静态方法 abs ，所以当我们需要通过Lambda来调用该方法时，有两种写
+法。
+
+- 定义一个函数式接口
+
+```
+@FunctionalInterface
+public interface Calcable {
+	int calc(int num);
+}
+
+```
+
+- 第一种写法是使用Lambda表达式：
+
+```
+public class Demo05Lambda {
+	private static void method(int num, Calcable lambda) {
+		System.out.println(lambda.calc(num));
+	}
+	public static void main(String[] args) {
+		method(‐10, n ‐> Math.abs(n));
+	}
+}
+```
+
+- 不过我们有一种更好的写法，那就是用方法引用
+
+```
+public class Demo06MethodRef {
+	private static void method(int num, Calcable lambda) {
+		System.out.println(lambda.calc(num));
+	}
+	public static void main(String[] args) {
+		method(‐10, Math::abs);
+	}
+}
+```
+
+- 在这两个例子中，下面两种写法是相等的
+	- Lambda表达式： `n -> Math.abs(n)`
+	- 方法引用： `Math::abs`
+
+
+
+#### 通过super引用成员方法
+
+- 定义一个函数式接口
+
+```
+@FunctionalInterface
+public interface Greetable {
+	void greet();
+}
+
+```
+
+- 父类Human类
+
+```
+public class Human {
+	public void sayHello() {
+		System.out.println("Hello!");
+	}
+}
+```
+
+- 子类Man类
+
+```
+public class Man extends Human {
+	@Override
+	public void sayHello() {
+		System.out.println("大家好,我是Man!");
+	}
+	//定义方法method,参数传递Greetable接口
+	public void method(Greetable g){
+		g.greet();
+	}
+	public void show(){
+		method(super::sayHello);
+	}
+}
+```
+
+#### 通过this引用成员方法
+- 与super引用父类成员方法同理
+
+
+#### 类的构造器的引用（构造方法，也就是通过引用创建对象）
+- 以构造器引用使用 `类名称::new` 的格式表示。
+
+- 首先有个Person类
+
+```
+public class Person {
+	private String name;
+
+	public Person(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+```
+
+- 然后创建一个Person对象的函数式接口
+
+```
+public interface PersonBuilder {
+	Person buildPerson(String name);
+}
+```
+
+- 通过构造器引用来调用
+
+```
+public class Demo10ConstructorRef {
+	public static void printName(String name, PersonBuilder builder) {
+		System.out.println(builder.buildPerson(name).getName());
+	}
+
+	public static void main(String[] args) {
+		printName("赵丽颖", Person::new);
+	}
+}
+
+```
+
+- 下面两种写法是等效的：
+	- Lambda表达式： `name -> new Person(name)`
+	- 方法引用： `Person::new`
+
+
+#### 数组构造器的引用（创建数组）
+> 数组也是 Object 的子类对象，所以同样具有构造器，只是语法稍有不同
+
+
+- 首先定义一个函数式接口
+
+```
+@FunctionalInterface
+public interface ArrayBuilder {
+	int[] buildArray(int length);
+}
+```
+
+- 使用构造器引用创建数组
+
+```
+public class Demo12ArrayInitRef {
+	private static int[] initArray(int length, ArrayBuilder builder) {
+		return builder.buildArray(length);
+	}
+	public static void main(String[] args) {
+		int[] array = initArray(10, int[]::new);
+	}
+}
+```
+
+- 下面两种写法是等效的：
+	- Lambda表达式： `length -> new int[length]`
+	- 方法引用： `int[]::new`
