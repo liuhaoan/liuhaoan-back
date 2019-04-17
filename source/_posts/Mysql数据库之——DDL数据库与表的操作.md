@@ -29,7 +29,7 @@ tags:
 	> CREATE DATABASE 数据库名 CHARACTER SET 字符集;
 
 - 操作示例
-	```
+```
 -- 直接创建数据库 db1
 create database db1;
 
@@ -63,6 +63,9 @@ alter database db3 character set utf8;
 **例子：删除 db2 数据库**
 ```
 drop database db2;
+
+//判断是否存在，存在则删除
+drop database if exists db2
 ```
 - 查看正在使用的数据库
 	> SELECT DATABASE(); 使用的一个 mysql 中的全局函数
@@ -92,15 +95,32 @@ use db4;
 > **前提先使用某个数据库**
 
 ### 创建表
+- 语法：
 ```
-CREATE TABLE 表名 (
-	字段名 1 字段类型 1,
-	字段名 2 字段类型 2
+create table 表名(
+	列名1 数据类型1，
+	列名2 数据类型3，
+	···
+	列名n 数据类型n
 );
 ```
 - 关键字说明：
 	- CREATE 创建
 	- TABLE 表
+
+- **datatime和timestamp类型的区别：**
+	- 如果不给这个字段赋值，或者赋值为null，那么timestamp类型的字段则使用当前的系统时间自动赋值，而datatime则不会
+
+- 例子：创建一个学生表
+
+```
+create table student(
+	id int,
+	name varchar(32),
+	age int
+);
+```
+
 
 #### MySql数据类型
 分类 | 类型名称 | 类型说明
@@ -116,6 +136,7 @@ CREATE TABLE 表名 (
 日期 | time | 表示时间类型
 日期 | date | 表示日期类型
 日期 | datetime | 同时可以表示日期和时间类型
+日期 | timestamp | 表示时间错
 ||
 字符串 | char(m) | 固定长度的字符串，无论使用几个字符都占满全部，M 为 0~255 之间的整
 字符串 | varchar(m) | 可变长度的字符串，使用几个字符就占用几个，M 为 0~65535 之间的整数
@@ -187,6 +208,7 @@ create table s1 like student;
 desc s1;
 
 ```
+
 
 
 ### 删除表
