@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuhaoan.github.io/"/>
-  <updated>2019-04-17T09:39:00.703Z</updated>
+  <updated>2019-04-18T03:34:17.235Z</updated>
   <id>http://liuhaoan.github.io/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mysql数据库之——数据库的设计</title>
+    <link href="http://liuhaoan.github.io/2019/04/18/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://liuhaoan.github.io/2019/04/18/Mysql数据库之——数据库的设计/</id>
+    <published>2019-04-18T01:08:47.000Z</published>
+    <updated>2019-04-18T03:34:17.235Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="多表之间的关系"><a href="#多表之间的关系" class="headerlink" title="多表之间的关系"></a>多表之间的关系</h1><ul><li><p>一对一（了解）</p><blockquote><p>比如：学生与学号<br>分析：一个学生只能有一个学号，一个学号只能对应一个学生</p></blockquote></li><li><p>一对多（多对一）</p><blockquote><p>比如：学生和班级<br>分析：一个学生只能在一个班级中，一个班级可以有多个学生</p></blockquote></li><li><p>多对多</p><blockquote><p>比如：学生和课程<br>分析：一个学生可以有多个课程，一个课程也可以被多个学生学习</p></blockquote></li></ul><a id="more"></a><h1 id="实现它们之间的关系"><a href="#实现它们之间的关系" class="headerlink" title="实现它们之间的关系"></a>实现它们之间的关系</h1><ul><li><p>一对多（多对一）</p><blockquote><p>在多的一方建立外键，只想一的一方的主键<br>例如：一个学生的信息表中，可以定义一个外键指向班级信息表中的主键</p></blockquote></li><li><p>多对多</p><blockquote><p>多对多的关系需要建立一张中间表来实现<br>实现方法：<br>在中间表中必须有两个以上字段，这两个字段都是外键，并且分别对应着另外两张表的主键</p></blockquote></li><li><p>一对一</p><blockquote><p>任意一方添加外键指向另一张表的主键，并且外键必须加唯一约束。<br>然而问题来了。。。。<br>既然是一对一，它们是唯一的，那么为什么不合成一张表，而多此一举做两张表呢。。所以一对一关系用的很少</p></blockquote></li></ul><h1 id="数据库的设计范式（三大范式）"><a href="#数据库的设计范式（三大范式）" class="headerlink" title="数据库的设计范式（三大范式）"></a>数据库的设计范式（三大范式）</h1><blockquote><p>设计数据库时，需要遵循的一些规范</p></blockquote><p>设计关系数据库时，遵循不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，越高的范式数据库冗余越小</p><h4 id="目前关系数据库有6种范式"><a href="#目前关系数据库有6种范式" class="headerlink" title="目前关系数据库有6种范式"></a>目前关系数据库有6种范式</h4><ul><li>第一范式（1NF）</li><li>第二范式（2NF）</li><li>第三范式（3NF）</li><li>巴斯-科德范式（BCNF）</li><li>第四范式（4NF）</li><li>第五范式（5NF又称为完美范式）</li></ul><p>ps：通常我们用到的是前三大范式，做到了这三大范式，我们的数据库设计就几乎没什么问题了</p><h1 id="三大范式的要求"><a href="#三大范式的要求" class="headerlink" title="三大范式的要求"></a>三大范式的要求</h1><ul><li><p>第一范式</p><blockquote><p>每个列都是原子列，也就是不能一个列分成两个列，或者说多个字段不能合并成一个字段</p></blockquote></li><li><p>第二范式：在1NF的基础上，非码属性必须完全依赖于码，也就是消除非主属性对主码的部分依赖</p><blockquote><p> 1、<strong>函数依赖</strong>：A –&gt; B,如果通过A属性（属性组）的值，可以确定一个唯一B属性的值，则成B依赖于A<br> 例如：学号 –&gt; 姓名          （学号，课程名称） –&gt; 分数</p><p> 2、<strong>完全函数依赖</strong>：A –&gt; B,如果A是一个属性组，则B属性值得确定需要依赖于A属性组中所有的属性值，则B依赖于A<br> 例如：（学号，课程名称） –&gt; 分数</p><p> 3、<strong>部分函数依赖</strong>：A –&gt; B,如果A是一个属性组，则B属性值的确定只需要依赖于A属性组中某一些值即可<br> 例如：（学号，课程名称） –&gt; 姓名</p><p> 4、<strong>传递函数依赖</strong>：A –&gt; B , B –&gt; C.如果通过A属性（属性组）的值，可以确定B属性的值，再通过B属性(属性组)的值可以确定唯一C属性的值，则称C传递函数依赖于A</p><p> 5、<strong>码</strong>：如果在一张表中，一个属性或者属性组，被其他所有属性所完全依赖，则称这个属性（属性组），为该表的码<br> 主属性：码属性组中的所有属性<br> 非主属性：除去码属性组的属性</p></blockquote></li><li><p>第三范式：在2NF的基础上，任何非主属性不依赖与其他非主属性（也就是在2NF基础上消除传递依赖）</p></li></ul><p>总结：第一范式让所有字段都是原子项，第二范式就是消除部分依赖，第三范式就是消除传递依赖</p><h1 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h1><ul><li><p>备份</p><blockquote><p>mysqldump -u用户名 -p密码 数据库名称 &gt; 保存的路径</p></blockquote></li><li><p>还原：</p><blockquote><p>1、登入数据库<br>2、创建数据库<br>3、使用数据库<br>4、执行文件 source 文件路径</p></blockquote></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;多表之间的关系&quot;&gt;&lt;a href=&quot;#多表之间的关系&quot; class=&quot;headerlink&quot; title=&quot;多表之间的关系&quot;&gt;&lt;/a&gt;多表之间的关系&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;一对一（了解）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;比如：学生与学号&lt;br&gt;分析：一个学生只能有一个学号，一个学号只能对应一个学生&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一对多（多对一）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;比如：学生和班级&lt;br&gt;分析：一个学生只能在一个班级中，一个班级可以有多个学生&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;多对多&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;比如：学生和课程&lt;br&gt;分析：一个学生可以有多个课程，一个课程也可以被多个学生学习&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="MySql" scheme="http://liuhaoan.github.io/categories/MySql/"/>
+    
+    
+      <category term="数据库的设计" scheme="http://liuhaoan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="数据库的备份和还原" scheme="http://liuhaoan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F/"/>
+    
+      <category term="数据库的三大范式" scheme="http://liuhaoan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mysql数据库之——表的约束</title>
     <link href="http://liuhaoan.github.io/2019/04/17/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94%E8%A1%A8%E7%9A%84%E7%BA%A6%E6%9D%9F/"/>
     <id>http://liuhaoan.github.io/2019/04/17/Mysql数据库之——表的约束/</id>
     <published>2019-04-17T08:00:43.000Z</published>
-    <updated>2019-04-17T09:39:00.703Z</updated>
+    <updated>2019-04-18T01:58:13.612Z</updated>
     
     <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><blockquote><p>对表中的数据进行限定，从而保证数据的正确性、有效性、完整性</p></blockquote><h3 id="约束的分类"><a href="#约束的分类" class="headerlink" title="约束的分类"></a>约束的分类</h3><ul><li>主键约束：primary key<blockquote><p>注意事项：<br>1、它自带<strong>非空</strong>且<strong>唯一</strong><br>2、主键就是表中的唯一标识<br>3、一张表只能有一个字段为主键</p></blockquote></li><li>非空约束：not null</li><li>唯一约束：uniqe<blockquote><p>注意：限定的值可以有多个null</p></blockquote></li><li>外键约束：foreign key</li></ul><a id="more"></a><h3 id="添加约束的方式"><a href="#添加约束的方式" class="headerlink" title="添加约束的方式"></a>添加约束的方式</h3><ul><li>1、在创建表是在数据类型后面接上约束</li><li>2、使用修改表的命令修改</li></ul><h3 id="对表的约束操作"><a href="#对表的约束操作" class="headerlink" title="对表的约束操作"></a>对表的约束操作</h3><p>例子：利用修改表来删除<strong>非空约束</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">MODIFY</span> <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>);</span><br><span class="line">ps：通用方法，特殊的下面给出了</span><br></pre></td></tr></table></figure></p><p>例子：利用修改表来<strong>添加约束</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">MODIFY</span> <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加相关约束时，必须保证该字段的数据要全部满足相关约束的要求</span></span><br><span class="line">ps：通用方法</span><br></pre></td></tr></table></figure></p><p>例子：利用修改表来删除<strong>唯一约束</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">DROP</span> <span class="keyword">INDEX</span> phone_number;</span><br></pre></td></tr></table></figure></p><p>例子：利用修改表来删除<strong>主键约束</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br></pre></td></tr></table></figure></p><h3 id="自动增长"><a href="#自动增长" class="headerlink" title="自动增长"></a>自动增长</h3><blockquote><p>如果某一列是数值类型的，使用 <code>auto_increment</code></p><p>注意事项：<br>1、自动增长是看上一条记录的值</p></blockquote><h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>概述：比如一张表中有很多冗余的数据（重复的数据），我们可以通过外键把这张表拆分为两张表，一张主表记录主要的信息，一张副表用来保存冗余的信息，在主表中可以给某个字段定义一个外键，关联到副表对应的主键中，就好比学生与老师，他们都有名字与年龄，但是职业不同，我们就可以把名字与年龄这种主要信息放在主表中，职业的相关信息就放在副表中，然后主表中每个人的信息都通过外键关联一个自己对应的职业即可。</p><ul><li><p>语法：</p><blockquote><p>constraint 外键名称 foreign key 外键列的字段名称 references 主表列的字段名称（外键关联到的表，通常为id）</p></blockquote></li><li><p>删除外键</p></li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">DROP</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> 外键名称;</span><br></pre></td></tr></table></figure><ul><li>创建表后添加外键（创建时直接添加即可）</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> 外键名称 <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> 外键列的字段名称 <span class="keyword">REFERENCES</span> 主表列的字段名称（外键关联到的表，通常为<span class="keyword">id</span>）；</span><br></pre></td></tr></table></figure><h3 id="外键约束的级联操作"><a href="#外键约束的级联操作" class="headerlink" title="外键约束的级联操作"></a>外键约束的级联操作</h3><p>概述：当副表中的id改变的时候，我们也希望主表中的外键也跟着变化，那么我们就需要用到级联操作了，删除同理。</p><ul><li>级联更新：ON UPDATA CASCADE</li><li>级联删除：ON DELETE CASCADE</li></ul><p>ps：在添加外键时，后接级联操作即可</p><ul><li>注意事项：<blockquote><p>1、在使用级联操作时，要谨慎考虑，因为会影响效率，也会大面积的影响相关数据，一个操作不好容易引起数据缺失<br>2、级联更新和级联删除可以同时添加，两个接一起即可</p></blockquote></li></ul>]]></content>
     
@@ -950,11 +992,11 @@
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
     
-      <category term="hashtable和hashMap区别（面试题）" scheme="http://liuhaoan.github.io/tags/hashtable%E5%92%8ChashMap%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
-    
       <category term="Properties集合" scheme="http://liuhaoan.github.io/tags/Properties%E9%9B%86%E5%90%88/"/>
     
       <category term="配置文件" scheme="http://liuhaoan.github.io/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    
+      <category term="hashtable和hashMap区别（面试题）" scheme="http://liuhaoan.github.io/tags/hashtable%E5%92%8ChashMap%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
     
   </entry>
   
@@ -1436,13 +1478,13 @@
       <category term="JavaSE 复习" scheme="http://liuhaoan.github.io/categories/JavaSE-%E5%A4%8D%E4%B9%A0/"/>
     
     
+      <category term="hashtable和hashMap区别（面试题）" scheme="http://liuhaoan.github.io/tags/hashtable%E5%92%8ChashMap%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
+    
       <category term="Map类" scheme="http://liuhaoan.github.io/tags/Map%E7%B1%BB/"/>
     
       <category term="linkedHashMap类" scheme="http://liuhaoan.github.io/tags/linkedHashMap%E7%B1%BB/"/>
     
       <category term="TreeMap类" scheme="http://liuhaoan.github.io/tags/TreeMap%E7%B1%BB/"/>
-    
-      <category term="hashtable和hashMap区别（面试题）" scheme="http://liuhaoan.github.io/tags/hashtable%E5%92%8ChashMap%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%89/"/>
     
   </entry>
   
