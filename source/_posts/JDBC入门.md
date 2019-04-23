@@ -95,9 +95,20 @@ ps：mysql 5 之后的mysql驱动包是可以省略注册驱动操作的，因�
 		> 回滚事务：rollack() : 撤销事务，回滚事务
 
 ### Statement ：执行sql的对象
-- boolean execute(sql) : 它可以执行任何方法，但不是很长用
+- boolean execute(sql) : 它可以执行任何静态方法，但不是很长用
 - int execteUpdate(sql) : 可以执行 DML增删改 、DDL(create、alter、drop。。)
 	> 返回值是影响的行数，可以用来判断是否执行成功
 
 - ResultSet executeQuery(sql) ： 执行DQL(select)语句
-	> 用来执行查询语句，平时很常用
+	> 用来执行查询语句，返回一个ResultSet对象，平时很常用
+
+
+
+###  ResultSet ： 结果集对象
+- next() : 向下获取一行
+- getXXX() ：获取数据
+	> XXX代表数据类型
+	> 
+	> 参数：
+	> - int ：代表列的编号，从1开始（1代表获取第一列的值）
+	> - String ：代表列的名称
