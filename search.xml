@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[JDBC入门]]></title>
     <url>%2F2019%2F04%2F19%2FJDBC%E5%85%A5%E9%97%A8%2F</url>
-    <content type="text"><![CDATA[概念（面试题） 全名：Java DataBase Connectivityjava数据库连接，也就是java语言操作数据库 本质：（面试题） JDBC定义了一套操作所有关系型数据库（mysql、oracle等等）的规则，也就是接口。然后各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以用JDBC这套接口编程，真正执行的代码其实是驱动jar包中的实现类 JDBC使用方法 1、导入jar包：添加libs文件夹，然后右键 –&gt; Add as library2、注册驱动3、获取数据库连接对象（connection）4、定义sql语句5、获取执行sql语句的对象：statement6、执行sql，接收返回结果7、处理结果8、释放资源 案例：1234567891011121314151617// 1、导入jar包// 2、注册驱动Class.forName("com.mysql.jdbc.Driver");// 3、获取数据库连接对象（connection）Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/db1", "root", "123456");// 4、定义sql语句String sql = "SELECT * FROM emp;";// 5、获取执行sql语句的对象：statementStatement stat = conn.createStatement();// 6、执行sql，接收返回结果Boolean b = stat.execute(sql);// 7、处理结果System.out.println(b);// 8、释放资源conn.close();stat.close(); JDBC中常用对象 DriverManager：驱动管理对象 Connection： 数据库连接对象 Statement：执行sql的对象 ResultSet：结果集对象 PerparedStatement：执行sql对象，它是Statement子类，它的功能更加强大 DriverManager功能： 注册驱动 static void registerDriver（Deiver d）：注册与给定的驱动程序 DriverManager写代码使用：Class.fromName（“com.mysql.jdbc.Driver”）; 通过查看源码发现：在com.mysql.jdbc.Driver类中存在静态代码块 1234567static &#123; try &#123; DriverManager.registerDriver(new Driver()); //注册驱动 &#125; catch (SQLException var1) &#123; throw new RuntimeException("Can't register driver!"); &#125; &#125; ps：mysql 5 之后的mysql驱动包是可以省略注册驱动操作的，因为它会自动注册驱动 获取数据库连接 方法：static Connection getConnection（String url， String user， String password）; url语法：jdbc:mysql://主机地址:端口/数据库名 ps:mysql数据库简写：jdbc:mysql:///数据库名 Connection：数据库连接对象 功能 获取执行sql的对象 Statement createStatement()PreparedStatement PreparedStatement() 管理实务： 开启事务：void setAutoCommit(boolean b) ：false代表关闭自动提交，即开启事务提交事务：commit() ： 提交事务回滚事务：rollack() : 撤销事务，回滚事务 Statement ：执行sql的对象 boolean execute(sql) : 它可以执行任何方法，但不是很长用 int execteUpdate(sql) : 可以执行 DML增删改 、DDL(create、alter、drop。。) 返回值是影响的行数，可以用来判断是否执行成功 ResultSet executeQuery(sql) ： 执行DQL(select)语句 用来执行查询语句，平时很常用]]></content>
+    <content type="text"><![CDATA[概念（面试题） 全名：Java DataBase Connectivityjava数据库连接，也就是java语言操作数据库 本质：（面试题） JDBC定义了一套操作所有关系型数据库（mysql、oracle等等）的规则，也就是接口。然后各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以用JDBC这套接口编程，真正执行的代码其实是驱动jar包中的实现类 JDBC使用方法 1、导入jar包：添加libs文件夹，然后右键 –&gt; Add as library2、注册驱动3、获取数据库连接对象（connection）4、定义sql语句5、获取执行sql语句的对象：statement6、执行sql，接收返回结果7、处理结果8、释放资源 案例：1234567891011121314151617// 1、导入jar包// 2、注册驱动Class.forName("com.mysql.jdbc.Driver");// 3、获取数据库连接对象（connection）Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/db1", "root", "123456");// 4、定义sql语句String sql = "SELECT * FROM emp;";// 5、获取执行sql语句的对象：statementStatement stat = conn.createStatement();// 6、执行sql，接收返回结果Boolean b = stat.execute(sql);// 7、处理结果System.out.println(b);// 8、释放资源conn.close();stat.close(); JDBC中常用对象 DriverManager：驱动管理对象 Connection： 数据库连接对象 Statement：执行sql的对象 ResultSet：结果集对象 PerparedStatement：执行sql对象，它是Statement子类，它的功能更加强大 DriverManager功能： 注册驱动 static void registerDriver（Deiver d）：注册与给定的驱动程序 DriverManager写代码使用：Class.fromName（“com.mysql.jdbc.Driver”）; 通过查看源码发现：在com.mysql.jdbc.Driver类中存在静态代码块 1234567static &#123; try &#123; DriverManager.registerDriver(new Driver()); //注册驱动 &#125; catch (SQLException var1) &#123; throw new RuntimeException("Can't register driver!"); &#125; &#125; ps：mysql 5 之后的mysql驱动包是可以省略注册驱动操作的，因为它会自动注册驱动 获取数据库连接 方法：static Connection getConnection（String url， String user， String password）; url语法：jdbc:mysql://主机地址:端口/数据库名 ps:mysql数据库简写：jdbc:mysql:///数据库名 Connection：数据库连接对象 功能 获取执行sql的对象 Statement createStatement()PreparedStatement PreparedStatement() 管理实务： 开启事务：void setAutoCommit(boolean b) ：false代表关闭自动提交，即开启事务提交事务：commit() ： 提交事务回滚事务：rollack() : 撤销事务，回滚事务 Statement ：执行sql的对象 它是一个静态sql，有sql注入漏洞 boolean execute(sql) : 它可以执行任何静态方法，但不是很长用 int execteUpdate(sql) : 可以执行 DML增删改 、DDL(create、alter、drop。。)返回值是影响的行数，可以用来判断是否执行成功 ResultSet executeQuery(sql) ： 执行DQL(select)语句 用来执行查询语句，返回一个ResultSet对象，平时很常用 ResultSet ： 结果集对象 next() : 向下获取一行，返回boolean getXXX() ：获取数据 XXX代表数据类型 参数： int ：代表列的编号，从1开始（1代表获取第一列的值） String ：代表列的名称 PreparedStatement ： 执行sql的对象，我们以后用的都是它，他可以防止sql注入 它是一个预编译sql，解决了sql注入问题 预编译sql：参数使用？作为占位符 使用方法 1、导入jar包：添加libs文件夹，然后右键 –&gt; Add as library2、注册驱动3、获取数据库连接对象（connection）4、定义sql语句（用?作为占位符）5、获取执行sql语句的对象：PreparedStatement6、给?赋值：setXXX(?位置1开始， ?的值)6、执行sql，接收返回结果，不需要传递sql语句7、处理结果8、释放资源 JDBC查询练习 定义一个自定义引用数据类型,用来装某个表中的每一条数据 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293@SuppressWarnings("all")public class Emp &#123; //代表每个字段 private int id; private String ename; private int job_id; private Date joindate; private double salary; private double bonus; private int dept_id; public Emp() &#123; &#125; public Emp(int id, String ename, int job_id, Date joindate, double salary, double bonus, int dapt_id) &#123; this.id = id; this.ename = ename; this.job_id = job_id; this.joindate = joindate; this.salary = salary; this.bonus = bonus; this.dept_id = dept_id; &#125; public int getId() &#123; return id; &#125; public void setId(int id) &#123; this.id = id; &#125; public String getName() &#123; return ename; &#125; public void setName(String name) &#123; this.ename = name; &#125; public int getJob_id() &#123; return job_id; &#125; public void setJob_id(int job_id) &#123; this.job_id = job_id; &#125; public Date getJoindate() &#123; return joindate; &#125; public void setJoindate(Date joindate) &#123; this.joindate = joindate; &#125; public double getSalary() &#123; return salary; &#125; public void setSalary(double salary) &#123; this.salary = salary; &#125; public double getBonus() &#123; return bonus; &#125; public void setBonus(double bonus) &#123; this.bonus = bonus; &#125; public int getDapt_id() &#123; return dept_id; &#125; public void setDapt_id(int dapt_id) &#123; this.dept_id = dapt_id; &#125; @Override public String toString() &#123; return "Emp&#123;" + "id=" + id + ", name='" + ename + '\'' + ", job_id=" + job_id + ", joindate=" + joindate + ", salary=" + salary + ", bonus=" + bonus + ", dapt_id=" + dept_id + '&#125;'; &#125;&#125; 读取数据库表，并且保存到集合中 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667Connection conn = null;Statement stat = null;ResultSet rs = null;ArrayList&lt;Emp&gt; empList = new ArrayList&lt;&gt;();try &#123; //注册mysql驱动，mysql5版本以后可以不用注册，但是为了向下兼容，建议写上注册驱动 Class.forName("com.mysql.jdbc.Driver"); //获取数据库连接对象 conn = DriverManager.getConnection("jdbc:mysql://192.168.220.160/db1", "root", "123456"); //获取数据库的sql执行对象 stat = conn.createStatement(); //定义sql语句 String sql = "select * from emp;"; //执行sql语句 rs = stat.executeQuery(sql); Emp empTemp = null; while (rs.next()) &#123; empTemp = new Emp(rs.getInt("id"), rs.getString("ename"), rs.getInt("job_id"), rs.getDate("joindate"), rs.getDouble("salary"), rs.getDouble("bonus"), rs.getInt("dept_id")); empList.add(empTemp); &#125; System.out.println(empList); System.out.println(empList.size());&#125; catch (Exception e) &#123; e.printStackTrace();&#125;finally &#123; //释放资源需要从后向前释放，也就是对象后创建先释放，先创建后释放 if(rs != null) &#123; try &#123; rs.close(); &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125; &#125; if(stat != null) &#123; try &#123; stat.close(); &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125; &#125; if(conn != null) &#123; try &#123; conn.close(); &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125; &#125;&#125; JDBC控制事务 事务：一个包含多个步骤的操作，如果某些操作被事务管理，要么全部执行成功，要么全部执行失败。 操作： 开始事务 提交事务 回滚事务 使用Connection对象来管理事务 开启事务：void setAutoCommit(boolean b) ：false代表关闭自动提交，即开启事务提交事务：commit() ： 提交事务回滚事务：rollack() : 撤销事务，回滚事务]]></content>
       <categories>
         <category>JDBC</category>
       </categories>
@@ -42,7 +42,7 @@
   <entry>
     <title><![CDATA[Mysql数据库之——表的约束]]></title>
     <url>%2F2019%2F04%2F17%2FMysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94%E8%A1%A8%E7%9A%84%E7%BA%A6%E6%9D%9F%2F</url>
-    <content type="text"><![CDATA[概念 对表中的数据进行限定，从而保证数据的正确性、有效性、完整性 约束的分类 主键约束：primary key 注意事项：1、它自带非空且唯一2、主键就是表中的唯一标识3、一张表只能有一个字段为主键 非空约束：not null 唯一约束：uniqe 注意：限定的值可以有多个null 外键约束：foreign key 添加约束的方式 1、在创建表是在数据类型后面接上约束 2、使用修改表的命令修改 对表的约束操作例子：利用修改表来删除非空约束12ALTER TABLE student MODIFY name VARCHAR(20);ps：通用方法，特殊的下面给出了 例子：利用修改表来添加约束1234ALTER TABLE student MODIFY name VARCHAR(20) NOT NULL;-- 添加相关约束时，必须保证该字段的数据要全部满足相关约束的要求ps：通用方法 例子：利用修改表来删除唯一约束1ALTER TABLE student DROP INDEX phone_number; 例子：利用修改表来删除主键约束1ALTER TABLE student DROP PRIMARY KEY; 自动增长 如果某一列是数值类型的，使用 auto_increment 注意事项：1、自动增长是看上一条记录的值 外键约束概述：比如一张表中有很多冗余的数据（重复的数据），我们可以通过外键把这张表拆分为两张表，一张主表记录主要的信息，一张副表用来保存冗余的信息，在主表中可以给某个字段定义一个外键，关联到副表对应的主键中，就好比学生与老师，他们都有名字与年龄，但是职业不同，我们就可以把名字与年龄这种主要信息放在主表中，职业的相关信息就放在副表中，然后主表中每个人的信息都通过外键关联一个自己对应的职业即可。 语法： constraint 外键名称 foreign key 外键列的字段名称 references 主表列的字段名称（外键关联到的表，通常为id） 删除外键 1ALTER TABLE 表名 DROP FOREIGN KEY 外键名称; 创建表后添加外键（创建时直接添加即可） 1ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY 外键列的字段名称 REFERENCES 主表列的字段名称（外键关联到的表，通常为id）； 外键约束的级联操作概述：当副表中的id改变的时候，我们也希望主表中的外键也跟着变化，那么我们就需要用到级联操作了，删除同理。 级联更新：ON UPDATA CASCADE 级联删除：ON DELETE CASCADE ps：在添加外键时，后接级联操作即可 注意事项： 1、在使用级联操作时，要谨慎考虑，因为会影响效率，也会大面积的影响相关数据，一个操作不好容易引起数据缺失2、级联更新和级联删除可以同时添加，两个接一起即可]]></content>
+    <content type="text"><![CDATA[概念 对表中的数据进行限定，从而保证数据的正确性、有效性、完整性 约束的分类 主键约束：primary key 注意事项：1、它自带非空且唯一2、主键就是表中的唯一标识3、一张表只能有一个字段为主键 非空约束：not null 唯一约束：unique 注意：限定的值可以有多个null 外键约束：foreign key 添加约束的方式 1、在创建表是在数据类型后面接上约束 2、使用修改表的命令修改 对表的约束操作例子：利用修改表来删除非空约束12ALTER TABLE student MODIFY name VARCHAR(20);ps：通用方法，特殊的下面给出了 例子：利用修改表来添加约束1234ALTER TABLE student MODIFY name VARCHAR(20) NOT NULL;-- 添加相关约束时，必须保证该字段的数据要全部满足相关约束的要求ps：通用方法 例子：利用修改表来删除唯一约束1ALTER TABLE student DROP INDEX phone_number; 例子：利用修改表来删除主键约束1ALTER TABLE student DROP PRIMARY KEY; 自动增长 如果某一列是数值类型的，使用 auto_increment 注意事项：1、自动增长是看上一条记录的值 外键约束概述：比如一张表中有很多冗余的数据（重复的数据），我们可以通过外键把这张表拆分为两张表，一张主表记录主要的信息，一张副表用来保存冗余的信息，在主表中可以给某个字段定义一个外键，关联到副表对应的主键中，就好比学生与老师，他们都有名字与年龄，但是职业不同，我们就可以把名字与年龄这种主要信息放在主表中，职业的相关信息就放在副表中，然后主表中每个人的信息都通过外键关联一个自己对应的职业即可。 语法： constraint 外键名称 foreign key 外键列的字段名称 references 主表列的字段名称（外键关联到的表，通常为id） 删除外键 1ALTER TABLE 表名 DROP FOREIGN KEY 外键名称; 创建表后添加外键（创建时直接添加即可） 1ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY 外键列的字段名称 REFERENCES 主表列的字段名称（外键关联到的表，通常为id）； 外键约束的级联操作概述：当副表中的id改变的时候，我们也希望主表中的外键也跟着变化，那么我们就需要用到级联操作了，删除同理。 级联更新：ON UPDATA CASCADE 级联删除：ON DELETE CASCADE ps：在添加外键时，后接级联操作即可 注意事项： 1、在使用级联操作时，要谨慎考虑，因为会影响效率，也会大面积的影响相关数据，一个操作不好容易引起数据缺失2、级联更新和级联删除可以同时添加，两个接一起即可]]></content>
       <categories>
         <category>MySql</category>
       </categories>
@@ -185,8 +185,8 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>JDK8新特性</tag>
         <tag>Lambda表达式</tag>
+        <tag>JDK8新特性</tag>
       </tags>
   </entry>
   <entry>
@@ -407,9 +407,9 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>hashtable和hashMap区别（面试题）</tag>
         <tag>Properties集合</tag>
         <tag>配置文件</tag>
+        <tag>hashtable和hashMap区别（面试题）</tag>
       </tags>
   </entry>
   <entry>
@@ -592,10 +592,10 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
+        <tag>hashtable和hashMap区别（面试题）</tag>
         <tag>Map类</tag>
         <tag>linkedHashMap类</tag>
         <tag>TreeMap类</tag>
-        <tag>hashtable和hashMap区别（面试题）</tag>
       </tags>
   </entry>
   <entry>
@@ -867,8 +867,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>生成树协议欺骗</tag>
         <tag>网络攻防</tag>
+        <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
   <entry>
