@@ -317,5 +317,7 @@ public class Emp {
 
 #### 使用Connection对象来管理事务
 > 开启事务：void setAutoCommit(boolean b) ：false代表关闭自动提交，即开启事务
-> 提交事务：commit() ： 提交事务
-> 回滚事务：rollack() : 撤销事务，回滚事务
+> 执行sql之前执行
+> 
+> 提交事务：commit() ： 提交事务（执行完所有sql语句后执行）
+> 回滚事务：rollack() : 撤销事务，回滚事务（在catch中回滚）
