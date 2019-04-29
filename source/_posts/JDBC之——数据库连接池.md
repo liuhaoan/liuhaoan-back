@@ -1,11 +1,10 @@
 ---
-title: JDBC之——数据库连接池与JDBCTemplate
+title: JDBC之——数据库连接池
 categories: JDBC
 copyright: true
 date: 2019-04-28 16:40:39
 tags:
 - 数据库连接池
-- JDBCTemplate
 ---
 # 数据库连接池概念
 > 数据库连接池负责分配,管理和释放数据库连接,它允许应用程序重复使用一个现有的数据库连接,而不是重新建立一个
@@ -116,7 +115,7 @@ ps:在创建数据库连接池创建连接池对象时，什么都不传那么�
 
 ```
 driverClassName=com.mysql.jdbc.Driver
-url=jdbc:mysql:///db3
+url=jdbc:mysql://192.168.220.160/db1
 username=root
 password=123456
 
