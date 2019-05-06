@@ -45,12 +45,12 @@ delete from student where id=1;
 
 # 修改数据
 - 语法：
-	- `updata 表名 set 列名1 = 值1, 列名2 = 值2,··· [where 条件]`
+	- `update 表名 set 列名1 = 值1, 列名2 = 值2,··· [where 条件]`
 
 - 例子：修改id为1的记录中名字改成“张无忌”
 
 ```
-updata student set name = "张无忌" where id = 1;
+update student set name = "张无忌" where id = 1;
 ```
 
 - 注意事项：

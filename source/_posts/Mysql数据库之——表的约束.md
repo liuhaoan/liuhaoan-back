@@ -89,3 +89,8 @@ ps：在添加外键时，后接级联操作即可
 - 注意事项：
 	> 1、在使用级联操作时，要谨慎考虑，因为会影响效率，也会大面积的影响相关数据，一个操作不好容易引起数据缺失
 	> 2、级联更新和级联删除可以同时添加，两个接一起即可
+
+例子：id被删除后，外键自动设置为null
+```
+ALTER TABLE `class_message` ADD CONSTRAINT `FK_week_1` FOREIGN KEY (`week_id_1`) REFERENCES `creation_message` (`id`) ON DELETE SET NULL ON UPDATE CASCADE; 
+```
