@@ -1,6 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript之——事件]]></title>
+    <url>%2F2019%2F05%2F09%2FJavaScript%E4%B9%8B%E2%80%94%E2%80%94%E4%BA%8B%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[概念 某些组件被执行了某些操作后，出发某些代码的执行，例如onclick 事件：某些操作，如：单机、双击、键盘按下了、鼠标移动了 事件源：组件。如：按钮、文本输入框··· 监听器：代码（发生某些操作后执行的代码） 注册监听：将事件、事件源、监听器结合在一起。当事件源上发生某个事件，则触发某个监听器代码 常见事件点击事件 onclick：单机事件 ondblclick：双击事件 焦点事件 onblur：失去焦点 一般用于表单验证 onfocus：获得焦点 加载事件 onload：一张页面或者一张图片加载完成 我们一般用：window.onload 鼠标事件 onmousedown：鼠标被按下 onmouseup：鼠标松开 onmousemove：鼠标被移动 onmouseover：鼠标移动到某个元素之上 onmouseout：鼠标从某个元素松开 ps：当鼠标事件发生时，浏览器引擎会自动传一个对象过来event，我们可以通过这个对象查看是发生了什么事件调用的对象例子：123document.getElementById("username").onmousedown = function(event) &#123; alert(event.button);//鼠标左键0，滚轮1，右键2&#125; 键盘事件 onkeydown：某个键盘按键被按下 onkeyup：某个按键被松开 onkeypress：某个按键按下并松开 选中和改变 onchange：内容被改变 onselect：内容被选中 表单事件 onsubmit：确认按钮被点击，表单提交 可以阻止表单的提交，返回true提交，返回false不提交 onreset：重置按钮被点击 注意：在html元素的属性中直接调用事件时，比如onclick事件，js引擎会自己生成一个方法，这个方法调用onclick属性内部的值，这样的话，我们在属性值中直接调用方法时，就算这个方法有返回值那么也是收不到的，如果需要有返回值，onclick属性值就需要这样写：return 方法名();]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>js事件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript之——DOM对象]]></title>
+    <url>%2F2019%2F05%2F08%2FJavaScript%E4%B9%8B%E2%80%94%E2%80%94DOM%E5%AF%B9%E8%B1%A1%2F</url>
+    <content type="text"><![CDATA[概念 Document Object Model 文档对象模型 将标记语言文档的各个组成部分，封装为对象。可以使用这些对象，对标记语言文档进行CRUD的动态操作 它允许程序和脚本动态地访问和更新文档内容 、结构和样式 W3C DOM 标准被分为3个不同的部分 核心 DOM ：针对任何结构化文档的标准模型 Document：文档对象 Element：元素对象 Attribute：属性对象 Text：文本对象 Comment：注释对象 Node：节点对象，它是其他五个的父对象 XML DOM ：针对 XML 文档的标准模型 HTML DOM：针对 HTML 文档的标准模型 核心DOM模型document：文档对象 创建(html模型中)： winodw.document document 方法 获取element对象（重要） getElementById():根据id属性值获取指定元素，id属性值一般都是唯一的 getElementsByTagName()：根据元素名称获取元素对象们，返回一个数组 getElementsByClassName():根据Class属性值获取元素对象们，返回一个数组 getElementsByName()：根据name值获取元素对象们，返回一个数组，Input方法用的比较多 创建其他DOM对象 createElement()：创建一个元素 例如：document.createElement(“table”); 表示创建了一个table标签元素，但是与当前文档没任何关系 如果需要添加到当前文档中需要添加到某个节点的子节点中 例如：节点对象名.appendChild(创建的元素对象); 属性 Element：元素对象 获取：通过document来获取和创建 方法 removeAttribute()：删除属性 setAttribute()：设置属性 Node：节点对象，其他五个的父对象 特点：所有DOM对象都可以被认定为是一个节点 方法： CRUD dom树的方法 节点对象.appendChild(对象)：向节点的子节点列表的结尾添加新的子节点 节点对象.removeChild(对象)：删除（并返回）当前节点的指定子节点 节点对象.replaceChile(对象):用新的节点替换一个字节点 属性： parentNode：返回当前节点的父节点 何为DOM树？ DOM树可以看做整个页面的文档，顾名思义，树就肯定有树根，在DOM树中，树根就时文档，它一定有一个分支，那就是：html ，html下面又一定有两个分支，分别为head与body，剩下的树枝以此类推 HTML DOM 具体看w3school教程网 控制样式 使用style属性设置 先定义好CSS，并且用类选择器，然后通过div.className = “xxx”;来设置成定义好的CSS类即可 ps：前者适合少量CSS代码，后者适合大量CSS代码 例子：使用style设置样式12345678910var div1 = document.getElementById("div1");//设置边框div1.style.border = "1px solid red";//设置宽度div1.style.width = "200px";//设置字体大小div1.style.fontSize = "20px"; 练习：添加删除123456789101112131415161718192021222324252627282930313233343536373839404142&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;test&lt;/title&gt; &lt;style&gt; div &#123; width: 200px; height: 200px; border: 1px red solid; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;a href="javascript:void(0);" id="add"&gt;add&lt;/a&gt; &lt;a href="javascript:void(0);" id="remove"&gt;remove&lt;/a&gt;&lt;script&gt; //获取body对象，并且记录索引 var body = document.getElementsByTagName("body")[0]; var divIndex = 0; //添加 var add = document.getElementById("add"); add.onclick = function() &#123; var div = document.createElement("div"); div.setAttribute("id", "div" + divIndex++); body.appendChild(div); &#125; //删除 var remove = document.getElementById("remove"); remove.onclick = function() &#123; var div = document.getElementById("div" + --divIndex); body.removeChild(div); &#125;&lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 练习：动态表格123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;动态表格&lt;/title&gt; &lt;style&gt; body &#123; padding: 0; margin: 0; &#125; div &#123; width: 500px; margin: 100px auto; &#125; .table &#123; width: 300px; &#125; .table &gt; table &#123; width: 300px; &#125; td,th &#123; border: 1px solid; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="add"&gt; &lt;p&gt;请输入姓名与性别&lt;/p&gt; &lt;label for="name"&gt;姓名：&lt;input type="text" id="name"&gt;&lt;/label&gt; &lt;label for="gender"&gt;性别：&lt;input type="text" id="gender"&gt;&lt;/label&gt; &lt;input type="button" value="添加" id="add"&gt; &lt;/div&gt; &lt;div class="table"&gt; &lt;table cellpadding="0" cellspacing="0"&gt; &lt;caption&gt;学生信息表&lt;/caption&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;姓名&lt;/th&gt; &lt;th&gt;性别&lt;/th&gt; &lt;th&gt;操作&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody id="table"&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; &lt;script&gt; //获取table对象与添加按钮对象，并且记录索引 var table = document.getElementById("table"); var addButton = document.getElementById("add"); //添加 addButton.onclick = function() &#123; //获取姓名、性别输入框对象 var name = document.getElementById("name"); var gender = document.getElementById("gender"); //判断输入是否为空 if(name.value == "" || gender.value == "") &#123; var errorMessage = document.getElementsByTagName("p")[0]; errorMessage.setAttribute("style", "color:red"); return; &#125; //创建表格中的一行数据 var tr = document.createElement("tr"); var nameTd = document.createElement("td"); var genderTd = document.createElement("td"); var operation = document.createElement("td"); var remove = document.createElement("a"); //设置刚刚创建对象中的姓名与性别 nameTd.innerHTML = name.value; genderTd.innerHTML = gender.value; //设置删除按钮 remove.setAttribute("href", "javascript:void(0);"); remove.setAttribute("onclick", "remove(this)"); remove.innerHTML = "删除"; //把删除按钮添加到刚刚创建相关操作的tr标签对象中 operation.appendChild(remove); //把一条记录的相关信息添加到表格的tr中 tr.appendChild(nameTd); tr.appendChild(genderTd); tr.appendChild(operation); //把刚刚创建这一行数据添加进表格中 table.appendChild(tr); &#125; //删除按钮调用 function remove(obj) &#123; var parent = obj.parentNode.parentNode; table.removeChild(parent); &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 练习：动态表格innerHTML版123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;动态表格&lt;/title&gt; &lt;style&gt; body &#123; padding: 0; margin: 0; &#125; div &#123; width: 500px; margin: 100px auto; &#125; .table &#123; width: 300px; &#125; .table &gt; table &#123; width: 300px; &#125; td,th &#123; border: 1px solid; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="add"&gt; &lt;p&gt;请输入姓名与性别&lt;/p&gt; &lt;label for="name"&gt;姓名：&lt;input type="text" id="name"&gt;&lt;/label&gt; &lt;label for="gender"&gt;性别：&lt;input type="text" id="gender"&gt;&lt;/label&gt; &lt;input type="button" value="添加" id="add"&gt; &lt;/div&gt; &lt;div class="table"&gt; &lt;table cellpadding="0" cellspacing="0"&gt; &lt;caption&gt;学生信息表&lt;/caption&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;姓名&lt;/th&gt; &lt;th&gt;性别&lt;/th&gt; &lt;th&gt;操作&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody id="table"&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; &lt;script&gt; //获取table对象与添加按钮对象，并且记录索引 var table = document.getElementById("table"); var addButton = document.getElementById("add"); //添加 addButton.onclick = function() &#123; //获取姓名、性别输入框对象 var name = document.getElementById("name").value; var gender = document.getElementById("gender").value; //判断输入是否为空 if(name == "" || gender == "") &#123; var errorMessage = document.getElementsByTagName("p")[0]; errorMessage.setAttribute("style", "color:red"); return; &#125; //添加数据 table.innerHTML += "&lt;tr&gt;\n" + " &lt;td&gt;" + name + "&lt;/td&gt;\n" + " &lt;td&gt;" + gender + "&lt;/td&gt;\n" + " &lt;td&gt;" + '&lt;a href="javascript:void(0);" onclick="remove(this);"&gt;删除&lt;/a&gt;' + "&lt;/td&gt;\n" &#125; //删除按钮调用 function remove(obj) &#123; var parent = obj.parentNode.parentNode; table.removeChild(parent); &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>DOM对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript之——BOM对象]]></title>
+    <url>%2F2019%2F05%2F08%2FJavaScript%E4%B9%8B%E2%80%94%E2%80%94BOM%E5%AF%B9%E8%B1%A1%2F</url>
+    <content type="text"><![CDATA[概念 Browser Object Model 浏览器对象模型，它将浏览器各个组成部分封装成对象 组成 window：窗口对象 DOM对象（document） Navigator：浏览器对象（不重要） Screen：显示器屏幕对象（不重要） History：历史记录对象 Location：地址栏对象 window创建弹出框有关方法 alert()：弹出带有一段消息和一个确认按钮的警告框 confirm()：确认取消对话框，确定true，取消false prompt()：弹出一个用户输入框，提示什么传入什么，返回用户输入的值 打开关闭有关方法 open()：打开一个新窗口，返回打开窗口的window对象 close()：关闭一个窗口，哪个window对象调用关哪个窗口 定时器有关方法 setTimeout():定时器，经过指定毫秒数之后执行某代码 clearTimeout():取消定时器 setInterval():循环定时器，按照指定周期 clearInterval():取消循环定时器 参数 js代码或者方法对象 毫秒值 返回值：唯一标识符，用于取消定时器 属性 获取其他BOM对象 Navigator：浏览器对象（不重要） Screen：显示器屏幕对象（不重要） History：历史记录对象 Location：地址栏对象 获取DOM对象 document 特点 Window对象不需要创建可以直接使用 Window使用：window.方法名(); window引用可以省略，直接方法名调用。 Location地址栏对象创建 1、window.location2、location 方法 reload():刷新浏览器，重新加载当前文档 属性 herf：获取浏览器url地址 History历史记录对象创建 window.history histor 方法 back()：加载前一个url forward() ：加载下一个url go():加载某个具体的页面 参数：整数 正数：前进几个历史记录 负数：后退几个历史记录 属性 length：返回当前窗口历史列表中的 url 数量]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>BOM对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript之——对象与事件]]></title>
+    <url>%2F2019%2F05%2F07%2FJavaScript%E4%B9%8B%E2%80%94%E2%80%94%E5%AF%B9%E8%B1%A1%E4%B8%8E%E4%BA%8B%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[对象基本对象Function 函数（方法）对象，在js中函数（方法）就是一个对象 创建： 第一种方法：var fun = new Function(形式参数列表， 方法体);（忘了吧） 第二种方法：function 方法名称(形式参数列表) {方法体}; 第三种方法：var fun = function(形式参数列表) {方法体}; 属性： length：代表形参的个数 特点（重要） 定义方法时，形参的类型不用写，返回值类型也不用写，因为都是var，写不写都无所谓。 方法时一个对象，如果定义了名字相同的方法，那么就会被覆盖 在JS中，方法的调用只与方法的名字有关，和它的参数无关 在方法声明中有一个隐藏的内置对象（数组），argument，封装了所有传入的实际参数，也就是说调用方法传多少参数都行 调用 Array 数组对象 创建 第一种方法：var arr = new Array(元素列表); 第二种方法：var arr = new Array(默认长度); 第三种方法：var arr = [元素列表]; 方法： join():将数组中的元素按照指定的分隔符拼接为字符串 push():在数组尾部添加元素，返回新的长度 属性： length：数组长度 特点： JS中，数组元素的类型是可变的 JS中，数组的长度是可变的，访问多少索引，数组长度就是访问的索引自动加1 Date 创建：var data = new Data(); 方法 toLocaleString()：返回当前对象对应的时间本地字符串格式 getTime()：获取毫秒值，返回当前日期对象描述的时间到1970年1月1日0点的毫秒值差 Math 创建：不用换创建，直接使用 Math.方法名(); 属性： PI：圆周率 方法： random()：返回0 - 1之间的随机数，含0不含1 ceil()：对数进行下舍入（向上取整数） floor()：对数进行下舍入（向下取整数） round()：把数四舍五入为最近的整数 RegExp 正则表达式对象 正则表达式：定义字符串的组成规则 单个字符：[] [a]：a [ab]：a或b [a-zA-Z0-9]:a到z 或 A-Z 或 0-9 \d:单个数字字符：[0-9] \w:单个单词字符：[a-zA-Z0-1] 量词符号： ？：表示出现0次或1次 *：表示出现0次或多粗 +：出现一次或者多次 {m,n}：表示长度m到n，m &lt;= 数量 &lt;= n m如果缺省：{,n}:最多n次 n如果缺省：{m,}：最少m次 开始结束符号 ^ : 开始 $ : 结尾 正则对象 创建 var reg = new RegExp(&quot;正则表达式&quot;); var reg = /正则表达式/; 方法 test():验证指定的字符串是否符合正则定义的规范 Global 它是一个全局对象，Global对象中封装的方法不需要对象就可以直接调用。 方法 encodeURI()：url编码 decodeURI()：url解码 encodeURIComponent()：url编码（编码更多一些，它可以对/等进行编码） decodeURIComponent()：url解码 parseInt():将字符串转为数字，它逐一判断每一个字符是否是数字，直到不是数字为止，然后将前面数字部门转成number isNaN():判断一个值是否是NaN 为什么需要这个方法呢？ 答：NaN六亲不认，甚至连自己都不认，所以需要一个方法来判断是否是NaN eval():将 JavaScript 字符串转为脚本来运行，重要一定要知道 什么是url编码？ 我们在通过浏览器进行数据传输的，而传输数据是用协议传输的，而协议是不支持中文数据的，而我们需要将中文的数据传输到服务器中，就需要进行一个转码的动作，我们经常是用url编码完成，而浏览器默认用的也是url编码方式 BooleanNumberString]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>对象</tag>
+        <tag>DOM</tag>
+        <tag>BOM</tag>
+        <tag>JavaScript事件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript之——ECMAScript客户端脚本语言标准]]></title>
+    <url>%2F2019%2F05%2F07%2FJavaScript%E4%B9%8B%E2%80%94%E2%80%94ECMAScript%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%2F</url>
+    <content type="text"><![CDATA[基本语法 两种与html结合方式 内部js html的script标签中，并且html是从上向下执行的，所以js操作html组件时需要放在组件下面 外部js 定义script标签，然后通过src属性导入外部js文件 注意事项： &lt;Script&gt;定义的位置会影响执行顺序 &lt;Script&gt;可以定义多个 注释 单行注释：// 多行注释：/**/ 数据类型： 原始数据类型（基本数据类型） number：数字(整数/小数/NAN not a number 一个不是数字的数字类型) String：字符/字符串 boolean：true 与 false null：一个对象为空的占位符 undefind：未定义。如果一个变量没有给初始化值，则会默认给它赋值为undefind ps：NAN与任何数字做运算还是NAN ps：原始数据类型虽然平时不需要知道js也能写的很好，但是这种不常见，又很基础的知识面试的时候经常会用到 引用数据类型(对象) 变量 一小块内存区域 在java中，当我们声明一个变量时，会在内存中申请一个内存区域，例如boolean b = true;，那么这个内存区域的类型就是boolean的，并且给这个内存区域取名为变量名，所以它是强类型语言 在JavaScript中，也是和java一样申请一个内存区域，然后给这个空间起一个变量的名称，这个名称就是变量名，但是它这个内存区域是没有定义数据类型的，所以它是弱类型语言，比如：var a = 1； 定义完之后还可以给它赋值String类型数据 总的来说，变量就是一小块存储数据的内存空间 Java是强类型的语言，JavaScript是弱类型的语言 强类型：在声明变量时，会定义空间的数据类型，所以申请的内存区域数据类型是不能变的，也就是说这块空间只能存某种数据类型的数据 弱类型：在声明变量时，不会定义空间数据类型，所以可以存放任意数据类型的数据 语法：var 变量名 = 初始化值; 运算符 一元运算符：只有一个运算数的运算符，++、–、+(-)等 注意：在js中，如果运算数不少运算符所要求的类型，那么js引擎会自动将运算数进行类型转换 其他类型转number： String转number：按照字面值转换，如果字面值不少数字，那么就转为NAN（不是数字的数字） boolean转number：true转为1， false转为0 算数运算符：+ - * / 赋值运算符：= += -+… 比较运算符：&lt; &gt; &gt;= &lt;= == ===(全等于) 类型相同：直接比较 字符串：按照字典顺序比较，按位逐一比较，知道得出大小为止 类型不同：先类型转换再比较 ===全等于：判断之前先判断类型，如果类型不一样，则直接返回false 逻辑运算符：&amp;&amp; || ! &amp;&amp;：与（短路，也就是第一个表达式为false，那就不进行第二个表达式的运算了） || ：或（短路，第一个表达式为true，则不进行第二个表达式的运算了） ！：非，它会自动进行类型转换 三元运算符： ？ ： 其他类型转boolean（重要） number：0或者NAN为假，非0为真 string：除了空字符串（“”），其他都是true null和undefind：都是false，因为 对象：都是true ps：可以这样理解，只要不是空的数据，那么就是true，只要是空的就为false 流程控制语句 if···else··· switch 在java中，switch可以接收：char int short byte， 枚举(JDK1.5)，String(JDK1.7) 在JS中，switch可以接收任意数据类型的值 while do···while for js的一些特殊语法 语句以分号结尾，但是如果一行只有只有一条语句，分号可以省略，但是不建议省略 标量的定义使用var关键字，也可以不使用 用var：定义的是局部变量 不用var：定义的是全局变量（不建议使用） 语句 alert() ： 弹出信息框 document.write():打印输出到页面中，可以是html标记 typeof()：输出变量类型 null使用typeof判断类型结果为Object，实际上是js最初的bug，但是被ECMAScript沿用了，现在null被认为是对象的占位符，从而解释了这一矛盾，从技术上来说它任然是原始值。 练习：99乘法表1234567891011121314151617181920212223242526272829&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;99乘法表&lt;/title&gt; &lt;style&gt; td &#123; border: 1px solid; &#125; &lt;/style&gt; &lt;script&gt; document.write("&lt;table&gt;"); for (var i = 1; i &lt;= 9; i++) &#123; document.write("&lt;tr&gt;"); for(var j = 1; j &lt;= i; j++) &#123; document.write("&lt;td&gt;"); document.write(i + "*" + j + "=" + i * j); document.write("&lt;/td&gt;"); &#125; document.write("&lt;/tr&gt;"); &#125;; document.write("&lt;/table&gt;"); &lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;/body&gt;&lt;/html&gt;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>ECMAScript</tag>
+        <tag>客户端脚本语言标准</tag>
+        <tag>什么是变量</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript之——js简介]]></title>
+    <url>%2F2019%2F05%2F07%2FJavaScript%E4%B9%8B%E2%80%94%E2%80%94js%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[JavaScript概念 一门客户端脚本语言 它运行在客户端浏览器中，每一个浏览器都有JavaScript的解析引擎脚本语言：不需要编译，直接就可以被浏览器解析执行了 功能： 可以增强用户和html页面的交互过程，可以控制htnl元素，让页面有动态效果，增强用户体验 JavaScript发展史 1992年，Nombase公司，开发出第一门客户端脚本语言，专门用于表单的效验。命名为：C - - 1995年，Netscape（网景）公司，开发了一门客户端脚本语言：LiveScript。后来，请来了SUN公司的专家，参与了这门脚本语言的制作，并且当时java非常的火爆，就借助java的这个东风，改名为：JavaScript 1996年，微软抄袭了JavaScript开发出了JScript，它和javaScript语法很像。后来Nombase公司看他们后来做的都火了，自己先做都还没火，就也改名了，改名后也火起来了·······改成了：ScriptEase ps：java和javaScript有没有关系？答：没有任何关系，要说有关系也只是雷锋和雷峰塔的关系。。。。 后来就出现了三柱鼎立的局势，但是问题随之而来，每个语言都有自己的语法，市场都被搅乱了，然后就出现了语法的标准化 1997年，ECMA（欧洲计算机制造商协会），这个组织制定了ECMAScript标准，现在就是所有客户端脚本语言的标准，它是参照JavaScript来制定的，所以只要我们学了这个标准就不用怕了，虽然每种语言可能都会有一些差异，但大体相同。 所以我们得出一个公式：JavaScript = ECMAScript + JavaScript自己特有的东西（BOM + DOM 他们对象的分类，并不是JavaScript才有它们两个，只是每种客户端脚本语言对这两个对象的实现有所差异） 所以我们学 ECMAScript + BOM + DOM 就是把javaScript学完了]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>js简介</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[记一次向数据库添加记录并且获取自增ID]]></title>
+    <url>%2F2019%2F05%2F01%2F%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%90%91%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95%E5%B9%B6%E4%B8%94%E8%8E%B7%E5%8F%96%E8%87%AA%E5%A2%9EID%2F</url>
+    <content type="text"><![CDATA[代码示例：使用了自定义的JDBC工具类1234567891011121314151617181920DataSource ds = JDBCUtil.getDataSource(); String sql = "INSERT INTO user(id, username, password) VALUES (NULL, \"123\", \"123456\");"; Connection conn = null; PreparedStatement stat = null; try &#123; conn = ds.getConnection(); stat = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); stat.executeUpdate(); ResultSet rs = stat.getGeneratedKeys(); while (rs.next()) &#123; System.out.println(rs.getInt(1)); &#125; &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125;finally &#123; JDBCUtil.close(stat, conn); &#125;]]></content>
+      <categories>
+        <category>JDBC</category>
+      </categories>
+      <tags>
+        <tag>sql添加记录获取自增ID</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JDBC之——Spring JDBC_JDBCTemplate封装类]]></title>
     <url>%2F2019%2F04%2F29%2FJDBC%E4%B9%8B%E2%80%94%E2%80%94Spring-JDBC-JDBCTemplate%E5%B0%81%E8%A3%85%E7%B1%BB%2F</url>
     <content type="text"><![CDATA[Spring JDBC 简介 Spring 框架对JDBC的简单封装，它提供了一个JDBCTemplate类，用于简化JDBC的开发 实现步骤 1、导入jar包 commons-logging-1.2.jar spring-beans-5.0.0.RELEASE.jar spring-core-5.0.0.RELEASE.jar spring-jdbc-5.0.0.RELEASE.jar spring-tx-5.0.0.RELEASE.jar 2、创建jdbcTemplate对象 jdbcTemplate jt = new jdbcTemplate(数据库连接池对象); 3、调用jdbcTemplate的方法来完成CRUD操作（就是数据库的各种操作） updata()：执行DML语句，增删改 quryForMap()：查询结果，并将结果封装为map集合 queryForList()：查询结果，并将结果封装成map泛型的list集合 query()：查询结果，将结果封装为JavaBean对象 queryForObject()：查询结果，将结果封装成对象,通常用来执行聚合函数 案例 jdbcTemplate简单实现 12345678910//获取JDBCTemplate对象jdbcTemplate t = new jdbcTemplate(JDBCUtilPond.getDataSource());//定义sqlString sql = "update emp set salary = 1000 where id = ? and id = ?;"//执行sql（id为2和3的记录的 salary 字段值改为1000）int count = t.update(sql, 2， 3)System.out.pringln("影响的数据条目数：" + count); 查询结果，并且手动创建实现类封装成JavaBrean对象 1234567891011121314151617181920212223242526272829303132String sql = "select * from emp";List&lt;Emp&gt; list = template.query(sql, new RowMapper&lt;Emp&gt;() &#123; @Override public Emp mapRow(ResultSet rs, int i) throws SQLException &#123; Emp emp = new Emp(); int id = rs.getInt("id"); String ename = rs.getString("ename"); int job_id = rs.getInt("job_id"); int mgr = rs.getInt("mgr"); Date joindate = rs.getDate("joindate"); double salary = rs.getDouble("salary"); double bonus = rs.getDouble("bonus"); int dept_id = rs.getInt("dept_id"); emp.setId(id); emp.setEname(ename); emp.setJob_id(job_id); emp.setMgr(mgr); emp.setJoindate(joindate); emp.setSalary(salary); emp.setBonus(bonus); emp.setDept_id(dept_id); return emp; &#125;&#125;);for (Emp emp : list) &#123; System.out.println(emp);&#125; 查询结果，使用jar包自带实现类封装成JavaBrean对象 query参数：RomMapper一般我们使用BeanProPertyRowMapper实现类，可以完成数据到JavaBean的自动封装 12345String sql = "select * from emp";List&lt;Emp&gt; list = template.query(sql, new BeanPropertyRowMapper&lt;Emp&gt;(Emp.class));for (Emp emp : list) &#123; System.out.println(emp);&#125; queryForObject查询记录总数 123String sql = "select count(id) from emp";Long total = template.queryForObject(sql, Long.class);System.out.println(total);]]></content>
@@ -65,7 +148,7 @@
   <entry>
     <title><![CDATA[Mysql数据库之——表的约束]]></title>
     <url>%2F2019%2F04%2F17%2FMysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94%E8%A1%A8%E7%9A%84%E7%BA%A6%E6%9D%9F%2F</url>
-    <content type="text"><![CDATA[概念 对表中的数据进行限定，从而保证数据的正确性、有效性、完整性 约束的分类 主键约束：primary key 注意事项：1、它自带非空且唯一2、主键就是表中的唯一标识3、一张表只能有一个字段为主键 非空约束：not null 唯一约束：unique 注意：限定的值可以有多个null 外键约束：foreign key 添加约束的方式 1、在创建表是在数据类型后面接上约束 2、使用修改表的命令修改 对表的约束操作例子：利用修改表来删除非空约束12ALTER TABLE student MODIFY name VARCHAR(20);ps：通用方法，特殊的下面给出了 例子：利用修改表来添加约束1234ALTER TABLE student MODIFY name VARCHAR(20) NOT NULL;-- 添加相关约束时，必须保证该字段的数据要全部满足相关约束的要求ps：通用方法 例子：利用修改表来删除唯一约束1ALTER TABLE student DROP INDEX phone_number; 例子：利用修改表来删除主键约束1ALTER TABLE student DROP PRIMARY KEY; 自动增长 如果某一列是数值类型的，使用 auto_increment 注意事项：1、自动增长是看上一条记录的值 外键约束概述：比如一张表中有很多冗余的数据（重复的数据），我们可以通过外键把这张表拆分为两张表，一张主表记录主要的信息，一张副表用来保存冗余的信息，在主表中可以给某个字段定义一个外键，关联到副表对应的主键中，就好比学生与老师，他们都有名字与年龄，但是职业不同，我们就可以把名字与年龄这种主要信息放在主表中，职业的相关信息就放在副表中，然后主表中每个人的信息都通过外键关联一个自己对应的职业即可。 语法： constraint 外键名称 foreign key 外键列的字段名称 references 主表列的字段名称（外键关联到的表，通常为id） 删除外键 1ALTER TABLE 表名 DROP FOREIGN KEY 外键名称; 创建表后添加外键（创建时直接添加即可） 1ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY 外键列的字段名称 REFERENCES 主表列的字段名称（外键关联到的表，通常为id）； 外键约束的级联操作概述：当副表中的id改变的时候，我们也希望主表中的外键也跟着变化，那么我们就需要用到级联操作了，删除同理。 级联更新：ON UPDATA CASCADE 级联删除：ON DELETE CASCADE ps：在添加外键时，后接级联操作即可 注意事项： 1、在使用级联操作时，要谨慎考虑，因为会影响效率，也会大面积的影响相关数据，一个操作不好容易引起数据缺失2、级联更新和级联删除可以同时添加，两个接一起即可]]></content>
+    <content type="text"><![CDATA[概念 对表中的数据进行限定，从而保证数据的正确性、有效性、完整性 约束的分类 主键约束：primary key 注意事项：1、它自带非空且唯一2、主键就是表中的唯一标识3、一张表只能有一个字段为主键 非空约束：not null 唯一约束：unique 注意：限定的值可以有多个null 外键约束：foreign key 添加约束的方式 1、在创建表是在数据类型后面接上约束 2、使用修改表的命令修改 对表的约束操作例子：利用修改表来删除非空约束12ALTER TABLE student MODIFY name VARCHAR(20);ps：通用方法，特殊的下面给出了 例子：利用修改表来添加约束1234ALTER TABLE student MODIFY name VARCHAR(20) NOT NULL;-- 添加相关约束时，必须保证该字段的数据要全部满足相关约束的要求ps：通用方法 例子：利用修改表来删除唯一约束1ALTER TABLE student DROP INDEX phone_number; 例子：利用修改表来删除主键约束1ALTER TABLE student DROP PRIMARY KEY; 自动增长 如果某一列是数值类型的，使用 auto_increment 注意事项：1、自动增长是看上一条记录的值 外键约束概述：比如一张表中有很多冗余的数据（重复的数据），我们可以通过外键把这张表拆分为两张表，一张主表记录主要的信息，一张副表用来保存冗余的信息，在主表中可以给某个字段定义一个外键，关联到副表对应的主键中，就好比学生与老师，他们都有名字与年龄，但是职业不同，我们就可以把名字与年龄这种主要信息放在主表中，职业的相关信息就放在副表中，然后主表中每个人的信息都通过外键关联一个自己对应的职业即可。 语法： constraint 外键名称 foreign key 外键列的字段名称 references 主表列的字段名称（外键关联到的表，通常为id） 删除外键 1ALTER TABLE 表名 DROP FOREIGN KEY 外键名称; 创建表后添加外键（创建时直接添加即可） 1ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY 外键列的字段名称 REFERENCES 主表列的字段名称（外键关联到的表，通常为id）； 外键约束的级联操作概述：当副表中的id改变的时候，我们也希望主表中的外键也跟着变化，那么我们就需要用到级联操作了，删除同理。 级联更新：ON UPDATA CASCADE 级联删除：ON DELETE CASCADE ps：在添加外键时，后接级联操作即可 注意事项： 1、在使用级联操作时，要谨慎考虑，因为会影响效率，也会大面积的影响相关数据，一个操作不好容易引起数据缺失2、级联更新和级联删除可以同时添加，两个接一起即可 例子：id被删除后，外键自动设置为null1ALTER TABLE `class_message` ADD CONSTRAINT `FK_week_1` FOREIGN KEY (`week_id_1`) REFERENCES `creation_message` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;]]></content>
       <categories>
         <category>MySql</category>
       </categories>
@@ -88,7 +171,7 @@
   <entry>
     <title><![CDATA[Mysql数据库之——DML增删改]]></title>
     <url>%2F2019%2F04%2F17%2FMysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E2%80%94%E2%80%94DML%E5%A2%9E%E5%88%A0%E6%94%B9%2F</url>
-    <content type="text"><![CDATA[概述 用于对表中的记录进行增删改操作 插入记录（添加记录） 语法： insert into 表名(列名1,列名2,···列名n) values(值1,值2,···值n) 例子： 1insert into student(id,name,age) values(1,"张无忌",18); 注意事项 列名一定要和值一 一对应，类型也需要对应。 如果表名后，不定义列名，则默认给所有列添加值。 除了数字类型，其他类型需要使用引号引起来 删除数据 语法： delete from 表名 [where 条件] 例子：删除id为1的记录 1delete from student where id=1; 注意事项： 不加条件会吧所有记录删除 需要删除所有记录不建议用这个语句，因为有多少条记录就执行了多少次，严重影响效率 需要删除所有记录用：truncate table； – 先删除表，然后创建一张一模一样的空表 修改数据 语法： updata 表名 set 列名1 = 值1, 列名2 = 值2,··· [where 条件] 例子：修改id为1的记录中名字改成“张无忌” 1updata student set name = "张无忌" where id = 1; 注意事项： 不加任何条件，则将所有记录都修改]]></content>
+    <content type="text"><![CDATA[概述 用于对表中的记录进行增删改操作 插入记录（添加记录） 语法： insert into 表名(列名1,列名2,···列名n) values(值1,值2,···值n) 例子： 1insert into student(id,name,age) values(1,"张无忌",18); 注意事项 列名一定要和值一 一对应，类型也需要对应。 如果表名后，不定义列名，则默认给所有列添加值。 除了数字类型，其他类型需要使用引号引起来 删除数据 语法： delete from 表名 [where 条件] 例子：删除id为1的记录 1delete from student where id=1; 注意事项： 不加条件会吧所有记录删除 需要删除所有记录不建议用这个语句，因为有多少条记录就执行了多少次，严重影响效率 需要删除所有记录用：truncate table； – 先删除表，然后创建一张一模一样的空表 修改数据 语法： update 表名 set 列名1 = 值1, 列名2 = 值2,··· [where 条件] 例子：修改id为1的记录中名字改成“张无忌” 1update student set name = "张无忌" where id = 1; 注意事项： 不加任何条件，则将所有记录都修改]]></content>
       <categories>
         <category>MySql</category>
       </categories>
@@ -104,8 +187,8 @@
         <category>MySql</category>
       </categories>
       <tags>
-        <tag>MySql数据库DDL</tag>
         <tag>面试题</tag>
+        <tag>MySql数据库DDL</tag>
       </tags>
   </entry>
   <entry>
@@ -430,9 +513,9 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
+        <tag>hashtable和hashMap区别（面试题）</tag>
         <tag>Properties集合</tag>
         <tag>配置文件</tag>
-        <tag>hashtable和hashMap区别（面试题）</tag>
       </tags>
   </entry>
   <entry>
@@ -615,10 +698,10 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>hashtable和hashMap区别（面试题）</tag>
         <tag>Map类</tag>
         <tag>linkedHashMap类</tag>
         <tag>TreeMap类</tag>
+        <tag>hashtable和hashMap区别（面试题）</tag>
       </tags>
   </entry>
   <entry>
