@@ -2,6 +2,6 @@
 title: {{ title }}
 date: {{ date }}
 tags: 
-categories: JavaScript
+categories: BootStrap
 copyright: true
 ---
