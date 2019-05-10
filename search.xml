@@ -63,10 +63,10 @@
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>面试题</tag>
         <tag>ECMAScript</tag>
         <tag>客户端脚本语言标准</tag>
         <tag>什么是变量</tag>
+        <tag>面试题</tag>
       </tags>
   </entry>
   <entry>
@@ -195,8 +195,8 @@
         <category>MySql</category>
       </categories>
       <tags>
-        <tag>MySql数据库DDL</tag>
         <tag>面试题</tag>
+        <tag>MySql数据库DDL</tag>
       </tags>
   </entry>
   <entry>
@@ -631,8 +631,8 @@
         <category>JavaSE 复习</category>
       </categories>
       <tags>
-        <tag>字符流</tag>
         <tag>IO流</tag>
+        <tag>字符流</tag>
         <tag>获取文本上每个字符出现的次数面试题</tag>
       </tags>
   </entry>
@@ -980,8 +980,8 @@
         <category>网络攻防</category>
       </categories>
       <tags>
-        <tag>网络攻防</tag>
         <tag>Python</tag>
+        <tag>网络攻防</tag>
         <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
