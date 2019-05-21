@@ -80,7 +80,7 @@ theme: next1
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/liuhaoan/liuhaoan.github.io.git
+  repository: git@github.com:liuhaoan/liuhaoan.github.io.git
   branch: master
   
 
