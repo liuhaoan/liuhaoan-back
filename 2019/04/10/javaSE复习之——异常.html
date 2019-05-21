@@ -1,0 +1,316 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><script type="text/javascript" src="/js/src/clicklove.js"></script><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>!function(e,t,o,c,a,i,n){e.DaoVoiceObject=a,e[a]=e[a]||function(){(e[a].q=e[a].q||[]).push(arguments)},e[a].l=1*new Date,i=t.createElement(o),n=t.getElementsByTagName(o)[0],i.async=1,i.src=c,i.charset="utf-8",n.parentNode.insertBefore(i,n)}(window,document,"script",("https:"==document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/71c3d6a3.js","daovoice"),daovoice("init",{app_id:"71c3d6a3"}),daovoice("update")</script><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="异常,throw,throws,final，finally和finalize的区别面试题,"><link rel="alternate" href="/atom.xml" title="MrLiu · Blog" type="application/atom+xml"><meta name="description" content="异常的概述 异常就是java程序在运行过程中出现的错误  异常类 Throwable  异常的继承体系： Throwable  Error  服务器出问提，数据库崩溃等   Exception  RuntimeException  这个是运行时异常，全部的运行时异常都在这，一般都是我们自己犯的错误，修改代码即可   。。。。。等等"><meta name="keywords" content="异常,throw,throws,final，finally和finalize的区别面试题"><meta property="og:type" content="article"><meta property="og:title" content="javaSE复习之——异常"><meta property="og:url" content="http://liuhaoan.github.io/2019/04/10/javaSE复习之——异常.html"><meta property="og:site_name" content="MrLiu · Blog"><meta property="og:description" content="异常的概述 异常就是java程序在运行过程中出现的错误  异常类 Throwable  异常的继承体系： Throwable  Error  服务器出问提，数据库崩溃等   Exception  RuntimeException  这个是运行时异常，全部的运行时异常都在这，一般都是我们自己犯的错误，修改代码即可   。。。。。等等"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2019-04-10T06:53:35.384Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="javaSE复习之——异常"><meta name="twitter:description" content="异常的概述 异常就是java程序在运行过程中出现的错误  异常类 Throwable  异常的继承体系： Throwable  Error  服务器出问提，数据库崩溃等   Exception  RuntimeException  这个是运行时异常，全部的运行时异常都在这，一般都是我们自己犯的错误，修改代码即可   。。。。。等等"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://liuhaoan.github.io/2019/04/10/javaSE复习之——异常.html"><title>javaSE复习之——异常 | MrLiu · Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div> <a href="/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513;color:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0 0 115 115 130 115 142 142 250 250 250 0Z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4L133.7 101.6C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">MrLiu · Blog</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-大事年表"><a href="/timelines" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> 大事年表</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> 关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> 搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://liuhaoan.github.io/2019/04/10/javaSE复习之——异常.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="MrLiu"><meta itemprop="description" content><meta itemprop="image" content="/images/logo.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="MrLiu · Blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">javaSE复习之——异常</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T14:29:06+08:00">2019-04-10</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaSE-复习/" itemprop="url" rel="index"><span itemprop="name">JavaSE 复习</span></a></span></span> <span class="post-meta-divider">|</span><span class="page-pv"><i class="fa fa-file-o"></i> 浏览<span class="busuanzi-value" id="busuanzi_value_page_pv"></span> 次</span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">字数统计&#58;</span> <span title="字数统计">1.5k</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-clock-o"></i></span> <span class="post-meta-item-text">阅读时长 &asymp;</span> <span title="阅读时长">5</span></div></div></header><div class="post-body" itemprop="articleBody"><h1 id="异常的概述"><a href="#异常的概述" class="headerlink" title="异常的概述"></a>异常的概述</h1><blockquote><p>异常就是java程序在运行过程中出现的错误</p></blockquote><h3 id="异常类"><a href="#异常类" class="headerlink" title="异常类"></a>异常类</h3><blockquote><p>Throwable</p></blockquote><h3 id="异常的继承体系："><a href="#异常的继承体系：" class="headerlink" title="异常的继承体系："></a>异常的继承体系：</h3><ul><li><p>Throwable</p><ul><li><p>Error</p><blockquote><p>服务器出问提，数据库崩溃等</p></blockquote><ul><li><p>Exception</p><ul><li><p>RuntimeException</p><blockquote><p>这个是运行时异常，全部的运行时异常都在这，一般都是我们自己犯的错误，修改代码即可</p></blockquote></li><li><p>。。。。。等等</p></li></ul></li></ul></li></ul></li></ul><a id="more"></a><h3 id="jvm默认的异常处理机制"><a href="#jvm默认的异常处理机制" class="headerlink" title="jvm默认的异常处理机制"></a>jvm默认的异常处理机制</h3><blockquote><p>会将异常的名称、异常的信息、异常出现的位置打印在控制台，并且程序停止运行。</p></blockquote><h3 id="异常处理命令"><a href="#异常处理命令" class="headerlink" title="异常处理命令"></a>异常处理命令</h3><blockquote><p>try…catch</p></blockquote><ul><li>try<blockquote><p>用来检测异常，如果出现异常，那么会抛出一个对应的异常对象</p></blockquote></li><li>catch<blockquote><p>用来捕获异常，需要定义一个引用来接收异常对象，可以使用多个catch来捕获多种异常。</p><p>ps：理论上是有什么错误用什么去引用，但是实际开发建议直接创建Exception这个父类引用它的子类对象。</p></blockquote></li><li><p>finally</p><blockquote><p>释放资源，一般对io流或者数据库进行关闭</p></blockquote></li><li><p>它们三的常用搭配：</p><blockquote><p>1、try catch<br>异常处理基本格式</p><p>2、try catch finally</p><p>3、try finally</p></blockquote></li></ul><p>ps：。。。。。世界上最真情的相依就是你在try我在catch，无论你发神马脾气，我都静静接收，默默处理。。。。</p><h3 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h3><blockquote><p>1、安卓开发属于客户端开发，一般都是直接Exception</p><p>2、javaEE属于服务端开发，一般都是底层开发，从<code>底层向上抛</code>，最后放到一个错误日志。</p><p>3、在有多个catch时，大的异常放后面，因为根据多态的原理，大的异常放前面没有意义。</p></blockquote><h3 id="jdk7以后如何处理多个异常，有时候面试会问"><a href="#jdk7以后如何处理多个异常，有时候面试会问" class="headerlink" title="jdk7以后如何处理多个异常，有时候面试会问"></a>jdk7以后如何处理多个异常，有时候面试会问</h3><blockquote><p>用<code>“|”</code>连接两个异常类即可实现<code>一个catch处理多个异常</code>，但是这样还不如直接Exception。</p></blockquote><h3 id="java异常的种类"><a href="#java异常的种类" class="headerlink" title="java异常的种类"></a>java异常的种类</h3><blockquote><p>Java异常被分为两大类，分别是编译时异常和运行时异常。</p><ul><li>编译时异常<br>java程序必须显示处理，否则就会发生错误，不处理无法通过编译</li></ul></blockquote><ul><li>运行时异常<blockquote><p>无需显示处理，也可以和编译时异常一样处理</p></blockquote></li></ul><h3 id="Throwable的几个常见方法："><a href="#Throwable的几个常见方法：" class="headerlink" title="Throwable的几个常见方法："></a>Throwable的几个常见方法：</h3><ul><li>.getMessage()<blockquote><p>获取异常信息，返回字符串</p></blockquote></li><li>.toString()<blockquote><p>获取异常类名和异常信息，返回字符串</p></blockquote></li><li>.printStackTrace()<blockquote><p>获取异常类名和异常信息，以及异常出现在程序中的位置，返回值void，jvm默认用它处理异常。</p></blockquote></li></ul><h3 id="异常抛出"><a href="#异常抛出" class="headerlink" title="异常抛出"></a>异常抛出</h3><blockquote><p>throw new 异常类</p></blockquote><ul><li>注意事项：<blockquote><p>除了<code>RuntimeException类</code>的错误，也就是运行时错误，其他错误都要在方法上使用throws向上抛出这个错误。</p></blockquote></li></ul><ul><li>异常的抛出例子：</li></ul><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(age &gt; <span class="number">0</span> || age &lt; <span class="number">150</span>) &#123;			</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"年龄非法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="throw概述"><a href="#throw概述" class="headerlink" title="throw概述"></a>throw概述</h1><blockquote><p>在功能方法内部出现某种情况，程序不能继续运行，需要进行跳转时，就用throw把异常抛出</p></blockquote><h3 id="throws和throw区别，可能面试会问："><a href="#throws和throw区别，可能面试会问：" class="headerlink" title="throws和throw区别，可能面试会问："></a>throws和throw区别，可能面试会问：</h3><ul><li><p>throws</p><blockquote><p>1、用在方法声明后面，跟的时异常类名</p><p>2、可以跟多个异常类名，用逗号隔开</p><p>3、表示这个方法抛出了异常，<code>让方法的调用者来处理</code></p></blockquote></li><li><p>throw</p><blockquote><p>1、用在方法体内部，跟的时异常对象名</p><p>2、只能抛出一个异常对象名，不能接多个</p><p>3、表示这个方法抛出了异常，<code>方法内部处理</code></p></blockquote></li></ul><h3 id="finally特点："><a href="#finally特点：" class="headerlink" title="finally特点："></a>finally特点：</h3><blockquote><p>被finally控制的语句一定会执行，就算执行了return语句finally中的语句也会执行</p><p><strong>特殊情况：</strong><br>在执行到finally之前jvm退出了，比如执行<code>System.exit(0)</code></p></blockquote><h3 id="finally作用"><a href="#finally作用" class="headerlink" title="finally作用"></a>finally作用</h3><blockquote><p>用于资源释放，通常在哎IO流和数据库操作中会使用</p></blockquote><h3 id="finally关键字的面试题："><a href="#finally关键字的面试题：" class="headerlink" title="finally关键字的面试题："></a>finally关键字的面试题：</h3><ul><li><p><strong>final，finally和finalize的区别</strong></p><blockquote><p>解答：<br><strong>final：</strong><br>修饰类不能被继承，修饰方法不能被重写，修饰变量只能赋值一次（常量）</p><p><strong>finally：</strong><br>它是tyr语句中的语句体，不能单独使用，它用来释放资源</p><p><strong>finalize：</strong><br>是一个方法，当垃圾回收器确定不存在对该对象的引用时，对象的垃圾回收器调用此方法。<br>ps：他们三没任何联系，只是长得像而已。</p></blockquote></li><li><p><strong>如果catch里面有return语句，请问finally的代码还会执行吗?如果会请问时在return前还是return后？</strong></p><blockquote><p>解答：<br>会，并且是在return之后执行，因为在return相当于已经建立好了一个返回路径，然后再执行finally，然后再根据之前建立的返回路径彻底返回。</p><p>ps：千万不要再finally内写返回语句，因为finally的作用是为了释放资源，如果再这里写返回语句，那么try和catch的结果都会被改变。</p></blockquote></li></ul><h3 id="自定义异常方法"><a href="#自定义异常方法" class="headerlink" title="自定义异常方法"></a>自定义异常方法</h3><blockquote><p>定义一个异常类，然后继承Exception并重写构造方法即可</p></blockquote><h3 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AgeOutOfBoundsException</span> <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	public <span class="type">AgeOutOfBoundsException</span>() &#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public <span class="type">AgeOutOfBoundsException</span>(<span class="type">String</span> message) &#123;</span><br><span class="line">		<span class="keyword">super</span>(message);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="为什么要自定义异常？"><a href="#为什么要自定义异常？" class="headerlink" title="为什么要自定义异常？"></a>为什么要自定义异常？</h3><ul><li>解答：<blockquote><p>只是为了看那个异常类的名字而已，这样好排错。</p><p>ps：继承RuntimeException的话可以不用在声明方法那里抛出异常</p></blockquote></li></ul><h3 id="异常注意事项"><a href="#异常注意事项" class="headerlink" title="异常注意事项"></a>异常注意事项</h3><blockquote><p>1、子类重写父类方法时，<code>子类必须抛出相同异常或者父类异常的子类</code>，也就是说<code>子类抛出的异常不能比父类大</code>，需要比父类更加细，打个比方，父亲坏儿子不能比他更坏。父亲没坏儿子自己处理</p><p>2、如果父类抛出多个异常，子类重写父类的时候<code>子类不能抛出父类没有的异常</code></p><p>3、如果被重写的方法没有抛出异常，那么子类绝对不可以抛出异常，如果子类有异常只能用try不能throws抛出</p></blockquote><h3 id="如何使用异常处理？"><a href="#如何使用异常处理？" class="headerlink" title="如何使用异常处理？"></a>如何使用异常处理？</h3><ul><li>原则：<blockquote><p>如果该功能内部可以将问题处理，就用try，不能处理就用throws向上抛出，交给调用者处理</p></blockquote></li><li>区别：<blockquote><p>1、后面还有代码需要执行，就用try</p><p>2、如果后面不需要代码执行了，就用throw</p></blockquote></li></ul></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div></div></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><p><span>本文标题:</span><a href="/2019/04/10/javaSE复习之——异常.html">javaSE复习之——异常</a></p><p><span>文章作者:</span><a href="/" title="访问 MrLiu 的个人博客">MrLiu</a></p><p><span>发布时间:</span>2019年04月10日 - 14:04</p><p><span>最后更新:</span>2019年04月10日 - 14:04</p><p><span>原始链接:</span><a href="/2019/04/10/javaSE复习之——异常.html" title="javaSE复习之——异常">http://liuhaoan.github.io/2019/04/10/javaSE复习之——异常.html</a><span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://liuhaoan.github.io/2019/04/10/javaSE复习之——异常.html" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");$(".fa-clipboard").click(function(){clipboard.on("success",function(){swal({title:"",text:"复制成功",icon:"success",showConfirmButton:!0})})})</script></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div>坚持原创技术分享，您的支持将鼓励我继续创作！</div> <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'> <span>打赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"> <img id="wechat_qr" src="/images/wechatpay.png" alt="MrLiu 微信支付"><p>微信支付</p></div><div id="alipay" style="display:inline-block"> <img id="alipay_qr" src="/images/alipay.png" alt="MrLiu 支付宝"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/异常/" rel="tag"><i class="fa fa-tag"></i> 异常</a><a href="/tags/throw/" rel="tag"><i class="fa fa-tag"></i> throw</a><a href="/tags/throws/" rel="tag"><i class="fa fa-tag"></i> throws</a><a href="/tags/final，finally和finalize的区别面试题/" rel="tag"><i class="fa fa-tag"></i> final，finally和finalize的区别面试题</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/04/10/javaSE复习之——Collections工具类与集合总结.html" rel="next" title="javaSE复习之——Collections工具类与集合总结"><i class="fa fa-chevron-left"></i> javaSE复习之——Collections工具类与集合总结</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2019/04/10/javaSE复习之——File类.html" rel="prev" title="javaSE复习之——File类">javaSE复习之——File类<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/logo.jpg" alt="MrLiu"><p class="site-author-name" itemprop="name">MrLiu</p><p class="site-description motion-element" itemprop="description">记录点滴，成就未来</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">94</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">7</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">166</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/yourname" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="https://www.jianshu.com/u/63445e24e8bf" target="_blank" title="简书"><i class="fa fa-fw fa-heartbeat"></i> 简书</a></span><span class="links-of-author-item"><a href="https://juejin.im/user/5a371ae551882512d0607108" target="_blank" title="掘金"><i class="fa fa-fw fa-spinner"></i> 掘金</a></span></div><div id="days"></div><script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("04/05/2019 12:00:00"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒"}function setzero(e){return e<10&&(e="0"+e),e}show_date_time()</script></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异常的概述"><span class="nav-number">1.</span> <span class="nav-text">异常的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异常类"><span class="nav-number">1.0.1.</span> <span class="nav-text">异常类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常的继承体系："><span class="nav-number">1.0.2.</span> <span class="nav-text">异常的继承体系：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm默认的异常处理机制"><span class="nav-number">1.0.3.</span> <span class="nav-text">jvm默认的异常处理机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理命令"><span class="nav-number">1.0.4.</span> <span class="nav-text">异常处理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小知识："><span class="nav-number">1.0.5.</span> <span class="nav-text">小知识：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jdk7以后如何处理多个异常，有时候面试会问"><span class="nav-number">1.0.6.</span> <span class="nav-text">jdk7以后如何处理多个异常，有时候面试会问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java异常的种类"><span class="nav-number">1.0.7.</span> <span class="nav-text">java异常的种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Throwable的几个常见方法："><span class="nav-number">1.0.8.</span> <span class="nav-text">Throwable的几个常见方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常抛出"><span class="nav-number">1.0.9.</span> <span class="nav-text">异常抛出</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#throw概述"><span class="nav-number">2.</span> <span class="nav-text">throw概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#throws和throw区别，可能面试会问："><span class="nav-number">2.0.1.</span> <span class="nav-text">throws和throw区别，可能面试会问：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally特点："><span class="nav-number">2.0.2.</span> <span class="nav-text">finally特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally作用"><span class="nav-number">2.0.3.</span> <span class="nav-text">finally作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally关键字的面试题："><span class="nav-number">2.0.4.</span> <span class="nav-text">finally关键字的面试题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义异常方法"><span class="nav-number">2.0.5.</span> <span class="nav-text">自定义异常方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例："><span class="nav-number">2.0.6.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要自定义异常？"><span class="nav-number">2.0.7.</span> <span class="nav-text">为什么要自定义异常？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常注意事项"><span class="nav-number">2.0.8.</span> <span class="nav-text">异常注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用异常处理？"><span class="nav-number">2.0.9.</span> <span class="nav-text">如何使用异常处理？</span></a></li></ol></li></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span><span class="with-love" id="heart"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">MrLiu</span></div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共61.5k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="site-uv"><i class="fa fa-user"></i> 访问人数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span><span class="site-pv"><i class="fa fa-eye"></i> 访问总量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script></body></html>
