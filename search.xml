@@ -9,6 +9,7 @@
       </categories>
       <tags>
         <tag>Linux缓冲区溢出</tag>
+        <tag>缓冲区溢出</tag>
       </tags>
   </entry>
   <entry>
@@ -992,8 +993,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>生成树协议欺骗</tag>
         <tag>网络攻防</tag>
+        <tag>生成树协议欺骗</tag>
       </tags>
   </entry>
   <entry>
