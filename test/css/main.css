@@ -1,0 +1,70 @@
+body {
+	margin: 0;
+	padding: 0;
+	
+}
+
+[v-cloak] {
+	display: none !important;
+}
+
+.el-main {
+	color: #333;
+	/* text-align: center; */
+}
+#app > section{
+	height: 100%;
+}
+
+#main-header {
+	/* text-align: left; */
+}
+
+#main-header  label, .dialogSet label {
+	margin-left: 15px;
+	display: inline-block;
+	width: 115px;
+}
+
+#main-header .el-select {
+	margin-bottom: 20px;
+}
+
+#main-body i {
+	font-size: 25px;
+	margin: 0 5px;
+}
+
+/* .tableBodyTooltip {
+	padding: 8px 10px;
+	width: 50px;
+} */
+
+.dialogSet {
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+
+/* 日期选择框 */
+/* .datatimeBox .el-input__inner {
+	padding-left: 40px;
+} */
+
+#main-header .button, #main-body .el-dialog .button {
+	display: inline-block;
+	margin-left: 70px;
+	margin-bottom: 10px;
+}
+
+.outputBoxTable {
+	background: #f0f9eb;
+}
+
+.outputBoxTable1 {
+	background: #aefeae;
+}
+
+.outputBoxTable2 {
+	background: #ffaeae;
+}

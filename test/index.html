@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/aside.css" />
+	</head>
+	<body>
+		<div v-cloak id="app" :style="'height:' + screenHeight + 'px; width:' + screenWidth + 'px'">
+
+			<el-container>
+				<el-header>
+					<el-row>
+						<el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4" class="headerLeft">
+							<img src="img/header.png">
+						</el-col>
+						<el-col :xs="17" :sm="17" :md="17" :lg="17" :xl="17" class="headerCenter">
+							<el-menu default-active="3" mode="horizontal" background-color="#002c73" text-color="#fff"
+								active-text-color="#ffd04b">
+								<el-menu-item v-for="(title, index) in titleList" :index="index.toString()">{{title}}
+								</el-menu-item>
+							</el-menu>
+						</el-col>
+						<el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="headerRight">
+							<el-row>
+								<el-col :xs="6" :sm="6" :md="6" :lg="8" :xl="6">
+									<el-avatar :size="55" :src="circleUrl"></el-avatar>
+								</el-col>
+								<el-col :xs="13" :sm="13" :md="13" :lg="11" :xl="13">
+									<span>{{name}}</span>
+								</el-col>
+								<el-col :xs="5" :sm="5" :md="5" :lg="5" :xl="5">
+									<i class="el-icon-switch-button" @click="logout()"></i>
+								</el-col>
+
+							</el-row>
+
+						</el-col>
+					</el-row>
+				</el-header>
+				<el-container>
+					<!-- 侧边栏 开始 -->
+					<el-menu default-active="0" id="headerAside" class="el-menu-vertical-demo" :collapse="isCollapse">
+						<el-menu-item index="0" class="asideTitle" v-model="isCollapse">
+							<i :class="asideIconName" @click="changeAside()"></i>
+						</el-menu-item>
+						<el-menu-item :index="index.toString()" v-for="(asideName, index) in asideList">
+							<i class="el-icon-user-solid"></i>
+							<span slot="title">{{asideName}}</span>
+						</el-menu-item>
+					</el-menu>
+					<!-- 侧边栏 结束 -->
+					
+					<el-main>
+						<div id="main-header">
+							<!-- 筛选 开始 -->
+							<div>
+								<template>
+									<label>梯次名称：</label>
+									<el-select @clear="selectChange('name', echelonNameMode)" 
+											@change="selectChange('name', echelonNameMode)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="echelonNameMode" 
+											filterable 
+											placeholder="请选择梯次名称">
+										<el-option v-for="(value, index) in echelonNameList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</template>
+								
+								<template>
+									<label>培训开始时间：</label>
+									<el-select @clear="selectChange('dateSectionStart', dateSectionStartMode)" 
+											@change="selectChange('dateSectionStart', dateSectionStartMode)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="dateSectionStartMode" 
+											filterable 
+											placeholder="请选择培训开始时间">
+										<el-option v-for="(value, index) in dateSectionStartList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</template>
+							</div>
+							
+							<div>
+								<template>
+									<label>培训结束时间：</label>
+									<el-select @clear="selectChange('dateSectionEnd', dateSectionEndMode)" 
+											@change="selectChange('dateSectionEnd', dateSectionEndMode)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="dateSectionEndMode" 
+											filterable 
+											placeholder="请选择培训结束时间">
+										<el-option v-for="(value, index) in dateSectionEndList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</template>
+								
+								<template>
+									<label>教学方式：</label>
+									<el-select @clear="selectChange('trainingMethods', trainingMethodsMode)" 
+											@change="selectChange('trainingMethods', trainingMethodsMode)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="trainingMethodsMode" 
+											filterable 
+											placeholder="请选择教学方式">
+										<el-option v-for="(value, index) in trainingMethodsList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</template>
+							</div>
+							
+							<div>
+								<template>
+									<label>培训地点：</label>
+									<el-select @clear="selectChange('place', placeMode)" 
+											@change="selectChange('place', placeMode)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="placeMode" 
+											filterable 
+											placeholder="请选择培训地点">
+										<el-option v-for="(value, index) in placeList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</template>
+								<div class="button">
+									<el-tooltip class="item" effect="dark" content="新建一个新的梯次" placement="top">
+										<el-button @click="newBox.isNew = true;" type="primary" round>新建梯次</el-button>
+									</el-tooltip>
+									<el-tooltip class="item" effect="dark" content="导出所有梯次的数据 (可以进行筛选导出)" placement="top">
+										<el-button @click="exportAllBox.isExportAll = true; clearSelect()" type="primary" round>数据导出</el-button>
+									</el-tooltip>
+								</div>
+							</div>
+							<!-- 筛选 结束 -->
+						</div>
+						<div id="main-body">
+							<!-- 表格 开始 -->
+							<template >
+								<el-table :default-sort = "{prop: 'name', order: 'descending'}" 
+										:data="tableData" 
+										border 
+										style="width: 100%;" 
+										:height="tableHeight" >
+									<el-table-column align="center" prop="plant" label="厂区" width="50px"></el-table-column>
+									<el-table-column align="center" prop="name" label="培训梯次" sortable></el-table-column>
+									<el-table-column align="center" prop="dateSectionStart" label="培训开始时间" sortable></el-table-column>
+									<el-table-column align="center" prop="dateSectionEnd" label="培训结束时间" sortable></el-table-column>
+									<el-table-column align="center" prop="trainingMethods" label="上课形式"></el-table-column>
+									<el-table-column align="center" prop="place" label="上课地点"></el-table-column>
+									<el-table-column align="center"  label="人数">
+										<template slot-scope="scope">
+											<p v-html="tableData[scope.$index].echelonPresonNumberStr"></p>
+										</template>
+									</el-table-column>
+									<el-table-column align="center" label="操作" style="margin-right: 0;" width="120px">
+										<template slot-scope="scope">
+											<el-tooltip popper-class="tableBodyTooltip" class="item" effect="dark" content="对本梯次进行配置，如:课程信息、培训人员" placement="top">
+												<el-button @click="setBox.isSet = true; setBox.setData = tableData[scope.$index]; defaultDatetimeScope(setBox)" 
+												type="text" size="small"><i class="el-icon-s-tools"></i></el-button>
+											</el-tooltip>
+											
+											<el-tooltip popper-class="tableBodyTooltip" class="item" effect="dark" content="数据导出" placement="top">
+												<el-button @click="exportAllBox.isExportAll = true; setBox.setData = tableData[scope.$index]; defaultDatetimeScope(setBox); exportAllBox.echelonNameMode = scope.row.name; outputSelectChange('echelonName', exportAllBox.echelonNameMode, true); clearSelect('echelonName')" 
+												type="text" size="small"><i class="el-icon-s-grid"></i></el-button>
+											</el-tooltip>
+										</template>
+											
+									</el-table-column>
+								</el-table>
+							</template>
+							<!-- 表格 结束 -->
+							
+							<!-- 梯次设置 开始 -->
+							<el-dialog
+									:title="setBox.setData.name"
+									:visible.sync="setBox.isSet"
+									width="85%" 
+									:before-close="handleClose">
+									<h4>
+										新建一个梯次之后，请按照顺序操作：<span style="color: red;">1、导入课表（课表管理）</span> => <span style="color: red;">2、导入学员（学员管理）</span>
+									</h4>
+								<el-tabs type="border-card">
+								  <el-tab-pane label=" 基本信息">
+										<div class="dialogSet">
+											<label style="margin-left: 10px;">培训梯次：</label>
+											<el-input disabled placeholder="请输入内容" v-model="setBox.setData.name" style="width: 250px;" :value="setBox.setData.name"></el-input>
+										</div>
+										<div class="dialogSet">
+											<label style="margin-left: 10px;">培训时间范围：</label>
+											<el-date-picker
+												v-model="setBox.datetimeScope"
+												type="datetimerange"
+												range-separator="至"
+												start-placeholder="开始日期"
+												end-placeholder="结束日期" 
+												style="width: 400px">
+											</el-date-picker>
+										</div>
+										<div class="dialogSet">
+											<label style="margin-left: 10px;">上课形式：</label>
+											<el-select v-model="setBox.setData.trainingMethods" placeholder="请选择">
+												<el-option
+													v-for="(value, index) in trainingMethodsList"
+													:key="value"
+													:label="value"
+													:value="value">
+												</el-option>
+											</el-select>
+										</div>
+										<div class="dialogSet">
+											<label style="margin-left: 10px;">上课地点：</label>
+											<el-input placeholder="请输入内容" v-model="setBox.setData.place" style="width: 250px;" :value="setBox.setData.place"></el-input>
+										</div>
+										
+										<div style="margin-top: 30px;">
+											<el-button @click="setBox.isSet = false">取 消</el-button>
+											<el-button type="primary" @click="setBox.isSet = true">保 存</el-button>
+										</div>
+										
+									</el-tab-pane>
+								  <el-tab-pane label="课表管理(必须项)">配置管理</el-tab-pane>
+								  <el-tab-pane label="学员管理(必须项)">角色管理</el-tab-pane>
+								  <el-tab-pane label="成绩管理(线下培训导入成绩)">定时任务补偿</el-tab-pane>
+								</el-tabs>
+							</el-dialog>
+							<!-- 梯次设置 结束 -->
+							
+							<!-- 新建梯次 开始 -->
+							<el-dialog
+									title="新建梯次"
+									:visible.sync="newBox.isNew"
+									width="85%" 
+									:before-close="handleClose">
+								<div class="dialogSet">
+									<label style="margin-left: 10px;">厂区：</label>
+									<el-select v-model="newBox.newData.plant" placeholder="请选择">
+										<el-option
+											v-for="(value, index) in trainingMethodsList"
+											:key="value"
+											:label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</div>
+								<div class="dialogSet">
+									<label style="margin-left: 10px;">培训梯次：</label>
+									<el-input :disabled="true" placeholder="请输入内容" :v-model="newBox.newData.name" style="width: 250px;" :value="echelonNew" ></el-input>
+								</div>
+								<div class="dialogSet">
+									<label style="margin-left: 10px;">培训时间范围：</label>
+									<el-date-picker
+										v-model="newBox.datetimeScope"
+										type="datetimerange"
+										range-separator="至"
+										start-placeholder="开始日期"
+										end-placeholder="结束日期" 
+										style="width: 400px">
+									</el-date-picker>
+								</div>
+								<div class="dialogSet">
+									<label style="margin-left: 10px;">上课形式：</label>
+									<el-select v-model="newBox.newData.trainingMethods" placeholder="请选择">
+										<el-option
+											v-for="(value, index) in trainingMethodsList"
+											:key="value"
+											:label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</div>
+								<div class="dialogSet">
+									<label style="margin-left: 10px;">上课地点：</label>
+									<el-input placeholder="请输入内容" v-model="newBox.newData.place" style="width: 250px;" :value="newBox.newData.place"></el-input>
+								</div>
+								
+								<div style="margin-top: 30px;">
+									<el-button @click="newBox.isNew = false">取 消</el-button>
+									<el-button type="primary" @click="newBox.isNew = true">保 存</el-button>
+								</div>
+							</el-dialog>
+							<!-- 新建梯次 结束 -->
+							
+							<!-- 全部数据导出 开始 -->
+							<el-dialog
+									title="数据导出"
+									:visible.sync="exportAllBox.isExportAll"
+									width="85%" 
+									:before-close="handleClose">
+								<!-- 筛选 开始 -->
+								<div class="dialogSet">
+									<label>厂区：</label>
+									<el-select @clear="outputSelectChange('plant', exportAllBox.plantMode, true)" 
+											@change="outputSelectChange('plant', exportAllBox.plantMode, true)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="exportAllBox.plantMode" 
+											filterable 
+											placeholder="请选择厂区">
+										<el-option v-for="(value, index) in plantList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</div>
+							
+								<div class="dialogSet">
+									<label>梯次名称：</label>
+									<el-select @clear="outputSelectChange('echelonName', exportAllBox.echelonNameMode, true)" 
+											@change="outputSelectChange('echelonName', exportAllBox.echelonNameMode, true)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="exportAllBox.echelonNameMode" 
+											filterable 
+											placeholder="请选择梯次名称">
+										<el-option v-for="(value, index) in echelonNameList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</div>
+								<div class="dialogSet">
+									<label >工号：</label>
+									<el-input @change="outputSelectChange('id', exportAllBox.idMode)" 
+									placeholder="请输入内容" 
+									v-model="exportAllBox.idMode" 
+									style="width: 221px;" ></el-input>
+								</div>
+								
+								<div class="dialogSet">
+									<label>分发单位：</label>
+									<el-select @clear="outputSelectChange('company', exportAllBox.companyMode, true)" 
+											@change="outputSelectChange('company', exportAllBox.companyMode, true)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="exportAllBox.companyMode" 
+											filterable 
+											placeholder="请选择分发单位">
+										<el-option v-for="(value, index) in companyList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</div>
+								
+								<div class="dialogSet">
+									
+									<div class="block">
+										<label>分发日期：</label>
+										<el-date-picker
+											v-model="newBox.datetimeScope"
+											type="daterange"
+											range-separator="至"
+											start-placeholder="开始日期"
+											end-placeholder="结束日期"
+											style="width: 221px;">
+										</el-date-picker>
+									</div>
+								</div>
+								
+								<div class="dialogSet">
+									<label>用工类型：</label>
+									<el-select @clear="outputSelectChange('type', exportAllBox.typeMode, true)" 
+											@change="outputSelectChange('type', exportAllBox.typeMode, true)" 
+											clearable 
+											:popper-append-to-body="false" 
+											v-model="exportAllBox.typeMode" 
+											filterable 
+											placeholder="请选择用工类型">
+										<el-option v-for="(value, index) in typeList" :key="value" :label="value"
+											:value="value">
+										</el-option>
+									</el-select>
+								</div>
+								
+								<div class="button">
+									<el-tooltip class="item" effect="dark" content="导出所有已经筛选好的数据 (现有已经显示的数据)" placement="top">
+										<el-button @click="exportAllBox.isExportAll = true;" type="primary" round>数据导出</el-button>
+									</el-tooltip>
+								</div>
+								<!-- 筛选 结束 -->
+								
+								<!-- 表格 开始 -->
+								<template >
+									<el-table :default-sort = "{prop: 'echelonName', order: 'descending'}" 
+											:data="tableOutputData" 
+											border 
+											style="width: 100%;" 
+											:height="tableHeight - 260" 
+											:cell-class-name="getOutputTableTrainResultClass">
+										<el-table-column align="center" prop="echelonDict.plant" label="厂区" width="50px"></el-table-column>
+										<el-table-column align="center" width="150px" prop="echelonName" label="培训梯次" sortable></el-table-column>
+										<el-table-column align="center" width="150px" label="培训时间" sortable>
+											<template slot-scope="scope">
+												{{tableOutputData[scope.$index].echelonDict.dateSectionStart + '--' + tableOutputData[scope.$index].echelonDict.dateSectionEnd}}
+											</template>
+										</el-table-column>
+										<el-table-column align="center" width="150px" prop="echelonDict.trainingMethods" label="上课形式" sortable></el-table-column>
+										<el-table-column align="center" width="150px" prop="echelonDict.place" label="培训地点"></el-table-column>
+										<el-table-column align="center" width="150px" prop="type" label="用工类型"></el-table-column>
+										<el-table-column align="center" width="150px" prop="id" label="工号"></el-table-column>
+										<el-table-column align="center" width="150px" prop="name" label="姓名"></el-table-column>
+										<el-table-column align="center" width="150px" prop="company" label="分发单位"></el-table-column>
+										<el-table-column align="center" width="150px" prop="date" label="分发日期"></el-table-column>
+										<el-table-column align="center" width="150px" label="培训结果">
+											<template slot-scope="scope">
+												<!-- user["testScoresList"] = {}
+												user["trainResult"] = "合格"
+												user["allCreditResult"] = 0 -->
+												{{scope.row.trainResult + ':' + scope.row.allCreditResult}}
+												<!-- {{outputTableTrainResultChange(scope.row.trainResult)}} -->
+												<!-- {{scope.row}} -->
+											</template>
+										</el-table-column>
+										<el-table-column align="center" width="150px" prop="testScores" label="考核分数" class-name="outputBoxTable"></el-table-column>
+										<el-table-column align="center" v-for="(name, index) in courseNameSelectAll" width="150px"  :label="name" class-name="outputBoxTable">
+											<template slot-scope="scope">
+												{{scope.row.testScoresList[name] == null ? "/"  : scope.row.testScoresList[name]}}
+												<!-- v-for="(course, index) in tableOutputData.testScoresList" -->
+											</template>
+										</el-table-column>
+										<!-- {{testScoresList[tableOutputData[scope.$index].id]}} -->
+										<!-- testScoresList -->
+
+									</el-table>
+								</template>
+								<!-- 表格 结束 -->
+								
+							</el-dialog>
+							<!-- 全部数据导出 结束 -->
+						</div>
+						<div id="main-footer">
+
+						</div>
+					</el-main>
+				</el-container>
+			</el-container>
+		</div>
+
+	</body>
+	<script src="js/vue.js" type="text/javascript"></script>
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+	<script type="text/javascript">
+		var data = {
+			setBox: {
+				isSet: false,
+				datetimeScope: "", 
+				setData: ""
+			}, 
+			newBox: {
+				isNew: false, 
+				datetimeScope: "", 
+				newData: {}
+			}, 
+			exportAllBox: {
+				isExportAll: false, 
+				newData: "", 
+				plantMode: "",
+				echelonNameMode: "",
+				dateSectionStartMode: "",
+				dateSectionEndMode: "",
+				trainingMethodsMode: "",
+				timeValue: "", 
+				placeMode: "",
+				idMode: ""
+			}, 
+			name: "张三张三张三",
+			plantMode: "", 
+			echelonNameMode: "",
+			dateSectionStartMode: "",
+			dateSectionEndMode: "",
+			trainingMethodsMode: "",
+			timeValue: "", 
+			placeMode: "",
+			titleList: ["首页", "管理专区", "校招生管理", "新人训/安全培训专区", "学历教育", "资源及数据专区", "设置专区"],
+			asideList: ["基础人力新人训", "非基础人力新人训"],
+			circleUrl: "https://fii-cnsbg.training.efoxconn.com/admin/static/img/img_head.efc27bd.jpg",
+			isCollapse: false,
+			asideWidth: 200,
+			asideIconName: "el-icon-s-fold",
+			screenHeight: document.documentElement.clientHeight - 30,
+			screenWidth: document.documentElement.clientWidth > 1260 ? document.documentElement.clientWidth : 1260,
+			echelonNew: "2021年第4期基礎人力新人訓", 
+			echelonList: [{
+				"plant": "龙华", 
+				"name": "2021年第1期基礎人力新人訓",
+				"dateSectionStart": "2021/02/01 08:00",
+				"dateSectionEnd": "2021/02/01 17:50",
+				"trainingMethods": "线下",
+				"place": "B4棟4F-D教室", 
+			}, {
+				"plant": "龙华", 
+				"name": "2021年第2期基礎人力新人訓",
+				"dateSectionStart": "2021/02/03 08:00",
+				"dateSectionEnd": "2021/02/03 17:50",
+				"trainingMethods": "线上",
+				"place": "B4棟4F-D教室", 
+			}, {
+				"plant": "玮丰", 
+				"name": "2021年第3期基礎人力新人訓",
+				"dateSectionStart": "2021/02/05 08:00",
+				"dateSectionEnd": "2021/02/05 17:50",
+				"trainingMethods": "线下 + 线上",
+				"place": "B4棟4F-D教室", 
+			}], 
+			courseList: {
+				"派遣工": [{
+					"date": "2020/02/03 08:30-10:00",
+					"place": "B4棟4F-D教室",
+					"courseName": "课程1(派遣)",
+					"courseCode": "111111",
+					"teacher": "讲师1",
+					"courseForm": "线上",
+					"courseCredit": "1",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 10:00-12:00",
+					"place": "B4棟4F-D教室",
+					"courseName": "课程2(派遣)",
+					"courseCode": "222222",
+					"teacher": "讲师2",
+					"courseForm": "线上",
+					"courseCredit": "2",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 13:30-15:30",
+					"place": "/(派遣)",
+					"courseName": "课程3(派遣)",
+					"courseCode": "333333",
+					"teacher": "讲师3",
+					"courseForm": "线上",
+					"courseCredit": "1",
+					"isSubcourses": false
+				}],
+				"正式工": [{
+					"date": "2020/02/03 08:30-10:00",
+					"place": "B4棟4F-D教室",
+					"courseName": "课程1(正式)",
+					"courseCode": "111111",
+					"teacher": "讲师1",
+					"courseForm": "线下",
+					"courseCredit": "1",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 10:00-12:00",
+					"place": "B4棟4F-D教室",
+					"courseName": "课程2(正式)",
+					"courseCode": "222222",
+					"teacher": "讲师2",
+					"courseForm": "线下",
+					"courseCredit": "2",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 13:30-15:30",
+					"place": "/(正式)",
+					"courseName": "课程3(正式)",
+					"courseCode": "333333",
+					"teacher": "讲师3",
+					"courseForm": "线下",
+					"courseCredit": "1",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 15:30-17:30",
+					"place": "B4棟4F-D教室(正式)",
+					"courseName": "课程2(正式)",
+					"courseCode": "222222",
+					"teacher": "讲师2",
+					"courseForm": "线下",
+					"courseCredit": "2",
+					"isSubcourses": true
+				}],
+				"派遣工转正": [{
+					"date": "2020/02/03 08:30-10:00",
+					"place": "B4棟4F-D教室",
+					"courseName": "课程1(转正)",
+					"courseCode": "111111",
+					"teacher": "讲师1",
+					"courseForm": "线下",
+					"courseCredit": "1",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 10:00-12:00",
+					"place": "B4棟4F-D教室",
+					"courseName": "课程2(转正)",
+					"courseCode": "222222",
+					"teacher": "讲师2",
+					"courseForm": "线下",
+					"courseCredit": "2",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 13:30-15:30",
+					"place": "/(转正)",
+					"courseName": "课程3(转正)",
+					"courseCode": "333333",
+					"teacher": "讲师3",
+					"courseForm": "线上",
+					"courseCredit": "1",
+					"isSubcourses": false
+				}, {
+					"date": "2020/02/03 15:30-17:30",
+					"place": "B4棟4F-D教室(转正)",
+					"courseName": "课程2(转正)",
+					"courseCode": "222222",
+					"teacher": "讲师2",
+					"courseForm": "线下",
+					"courseCredit": "2",
+					"isSubcourses": true
+				}]
+			}, 
+			userList: [{
+					"id": "P1111111", 
+					"name": "张三",
+					"company": "单位1",
+					"date": "2021/1/1",
+					"type": "派遣工", 
+					"echelonName": "2021年第2期基礎人力新人訓", 
+					"testScores": "98",
+					
+				},{
+					"id": "G2222222", 
+					"name": "李四",
+					"company": "单位2",
+					"date": "2021/1/2",
+					"type": "正式工", 
+					"echelonName": "2021年第1期基礎人力新人訓", 
+					"testScores": "88"
+				},{
+					"id": "G3333333", 
+					"name": "王五",
+					"company": "单位3",
+					"date": "2021/1/3",
+					"type": "派遣工转正", 
+					"echelonName": "2021年第3期基礎人力新人訓", 
+					"testScores": "77"
+				},{
+					"id": "P4444444", 
+					"name": "啊啊啊",
+					"company": "单位4",
+					"date": "2021/1/3",
+					"echelonName": "2021年第2期基礎人力新人訓", 
+					"type": "派遣工", 
+					"testScores": "66"
+			}], 
+			filterData: {
+				"plant": "", 
+				"name": "", 
+				"dateSectionStart": "", 
+				"dateSectionEnd": "", 
+				"trainingMethods": "", 
+				"place": ""
+			},
+			outputFilterData: {
+				"plant": "", 
+				"name": "", 
+				"echelonName": "", 
+				"place": "", 
+				"company": "", 
+				"date": "", 
+				"type": "", 
+				"id": ""
+			}
+		}
+
+		var app = new Vue({
+			el: '#app',
+			data: data,
+			methods: {
+				logout: function() {
+					console.log("退出登入成功！")
+				},
+				changeAside: function() {
+					if (this.isCollapse == true) {
+						this.isCollapse = false
+						this.asideIconName = "el-icon-s-fold"
+					} else {
+						this.isCollapse = true
+						this.asideIconName = "el-icon-s-unfold"
+					}
+				}, 
+				selectChange: function(key, value) {
+					this.filterData[key] = value
+					
+				}, 
+				outputSelectChange: function(key, value, isAccurate) {
+					// 筛选内容改变
+					this.outputFilterData[key] = value
+					
+					if(isAccurate == null) {
+						this.outputFilterData["isAccurate"] = false
+					}else {
+						this.outputFilterData["isAccurate"] = isAccurate
+					}
+				}, 
+				clearSelect: function(notClear) {
+					// 清空所有筛选
+					for(key in this.outputFilterData) {
+						if(notClear == key) {
+							continue
+						}
+						this.outputFilterData[key] = ""
+					}
+					for(key in this.exportAllBox) {
+						
+						if(key == "isAccurate" || notClear + "Mode" == key) {
+							continue
+						}
+						this.exportAllBox[key] = ""
+					}
+				}, 
+				handleClose: function(done) {
+					this.$confirm('是否继续关闭？')
+						.then(_ => {
+							done();
+						})
+						.catch(_ => {});
+				}, 
+				defaultDatetimeScope: function(data) {
+					if(data == "") {return}
+					var datetimeStartLsit = data.setData.dateSectionStart.split(" ")
+					var datetimeStartLsit1 = datetimeStartLsit[0].split("/")
+					var datetimeStartLsit2 = datetimeStartLsit[1].split(":")
+					var datetimeStart = new Date(datetimeStartLsit1[0], datetimeStartLsit1[1], datetimeStartLsit1[2], datetimeStartLsit2[0], datetimeStartLsit2[1])
+					
+					var datetimeEndLsit = data.setData.dateSectionEnd.split(" ")
+					var datetimeEndLsit1 = datetimeEndLsit[0].split("/")
+					var datetimeEndLsit2 = datetimeEndLsit[1].split(":")
+					var datetimeEndLsit = new Date(datetimeEndLsit1[0], datetimeEndLsit1[1], datetimeEndLsit1[2], datetimeEndLsit2[0], datetimeEndLsit2[1])
+					
+					data.datetimeScope = [datetimeStart, datetimeEndLsit]
+				}, 
+				getOutputTableTrainResultClass: function({row, column, rowIndex, columnIndex}) {
+					if(column.label == "培训结果") {
+						return row.trainResult == "合格" ? 'outputBoxTable1' : 'outputBoxTable2'
+					}
+				}
+			}, 
+			mounted() {
+				const that = this
+				window.onresize = () => {
+					return (() => {
+						window.fullHeight = document.documentElement.clientHeight
+						this.screenHeight = window.fullHeight
+						window.fullWidth = document.documentElement.clientWidth > 1260 ? document
+							.documentElement.clientWidth : 1260
+						this.screenWidth = window.fullWidth
+					})()
+				}
+			},
+			computed: {
+				echelonNameList: function() {
+					var temp = []
+					for (i = 0; i < this.echelonList.length; i++) {
+						value = this.echelonList[i].name
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				dateSectionStartList: function() {
+					var temp = []
+					for (i = 0; i < this.echelonList.length; i++) {
+						value = this.echelonList[i].dateSectionStart
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				dateSectionEndList: function() {
+					var temp = []
+					for (i = 0; i < this.echelonList.length; i++) {
+						value = this.echelonList[i].dateSectionEnd
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				trainingMethodsList: function() {
+					var temp = []
+					for (i = 0; i < this.echelonList.length; i++) {
+						value = this.echelonList[i].trainingMethods
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				placeList: function() {
+					var temp = []
+					for (i = 0; i < this.echelonList.length; i++) {
+						value = this.echelonList[i].place
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				plantList: function() {
+					var temp = []
+					for (i = 0; i < this.echelonList.length; i++) {
+						value = this.echelonList[i].plant
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				companyList: function() {
+					var temp = []
+					for (i = 0; i < this.userList.length; i++) {
+						value = this.userList[i].company
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				typeList: function() {
+					var temp = []
+					for (i = 0; i < this.userList.length; i++) {
+						value = this.userList[i].type
+						if(!isInArray(temp, value)) {
+							temp.push(value)
+						}
+					}
+					return temp
+				}, 
+				tableHeight: function() {
+					return this.screenHeight - 260
+				}, 
+				tableData: function() {
+					var temp = this.echelonList
+					return temp.filter(data => {
+						result = true
+						for(var key in this.filterData) {
+							value = this.filterData[key]
+							if(value != "" && data[key] != value) {
+								result = false
+							}
+						}
+						
+						var temp = {}
+						for(i in this.userList) {
+							user = this.userList[i]
+							//在用户数组中获取每个用户所在的培训梯次，根据梯次进行比对，只获取本梯次的数据
+							if(data.name == user.echelonName) {
+								var type = user.type
+								if(temp[type] == null) {
+									temp[type] = 1
+								}else {
+									temp[type] += 1
+								}
+							}
+							
+							
+						}
+						
+						var echelonPresonNumberStr = ""
+						for(type in temp) {
+							echelonPresonNumberStr += type + ": " + temp[type] + "</br>"
+						}
+						data["echelonPresonNumberStr"] = echelonPresonNumberStr
+						return result
+					})
+				}, 
+				tableOutputData: function(isAccurate) {
+					if(isAccurate == null) {
+						isAccurate = false
+					}
+					// 导出的数据的表格
+					var temp = this.userList
+					return temp.filter(user => {
+						for(var i in this.echelonList) {
+							echelon = this.echelonList[i]
+							if(echelon.name == user.echelonName) {
+								user["echelonDict"] = echelon
+								break
+							}
+						}
+						// "plant": "",
+						// "name": "", 
+						// "echelonName": "", 
+						// "place": "", 
+						// "company": "", 
+						// "date": "", 
+						// "type": ""
+						
+						// "id": "P1111111",
+						// "name": "张三",
+						// "company": "单位1",
+						// "date": "2021/1/1",
+						// "type": "派遣工", 
+						// "echelonName": "2021年第1期基礎人力新人訓", 
+						// "testScores": "98",
+						result = true
+						for(var key1 in this.outputFilterData) {
+							if(key1 == "isAccurate") {
+								continue
+							}
+							isAccurate = this.outputFilterData["isAccurate"]
+							value = this.outputFilterData[key1]
+							userValue = user[key1]
+							if(userValue == null) {
+								userValue = user.echelonDict[key1]
+							}
+							// console.log(userValue + "---" + value + "---" + userValue.search(value))
+							
+							if(value != "" && isAccurate ? userValue != value : userValue.search(value) != 0) {
+								result = false
+							}
+						}
+						// console.log(testScoresList)
+						user["testScoresList"] = {}
+						user["allCreditResult"] = 0
+						courseNumber = 0
+						trainResultNumber = 0
+						for(course in this.testScoresList[user.id]) {
+							courseNumber += 1
+							//Y:1
+							value = this.testScoresList[user.id][course]
+							user["testScoresList"][course] = value
+							
+							res = value.split(":")
+							if(res[0] == "Y" || res[0] == "正常") {
+								trainResultNumber += 1
+							}
+							// 记录总学分
+							user["allCreditResult"] += parseInt(res[1])
+						}
+						if(trainResultNumber == courseNumber) {
+							user["trainResult"] = "合格"
+						}else {
+							user["trainResult"] = "不合格"
+						}
+						return result
+					})
+				}, 
+				testScoresList: function(id) {
+					// 根据课表生成每个学员的成绩，测试用
+					result = {}
+					this.userList.map(user => {
+						// 取出这位学员所需学习的课程列表
+						courseList = this.courseList[user.type]
+						
+						result[user.id] = {}
+						var i = 0
+						for(key in courseList) {
+							course = courseList[key]
+							if(course.isSubcourses) {
+								continue
+							}
+							courseName = course.courseName
+							
+							if(course.courseForm == "线下") {
+								if(i % 2 == 0) {
+									result[user.id][courseName] = "正常:1"
+								}else {
+									result[user.id][courseName] = "上课未到:0"
+								}
+							}else {
+								if(i % 2 != 0) {
+									result[user.id][courseName] = "Y:1"
+								}else {
+									result[user.id][courseName] = "N:0"
+								}
+								if(user.id == "P1111111") {
+									result[user.id][courseName] = "Y:1"
+								}
+							}
+							i += 1
+						}
+					})
+					
+					return result
+				}, 
+				courseNameSelectAll: function() {
+					var temp = []
+					for (i in this.tableOutputData) {
+						testScoresList = this.tableOutputData[i].testScoresList
+						for(key in testScoresList) {
+							if(!isInArray(temp, key)) {
+								temp.push(key)
+							}
+						}
+					}
+					
+					return temp
+				}
+			}
+		})
+		
+		function isInArray(arr,value){
+		    if(arr.indexOf&&typeof(arr.indexOf)=='function'){
+		        var index = arr.indexOf(value);
+		        if(index >= 0){
+		            return true;
+		        }
+		    }
+		    return false;
+		}
+		
+	</script>
+</html>
